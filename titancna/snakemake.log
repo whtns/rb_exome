@@ -1,0 +1,405 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	24	catAlleleCountFiles
+	96	combineTitanAndIchorCNA
+	1	copyOptSolution
+	340	getAlleleCountsByChr
+	287	getHETsites
+	17	ichorCNA
+	13	read_counter
+	96	runTitanCNA
+	1	selectSolution
+	876
+Select jobs to execute...
+
+[Tue Dec 15 20:30:02 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/C_14/C_14.chrchr17.vcf
+    log: logs/titan/hetPosns/C_14/C_14.chrchr17.log
+    jobid: 684
+    wildcards: tumor=C_14, chr=chr17
+
+
+[Tue Dec 15 20:30:02 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_49/T_49.chrchr21.vcf, /home/skevin/rb_pipeline/output/gatk/49-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_49/T_49.tumCounts.chrchr21.txt
+    log: logs/titan/tumCounts/T_49/T_49.chrchr21.log
+    jobid: 637
+    wildcards: tumor=T_49, chr=chr21
+
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+
+[Tue Dec 15 20:30:02 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/24-CL_1_recalibrated.bam
+    output: results/readDepth/C_24.bin50000.wig
+    log: logs/readDepth/C_24.bin50000.log
+    jobid: 804
+    wildcards: samples=C_24, binSize=50000
+    resources: mem=4
+
+Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+samtools: /opt/miniconda3/lib/libcurl.so.4: no version information available (required by samtools)
+
+[Tue Dec 15 20:30:02 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/C_28/C_28.chrchr20.vcf
+    log: logs/titan/hetPosns/C_28/C_28.chrchr20.log
+    jobid: 849
+    wildcards: tumor=C_28, chr=chr20
+
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+
+[Tue Dec 15 20:30:02 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/C_31/C_31.chrchr4.vcf
+    log: logs/titan/hetPosns/C_31/C_31.chrchr4.log
+    jobid: 923
+    wildcards: tumor=C_31, chr=chr4
+
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+
+[Tue Dec 15 20:30:02 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/C_20/C_20.chrchr5.vcf
+    log: logs/titan/hetPosns/C_20/C_20.chrchr5.log
+    jobid: 713
+    wildcards: tumor=C_20, chr=chr5
+
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+samtools: /opt/miniconda3/lib/libcurl.so.4: no version information available (required by samtools)
+Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+samtools: /opt/miniconda3/lib/libcurl.so.4: no version information available (required by samtools)
+Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+samtools: /opt/miniconda3/lib/libcurl.so.4: no version information available (required by samtools)
+Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+[mpileup] 1 samples in 1 input files
+<mpileup> Set max per-file depth to 8000
+[mpileup] 1 samples in 1 input files
+<mpileup> Set max per-file depth to 8000
+[mpileup] 1 samples in 1 input files
+<mpileup> Set max per-file depth to 8000
+[mpileup] 1 samples in 1 input files
+<mpileup> Set max per-file depth to 8000
+[Tue Dec 15 20:30:26 2020]
+Finished job 637.
+1 of 876 steps (0.11%) done
+[Tue Dec 15 20:30:52 2020]
+Finished job 849.
+2 of 876 steps (0.23%) done
+Select jobs to execute...
+
+[Tue Dec 15 20:30:52 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_31/T_31.chrchr18.vcf, /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_31/T_31.tumCounts.chrchr18.txt
+    log: logs/titan/tumCounts/T_31/T_31.chrchr18.log
+    jobid: 307
+    wildcards: tumor=T_31, chr=chr18
+
+
+[Tue Dec 15 20:30:52 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/C_41/C_41.chrchr4.vcf
+    log: logs/titan/hetPosns/C_41/C_41.chrchr4.log
+    jobid: 1029
+    wildcards: tumor=C_41, chr=chr4
+
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+samtools: /opt/miniconda3/lib/libcurl.so.4: no version information available (required by samtools)
+Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+[Tue Dec 15 20:31:02 2020]
+Finished job 923.
+3 of 876 steps (0.34%) done
+Select jobs to execute...
+
+[Tue Dec 15 20:31:02 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/C_43/C_43.chrchr21.vcf
+    log: logs/titan/hetPosns/C_43/C_43.chrchr21.log
+    jobid: 1116
+    wildcards: tumor=C_43, chr=chr21
+
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+samtools: /opt/miniconda3/lib/libcurl.so.4: no version information available (required by samtools)
+Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+[mpileup] 1 samples in 1 input files
+<mpileup> Set max per-file depth to 8000
+[Tue Dec 15 20:31:14 2020]
+Finished job 307.
+4 of 876 steps (0.46%) done
+[mpileup] 1 samples in 1 input files
+<mpileup> Set max per-file depth to 8000
+[Tue Dec 15 20:31:16 2020]
+Finished job 684.
+5 of 876 steps (0.57%) done
+Select jobs to execute...
+
+[Tue Dec 15 20:31:16 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_28/T_28.chrchr1.vcf, /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_28/T_28.tumCounts.chrchr1.txt
+    log: logs/titan/tumCounts/T_28/T_28.chrchr1.log
+    jobid: 165
+    wildcards: tumor=T_28, chr=chr1
+
+
+[Tue Dec 15 20:31:16 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/C_14/C_14.chrchr17.vcf, /home/skevin/rb_pipeline/output/gatk/14-CL_1_recalibrated.bam
+    output: results/titan/tumCounts/C_14/C_14.tumCounts.chrchr17.txt
+    log: logs/titan/tumCounts/C_14/C_14.chrchr17.log
+    jobid: 683
+    wildcards: tumor=C_14, chr=chr17
+
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+[Tue Dec 15 20:31:24 2020]
+Finished job 713.
+6 of 876 steps (0.68%) done
+Select jobs to execute...
+
+[Tue Dec 15 20:31:24 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchr12.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchr12.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchr12.log
+    jobid: 457
+    wildcards: tumor=T_43, chr=chr12
+
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+[Tue Dec 15 20:31:38 2020]
+Finished job 1116.
+7 of 876 steps (0.80%) done
+Select jobs to execute...
+
+[Tue Dec 15 20:31:38 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/C_14/C_14.chrchr8.vcf
+    log: logs/titan/hetPosns/C_14/C_14.chrchr8.log
+    jobid: 666
+    wildcards: tumor=C_14, chr=chr8
+
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+samtools: /opt/miniconda3/lib/libcurl.so.4: no version information available (required by samtools)
+Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+[mpileup] 1 samples in 1 input files
+<mpileup> Set max per-file depth to 8000
+[Tue Dec 15 20:32:07 2020]
+Finished job 683.
+8 of 876 steps (0.91%) done
+[Tue Dec 15 20:32:10 2020]
+Finished job 1029.
+9 of 876 steps (1%) done
+Select jobs to execute...
+
+[Tue Dec 15 20:32:10 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/C_14/C_14.chrchr16.vcf
+    log: logs/titan/hetPosns/C_14/C_14.chrchr16.log
+    jobid: 682
+    wildcards: tumor=C_14, chr=chr16
+
+
+[Tue Dec 15 20:32:10 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_33/T_33.chrchr15.vcf, /home/skevin/rb_pipeline/output/gatk/33-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_33/T_33.tumCounts.chrchr15.txt
+    log: logs/titan/tumCounts/T_33/T_33.chrchr15.log
+    jobid: 355
+    wildcards: tumor=T_33, chr=chr15
+
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+samtools: /opt/miniconda3/lib/libcurl.so.4: no version information available (required by samtools)
+Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+[mpileup] 1 samples in 1 input files
+<mpileup> Set max per-file depth to 8000
+[Tue Dec 15 20:32:33 2020]
+Finished job 457.
+10 of 876 steps (1%) done
+[Tue Dec 15 20:32:33 2020]
+Finished job 666.
+11 of 876 steps (1%) done
+Select jobs to execute...
+
+[Tue Dec 15 20:32:33 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/C_33/C_33.chrchr6.vcf
+    log: logs/titan/hetPosns/C_33/C_33.chrchr6.log
+    jobid: 980
+    wildcards: tumor=C_33, chr=chr6
+
+
+[Tue Dec 15 20:32:33 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/C_41/C_41.chrchr4.vcf, /home/skevin/rb_pipeline/output/gatk/41-CL_1_recalibrated.bam
+    output: results/titan/tumCounts/C_41/C_41.tumCounts.chrchr4.txt
+    log: logs/titan/tumCounts/C_41/C_41.chrchr4.log
+    jobid: 1028
+    wildcards: tumor=C_41, chr=chr4
+
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+samtools: /opt/miniconda3/lib/libcurl.so.4: no version information available (required by samtools)
+Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+[mpileup] 1 samples in 1 input files
+<mpileup> Set max per-file depth to 8000
+[Tue Dec 15 20:32:58 2020]
+Finished job 804.
+12 of 876 steps (1%) done
+Select jobs to execute...
+
+[Tue Dec 15 20:32:59 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/C_14/C_14.chrchr8.vcf, /home/skevin/rb_pipeline/output/gatk/14-CL_1_recalibrated.bam
+    output: results/titan/tumCounts/C_14/C_14.tumCounts.chrchr8.txt
+    log: logs/titan/tumCounts/C_14/C_14.chrchr8.log
+    jobid: 665
+    wildcards: tumor=C_14, chr=chr8
+
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+[Tue Dec 15 20:33:12 2020]
+Finished job 682.
+13 of 876 steps (1%) done
+Select jobs to execute...
+
+[Tue Dec 15 20:33:12 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_33/T_33.chrchr13.vcf, /home/skevin/rb_pipeline/output/gatk/33-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_33/T_33.tumCounts.chrchr13.txt
+    log: logs/titan/tumCounts/T_33/T_33.chrchr13.log
+    jobid: 351
+    wildcards: tumor=T_33, chr=chr13
+
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+[Tue Dec 15 20:33:12 2020]
+Finished job 355.
+14 of 876 steps (2%) done
+[Tue Dec 15 20:33:16 2020]
+Finished job 165.
+15 of 876 steps (2%) done
+[Tue Dec 15 20:33:19 2020]
+Finished job 1028.
+16 of 876 steps (2%) done
+[Tue Dec 15 20:33:29 2020]
+Finished job 665.
+17 of 876 steps (2%) done
+[Tue Dec 15 20:33:34 2020]
+Finished job 351.
+18 of 876 steps (2%) done
+[Tue Dec 15 20:34:12 2020]
+Finished job 980.
+19 of 876 steps (2%) done
+Select jobs to execute...
+
+[Tue Dec 15 20:34:12 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/C_46/C_46.chrchr2.vcf
+    log: logs/titan/hetPosns/C_46/C_46.chrchr2.log
+    jobid: 1131
+    wildcards: tumor=C_46, chr=chr2
+
+
+[Tue Dec 15 20:34:12 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/C_31/C_31.chrchr4.vcf, /home/skevin/rb_pipeline/output/gatk/31-CL_1_recalibrated.bam
+    output: results/titan/tumCounts/C_31/C_31.tumCounts.chrchr4.txt
+    log: logs/titan/tumCounts/C_31/C_31.chrchr4.log
+    jobid: 922
+    wildcards: tumor=C_31, chr=chr4
+
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+
+samtools: /opt/miniconda3/lib/libcurl.so.4: no version information available (required by samtools)
+[Tue Dec 15 20:34:12 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/C_20/C_20.chrchr5.vcf, /home/skevin/rb_pipeline/output/gatk/20-CL_1_recalibrated.bam
+    output: results/titan/tumCounts/C_20/C_20.tumCounts.chrchr5.txt
+    log: logs/titan/tumCounts/C_20/C_20.chrchr5.log
+    jobid: 712
+    wildcards: tumor=C_20, chr=chr5
+
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+
+[Tue Dec 15 20:34:12 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/C_28/C_28.chrchr20.vcf, /home/skevin/rb_pipeline/output/gatk/28-CL_1_recalibrated.bam
+    output: results/titan/tumCounts/C_28/C_28.tumCounts.chrchr20.txt
+    log: logs/titan/tumCounts/C_28/C_28.chrchr20.log
+    jobid: 848
+    wildcards: tumor=C_28, chr=chr20
+
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+
+[Tue Dec 15 20:34:12 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/46-CL_1_recalibrated.bam
+    output: results/readDepth/C_46.bin50000.wig
+    log: logs/readDepth/C_46.bin50000.log
+    jobid: 1175
+    wildcards: samples=C_46, binSize=50000
+    resources: mem=4
+
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+
+[Tue Dec 15 20:34:12 2020]
+rule ichorCNA:
+    input: results/readDepth/C_24.bin50000.wig, results/readDepth/N_24.bin50000.wig
+    output: results/ichorCNA/C_24/C_24.correctedDepth.txt, results/ichorCNA/C_24/C_24.params.txt, results/ichorCNA/C_24/C_24.cna.seg, results/ichorCNA/C_24/C_24.seg.txt
+    log: logs/ichorCNA/C_24.log
+    jobid: 803
+    wildcards: tumor=C_24
+    resources: mem=4
+
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+/bin/bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+[Tue Dec 15 20:34:24 2020]
+Error in rule ichorCNA:
+    jobid: 803
+    output: results/ichorCNA/C_24/C_24.correctedDepth.txt, results/ichorCNA/C_24/C_24.params.txt, results/ichorCNA/C_24/C_24.cna.seg, results/ichorCNA/C_24/C_24.seg.txt
+    log: logs/ichorCNA/C_24.log (check log file(s) for error message)
+    shell:
+        Rscript /home/skevin/rpkgs/ichorCNA/scripts/runIchorCNA.R --libdir /home/skevin/rpkgs/ichorCNA --id C_24 --WIG results/readDepth/C_24.bin50000.wig --gcWig /dataVolume/storage/rpkgs/ichorCNA/inst/extdata/gc_hg19_50kb.wig --mapWig /dataVolume/storage/rpkgs/ichorCNA/inst/extdata/map_hg19_50kb.wig --NORMWIG results/readDepth/N_24.bin50000.wig --ploidy "c(2,3)" --normal "c(0.5)" --maxCN 8 --includeHOMD False --genomeStyle NCBI --chrs "c(1:22, \"X\")" --estimateNormal True --estimatePloidy True --estimateScPrevalence True --scStates "c(1,3)" --centromere /dataVolume/storage/rpkgs/ichorCNA/inst/extdata/GRCh37.p13_centromere_UCSC-gapTable.txt --exons.bed /dataVolume/storage/Homo_sapiens/agilent_coverage_files/agilent_sureselect_v5_covered.sorted.bed --txnE 0.9999 --txnStrength 10000 --fracReadsInChrYForMale 0.001 --plotFileType png --plotYLim "c(-2,4)" --outDir results/ichorCNA/C_24/ > logs/ichorCNA/C_24.log 2> logs/ichorCNA/C_24.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[mpileup] 1 samples in 1 input files
+<mpileup> Set max per-file depth to 8000
+[Tue Dec 15 20:34:37 2020]
+Finished job 848.
+20 of 876 steps (2%) done
+[Tue Dec 15 20:34:55 2020]
+Finished job 712.
+21 of 876 steps (2%) done
+[Tue Dec 15 20:34:55 2020]
+Finished job 922.
+22 of 876 steps (3%) done
+[Tue Dec 15 20:36:03 2020]
+Finished job 1131.
+23 of 876 steps (3%) done
+[Tue Dec 15 20:36:35 2020]
+Finished job 1175.
+24 of 876 steps (3%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /dataVolume/storage/rb_pipeline/titancna/.snakemake/log/2020-12-15T203001.672822.snakemake.log

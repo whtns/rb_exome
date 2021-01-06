@@ -1,0 +1,4 @@
+Script started on 2020-12-15 20:30:01-08:00 [TERM="screen" TTY="/dev/pts/16" COLUMNS="110" LINES="31"]
+bash: /opt/miniconda3/lib/libtinfo.so.6: no version information available (required by bash)
+
+Script done on 2020-12-15 20:36:35-08:00 [COMMAND_EXIT_CODE="1"]

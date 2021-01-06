@@ -1,0 +1,17 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+bin/
+data/
+output/
+results/
+gistic/
+rb_pipeline.Rproj
+nohup.out
+**/*.pdf
+**/*.csv
+**/*.rds
+**/doc/RB_exome_manuscript
+*.txt
+*.bed

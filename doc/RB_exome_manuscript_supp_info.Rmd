@@ -1,0 +1,64 @@
+---
+title: "RB Exome Manuscript Supplementary Info"
+author: 
+- "Kevin Stachelek"
+- "Carly Stewart"
+- "Jonathan Kim"
+- "Narine Harutyunyan"
+- "Jennifer Aparicio"
+- "Thomas C. Lee"
+- "Linn Murphree"
+- "C. Patrick Reynolds"
+- "David Cobrinik"
+date: "today"
+output: 
+  pdf_document: default
+  html_document: default
+---
+```{r setup-child, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+### Exome Coverage
+![cell line coverage](../results/coverage_plots/Rb_exome_cell_lines_partial_samples_20170826.png)    
+![tumor coverage](../results/coverage_plots/Rb_exome_tumors_partial_samples_20170826.png)    
+![normal coverage](../results/coverage_plots/Rb_exome_normals_partial_samples_20170826.png) 
+
+
+### Supplementary Info Loss of Heterozygosity
+```{r loh, echo=FALSE, results='asis'}
+library(pander)
+t_loh <- read.table("../doc/LOH/baf_13_t_20170903.csv", header = TRUE, sep = ",")
+cl_loh <- read.table("../doc/LOH/baf_13_cl_20170903.csv", header = TRUE, sep =",")
+pander(t_loh, split.cells = 30, split.table = Inf)
+pander(cl_loh, split.cells = 30, split.table = Inf)
+embed_data(t_loh, filename="t_loh.csv", label = "loss of heterozygosity in tumor")
+embed_data(cl_loh, filename="cl_loh.csv", label = "loss of heterozygosity in cell line")
+```
+
+### Supplementary Info Regions of SCNA gain/loss
+![mycn gain](../results/SCNA/karyoploter/mycn_coverage.png)
+#### Supplementary Info SCNA regions of MYCN gain 
+```{r mycn_gain, echo=FALSE, results='asis'}
+library(pander)
+mycn_gain <- read.table("../results/SCNA/mycn_peak_genes0_peak_genes.csv", header = TRUE, sep = ",")
+embed_data(mycn_gain, filename="mycn_gain.csv", label = "regions of mycn gain")
+```
+
+![rb1 loss](../results/SCNA/karyoploter/rb1_coverage.png)
+#### Supplementary Info SCNA regions of RB loss
+```{r rb_loss, echo=FALSE, results='asis'}
+library(pander)
+rb_loss <- read.table("../results/SCNA/rb_peak_genes0_peak_genes.csv", header = TRUE, sep = ",")
+embed_data(rb_loss, filename="rb_loss.csv", label = "regions of rb loss")
+```
+![bcor loss](../results/SCNA/karyoploter/bcor_coverage.png)
+
+#### Supplementary Info SCNA regions of BCOR loss 
+```{r bcor_loss, echo=FALSE, results='asis'}
+library(pander)
+bcor_loss <- read.table("../results/SCNA/bcor_peak_genes0_peak_genes.csv", header = TRUE, sep = ",")
+embed_data(bcor_loss, filename="bcor_loss.csv", label = "regions of bcor loss")
+```
+

@@ -1,0 +1,39 @@
+---
+title: "kooi_scna_comparison.Rmd"
+author: "Kevin Stachelek"
+date: "7/16/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r 1, }
+kooi_path_1 <- "~/rb_pipeline/doc/SCNA_meta_analysis_kooi_supporting_information/tidy_format/SCNA_peak_genes_kooi.csv"
+
+test <- read.csv(kooi_path_1)
+```
+
+```{r 2, }
+k_path_2 <- "~/rb_pipeline/doc/SCNA_meta_analysis_kooi_supporting_information/tidy_format/per_gene_SCNA_gain_loss_val_kooi.csv"
+per_gene_SCNA <- read.csv(k_path_2)
+
+peak_coords <- per_gene_SCNA[!is.na(per_gene_SCNA$peak),]
+
+peak_coords <- split(peak_coords, peak_coords$peak)
+
+get_peak_coords <- function(peak_dat){
+  peak_start <- min(peak_dat$start)
+  peak_end <- max(peak_dat$end)
+  
+  chrom <- peak_dat$seqnames[[1]]
+  
+  return(list("start" = peak_start, "end" = peak_end, "chrom" = chrom))
+}
+
+kooi_peak_regions <- purrr::map_df(peak_coords, get_peak_coords)
+
+write.table(kooi_peak_regions, "~/rb_pipeline/doc/SCNA/kooi_SCNA_peak_regions.csv")
+
+```

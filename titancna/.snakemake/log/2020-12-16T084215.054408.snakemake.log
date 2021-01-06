@@ -1,0 +1,138 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	22	catAlleleCountFiles
+	96	combineTitanAndIchorCNA
+	1	copyOptSolution
+	149	getAlleleCountsByChr
+	66	getHETsites
+	10	ichorCNA
+	3	read_counter
+	96	runTitanCNA
+	1	selectSolution
+	445
+Select jobs to execute...
+
+[Wed Dec 16 08:42:15 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/C_20/C_20.chrchr16.vcf
+    log: logs/titan/hetPosns/C_20/C_20.chrchr16.log
+    jobid: 735
+    wildcards: tumor=C_20, chr=chr16
+
+
+[Wed Dec 16 08:42:15 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/C_49/C_49.chrchr6.vcf, /home/skevin/rb_pipeline/output/gatk/49-CL_1_recalibrated.bam
+    output: results/titan/tumCounts/C_49/C_49.tumCounts.chrchr6.txt
+    log: logs/titan/tumCounts/C_49/C_49.chrchr6.log
+    jobid: 1244
+    wildcards: tumor=C_49, chr=chr6
+
+
+[Wed Dec 16 08:42:15 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/C_31/C_31.chrchr15.vcf, /home/skevin/rb_pipeline/output/gatk/31-CL_1_recalibrated.bam
+    output: results/titan/tumCounts/C_31/C_31.tumCounts.chrchr15.txt
+    log: logs/titan/tumCounts/C_31/C_31.chrchr15.log
+    jobid: 944
+    wildcards: tumor=C_31, chr=chr15
+
+
+[Wed Dec 16 08:42:15 2020]
+rule runTitanCNA:
+    input: results/titan/tumCounts/T_48.tumCounts.txt, results/ichorCNA/T_48/T_48.correctedDepth.txt
+    output: results/titan/hmm/titanCNA_ploidy2/T_48_cluster1.titan.txt, results/titan/hmm/titanCNA_ploidy2/T_48_cluster1.params.txt, results/titan/hmm/titanCNA_ploidy2/T_48_cluster1.segs.txt, results/titan/hmm/titanCNA_ploidy2/T_48_cluster1.seg
+    log: logs/titan/hmm/titanCNA_ploidy2/T_48_cluster1.log
+    jobid: 541
+    wildcards: ploidy=2, tumor=T_48, clustNum=1
+
+
+[Wed Dec 16 08:42:15 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/C_29/C_29.chrchr19.vcf, /home/skevin/rb_pipeline/output/gatk/29-CL_1_recalibrated.bam
+    output: results/titan/tumCounts/C_29/C_29.tumCounts.chrchr19.txt
+    log: logs/titan/tumCounts/C_29/C_29.chrchr19.log
+    jobid: 899
+    wildcards: tumor=C_29, chr=chr19
+
+
+[Wed Dec 16 08:42:15 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_24/T_24.chrchr17.vcf, /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchr17.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchr17.log
+    jobid: 143
+    wildcards: tumor=T_24, chr=chr17
+
+[Wed Dec 16 08:42:26 2020]
+Error in rule runTitanCNA:
+    jobid: 541
+    output: results/titan/hmm/titanCNA_ploidy2/T_48_cluster1.titan.txt, results/titan/hmm/titanCNA_ploidy2/T_48_cluster1.params.txt, results/titan/hmm/titanCNA_ploidy2/T_48_cluster1.segs.txt, results/titan/hmm/titanCNA_ploidy2/T_48_cluster1.seg
+    log: logs/titan/hmm/titanCNA_ploidy2/T_48_cluster1.log (check log file(s) for error message)
+    shell:
+        Rscript /home/skevin/rpkgs/TitanCNA/scripts/R_scripts/titanCNA.R --hetFile results/titan/tumCounts/T_48.tumCounts.txt --cnFile results/ichorCNA/T_48/T_48.correctedDepth.txt --outFile results/titan/hmm/titanCNA_ploidy2/T_48_cluster1.titan.txt --outSeg results/titan/hmm/titanCNA_ploidy2/T_48_cluster1.segs.txt --outParam results/titan/hmm/titanCNA_ploidy2/T_48_cluster1.params.txt --outIGV results/titan/hmm/titanCNA_ploidy2/T_48_cluster1.seg --outPlotDir results/titan/hmm/titanCNA_ploidy2/T_48_cluster1/ --libdir /home/skevin/rpkgs/TitanCNA/R/ --id T_48 --numClusters 1 --numCores 1 --normal_0 0.5 --ploidy_0 2 --genomeStyle NCBI --genomeBuild hg19 --cytobandFile None --chrs "c(1:22, \"X\")" --gender none --estimateNormal map --estimatePloidy True --estimateClonality True  --centromere /dataVolume/storage/rpkgs/ichorCNA/inst/extdata/GRCh37.p13_centromere_UCSC-gapTable.txt --alphaK 10000 --txnExpLen 1e15 --plotYlim "c(-2,4)" > logs/titan/hmm/titanCNA_ploidy2/T_48_cluster1.log 2> logs/titan/hmm/titanCNA_ploidy2/T_48_cluster1.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Terminating processes on user request, this might take some time.
+[Wed Dec 16 08:42:36 2020]
+Error in rule getHETsites:
+    jobid: 735
+    output: results/titan/hetPosns/C_20/C_20.chrchr16.vcf
+    log: logs/titan/hetPosns/C_20/C_20.chrchr16.log (check log file(s) for error message)
+    shell:
+        samtools mpileup -uv -I -f /dataVolume/storage/Homo_sapiens/UCSC/hg19/Sequence/BWAIndex/genome.fa -r chr16 -l /dataVolume/storage/Homo_sapiens/DBSNP/dbsnp_138.hg19.excluding_sites_after_129.vcf.gz /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam | bcftools call -v -c - | grep -e '0/1' -e '#' > results/titan/hetPosns/C_20/C_20.chrchr16.vcf 2> logs/titan/hetPosns/C_20/C_20.chrchr16.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job getHETsites since they might be corrupted:
+results/titan/hetPosns/C_20/C_20.chrchr16.vcf
+[Wed Dec 16 08:42:36 2020]
+Error in rule getAlleleCountsByChr:
+    jobid: 1244
+    output: results/titan/tumCounts/C_49/C_49.tumCounts.chrchr6.txt
+    log: logs/titan/tumCounts/C_49/C_49.chrchr6.log (check log file(s) for error message)
+    shell:
+        python code/countPysam.py chr6 results/titan/hetPosns/C_49/C_49.chrchr6.vcf /home/skevin/rb_pipeline/output/gatk/49-CL_1_recalibrated.bam 10 10 100 > results/titan/tumCounts/C_49/C_49.tumCounts.chrchr6.txt 2> logs/titan/tumCounts/C_49/C_49.chrchr6.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job getAlleleCountsByChr since they might be corrupted:
+results/titan/tumCounts/C_49/C_49.tumCounts.chrchr6.txt
+[Wed Dec 16 08:42:36 2020]
+Error in rule getAlleleCountsByChr:
+    jobid: 899
+    output: results/titan/tumCounts/C_29/C_29.tumCounts.chrchr19.txt
+    log: logs/titan/tumCounts/C_29/C_29.chrchr19.log (check log file(s) for error message)
+    shell:
+        python code/countPysam.py chr19 results/titan/hetPosns/C_29/C_29.chrchr19.vcf /home/skevin/rb_pipeline/output/gatk/29-CL_1_recalibrated.bam 10 10 100 > results/titan/tumCounts/C_29/C_29.tumCounts.chrchr19.txt 2> logs/titan/tumCounts/C_29/C_29.chrchr19.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job getAlleleCountsByChr since they might be corrupted:
+results/titan/tumCounts/C_29/C_29.tumCounts.chrchr19.txt
+[Wed Dec 16 08:42:36 2020]
+Error in rule getAlleleCountsByChr:
+    jobid: 143
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchr17.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchr17.log (check log file(s) for error message)
+    shell:
+        python code/countPysam.py chr17 results/titan/hetPosns/T_24/T_24.chrchr17.vcf /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam 10 10 100 > results/titan/tumCounts/T_24/T_24.tumCounts.chrchr17.txt 2> logs/titan/tumCounts/T_24/T_24.chrchr17.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job getAlleleCountsByChr since they might be corrupted:
+results/titan/tumCounts/T_24/T_24.tumCounts.chrchr17.txt
+[Wed Dec 16 08:42:36 2020]
+Error in rule getAlleleCountsByChr:
+    jobid: 944
+    output: results/titan/tumCounts/C_31/C_31.tumCounts.chrchr15.txt
+    log: logs/titan/tumCounts/C_31/C_31.chrchr15.log (check log file(s) for error message)
+    shell:
+        python code/countPysam.py chr15 results/titan/hetPosns/C_31/C_31.chrchr15.vcf /home/skevin/rb_pipeline/output/gatk/31-CL_1_recalibrated.bam 10 10 100 > results/titan/tumCounts/C_31/C_31.tumCounts.chrchr15.txt 2> logs/titan/tumCounts/C_31/C_31.chrchr15.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job getAlleleCountsByChr since they might be corrupted:
+results/titan/tumCounts/C_31/C_31.tumCounts.chrchr15.txt
+Complete log: /dataVolume/storage/rb_pipeline/titancna/.snakemake/log/2020-12-16T084215.054408.snakemake.log

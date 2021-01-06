@@ -1,0 +1,310 @@
+$WIG
+[1] "results/readDepth/C_48.bin50000.wig"
+
+$NORMWIG
+[1] "results/readDepth/N_48.bin50000.wig"
+
+$gcLoading required package: data.table
+Loading required package: stats4
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: 'BiocGenerics'
+
+The following objects are masked from 'package:parallel':
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from 'package:stats':
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from 'package:base':
+
+    anyDuplicated, append, as.data.frame, basename, cbind, colnames,
+    dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+    grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
+    union, unique, unsplit, which.max, which.min
+
+Loading required package: S4Vectors
+
+Attaching package: 'S4Vectors'
+
+The following objects are masked from 'package:data.table':
+
+    first, second
+
+The following object is masked from 'package:base':
+
+    expand.grid
+
+Loading required package: IRanges
+
+Attaching package: 'IRanges'
+
+The following object is masked from 'package:data.table':
+
+    shift
+
+Loading required package: GenomeInfoDb
+
+Attaching package: 'Biostrings'
+
+The following object is masked from 'package:base':
+
+    strsplit
+
+Warning message:
+In rep(as.integer(len), length = length(str)) :
+  partial argument match of 'length' to 'length.out'
+Loading tumour file:C_48
+Slurping: results/readDepth/C_48.bin50000.wig
+Parsing: fixedStep chrom=chr1 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr2 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr3 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr4 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr5 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr6 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr7 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr8 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr9 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr10 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr11 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr12 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr13 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr14 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr15 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr16 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr17 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr18 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr19 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr20 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr21 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr22 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chrX start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chrY start=1 step=50000 span=50000
+Sorting by decreasing chromosome size
+Reading GC and mappability files
+Slurping: /dataVolume/storage/rpkgs/ichorCNA/inst/extdata/gc_hg19_50kb.wig
+Parsing: fixedStep chrom=1 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=2 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=3 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=4 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=5 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=6 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=7 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=8 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=9 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=10 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=11 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=12 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=13 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=14 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=15 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=16 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=17 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=18 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=19 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=20 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=21 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=22 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=X start=1 step=50000 span=50000
+Parsing: fixedStep chrom=Y start=1 step=50000 span=50000
+Sorting by decreasing chromosome size
+Slurping: /dataVolume/storage/rpkgs/ichorCNA/inst/extdata/map_hg19_50kb.wig
+Parsing: fixedStep chrom=1 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=2 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=3 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=4 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=5 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=6 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=7 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=8 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=9 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=10 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=11 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=12 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=13 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=14 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=15 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=16 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=17 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=18 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=19 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=20 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=21 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=22 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=X start=1 step=50000 span=50000
+Parsing: fixedStep chrom=Y start=1 step=50000 span=50000
+Sorting by decreasing chromosome size
+Correcting Tumour
+Removed 1495 bins near centromeres.
+Applying filter on data...
+Correcting for GC bias...
+Correcting for mappability bias...
+Filtering low uniqueness regions with mappability score < 0.9
+Removed 65 bins near centromeres.
+Loading normal file:results/readDepth/N_48.bin50000.wig
+Slurping: results/readDepth/N_48.bin50000.wig
+Parsing: fixedStep chrom=chr1 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr2 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr3 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr4 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr5 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr6 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr7 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr8 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr9 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr10 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr11 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr12 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr13 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr14 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr15 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr16 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr17 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr18 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr19 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr20 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr21 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chr22 start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chrX start=1 step=50000 span=50000
+Parsing: fixedStep chrom=chrY start=1 step=50000 span=50000
+Sorting by decreasing chromosome size
+Correcting Normal
+Removed 1495 bins near centromeres.
+Applying filter on data...
+Correcting for GC bias...
+Correcting for mappability bias...
+Filtering low uniqueness regions with mappability score < 0.9
+Removed 65 bins near centromeres.
+Determining gender...Gender female
+Normalizing Tumour by Normal
+Outputting to: results/ichorCNA/C_48//C_48.correctedDepth.txt
+Warning messages:
+1: In quantile.default(x$reads[x$valid & chrInd], prob = c(0, 1 - routlier),  :
+  partial argument match of 'prob' to 'probs'
+2: In quantile.default(x$gc[x$valid & chrInd], prob = c(doutlier, 1 -  :
+  partial argument match of 'prob' to 'probs'
+3: In quantile.default(x$cor.gc[which(x$valid & chrInd)], prob = c(0,  :
+  partial argument match of 'prob' to 'probs'
+4: In regularize.values(x, y, ties, missing(ties), na.rm = na.rm) :
+  collapsing to unique 'x' values
+5: In quantile.default(x$reads[x$valid & chrInd], prob = c(0, 1 - routlier),  :
+  partial argument match of 'prob' to 'probs'
+6: In quantile.default(x$gc[x$valid & chrInd], prob = c(doutlier, 1 -  :
+  partial argument match of 'prob' to 'probs'
+7: In quantile.default(x$cor.gc[which(x$valid & chrInd)], prob = c(0,  :
+  partial argument match of 'prob' to 'probs'
+8: In regularize.values(x, y, ties, missing(ties), na.rm = na.rm) :
+  collapsing to unique 'x' values
+9: In match.call(definition, call, expand.dots, envir) :
+  partial argument match of 'chr' to 'chrs'
+runEM: Initialization
+runEM iter1: Expectation
+runEM iter1: Maximization
+Sample1 n=0.5114, sp=0.001432, phi=2.082, lambda=273.16,434.65,270.29,452.28,165.45,369.43,399.88,154.75,6.4982,155.16, F=26500
+runEM iter 1  Log likelihood: 18222.2859203497
+runEM iter1 Time: 1.1 min.
+runEM iter2: Expectation
+runEM iter2: Maximization
+Sample1 n=0.5115, sp=0.1739, phi=2.097, lambda=256.59,458.88,358.2,507.43,466.89,443.79,592.12,170.02,5.1158,233.62, F=27650
+runEM iter 2  Log likelihood: 27453.2716568876
+runEM iter2 Time: 0.71 min.
+runEM iter3: Expectation
+runEM iter3: Maximization
+Sample1 n=0.5088, sp=0.2908, phi=2.098, lambda=249,459.48,357.45,516.55,479.03,435.76,590.89,170.18,4.4275,374.7, F=27690
+runEM iter 3  Log likelihood: 27664.4581946555
+runEM iter3 Time: 0.28 min.
+runEM iter4: Expectation
+runEM iter4: Maximization
+Sample1 n=0.5083, sp=0.36, phi=2.098, lambda=248.44,460.56,356.95,517.69,480.25,436.21,589.95,170.28,4.0806,473.31, F=27720
+runEM iter 4  Log likelihood: 27709.9384489939
+runEM iter4 Time: 0.29 min.
+runEM iter5: Expectation
+runEM iter5: Maximization
+Sample1 n=0.5081, sp=0.4034, phi=2.098, lambda=246.56,462.81,357.36,516.75,480.51,435.22,588.73,170.39,3.8875,516.88, F=27730
+runEM iter 5  Log likelihood: 27740.3947549331
+runEM iter5 Time: 0.24 min.
+runEM iter6: Expectation
+runEM iter6: Maximization
+Sample1 n=0.5077, sp=0.4261, phi=2.099, lambda=246.52,464.97,357.35,516.83,480.52,435.19,588.7,170.39,3.7957,516.88, F=27740
+runEM iter 6  Log likelihood: 27764.1594042462
+runEM iter6 Time: 0.16 min.
+runEM iter6: Re-calculating responsibilties from converged parameters.
+runEM: Using optimal parameters from iter6
+runEM: Total elapsed time: 2.8min.
+runViterbi: Segmenting and classifying
+runEM: Initialization
+runEM iter1: Expectation
+runEM iter1: Maximization
+Sample1 n=0.3597, sp=0.4966, phi=3.088, lambda=386.96,271.58,429.67,358.98,612.29,66.232,171.73,169.36,169.26,166.78, F=25510
+runEM iter 1  Log likelihood: 17068.7289755128
+runEM iter1 Time: 0.45 min.
+runEM iter2: Expectation
+runEM iter2: Maximization
+Sample1 n=0.3516, sp=0.2974, phi=3.095, lambda=421.44,271.31,469.69,200.03,513.54,499.78,393.73,443.1,170.65,376.32, F=27710
+runEM iter 2  Log likelihood: 27198.4575398502
+runEM iter2 Time: 0.3 min.
+runEM iter3: Expectation
+runEM iter3: Maximization
+Sample1 n=0.3514, sp=0.247, phi=3.091, lambda=420.07,274.48,480.75,195.25,518.62,491.18,427.52,579.4,171.06,422.04, F=28000
+runEM iter 3  Log likelihood: 27988.6709775388
+runEM iter3 Time: 0.24 min.
+runEM iter4: Expectation
+runEM iter4: Maximization
+Sample1 n=0.3511, sp=0.236, phi=3.09, lambda=420.21,265.92,482.52,194.39,520.2,489.51,428.48,579.42,171.07,433.59, F=28020
+runEM iter 4  Log likelihood: 28068.6092084575
+runEM iter4 Time: 0.13 min.
+runEM iter5: Expectation
+runEM iter5: Maximization
+Sample1 n=0.3511, sp=0.2296, phi=3.089, lambda=419.93,264.05,484.11,193.9,521.25,489.07,428.16,579.32,171.07,441.46, F=28020
+runEM iter 5  Log likelihood: 28092.1113757771
+runEM iter5 Time: 0.1 min.
+runEM iter5: Re-calculating responsibilties from converged parameters.
+runEM: Using optimal parameters from iter5
+runEM: Total elapsed time: 1.2min.
+runViterbi: Segmenting and classifying
+Warning messages:
+1: In match.call(definition, call, expand.dots, envir) :
+  partial argument match of 'e.same' to 'e.sameState'
+2: In getDefaultParameters(logR[valid & chrInd, , drop = F], maxCN = maxCN,  :
+  partial argument match of 'e.same' to 'e.sameState'
+3: partial match of 'ct.sc' to 'ct.sc.status' 
+4: In viterbiResults$state : partial match of 'state' to 'states'
+5: In viterbiResults$state : partial match of 'state' to 'states'
+6: In getDefaultParameters(logR[valid & chrInd, , drop = F], maxCN = maxCN,  :
+  partial argument match of 'e.same' to 'e.sameState'
+7: partial match of 'ct.sc' to 'ct.sc.status' 
+8: In viterbiResults$state : partial match of 'state' to 'states'
+9: In viterbiResults$state : partial match of 'state' to 'states'
+Total ULP-WGS HMM Runtime: 4.1 min.
+Writing segments to results/ichorCNA/C_48//C_48.seg
+Outputting to bin-level results to results/ichorCNA/C_48//C_48.cna.seg
+Warning message:
+partial match of 'copy.num' to 'copy.number' 
+Warning messages:
+1: In seq.default(a[1L], b[1L], length = M[1L]) :
+  partial argument match of 'length' to 'length.out'
+2: In seq.default(a[2L], b[2L], length = M[2L]) :
+  partial argument match of 'length' to 'length.out'
+3: In quantile.default(correctOutput$cor.gc[correctOutput$ideal], prob = c(0,  :
+  partial argument match of 'prob' to 'probs'
+4: In seq.default(a[1L], b[1L], length = M[1L]) :
+  partial argument match of 'length' to 'length.out'
+5: In seq.default(a[2L], b[2L], length = M[2L]) :
+  partial argument match of 'length' to 'length.out'
+6: In seq.default(a[1L], b[1L], length = M[1L]) :
+  partial argument match of 'length' to 'length.out'
+7: In seq.default(a[2L], b[2L], length = M[2L]) :
+  partial argument match of 'length' to 'length.out'
+8: In quantile.default(correctOutput$cor.map, prob = c(0, 1 - coutlier),  :
+  partial argument match of 'prob' to 'probs'
+9: In seq.default(a[1L], b[1L], length = M[1L]) :
+  partial argument match of 'length' to 'length.out'
+10: In seq.default(a[2L], b[2L], length = M[2L]) :
+  partial argument match of 'length' to 'length.out'

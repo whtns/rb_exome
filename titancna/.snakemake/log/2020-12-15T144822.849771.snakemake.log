@@ -1,0 +1,146 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	12	catAlleleCountFiles
+	48	combineTitanAndIchorCNA
+	1	copyOptSolution
+	276	getAlleleCountsByChr
+	276	getHETsites
+	12	ichorCNA
+	24	read_counter
+	48	runTitanCNA
+	1	selectSolution
+	699
+
+[Tue Dec 15 14:48:23 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/readDepth/T_28.bin10000.wig
+    log: logs/readDepth/T_28.bin10000.log
+    jobid: 221
+    wildcards: samples=T_28, binSize=10000
+    resources: mem=4
+
+
+[Tue Dec 15 14:48:23 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/readDepth/T_46.bin10000.wig
+    log: logs/readDepth/T_46.bin10000.log
+    jobid: 371
+    wildcards: samples=T_46, binSize=10000
+    resources: mem=4
+
+
+[Tue Dec 15 14:48:23 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/readDepth/T_31.bin10000.wig
+    log: logs/readDepth/T_31.bin10000.log
+    jobid: 271
+    wildcards: samples=T_31, binSize=10000
+    resources: mem=4
+
+
+[Tue Dec 15 14:48:23 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/readDepth/T_14.bin10000.wig
+    log: logs/readDepth/T_14.bin10000.log
+    jobid: 146
+    wildcards: samples=T_14, binSize=10000
+    resources: mem=4
+
+[Tue Dec 15 14:48:23 2020]
+Error in rule read_counter:
+    jobid: 221
+    output: results/readDepth/T_28.bin10000.wig
+[Tue Dec 15 14:48:23 2020]
+    log: logs/readDepth/T_28.bin10000.log (check log file(s) for error message)
+[Tue Dec 15 14:48:23 2020]
+Error in rule read_counter:
+    shell:
+        /path/to/readCounter /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam -c 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,X,Y -w 10000 -q 20 > results/readDepth/T_28.bin10000.wig 2> logs/readDepth/T_28.bin10000.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+Error in rule read_counter:
+    jobid: 371
+
+    jobid: 271
+    output: results/readDepth/T_46.bin10000.wig
+    output: results/readDepth/T_31.bin10000.wig
+
+[Tue Dec 15 14:48:23 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/29-T_1_recalibrated.bam
+    output: results/readDepth/T_29.bin10000.wig
+    log: logs/readDepth/T_29.bin10000.log
+    jobid: 246
+    wildcards: samples=T_29, binSize=10000
+    resources: mem=4
+    log: logs/readDepth/T_31.bin10000.log (check log file(s) for error message)
+    log: logs/readDepth/T_46.bin10000.log (check log file(s) for error message)
+    shell:
+        /path/to/readCounter /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam -c 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,X,Y -w 10000 -q 20 > results/readDepth/T_46.bin10000.wig 2> logs/readDepth/T_46.bin10000.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+    shell:
+        /path/to/readCounter /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam -c 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,X,Y -w 10000 -q 20 > results/readDepth/T_31.bin10000.wig 2> logs/readDepth/T_31.bin10000.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+Removing output files of failed job read_counter since they might be corrupted:
+results/readDepth/T_28.bin10000.wig
+
+
+Removing output files of failed job read_counter since they might be corrupted:
+results/readDepth/T_46.bin10000.wig
+[Tue Dec 15 14:48:23 2020]
+Removing output files of failed job read_counter since they might be corrupted:
+results/readDepth/T_31.bin10000.wig
+Error in rule read_counter:
+    jobid: 146
+    output: results/readDepth/T_14.bin10000.wig
+    log: logs/readDepth/T_14.bin10000.log (check log file(s) for error message)
+    shell:
+        /path/to/readCounter /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam -c 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,X,Y -w 10000 -q 20 > results/readDepth/T_14.bin10000.wig 2> logs/readDepth/T_14.bin10000.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job read_counter since they might be corrupted:
+results/readDepth/T_14.bin10000.wig
+[Tue Dec 15 14:48:23 2020]
+Error in rule read_counter:
+    jobid: 246
+    output: results/readDepth/T_29.bin10000.wig
+    log: logs/readDepth/T_29.bin10000.log (check log file(s) for error message)
+    shell:
+        /path/to/readCounter /home/skevin/rb_pipeline/output/gatk/29-T_1_recalibrated.bam -c 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,X,Y -w 10000 -q 20 > results/readDepth/T_29.bin10000.wig 2> logs/readDepth/T_29.bin10000.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job read_counter since they might be corrupted:
+results/readDepth/T_29.bin10000.wig
+
+[Tue Dec 15 14:48:23 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam
+    output: results/readDepth/T_48.bin10000.wig
+    log: logs/readDepth/T_48.bin10000.log
+    jobid: 396
+    wildcards: samples=T_48, binSize=10000
+    resources: mem=4
+
+[Tue Dec 15 14:48:23 2020]
+Error in rule read_counter:
+    jobid: 396
+    output: results/readDepth/T_48.bin10000.wig
+    log: logs/readDepth/T_48.bin10000.log (check log file(s) for error message)
+    shell:
+        /path/to/readCounter /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam -c 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,X,Y -w 10000 -q 20 > results/readDepth/T_48.bin10000.wig 2> logs/readDepth/T_48.bin10000.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job read_counter since they might be corrupted:
+results/readDepth/T_48.bin10000.wig
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /dataVolume/storage/rb_pipeline/titancna/.snakemake/log/2020-12-15T144822.849771.snakemake.log

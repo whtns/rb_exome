@@ -1,0 +1,186 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	12	catAlleleCountFiles
+	48	combineTitanAndIchorCNA
+	1	copyOptSolution
+	58	getAlleleCountsByChr
+	11	getHETsites
+	5	ichorCNA
+	1	read_counter
+	48	runTitanCNA
+	1	selectSolution
+	186
+Select jobs to execute...
+
+[Tue Dec 15 21:08:44 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_24/T_24.chrchr6.vcf, /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchr6.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchr6.log
+    jobid: 121
+    wildcards: tumor=T_24, chr=chr6
+
+
+[Tue Dec 15 21:08:44 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_46/T_46.chrchr1.vcf, /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_46/T_46.tumCounts.chrchr1.txt
+    log: logs/titan/tumCounts/T_46/T_46.chrchr1.log
+    jobid: 489
+    wildcards: tumor=T_46, chr=chr1
+
+
+[Tue Dec 15 21:08:44 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_48/T_48.chrchr1.vcf, /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_48/T_48.tumCounts.chrchr1.txt
+    log: logs/titan/tumCounts/T_48/T_48.chrchr1.log
+    jobid: 543
+    wildcards: tumor=T_48, chr=chr1
+
+
+[Tue Dec 15 21:08:44 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_28/T_28.chrchr22.vcf, /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_28/T_28.tumCounts.chrchr22.txt
+    log: logs/titan/tumCounts/T_28/T_28.chrchr22.log
+    jobid: 207
+    wildcards: tumor=T_28, chr=chr22
+
+
+[Tue Dec 15 21:08:44 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr4.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr4.log
+    jobid: 64
+    wildcards: tumor=T_20, chr=chr4
+
+
+[Tue Dec 15 21:08:44 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_29/T_29.chrchr10.vcf, /home/skevin/rb_pipeline/output/gatk/29-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_29/T_29.tumCounts.chrchr10.txt
+    log: logs/titan/tumCounts/T_29/T_29.chrchr10.log
+    jobid: 237
+    wildcards: tumor=T_29, chr=chr10
+
+[Tue Dec 15 21:09:15 2020]
+Finished job 207.
+1 of 186 steps (0.54%) done
+[Tue Dec 15 21:09:32 2020]
+Finished job 237.
+2 of 186 steps (1%) done
+[Tue Dec 15 21:09:50 2020]
+Finished job 64.
+3 of 186 steps (2%) done
+Select jobs to execute...
+
+[Tue Dec 15 21:09:50 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_20/T_20.chrchr4.vcf, /home/skevin/rb_pipeline/output/gatk/20-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_20/T_20.tumCounts.chrchr4.txt
+    log: logs/titan/tumCounts/T_20/T_20.chrchr4.log
+    jobid: 63
+    wildcards: tumor=T_20, chr=chr4
+
+
+[Tue Dec 15 21:09:50 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_14/T_14.chrchr9.vcf
+    log: logs/titan/hetPosns/T_14/T_14.chrchr9.log
+    jobid: 20
+    wildcards: tumor=T_14, chr=chr9
+
+
+[Tue Dec 15 21:09:50 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_31/T_31.chrchr9.vcf, /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_31/T_31.tumCounts.chrchr9.txt
+    log: logs/titan/tumCounts/T_31/T_31.chrchr9.log
+    jobid: 289
+    wildcards: tumor=T_31, chr=chr9
+
+[Tue Dec 15 21:10:02 2020]
+Finished job 121.
+4 of 186 steps (2%) done
+[Tue Dec 15 21:10:36 2020]
+Finished job 289.
+5 of 186 steps (3%) done
+[Tue Dec 15 21:10:42 2020]
+Finished job 543.
+6 of 186 steps (3%) done
+[Tue Dec 15 21:10:43 2020]
+Finished job 20.
+7 of 186 steps (4%) done
+Select jobs to execute...
+
+[Tue Dec 15 21:10:43 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchr3.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr3.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr3.log
+    jobid: 385
+    wildcards: tumor=T_41, chr=chr3
+
+
+[Tue Dec 15 21:10:43 2020]
+rule ichorCNA:
+    input: results/readDepth/T_14.bin50000.wig, results/readDepth/N_14.bin50000.wig
+    output: results/ichorCNA/T_14/T_14.correctedDepth.txt, results/ichorCNA/T_14/T_14.params.txt, results/ichorCNA/T_14/T_14.cna.seg, results/ichorCNA/T_14/T_14.seg.txt
+    log: logs/ichorCNA/T_14.log
+    jobid: 49
+    wildcards: tumor=T_14
+    resources: mem=4
+
+
+[Tue Dec 15 21:10:43 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_48/T_48.chrchr12.vcf, /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_48/T_48.tumCounts.chrchr12.txt
+    log: logs/titan/tumCounts/T_48/T_48.chrchr12.log
+    jobid: 565
+    wildcards: tumor=T_48, chr=chr12
+
+
+[Tue Dec 15 21:10:43 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_31/T_31.chrchr20.vcf, /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_31/T_31.tumCounts.chrchr20.txt
+    log: logs/titan/tumCounts/T_31/T_31.chrchr20.log
+    jobid: 311
+    wildcards: tumor=T_31, chr=chr20
+
+[Tue Dec 15 21:10:45 2020]
+Finished job 63.
+8 of 186 steps (4%) done
+[Tue Dec 15 21:10:53 2020]
+Error in rule ichorCNA:
+    jobid: 49
+    output: results/ichorCNA/T_14/T_14.correctedDepth.txt, results/ichorCNA/T_14/T_14.params.txt, results/ichorCNA/T_14/T_14.cna.seg, results/ichorCNA/T_14/T_14.seg.txt
+    log: logs/ichorCNA/T_14.log (check log file(s) for error message)
+    shell:
+        Rscript /home/skevin/rpkgs/ichorCNA/scripts/runIchorCNA.R --libdir /home/skevin/rpkgs/ichorCNA --id T_14 --WIG results/readDepth/T_14.bin50000.wig --gcWig /dataVolume/storage/rpkgs/ichorCNA/inst/extdata/gc_hg19_50kb.wig --mapWig /dataVolume/storage/rpkgs/ichorCNA/inst/extdata/map_hg19_50kb.wig --NORMWIG results/readDepth/N_14.bin50000.wig --ploidy "c(2,3)" --normal "c(0.5)" --maxCN 8 --includeHOMD False --genomeStyle NCBI --chrs "c(1:22, \"X\")" --estimateNormal True --estimatePloidy True --estimateScPrevalence True --scStates "c(1,3)" --centromere /dataVolume/storage/rpkgs/ichorCNA/inst/extdata/GRCh37.p13_centromere_UCSC-gapTable.txt --exons.bed /dataVolume/storage/Homo_sapiens/agilent_coverage_files/agilent_sureselect_v5_covered.sorted.bed --txnE 0.9999 --txnStrength 10000 --fracReadsInChrYForMale 0.001 --plotFileType png --plotYLim "c(-2,4)" --outDir results/ichorCNA/T_14/ > logs/ichorCNA/T_14.log 2> logs/ichorCNA/T_14.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Tue Dec 15 21:11:02 2020]
+Finished job 489.
+9 of 186 steps (5%) done
+[Tue Dec 15 21:11:04 2020]
+Finished job 311.
+10 of 186 steps (5%) done
+[Tue Dec 15 21:11:26 2020]
+Finished job 385.
+11 of 186 steps (6%) done
+[Tue Dec 15 21:11:30 2020]
+Finished job 565.
+12 of 186 steps (6%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /dataVolume/storage/rb_pipeline/titancna/.snakemake/log/2020-12-15T210843.991473.snakemake.log

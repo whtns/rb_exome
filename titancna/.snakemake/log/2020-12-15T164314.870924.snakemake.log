@@ -1,0 +1,6052 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	12	catAlleleCountFiles
+	48	combineTitanAndIchorCNA
+	1	copyOptSolution
+	274	getAlleleCountsByChr
+	251	getHETsites
+	12	ichorCNA
+	21	read_counter
+	48	runTitanCNA
+	1	selectSolution
+	669
+Select jobs to execute...
+
+[Tue Dec 15 16:43:15 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/29-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_29/T_29.chrchr6.vcf
+    log: logs/titan/hetPosns/T_29/T_29.chrchr6.log
+    jobid: 230
+    wildcards: tumor=T_29, chr=chr6
+
+
+[Tue Dec 15 16:43:15 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr9.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr9.log
+    jobid: 74
+    wildcards: tumor=T_20, chr=chr9
+
+
+[Tue Dec 15 16:43:15 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchr12.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr12.log
+    jobid: 134
+    wildcards: tumor=T_24, chr=chr12
+
+
+[Tue Dec 15 16:43:15 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchr2.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr2.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr2.log
+    jobid: 383
+    wildcards: tumor=T_41, chr=chr2
+
+
+[Tue Dec 15 16:43:15 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_41/T_41.chrchr10.vcf
+    log: logs/titan/hetPosns/T_41/T_41.chrchr10.log
+    jobid: 400
+    wildcards: tumor=T_41, chr=chr10
+
+
+[Tue Dec 15 16:43:15 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/29-N_1_recalibrated.bam
+    output: results/readDepth/N_29.bin50000.wig
+    log: logs/readDepth/N_29.bin50000.log
+    jobid: 267
+    wildcards: samples=N_29, binSize=50000
+    resources: mem=4
+
+[Tue Dec 15 16:44:50 2020]
+Finished job 74.
+1 of 669 steps (0.15%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:44:50 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchr1.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchr1.log
+    jobid: 598
+    wildcards: tumor=T_49, chr=chr1
+
+[Tue Dec 15 16:44:54 2020]
+Finished job 400.
+2 of 669 steps (0.30%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:44:54 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr13.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr13.log
+    jobid: 82
+    wildcards: tumor=T_20, chr=chr13
+
+[Tue Dec 15 16:44:58 2020]
+Finished job 134.
+3 of 669 steps (0.45%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:44:58 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_31/T_31.chrchr10.vcf
+    log: logs/titan/hetPosns/T_31/T_31.chrchr10.log
+    jobid: 292
+    wildcards: tumor=T_31, chr=chr10
+
+[Tue Dec 15 16:44:59 2020]
+Finished job 230.
+4 of 669 steps (0.60%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:44:59 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/29-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_29/T_29.chrchr22.vcf
+    log: logs/titan/hetPosns/T_29/T_29.chrchr22.log
+    jobid: 262
+    wildcards: tumor=T_29, chr=chr22
+
+[Tue Dec 15 16:45:18 2020]
+Finished job 383.
+5 of 669 steps (0.75%) done
+[Tue Dec 15 16:45:28 2020]
+Finished job 82.
+6 of 669 steps (0.90%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:45:28 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_14/T_14.chrchr22.vcf
+    log: logs/titan/hetPosns/T_14/T_14.chrchr22.log
+    jobid: 46
+    wildcards: tumor=T_14, chr=chr22
+
+
+[Tue Dec 15 16:45:28 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_28/T_28.chrchr18.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchr18.log
+    jobid: 200
+    wildcards: tumor=T_28, chr=chr18
+
+[Tue Dec 15 16:45:56 2020]
+Finished job 262.
+7 of 669 steps (1%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:45:56 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr7.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr7.log
+    jobid: 448
+    wildcards: tumor=T_43, chr=chr7
+
+[Tue Dec 15 16:46:52 2020]
+Finished job 200.
+8 of 669 steps (1%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:46:52 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_41/T_41.chrchr19.vcf
+    log: logs/titan/hetPosns/T_41/T_41.chrchr19.log
+    jobid: 418
+    wildcards: tumor=T_41, chr=chr19
+
+[Tue Dec 15 16:46:58 2020]
+Finished job 292.
+9 of 669 steps (1%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:46:59 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_14/T_14.chrchr18.vcf
+    log: logs/titan/hetPosns/T_14/T_14.chrchr18.log
+    jobid: 38
+    wildcards: tumor=T_14, chr=chr18
+
+[Tue Dec 15 16:47:06 2020]
+Finished job 46.
+10 of 669 steps (1%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:47:07 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr10.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr10.log
+    jobid: 508
+    wildcards: tumor=T_46, chr=chr10
+
+[Tue Dec 15 16:47:19 2020]
+Finished job 267.
+11 of 669 steps (2%) done
+[Tue Dec 15 16:47:53 2020]
+Finished job 38.
+12 of 669 steps (2%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:47:53 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr2.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr2.log
+    jobid: 60
+    wildcards: tumor=T_20, chr=chr2
+
+
+[Tue Dec 15 16:47:53 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr3.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr3.log
+    jobid: 440
+    wildcards: tumor=T_43, chr=chr3
+
+[Tue Dec 15 16:48:38 2020]
+Finished job 598.
+13 of 669 steps (2%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:48:38 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchr16.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchr16.log
+    jobid: 628
+    wildcards: tumor=T_49, chr=chr16
+
+[Tue Dec 15 16:48:47 2020]
+Finished job 448.
+14 of 669 steps (2%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:48:47 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/29-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_29/T_29.chrchr14.vcf
+    log: logs/titan/hetPosns/T_29/T_29.chrchr14.log
+    jobid: 246
+    wildcards: tumor=T_29, chr=chr14
+
+[Tue Dec 15 16:49:28 2020]
+Finished job 418.
+15 of 669 steps (2%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:49:29 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr17.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr17.log
+    jobid: 522
+    wildcards: tumor=T_46, chr=chr17
+
+[Tue Dec 15 16:49:37 2020]
+Finished job 508.
+16 of 669 steps (2%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:49:37 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr2.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr2.log
+    jobid: 492
+    wildcards: tumor=T_46, chr=chr2
+
+[Tue Dec 15 16:50:18 2020]
+Finished job 246.
+17 of 669 steps (3%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:50:18 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchr7.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchr7.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchr7.log
+    jobid: 447
+    wildcards: tumor=T_43, chr=chr7
+
+[Tue Dec 15 16:50:28 2020]
+Finished job 628.
+18 of 669 steps (3%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:50:28 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_31/T_31.chrchr10.vcf, /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_31/T_31.tumCounts.chrchr10.txt
+    log: logs/titan/tumCounts/T_31/T_31.chrchr10.log
+    jobid: 291
+    wildcards: tumor=T_31, chr=chr10
+
+[Tue Dec 15 16:50:47 2020]
+Finished job 440.
+19 of 669 steps (3%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:50:47 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_20/T_20.chrchr13.vcf, /home/skevin/rb_pipeline/output/gatk/20-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_20/T_20.tumCounts.chrchr13.txt
+    log: logs/titan/tumCounts/T_20/T_20.chrchr13.log
+    jobid: 81
+    wildcards: tumor=T_20, chr=chr13
+
+[Tue Dec 15 16:51:05 2020]
+Finished job 60.
+20 of 669 steps (3%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:51:05 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_33/T_33.chrchrX.vcf
+    log: logs/titan/hetPosns/T_33/T_33.chrchrX.log
+    jobid: 372
+    wildcards: tumor=T_33, chr=chrX
+
+[Tue Dec 15 16:51:23 2020]
+Finished job 81.
+21 of 669 steps (3%) done
+[Tue Dec 15 16:51:34 2020]
+Finished job 291.
+22 of 669 steps (3%) done
+[Tue Dec 15 16:52:12 2020]
+Finished job 522.
+23 of 669 steps (3%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:52:12 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr8.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr8.log
+    jobid: 72
+    wildcards: tumor=T_20, chr=chr8
+
+
+[Tue Dec 15 16:52:12 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr6.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr6.log
+    jobid: 500
+    wildcards: tumor=T_46, chr=chr6
+
+
+[Tue Dec 15 16:52:12 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/readDepth/N_31.bin50000.wig
+    log: logs/readDepth/N_31.bin50000.log
+    jobid: 321
+    wildcards: samples=N_31, binSize=50000
+    resources: mem=4
+
+[Tue Dec 15 16:52:15 2020]
+Finished job 447.
+24 of 669 steps (4%) done
+[Tue Dec 15 16:52:55 2020]
+Finished job 372.
+25 of 669 steps (4%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:52:55 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/29-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_29/T_29.chrchr18.vcf
+    log: logs/titan/hetPosns/T_29/T_29.chrchr18.log
+    jobid: 254
+    wildcards: tumor=T_29, chr=chr18
+
+
+[Tue Dec 15 16:52:55 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchr5.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchr5.log
+    jobid: 606
+    wildcards: tumor=T_49, chr=chr5
+
+[Tue Dec 15 16:53:21 2020]
+Finished job 492.
+26 of 669 steps (4%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:53:21 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchr8.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr8.log
+    jobid: 126
+    wildcards: tumor=T_24, chr=chr8
+
+[Tue Dec 15 16:53:56 2020]
+Finished job 254.
+27 of 669 steps (4%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:53:56 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_14/T_14.chrchr10.vcf
+    log: logs/titan/hetPosns/T_14/T_14.chrchr10.log
+    jobid: 22
+    wildcards: tumor=T_14, chr=chr10
+
+[Tue Dec 15 16:53:59 2020]
+Finished job 72.
+28 of 669 steps (4%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:53:59 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr5.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr5.log
+    jobid: 66
+    wildcards: tumor=T_20, chr=chr5
+
+[Tue Dec 15 16:54:54 2020]
+Finished job 606.
+29 of 669 steps (4%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:54:54 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_29/T_29.chrchr22.vcf, /home/skevin/rb_pipeline/output/gatk/29-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_29/T_29.tumCounts.chrchr22.txt
+    log: logs/titan/tumCounts/T_29/T_29.chrchr22.log
+    jobid: 261
+    wildcards: tumor=T_29, chr=chr22
+
+[Tue Dec 15 16:55:00 2020]
+Finished job 126.
+30 of 669 steps (4%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:55:00 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_41/T_41.chrchr11.vcf
+    log: logs/titan/hetPosns/T_41/T_41.chrchr11.log
+    jobid: 402
+    wildcards: tumor=T_41, chr=chr11
+
+[Tue Dec 15 16:55:17 2020]
+Finished job 500.
+31 of 669 steps (5%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:55:17 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchr19.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr19.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr19.log
+    jobid: 417
+    wildcards: tumor=T_41, chr=chr19
+
+[Tue Dec 15 16:55:43 2020]
+Finished job 22.
+32 of 669 steps (5%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:55:43 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_28/T_28.chrchr11.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchr11.log
+    jobid: 186
+    wildcards: tumor=T_28, chr=chr11
+
+[Tue Dec 15 16:55:46 2020]
+Finished job 261.
+33 of 669 steps (5%) done
+[Tue Dec 15 16:56:06 2020]
+Finished job 66.
+34 of 669 steps (5%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:56:06 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr17.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr17.log
+    jobid: 90
+    wildcards: tumor=T_20, chr=chr17
+
+
+[Tue Dec 15 16:56:06 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr21.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr21.log
+    jobid: 530
+    wildcards: tumor=T_46, chr=chr21
+
+[Tue Dec 15 16:56:22 2020]
+Finished job 321.
+35 of 669 steps (5%) done
+[Tue Dec 15 16:57:00 2020]
+Finished job 530.
+36 of 669 steps (5%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:57:00 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_33/T_33.chrchr12.vcf
+    log: logs/titan/hetPosns/T_33/T_33.chrchr12.log
+    jobid: 350
+    wildcards: tumor=T_33, chr=chr12
+
+
+[Tue Dec 15 16:57:00 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/readDepth/T_31.bin50000.wig
+    log: logs/readDepth/T_31.bin50000.log
+    jobid: 320
+    wildcards: samples=T_31, binSize=50000
+    resources: mem=4
+
+[Tue Dec 15 16:57:33 2020]
+Finished job 402.
+37 of 669 steps (6%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:57:33 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_28/T_28.chrchr17.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchr17.log
+    jobid: 198
+    wildcards: tumor=T_28, chr=chr17
+
+[Tue Dec 15 16:58:04 2020]
+Finished job 186.
+38 of 669 steps (6%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:58:04 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchr11.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchr11.log
+    jobid: 564
+    wildcards: tumor=T_48, chr=chr11
+
+[Tue Dec 15 16:58:06 2020]
+Finished job 417.
+39 of 669 steps (6%) done
+[Tue Dec 15 16:58:20 2020]
+Finished job 90.
+40 of 669 steps (6%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:58:20 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_46/T_46.chrchr14.vcf, /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_46/T_46.tumCounts.chrchr14.txt
+    log: logs/titan/tumCounts/T_46/T_46.chrchr14.log
+    jobid: 515
+    wildcards: tumor=T_46, chr=chr14
+
+
+[Tue Dec 15 16:58:20 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_14/T_14.chrchr22.vcf, /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_14/T_14.tumCounts.chrchr22.txt
+    log: logs/titan/tumCounts/T_14/T_14.chrchr22.log
+    jobid: 45
+    wildcards: tumor=T_14, chr=chr22
+
+[Tue Dec 15 16:59:12 2020]
+Finished job 45.
+41 of 669 steps (6%) done
+[Tue Dec 15 16:59:36 2020]
+Finished job 198.
+42 of 669 steps (6%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:59:36 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr19.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr19.log
+    jobid: 472
+    wildcards: tumor=T_43, chr=chr19
+
+
+[Tue Dec 15 16:59:36 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_41/T_41.chrchrX.vcf
+    log: logs/titan/hetPosns/T_41/T_41.chrchrX.log
+    jobid: 426
+    wildcards: tumor=T_41, chr=chrX
+
+[Tue Dec 15 16:59:56 2020]
+Finished job 350.
+43 of 669 steps (6%) done
+Select jobs to execute...
+
+[Tue Dec 15 16:59:56 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_33/T_33.chrchr10.vcf
+    log: logs/titan/hetPosns/T_33/T_33.chrchr10.log
+    jobid: 346
+    wildcards: tumor=T_33, chr=chr10
+
+[Tue Dec 15 16:59:57 2020]
+Finished job 515.
+44 of 669 steps (7%) done
+[Tue Dec 15 17:00:26 2020]
+Finished job 564.
+45 of 669 steps (7%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:00:26 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr18.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr18.log
+    jobid: 470
+    wildcards: tumor=T_43, chr=chr18
+
+
+[Tue Dec 15 17:00:26 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr1.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr1.log
+    jobid: 58
+    wildcards: tumor=T_20, chr=chr1
+
+[Tue Dec 15 17:00:34 2020]
+Finished job 426.
+46 of 669 steps (7%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:00:34 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_41/T_41.chrchr7.vcf
+    log: logs/titan/hetPosns/T_41/T_41.chrchr7.log
+    jobid: 394
+    wildcards: tumor=T_41, chr=chr7
+
+[Tue Dec 15 17:01:36 2020]
+Finished job 470.
+47 of 669 steps (7%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:01:36 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr11.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr11.log
+    jobid: 510
+    wildcards: tumor=T_46, chr=chr11
+
+[Tue Dec 15 17:02:32 2020]
+Finished job 472.
+48 of 669 steps (7%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:02:32 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_49/T_49.chrchr1.vcf, /home/skevin/rb_pipeline/output/gatk/49-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_49/T_49.tumCounts.chrchr1.txt
+    log: logs/titan/tumCounts/T_49/T_49.chrchr1.log
+    jobid: 597
+    wildcards: tumor=T_49, chr=chr1
+
+[Tue Dec 15 17:02:43 2020]
+Finished job 346.
+49 of 669 steps (7%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:02:43 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_14/T_14.chrchr18.vcf, /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_14/T_14.tumCounts.chrchr18.txt
+    log: logs/titan/tumCounts/T_14/T_14.chrchr18.log
+    jobid: 37
+    wildcards: tumor=T_14, chr=chr18
+
+[Tue Dec 15 17:02:53 2020]
+Finished job 394.
+50 of 669 steps (7%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:02:53 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr16.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr16.log
+    jobid: 466
+    wildcards: tumor=T_43, chr=chr16
+
+[Tue Dec 15 17:03:18 2020]
+Finished job 37.
+51 of 669 steps (8%) done
+[Tue Dec 15 17:04:20 2020]
+Finished job 58.
+52 of 669 steps (8%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:04:20 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchr20.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchr20.log
+    jobid: 636
+    wildcards: tumor=T_49, chr=chr20
+
+
+[Tue Dec 15 17:04:20 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_14/T_14.chrchr14.vcf
+    log: logs/titan/hetPosns/T_14/T_14.chrchr14.log
+    jobid: 30
+    wildcards: tumor=T_14, chr=chr14
+
+[Tue Dec 15 17:04:49 2020]
+Finished job 510.
+53 of 669 steps (8%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:04:49 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/29-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_29/T_29.chrchr21.vcf
+    log: logs/titan/hetPosns/T_29/T_29.chrchr21.log
+    jobid: 260
+    wildcards: tumor=T_29, chr=chr21
+
+[Tue Dec 15 17:04:55 2020]
+Finished job 466.
+54 of 669 steps (8%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:04:56 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr12.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr12.log
+    jobid: 80
+    wildcards: tumor=T_20, chr=chr12
+
+[Tue Dec 15 17:05:36 2020]
+Finished job 260.
+55 of 669 steps (8%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:05:36 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_41/T_41.chrchr18.vcf
+    log: logs/titan/hetPosns/T_41/T_41.chrchr18.log
+    jobid: 416
+    wildcards: tumor=T_41, chr=chr18
+
+[Tue Dec 15 17:05:42 2020]
+Finished job 320.
+56 of 669 steps (8%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:05:43 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_33/T_33.chrchrX.vcf, /home/skevin/rb_pipeline/output/gatk/33-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_33/T_33.tumCounts.chrchrX.txt
+    log: logs/titan/tumCounts/T_33/T_33.chrchrX.log
+    jobid: 371
+    wildcards: tumor=T_33, chr=chrX
+
+[Tue Dec 15 17:05:45 2020]
+Finished job 30.
+57 of 669 steps (9%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:05:45 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr6.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr6.log
+    jobid: 446
+    wildcards: tumor=T_43, chr=chr6
+
+[Tue Dec 15 17:05:48 2020]
+Finished job 636.
+58 of 669 steps (9%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:05:48 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchr11.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr11.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr11.log
+    jobid: 401
+    wildcards: tumor=T_41, chr=chr11
+
+[Tue Dec 15 17:06:00 2020]
+Finished job 597.
+59 of 669 steps (9%) done
+[Tue Dec 15 17:06:35 2020]
+Finished job 416.
+60 of 669 steps (9%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:06:35 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_33/T_33.chrchr10.vcf, /home/skevin/rb_pipeline/output/gatk/33-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_33/T_33.tumCounts.chrchr10.txt
+    log: logs/titan/tumCounts/T_33/T_33.chrchr10.log
+    jobid: 345
+    wildcards: tumor=T_33, chr=chr10
+
+
+[Tue Dec 15 17:06:35 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr11.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr11.log
+    jobid: 456
+    wildcards: tumor=T_43, chr=chr11
+
+[Tue Dec 15 17:06:42 2020]
+Finished job 371.
+61 of 669 steps (9%) done
+[Tue Dec 15 17:07:04 2020]
+Finished job 80.
+62 of 669 steps (9%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:07:04 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchr19.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchr19.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchr19.log
+    jobid: 471
+    wildcards: tumor=T_43, chr=chr19
+
+
+[Tue Dec 15 17:07:04 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_28/T_28.chrchr9.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchr9.log
+    jobid: 182
+    wildcards: tumor=T_28, chr=chr9
+
+[Tue Dec 15 17:08:09 2020]
+Finished job 401.
+63 of 669 steps (9%) done
+[Tue Dec 15 17:08:27 2020]
+Finished job 446.
+64 of 669 steps (10%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:08:27 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_20/T_20.chrchr9.vcf, /home/skevin/rb_pipeline/output/gatk/20-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_20/T_20.tumCounts.chrchr9.txt
+    log: logs/titan/tumCounts/T_20/T_20.chrchr9.log
+    jobid: 73
+    wildcards: tumor=T_20, chr=chr9
+
+
+[Tue Dec 15 17:08:27 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchr7.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchr7.log
+    jobid: 610
+    wildcards: tumor=T_49, chr=chr7
+
+[Tue Dec 15 17:08:53 2020]
+Finished job 182.
+65 of 669 steps (10%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:08:53 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/readDepth/N_14.bin50000.wig
+    log: logs/readDepth/N_14.bin50000.log
+    jobid: 51
+    wildcards: samples=N_14, binSize=50000
+    resources: mem=4
+
+[Tue Dec 15 17:08:55 2020]
+Finished job 345.
+66 of 669 steps (10%) done
+[Tue Dec 15 17:09:29 2020]
+Finished job 456.
+67 of 669 steps (10%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:09:29 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_33/T_33.chrchr20.vcf
+    log: logs/titan/hetPosns/T_33/T_33.chrchr20.log
+    jobid: 366
+    wildcards: tumor=T_33, chr=chr20
+
+
+[Tue Dec 15 17:09:29 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchr15.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr15.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr15.log
+    jobid: 409
+    wildcards: tumor=T_41, chr=chr15
+
+[Tue Dec 15 17:09:36 2020]
+Finished job 471.
+68 of 669 steps (10%) done
+[Tue Dec 15 17:09:56 2020]
+Finished job 73.
+69 of 669 steps (10%) done
+[Tue Dec 15 17:10:14 2020]
+Finished job 610.
+70 of 669 steps (10%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:10:14 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_28/T_28.chrchr15.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchr15.log
+    jobid: 194
+    wildcards: tumor=T_28, chr=chr15
+
+
+[Tue Dec 15 17:10:14 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_31/T_31.chrchr17.vcf, /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_31/T_31.tumCounts.chrchr17.txt
+    log: logs/titan/tumCounts/T_31/T_31.chrchr17.log
+    jobid: 305
+    wildcards: tumor=T_31, chr=chr17
+
+
+[Tue Dec 15 17:10:14 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_49/T_49.chrchr20.vcf, /home/skevin/rb_pipeline/output/gatk/49-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_49/T_49.tumCounts.chrchr20.txt
+    log: logs/titan/tumCounts/T_49/T_49.chrchr20.log
+    jobid: 635
+    wildcards: tumor=T_49, chr=chr20
+
+[Tue Dec 15 17:10:38 2020]
+Finished job 409.
+71 of 669 steps (11%) done
+[Tue Dec 15 17:11:07 2020]
+Finished job 635.
+72 of 669 steps (11%) done
+[Tue Dec 15 17:11:15 2020]
+Finished job 366.
+73 of 669 steps (11%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:11:15 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_33/T_33.chrchr20.vcf, /home/skevin/rb_pipeline/output/gatk/33-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_33/T_33.tumCounts.chrchr20.txt
+    log: logs/titan/tumCounts/T_33/T_33.chrchr20.log
+    jobid: 365
+    wildcards: tumor=T_33, chr=chr20
+
+
+[Tue Dec 15 17:11:15 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchr11.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchr11.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchr11.log
+    jobid: 455
+    wildcards: tumor=T_43, chr=chr11
+
+
+[Tue Dec 15 17:11:15 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_28/T_28.chrchr18.vcf, /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_28/T_28.tumCounts.chrchr18.txt
+    log: logs/titan/tumCounts/T_28/T_28.chrchr18.log
+    jobid: 199
+    wildcards: tumor=T_28, chr=chr18
+
+[Tue Dec 15 17:11:40 2020]
+Finished job 194.
+74 of 669 steps (11%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:11:41 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_14/T_14.chrchr10.vcf, /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_14/T_14.tumCounts.chrchr10.txt
+    log: logs/titan/tumCounts/T_14/T_14.chrchr10.log
+    jobid: 21
+    wildcards: tumor=T_14, chr=chr10
+
+[Tue Dec 15 17:11:51 2020]
+Finished job 305.
+75 of 669 steps (11%) done
+[Tue Dec 15 17:11:56 2020]
+Finished job 199.
+76 of 669 steps (11%) done
+[Tue Dec 15 17:12:35 2020]
+Finished job 365.
+77 of 669 steps (12%) done
+[Tue Dec 15 17:12:36 2020]
+Finished job 51.
+78 of 669 steps (12%) done
+[Tue Dec 15 17:12:46 2020]
+Finished job 21.
+79 of 669 steps (12%) done
+[Tue Dec 15 17:13:09 2020]
+Finished job 455.
+80 of 669 steps (12%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:13:09 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_14/T_14.chrchr14.vcf, /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_14/T_14.tumCounts.chrchr14.txt
+    log: logs/titan/tumCounts/T_14/T_14.chrchr14.log
+    jobid: 29
+    wildcards: tumor=T_14, chr=chr14
+
+
+[Tue Dec 15 17:13:09 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_14/T_14.chrchr7.vcf
+    log: logs/titan/hetPosns/T_14/T_14.chrchr7.log
+    jobid: 16
+    wildcards: tumor=T_14, chr=chr7
+
+
+[Tue Dec 15 17:13:09 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_20/T_20.chrchr17.vcf, /home/skevin/rb_pipeline/output/gatk/20-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_20/T_20.tumCounts.chrchr17.txt
+    log: logs/titan/tumCounts/T_20/T_20.chrchr17.log
+    jobid: 89
+    wildcards: tumor=T_20, chr=chr17
+
+
+[Tue Dec 15 17:13:09 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchrX.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchrX.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchrX.log
+    jobid: 425
+    wildcards: tumor=T_41, chr=chrX
+
+
+[Tue Dec 15 17:13:09 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_49/T_49.chrchr5.vcf, /home/skevin/rb_pipeline/output/gatk/49-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_49/T_49.tumCounts.chrchr5.txt
+    log: logs/titan/tumCounts/T_49/T_49.chrchr5.log
+    jobid: 605
+    wildcards: tumor=T_49, chr=chr5
+
+
+[Tue Dec 15 17:13:09 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_20/T_20.chrchr2.vcf, /home/skevin/rb_pipeline/output/gatk/20-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_20/T_20.tumCounts.chrchr2.txt
+    log: logs/titan/tumCounts/T_20/T_20.chrchr2.log
+    jobid: 59
+    wildcards: tumor=T_20, chr=chr2
+
+[Tue Dec 15 17:13:11 2020]
+Finished job 425.
+81 of 669 steps (12%) done
+[Tue Dec 15 17:14:07 2020]
+Finished job 29.
+82 of 669 steps (12%) done
+[Tue Dec 15 17:14:39 2020]
+Finished job 605.
+83 of 669 steps (12%) done
+[Tue Dec 15 17:14:44 2020]
+Finished job 16.
+84 of 669 steps (13%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:14:44 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_46/T_46.chrchr6.vcf, /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_46/T_46.tumCounts.chrchr6.txt
+    log: logs/titan/tumCounts/T_46/T_46.chrchr6.log
+    jobid: 499
+    wildcards: tumor=T_46, chr=chr6
+
+
+[Tue Dec 15 17:14:44 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_31/T_31.chrchr1.vcf
+    log: logs/titan/hetPosns/T_31/T_31.chrchr1.log
+    jobid: 274
+    wildcards: tumor=T_31, chr=chr1
+
+
+[Tue Dec 15 17:14:44 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchr5.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr5.log
+    jobid: 120
+    wildcards: tumor=T_24, chr=chr5
+
+
+[Tue Dec 15 17:14:44 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_14/T_14.chrchr7.vcf, /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_14/T_14.tumCounts.chrchr7.txt
+    log: logs/titan/tumCounts/T_14/T_14.chrchr7.log
+    jobid: 15
+    wildcards: tumor=T_14, chr=chr7
+
+[Tue Dec 15 17:15:11 2020]
+Finished job 89.
+85 of 669 steps (13%) done
+[Tue Dec 15 17:15:38 2020]
+Finished job 59.
+86 of 669 steps (13%) done
+[Tue Dec 15 17:16:18 2020]
+Finished job 15.
+87 of 669 steps (13%) done
+[Tue Dec 15 17:16:27 2020]
+Finished job 120.
+88 of 669 steps (13%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:16:27 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_41/T_41.chrchr8.vcf
+    log: logs/titan/hetPosns/T_41/T_41.chrchr8.log
+    jobid: 396
+    wildcards: tumor=T_41, chr=chr8
+
+
+[Tue Dec 15 17:16:27 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr17.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr17.log
+    jobid: 468
+    wildcards: tumor=T_43, chr=chr17
+
+
+[Tue Dec 15 17:16:27 2020]
+rule ichorCNA:
+    input: results/readDepth/T_31.bin50000.wig, results/readDepth/N_31.bin50000.wig
+    output: results/ichorCNA/T_31/T_31.correctedDepth.txt, results/ichorCNA/T_31/T_31.params.txt, results/ichorCNA/T_31/T_31.cna.seg, results/ichorCNA/T_31/T_31.seg.txt
+    log: logs/ichorCNA/T_31.log
+    jobid: 319
+    wildcards: tumor=T_31
+    resources: mem=4
+
+
+[Tue Dec 15 17:16:27 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchr19.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchr19.log
+    jobid: 580
+    wildcards: tumor=T_48, chr=chr19
+
+[Tue Dec 15 17:17:30 2020]
+Finished job 499.
+89 of 669 steps (13%) done
+[Tue Dec 15 17:18:01 2020]
+Finished job 274.
+90 of 669 steps (13%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:18:01 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr12.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr12.log
+    jobid: 512
+    wildcards: tumor=T_46, chr=chr12
+
+
+[Tue Dec 15 17:18:01 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_29/T_29.chrchr18.vcf, /home/skevin/rb_pipeline/output/gatk/29-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_29/T_29.tumCounts.chrchr18.txt
+    log: logs/titan/tumCounts/T_29/T_29.chrchr18.log
+    jobid: 253
+    wildcards: tumor=T_29, chr=chr18
+
+[Tue Dec 15 17:18:11 2020]
+Finished job 396.
+91 of 669 steps (14%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:18:11 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr22.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr22.log
+    jobid: 478
+    wildcards: tumor=T_43, chr=chr22
+
+[Tue Dec 15 17:18:32 2020]
+Finished job 253.
+92 of 669 steps (14%) done
+[Tue Dec 15 17:18:44 2020]
+Finished job 580.
+93 of 669 steps (14%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:18:44 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr16.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr16.log
+    jobid: 88
+    wildcards: tumor=T_20, chr=chr16
+
+
+[Tue Dec 15 17:18:44 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_29/T_29.chrchr6.vcf, /home/skevin/rb_pipeline/output/gatk/29-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_29/T_29.tumCounts.chrchr6.txt
+    log: logs/titan/tumCounts/T_29/T_29.chrchr6.log
+    jobid: 229
+    wildcards: tumor=T_29, chr=chr6
+
+[Tue Dec 15 17:19:03 2020]
+Finished job 468.
+94 of 669 steps (14%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:19:03 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr13.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr13.log
+    jobid: 460
+    wildcards: tumor=T_43, chr=chr13
+
+[Tue Dec 15 17:19:40 2020]
+Finished job 478.
+95 of 669 steps (14%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:19:41 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_41/T_41.chrchr4.vcf
+    log: logs/titan/hetPosns/T_41/T_41.chrchr4.log
+    jobid: 388
+    wildcards: tumor=T_41, chr=chr4
+
+[Tue Dec 15 17:20:20 2020]
+Finished job 460.
+96 of 669 steps (14%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:20:20 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr8.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr8.log
+    jobid: 504
+    wildcards: tumor=T_46, chr=chr8
+
+[Tue Dec 15 17:20:39 2020]
+Finished job 88.
+97 of 669 steps (14%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:20:39 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchr1.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr1.log
+    jobid: 112
+    wildcards: tumor=T_24, chr=chr1
+
+[Tue Dec 15 17:20:45 2020]
+Finished job 512.
+98 of 669 steps (15%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:20:45 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchr3.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr3.log
+    jobid: 116
+    wildcards: tumor=T_24, chr=chr3
+
+[Tue Dec 15 17:21:03 2020]
+Finished job 229.
+99 of 669 steps (15%) done
+[Tue Dec 15 17:21:36 2020]
+Finished job 388.
+100 of 669 steps (15%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:21:36 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr19.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr19.log
+    jobid: 94
+    wildcards: tumor=T_20, chr=chr19
+
+
+[Tue Dec 15 17:21:36 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchr22.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr22.log
+    jobid: 154
+    wildcards: tumor=T_24, chr=chr22
+
+[Tue Dec 15 17:22:17 2020]
+Finished job 504.
+101 of 669 steps (15%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:22:17 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_14/T_14.chrchr3.vcf
+    log: logs/titan/hetPosns/T_14/T_14.chrchr3.log
+    jobid: 8
+    wildcards: tumor=T_14, chr=chr3
+
+[Tue Dec 15 17:22:55 2020]
+Finished job 154.
+102 of 669 steps (15%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:22:55 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_33/T_33.chrchr16.vcf
+    log: logs/titan/hetPosns/T_33/T_33.chrchr16.log
+    jobid: 358
+    wildcards: tumor=T_33, chr=chr16
+
+[Tue Dec 15 17:23:05 2020]
+Finished job 116.
+103 of 669 steps (15%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:23:05 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_29/T_29.chrchr21.vcf, /home/skevin/rb_pipeline/output/gatk/29-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_29/T_29.tumCounts.chrchr21.txt
+    log: logs/titan/tumCounts/T_29/T_29.chrchr21.log
+    jobid: 259
+    wildcards: tumor=T_29, chr=chr21
+
+[Tue Dec 15 17:23:43 2020]
+Finished job 259.
+104 of 669 steps (16%) done
+[Tue Dec 15 17:24:05 2020]
+Finished job 94.
+105 of 669 steps (16%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:24:05 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_41/T_41.chrchr13.vcf
+    log: logs/titan/hetPosns/T_41/T_41.chrchr13.log
+    jobid: 406
+    wildcards: tumor=T_41, chr=chr13
+
+
+[Tue Dec 15 17:24:05 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_33/T_33.chrchr7.vcf
+    log: logs/titan/hetPosns/T_33/T_33.chrchr7.log
+    jobid: 340
+    wildcards: tumor=T_33, chr=chr7
+
+[Tue Dec 15 17:24:26 2020]
+Finished job 112.
+106 of 669 steps (16%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:24:26 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_24/T_24.chrchr1.vcf, /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchr1.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchr1.log
+    jobid: 111
+    wildcards: tumor=T_24, chr=chr1
+
+[Tue Dec 15 17:24:27 2020]
+Finished job 8.
+107 of 669 steps (16%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:24:27 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_14/T_14.chrchr3.vcf, /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_14/T_14.tumCounts.chrchr3.txt
+    log: logs/titan/tumCounts/T_14/T_14.chrchr3.log
+    jobid: 7
+    wildcards: tumor=T_14, chr=chr3
+
+[Tue Dec 15 17:25:15 2020]
+Finished job 406.
+108 of 669 steps (16%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:25:15 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_14/T_14.chrchr11.vcf
+    log: logs/titan/hetPosns/T_14/T_14.chrchr11.log
+    jobid: 24
+    wildcards: tumor=T_14, chr=chr11
+
+[Tue Dec 15 17:25:23 2020]
+Finished job 358.
+109 of 669 steps (16%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:25:23 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchr9.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr9.log
+    jobid: 128
+    wildcards: tumor=T_24, chr=chr9
+
+[Tue Dec 15 17:26:09 2020]
+Finished job 7.
+110 of 669 steps (16%) done
+[Tue Dec 15 17:27:03 2020]
+Finished job 340.
+111 of 669 steps (17%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:27:04 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_24/T_24.chrchr12.vcf, /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchr12.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchr12.log
+    jobid: 133
+    wildcards: tumor=T_24, chr=chr12
+
+
+[Tue Dec 15 17:27:04 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/readDepth/T_46.bin50000.wig
+    log: logs/readDepth/T_46.bin50000.log
+    jobid: 536
+    wildcards: samples=T_46, binSize=50000
+    resources: mem=4
+
+[Tue Dec 15 17:27:09 2020]
+Finished job 128.
+112 of 669 steps (17%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:27:09 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/29-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_29/T_29.chrchr15.vcf
+    log: logs/titan/hetPosns/T_29/T_29.chrchr15.log
+    jobid: 248
+    wildcards: tumor=T_29, chr=chr15
+
+[Tue Dec 15 17:27:27 2020]
+Finished job 24.
+113 of 669 steps (17%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:27:27 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_31/T_31.chrchr21.vcf
+    log: logs/titan/hetPosns/T_31/T_31.chrchr21.log
+    jobid: 314
+    wildcards: tumor=T_31, chr=chr21
+
+[Tue Dec 15 17:27:54 2020]
+Finished job 111.
+114 of 669 steps (17%) done
+[Tue Dec 15 17:28:15 2020]
+Finished job 314.
+115 of 669 steps (17%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:28:15 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchr3.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchr3.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchr3.log
+    jobid: 439
+    wildcards: tumor=T_43, chr=chr3
+
+
+[Tue Dec 15 17:28:15 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchr15.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr15.log
+    jobid: 140
+    wildcards: tumor=T_24, chr=chr15
+
+[Tue Dec 15 17:28:29 2020]
+Finished job 248.
+116 of 669 steps (17%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:28:29 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr3.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr3.log
+    jobid: 494
+    wildcards: tumor=T_46, chr=chr3
+
+[Tue Dec 15 17:28:56 2020]
+Finished job 133.
+117 of 669 steps (17%) done
+[Tue Dec 15 17:29:41 2020]
+Finished job 140.
+118 of 669 steps (18%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:29:41 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_46/T_46.chrchr21.vcf, /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_46/T_46.tumCounts.chrchr21.txt
+    log: logs/titan/tumCounts/T_46/T_46.chrchr21.log
+    jobid: 529
+    wildcards: tumor=T_46, chr=chr21
+
+
+[Tue Dec 15 17:29:41 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchr12.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchr12.log
+    jobid: 566
+    wildcards: tumor=T_48, chr=chr12
+
+[Tue Dec 15 17:29:59 2020]
+Finished job 319.
+119 of 669 steps (18%) done
+[Tue Dec 15 17:30:17 2020]
+Finished job 439.
+120 of 669 steps (18%) done
+[Tue Dec 15 17:30:23 2020]
+Finished job 529.
+121 of 669 steps (18%) done
+[Tue Dec 15 17:31:13 2020]
+Finished job 494.
+122 of 669 steps (18%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:31:13 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr10.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr10.log
+    jobid: 454
+    wildcards: tumor=T_43, chr=chr10
+
+
+[Tue Dec 15 17:31:13 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_41/T_41.chrchr22.vcf
+    log: logs/titan/hetPosns/T_41/T_41.chrchr22.log
+    jobid: 424
+    wildcards: tumor=T_41, chr=chr22
+
+
+[Tue Dec 15 17:31:13 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_28/T_28.chrchr3.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchr3.log
+    jobid: 170
+    wildcards: tumor=T_28, chr=chr3
+
+
+[Tue Dec 15 17:31:13 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchr19.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchr19.log
+    jobid: 634
+    wildcards: tumor=T_49, chr=chr19
+
+[Tue Dec 15 17:31:32 2020]
+Finished job 566.
+123 of 669 steps (18%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:31:32 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr18.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr18.log
+    jobid: 524
+    wildcards: tumor=T_46, chr=chr18
+
+[Tue Dec 15 17:32:33 2020]
+Finished job 424.
+124 of 669 steps (19%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:32:33 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/33-T_1_recalibrated.bam
+    output: results/readDepth/T_33.bin50000.wig
+    log: logs/readDepth/T_33.bin50000.log
+    jobid: 374
+    wildcards: samples=T_33, binSize=50000
+    resources: mem=4
+
+[Tue Dec 15 17:32:44 2020]
+Finished job 524.
+125 of 669 steps (19%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:32:44 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_41/T_41.chrchr12.vcf
+    log: logs/titan/hetPosns/T_41/T_41.chrchr12.log
+    jobid: 404
+    wildcards: tumor=T_41, chr=chr12
+
+[Tue Dec 15 17:33:31 2020]
+Finished job 170.
+126 of 669 steps (19%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:33:31 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_46/T_46.chrchr3.vcf, /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_46/T_46.tumCounts.chrchr3.txt
+    log: logs/titan/tumCounts/T_46/T_46.chrchr3.log
+    jobid: 493
+    wildcards: tumor=T_46, chr=chr3
+
+[Tue Dec 15 17:33:32 2020]
+Finished job 454.
+127 of 669 steps (19%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:33:32 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_46/T_46.chrchr18.vcf, /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_46/T_46.tumCounts.chrchr18.txt
+    log: logs/titan/tumCounts/T_46/T_46.chrchr18.log
+    jobid: 523
+    wildcards: tumor=T_46, chr=chr18
+
+[Tue Dec 15 17:33:36 2020]
+Finished job 634.
+128 of 669 steps (19%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:33:36 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_49/T_49.chrchr19.vcf, /home/skevin/rb_pipeline/output/gatk/49-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_49/T_49.tumCounts.chrchr19.txt
+    log: logs/titan/tumCounts/T_49/T_49.chrchr19.log
+    jobid: 633
+    wildcards: tumor=T_49, chr=chr19
+
+[Tue Dec 15 17:34:17 2020]
+Finished job 523.
+129 of 669 steps (19%) done
+[Tue Dec 15 17:34:52 2020]
+Finished job 404.
+130 of 669 steps (19%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:34:52 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchr18.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchr18.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchr18.log
+    jobid: 469
+    wildcards: tumor=T_43, chr=chr18
+
+
+[Tue Dec 15 17:34:52 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_28/T_28.chrchr3.vcf, /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_28/T_28.tumCounts.chrchr3.txt
+    log: logs/titan/tumCounts/T_28/T_28.chrchr3.log
+    jobid: 169
+    wildcards: tumor=T_28, chr=chr3
+
+[Tue Dec 15 17:35:26 2020]
+Finished job 536.
+131 of 669 steps (20%) done
+[Tue Dec 15 17:35:34 2020]
+Finished job 469.
+132 of 669 steps (20%) done
+[Tue Dec 15 17:35:49 2020]
+Finished job 493.
+133 of 669 steps (20%) done
+[Tue Dec 15 17:36:10 2020]
+Finished job 633.
+134 of 669 steps (20%) done
+[Tue Dec 15 17:36:27 2020]
+Finished job 169.
+135 of 669 steps (20%) done
+[Tue Dec 15 17:38:40 2020]
+Finished job 374.
+136 of 669 steps (20%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:38:40 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_33/T_33.chrchr19.vcf
+    log: logs/titan/hetPosns/T_33/T_33.chrchr19.log
+    jobid: 364
+    wildcards: tumor=T_33, chr=chr19
+
+
+[Tue Dec 15 17:38:40 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchr4.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr4.log
+    jobid: 118
+    wildcards: tumor=T_24, chr=chr4
+
+
+[Tue Dec 15 17:38:40 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_14/T_14.chrchr5.vcf
+    log: logs/titan/hetPosns/T_14/T_14.chrchr5.log
+    jobid: 12
+    wildcards: tumor=T_14, chr=chr5
+
+
+[Tue Dec 15 17:38:40 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_28/T_28.chrchr15.vcf, /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_28/T_28.tumCounts.chrchr15.txt
+    log: logs/titan/tumCounts/T_28/T_28.chrchr15.log
+    jobid: 193
+    wildcards: tumor=T_28, chr=chr15
+
+
+[Tue Dec 15 17:38:40 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchr10.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchr10.log
+    jobid: 562
+    wildcards: tumor=T_48, chr=chr10
+
+
+[Tue Dec 15 17:38:40 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr13.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr13.log
+    jobid: 514
+    wildcards: tumor=T_46, chr=chr13
+
+[Tue Dec 15 17:39:44 2020]
+Finished job 193.
+137 of 669 steps (20%) done
+[Tue Dec 15 17:39:58 2020]
+Finished job 514.
+138 of 669 steps (21%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:39:58 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_31/T_31.chrchr16.vcf
+    log: logs/titan/hetPosns/T_31/T_31.chrchr16.log
+    jobid: 304
+    wildcards: tumor=T_31, chr=chr16
+
+
+[Tue Dec 15 17:39:58 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchr5.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchr5.log
+    jobid: 552
+    wildcards: tumor=T_48, chr=chr5
+
+[Tue Dec 15 17:40:26 2020]
+Finished job 12.
+139 of 669 steps (21%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:40:26 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_49/T_49.chrchr7.vcf, /home/skevin/rb_pipeline/output/gatk/49-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_49/T_49.tumCounts.chrchr7.txt
+    log: logs/titan/tumCounts/T_49/T_49.chrchr7.log
+    jobid: 609
+    wildcards: tumor=T_49, chr=chr7
+
+[Tue Dec 15 17:40:31 2020]
+Finished job 118.
+140 of 669 steps (21%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:40:31 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_20/T_20.chrchr19.vcf, /home/skevin/rb_pipeline/output/gatk/20-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_20/T_20.tumCounts.chrchr19.txt
+    log: logs/titan/tumCounts/T_20/T_20.chrchr19.log
+    jobid: 93
+    wildcards: tumor=T_20, chr=chr19
+
+[Tue Dec 15 17:40:37 2020]
+Finished job 562.
+141 of 669 steps (21%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:40:37 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_31/T_31.chrchr1.vcf, /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_31/T_31.tumCounts.chrchr1.txt
+    log: logs/titan/tumCounts/T_31/T_31.chrchr1.log
+    jobid: 273
+    wildcards: tumor=T_31, chr=chr1
+
+[Tue Dec 15 17:41:39 2020]
+Finished job 304.
+142 of 669 steps (21%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:41:39 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_48/T_48.chrchr19.vcf, /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_48/T_48.tumCounts.chrchr19.txt
+    log: logs/titan/tumCounts/T_48/T_48.chrchr19.log
+    jobid: 579
+    wildcards: tumor=T_48, chr=chr19
+
+[Tue Dec 15 17:41:53 2020]
+Finished job 552.
+143 of 669 steps (21%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:41:53 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_24/T_24.chrchr22.vcf, /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchr22.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchr22.log
+    jobid: 153
+    wildcards: tumor=T_24, chr=chr22
+
+[Tue Dec 15 17:42:00 2020]
+Finished job 364.
+144 of 669 steps (22%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:42:00 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchr6.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchr6.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchr6.log
+    jobid: 445
+    wildcards: tumor=T_43, chr=chr6
+
+[Tue Dec 15 17:42:31 2020]
+Finished job 609.
+145 of 669 steps (22%) done
+[Tue Dec 15 17:42:53 2020]
+Finished job 153.
+146 of 669 steps (22%) done
+[Tue Dec 15 17:43:15 2020]
+Finished job 93.
+147 of 669 steps (22%) done
+[Tue Dec 15 17:43:46 2020]
+Finished job 273.
+148 of 669 steps (22%) done
+[Tue Dec 15 17:44:03 2020]
+Finished job 579.
+149 of 669 steps (22%) done
+[Tue Dec 15 17:44:10 2020]
+Finished job 445.
+150 of 669 steps (22%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:44:10 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_33/T_33.chrchr12.vcf, /home/skevin/rb_pipeline/output/gatk/33-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_33/T_33.tumCounts.chrchr12.txt
+    log: logs/titan/tumCounts/T_33/T_33.chrchr12.log
+    jobid: 349
+    wildcards: tumor=T_33, chr=chr12
+
+
+[Tue Dec 15 17:44:10 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_14/T_14.chrchr6.vcf
+    log: logs/titan/hetPosns/T_14/T_14.chrchr6.log
+    jobid: 14
+    wildcards: tumor=T_14, chr=chr6
+
+
+[Tue Dec 15 17:44:10 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchr8.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr8.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr8.log
+    jobid: 395
+    wildcards: tumor=T_41, chr=chr8
+
+
+[Tue Dec 15 17:44:10 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_31/T_31.chrchr2.vcf
+    log: logs/titan/hetPosns/T_31/T_31.chrchr2.log
+    jobid: 276
+    wildcards: tumor=T_31, chr=chr2
+
+
+[Tue Dec 15 17:44:10 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_24/T_24.chrchr5.vcf, /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchr5.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchr5.log
+    jobid: 119
+    wildcards: tumor=T_24, chr=chr5
+
+
+[Tue Dec 15 17:44:10 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_14/T_14.chrchr5.vcf, /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_14/T_14.tumCounts.chrchr5.txt
+    log: logs/titan/tumCounts/T_14/T_14.chrchr5.log
+    jobid: 11
+    wildcards: tumor=T_14, chr=chr5
+
+[Tue Dec 15 17:45:27 2020]
+Finished job 395.
+151 of 669 steps (23%) done
+[Tue Dec 15 17:45:30 2020]
+Finished job 11.
+152 of 669 steps (23%) done
+[Tue Dec 15 17:45:42 2020]
+Finished job 119.
+153 of 669 steps (23%) done
+[Tue Dec 15 17:46:05 2020]
+Finished job 14.
+154 of 669 steps (23%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:46:05 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_20/T_20.chrchr1.vcf, /home/skevin/rb_pipeline/output/gatk/20-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_20/T_20.tumCounts.chrchr1.txt
+    log: logs/titan/tumCounts/T_20/T_20.chrchr1.log
+    jobid: 57
+    wildcards: tumor=T_20, chr=chr1
+
+
+[Tue Dec 15 17:46:05 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_41/T_41.chrchr14.vcf
+    log: logs/titan/hetPosns/T_41/T_41.chrchr14.log
+    jobid: 408
+    wildcards: tumor=T_41, chr=chr14
+
+
+[Tue Dec 15 17:46:05 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchrX.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchrX.log
+    jobid: 156
+    wildcards: tumor=T_24, chr=chrX
+
+
+[Tue Dec 15 17:46:05 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_24/T_24.chrchr4.vcf, /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchr4.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchr4.log
+    jobid: 117
+    wildcards: tumor=T_24, chr=chr4
+
+[Tue Dec 15 17:46:11 2020]
+Finished job 349.
+155 of 669 steps (23%) done
+[Tue Dec 15 17:46:40 2020]
+Finished job 276.
+156 of 669 steps (23%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:46:40 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/29-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_29/T_29.chrchr7.vcf
+    log: logs/titan/hetPosns/T_29/T_29.chrchr7.log
+    jobid: 232
+    wildcards: tumor=T_29, chr=chr7
+
+
+[Tue Dec 15 17:46:40 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_48/T_48.chrchr5.vcf, /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_48/T_48.tumCounts.chrchr5.txt
+    log: logs/titan/tumCounts/T_48/T_48.chrchr5.log
+    jobid: 551
+    wildcards: tumor=T_48, chr=chr5
+
+[Tue Dec 15 17:47:01 2020]
+Finished job 156.
+157 of 669 steps (23%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:47:01 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_31/T_31.chrchr14.vcf
+    log: logs/titan/hetPosns/T_31/T_31.chrchr14.log
+    jobid: 300
+    wildcards: tumor=T_31, chr=chr14
+
+[Tue Dec 15 17:47:37 2020]
+Finished job 408.
+158 of 669 steps (24%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:47:37 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_31/T_31.chrchr12.vcf
+    log: logs/titan/hetPosns/T_31/T_31.chrchr12.log
+    jobid: 296
+    wildcards: tumor=T_31, chr=chr12
+
+[Tue Dec 15 17:47:46 2020]
+Finished job 117.
+159 of 669 steps (24%) done
+[Tue Dec 15 17:47:56 2020]
+Finished job 551.
+160 of 669 steps (24%) done
+[Tue Dec 15 17:48:24 2020]
+Finished job 300.
+161 of 669 steps (24%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:48:24 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_28/T_28.chrchr19.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchr19.log
+    jobid: 202
+    wildcards: tumor=T_28, chr=chr19
+
+
+[Tue Dec 15 17:48:24 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchr4.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchr4.log
+    jobid: 604
+    wildcards: tumor=T_49, chr=chr4
+
+
+[Tue Dec 15 17:48:24 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_46/T_46.chrchr13.vcf, /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_46/T_46.tumCounts.chrchr13.txt
+    log: logs/titan/tumCounts/T_46/T_46.chrchr13.log
+    jobid: 513
+    wildcards: tumor=T_46, chr=chr13
+
+[Tue Dec 15 17:48:28 2020]
+Finished job 232.
+162 of 669 steps (24%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:48:28 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr6.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr6.log
+    jobid: 68
+    wildcards: tumor=T_20, chr=chr6
+
+[Tue Dec 15 17:49:18 2020]
+Finished job 513.
+163 of 669 steps (24%) done
+[Tue Dec 15 17:49:30 2020]
+Finished job 296.
+164 of 669 steps (25%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:49:30 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchr16.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr16.log
+    jobid: 142
+    wildcards: tumor=T_24, chr=chr16
+
+
+[Tue Dec 15 17:49:30 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_33/T_33.chrchr7.vcf, /home/skevin/rb_pipeline/output/gatk/33-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_33/T_33.tumCounts.chrchr7.txt
+    log: logs/titan/tumCounts/T_33/T_33.chrchr7.log
+    jobid: 339
+    wildcards: tumor=T_33, chr=chr7
+
+[Tue Dec 15 17:49:45 2020]
+Finished job 57.
+165 of 669 steps (25%) done
+[Tue Dec 15 17:50:05 2020]
+Finished job 604.
+166 of 669 steps (25%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:50:05 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_20/T_20.chrchr16.vcf, /home/skevin/rb_pipeline/output/gatk/20-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_20/T_20.tumCounts.chrchr16.txt
+    log: logs/titan/tumCounts/T_20/T_20.chrchr16.log
+    jobid: 87
+    wildcards: tumor=T_20, chr=chr16
+
+
+[Tue Dec 15 17:50:05 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_28/T_28.chrchr4.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchr4.log
+    jobid: 172
+    wildcards: tumor=T_28, chr=chr4
+
+[Tue Dec 15 17:50:37 2020]
+Finished job 202.
+167 of 669 steps (25%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:50:37 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchr12.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr12.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr12.log
+    jobid: 403
+    wildcards: tumor=T_41, chr=chr12
+
+[Tue Dec 15 17:50:52 2020]
+Finished job 68.
+168 of 669 steps (25%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:50:52 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_20/T_20.chrchr6.vcf, /home/skevin/rb_pipeline/output/gatk/20-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_20/T_20.tumCounts.chrchr6.txt
+    log: logs/titan/tumCounts/T_20/T_20.chrchr6.log
+    jobid: 67
+    wildcards: tumor=T_20, chr=chr6
+
+[Tue Dec 15 17:51:15 2020]
+Finished job 142.
+169 of 669 steps (25%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:51:15 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_29/T_29.chrchr15.vcf, /home/skevin/rb_pipeline/output/gatk/29-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_29/T_29.tumCounts.chrchr15.txt
+    log: logs/titan/tumCounts/T_29/T_29.chrchr15.log
+    jobid: 247
+    wildcards: tumor=T_29, chr=chr15
+
+[Tue Dec 15 17:51:43 2020]
+Finished job 87.
+170 of 669 steps (25%) done
+[Tue Dec 15 17:51:51 2020]
+Finished job 172.
+171 of 669 steps (26%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:51:52 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchr22.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr22.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr22.log
+    jobid: 423
+    wildcards: tumor=T_41, chr=chr22
+
+
+[Tue Dec 15 17:51:52 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_24/T_24.chrchr16.vcf, /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchr16.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchr16.log
+    jobid: 141
+    wildcards: tumor=T_24, chr=chr16
+
+[Tue Dec 15 17:51:58 2020]
+Finished job 339.
+172 of 669 steps (26%) done
+[Tue Dec 15 17:52:16 2020]
+Finished job 247.
+173 of 669 steps (26%) done
+[Tue Dec 15 17:52:20 2020]
+Finished job 403.
+174 of 669 steps (26%) done
+[Tue Dec 15 17:52:38 2020]
+Finished job 423.
+175 of 669 steps (26%) done
+[Tue Dec 15 17:53:04 2020]
+Finished job 141.
+176 of 669 steps (26%) done
+[Tue Dec 15 17:53:10 2020]
+Finished job 67.
+177 of 669 steps (26%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:53:10 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchrX.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchrX.log
+    jobid: 480
+    wildcards: tumor=T_43, chr=chrX
+
+
+[Tue Dec 15 17:53:10 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_14/T_14.chrchr2.vcf
+    log: logs/titan/hetPosns/T_14/T_14.chrchr2.log
+    jobid: 6
+    wildcards: tumor=T_14, chr=chr2
+
+
+[Tue Dec 15 17:53:10 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_31/T_31.chrchr2.vcf, /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_31/T_31.tumCounts.chrchr2.txt
+    log: logs/titan/tumCounts/T_31/T_31.chrchr2.log
+    jobid: 275
+    wildcards: tumor=T_31, chr=chr2
+
+
+[Tue Dec 15 17:53:10 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_24/T_24.chrchrX.vcf, /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchrX.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchrX.log
+    jobid: 155
+    wildcards: tumor=T_24, chr=chrX
+
+
+[Tue Dec 15 17:53:10 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchr13.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchr13.log
+    jobid: 568
+    wildcards: tumor=T_48, chr=chr13
+
+
+[Tue Dec 15 17:53:10 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_28/T_28.chrchr13.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchr13.log
+    jobid: 190
+    wildcards: tumor=T_28, chr=chr13
+
+[Tue Dec 15 17:53:12 2020]
+Finished job 155.
+178 of 669 steps (27%) done
+[Tue Dec 15 17:54:10 2020]
+Finished job 190.
+179 of 669 steps (27%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:54:10 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr21.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr21.log
+    jobid: 98
+    wildcards: tumor=T_20, chr=chr21
+
+
+[Tue Dec 15 17:54:10 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_29/T_29.chrchr7.vcf, /home/skevin/rb_pipeline/output/gatk/29-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_29/T_29.tumCounts.chrchr7.txt
+    log: logs/titan/tumCounts/T_29/T_29.chrchr7.log
+    jobid: 231
+    wildcards: tumor=T_29, chr=chr7
+
+[Tue Dec 15 17:54:14 2020]
+Finished job 568.
+180 of 669 steps (27%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:54:15 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchr5.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchr5.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchr5.log
+    jobid: 443
+    wildcards: tumor=T_43, chr=chr5
+
+[Tue Dec 15 17:54:46 2020]
+Finished job 480.
+181 of 669 steps (27%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:54:46 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchrX.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchrX.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchrX.log
+    jobid: 479
+    wildcards: tumor=T_43, chr=chrX
+
+[Tue Dec 15 17:54:59 2020]
+Finished job 275.
+182 of 669 steps (27%) done
+[Tue Dec 15 17:55:00 2020]
+Finished job 98.
+183 of 669 steps (27%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:55:00 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/49-T_1_recalibrated.bam
+    output: results/readDepth/T_49.bin50000.wig
+    log: logs/readDepth/T_49.bin50000.log
+    jobid: 644
+    wildcards: samples=T_49, binSize=50000
+    resources: mem=4
+
+
+[Tue Dec 15 17:55:00 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_28/T_28.chrchr19.vcf, /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_28/T_28.tumCounts.chrchr19.txt
+    log: logs/titan/tumCounts/T_28/T_28.chrchr19.log
+    jobid: 201
+    wildcards: tumor=T_28, chr=chr19
+
+[Tue Dec 15 17:55:23 2020]
+Finished job 479.
+184 of 669 steps (28%) done
+[Tue Dec 15 17:55:39 2020]
+Finished job 6.
+185 of 669 steps (28%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:55:39 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchr21.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchr21.log
+    jobid: 584
+    wildcards: tumor=T_48, chr=chr21
+
+
+[Tue Dec 15 17:55:39 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr20.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr20.log
+    jobid: 96
+    wildcards: tumor=T_20, chr=chr20
+
+[Tue Dec 15 17:55:44 2020]
+Finished job 443.
+186 of 669 steps (28%) done
+[Tue Dec 15 17:55:55 2020]
+Finished job 231.
+187 of 669 steps (28%) done
+[Tue Dec 15 17:56:22 2020]
+Finished job 584.
+188 of 669 steps (28%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:56:22 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/readDepth/T_24.bin50000.wig
+    log: logs/readDepth/T_24.bin50000.log
+    jobid: 158
+    wildcards: samples=T_24, binSize=50000
+    resources: mem=4
+
+
+[Tue Dec 15 17:56:22 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchr8.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchr8.log
+    jobid: 612
+    wildcards: tumor=T_49, chr=chr8
+
+
+[Tue Dec 15 17:56:22 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_48/T_48.chrchr13.vcf, /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_48/T_48.tumCounts.chrchr13.txt
+    log: logs/titan/tumCounts/T_48/T_48.chrchr13.log
+    jobid: 567
+    wildcards: tumor=T_48, chr=chr13
+
+[Tue Dec 15 17:56:57 2020]
+Finished job 96.
+189 of 669 steps (28%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:56:57 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/readDepth/N_33.bin50000.wig
+    log: logs/readDepth/N_33.bin50000.log
+    jobid: 375
+    wildcards: samples=N_33, binSize=50000
+    resources: mem=4
+
+[Tue Dec 15 17:57:01 2020]
+Finished job 567.
+190 of 669 steps (28%) done
+[Tue Dec 15 17:57:30 2020]
+Finished job 201.
+191 of 669 steps (29%) done
+[Tue Dec 15 17:57:47 2020]
+Finished job 612.
+192 of 669 steps (29%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:57:47 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/readDepth/N_49.bin50000.wig
+    log: logs/readDepth/N_49.bin50000.log
+    jobid: 645
+    wildcards: samples=N_49, binSize=50000
+    resources: mem=4
+
+
+[Tue Dec 15 17:57:47 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/readDepth/N_46.bin50000.wig
+    log: logs/readDepth/N_46.bin50000.log
+    jobid: 537
+    wildcards: samples=N_46, binSize=50000
+    resources: mem=4
+
+
+[Tue Dec 15 17:57:47 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchr20.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchr20.log
+    jobid: 582
+    wildcards: tumor=T_48, chr=chr20
+
+[Tue Dec 15 17:59:10 2020]
+Finished job 582.
+193 of 669 steps (29%) done
+Select jobs to execute...
+
+[Tue Dec 15 17:59:10 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_48/T_48.chrchr11.vcf, /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_48/T_48.tumCounts.chrchr11.txt
+    log: logs/titan/tumCounts/T_48/T_48.chrchr11.log
+    jobid: 563
+    wildcards: tumor=T_48, chr=chr11
+
+[Tue Dec 15 18:01:26 2020]
+Finished job 563.
+194 of 669 steps (29%) done
+[Tue Dec 15 18:01:42 2020]
+Finished job 375.
+195 of 669 steps (29%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:01:42 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_20/T_20.chrchr21.vcf, /home/skevin/rb_pipeline/output/gatk/20-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_20/T_20.tumCounts.chrchr21.txt
+    log: logs/titan/tumCounts/T_20/T_20.chrchr21.log
+    jobid: 97
+    wildcards: tumor=T_20, chr=chr21
+
+
+[Tue Dec 15 18:01:42 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr22.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr22.log
+    jobid: 532
+    wildcards: tumor=T_46, chr=chr22
+
+[Tue Dec 15 18:02:14 2020]
+Finished job 645.
+196 of 669 steps (29%) done
+[Tue Dec 15 18:02:24 2020]
+Finished job 97.
+197 of 669 steps (29%) done
+[Tue Dec 15 18:03:09 2020]
+Finished job 532.
+198 of 669 steps (30%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:03:09 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_48/T_48.chrchr21.vcf, /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_48/T_48.tumCounts.chrchr21.txt
+    log: logs/titan/tumCounts/T_48/T_48.chrchr21.log
+    jobid: 583
+    wildcards: tumor=T_48, chr=chr21
+
+
+[Tue Dec 15 18:03:09 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_48/T_48.chrchr18.vcf, /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_48/T_48.tumCounts.chrchr18.txt
+    log: logs/titan/tumCounts/T_48/T_48.chrchr18.log
+    jobid: 577
+    wildcards: tumor=T_48, chr=chr18
+
+
+[Tue Dec 15 18:03:09 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_28/T_28.chrchr10.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchr10.log
+    jobid: 184
+    wildcards: tumor=T_28, chr=chr10
+
+[Tue Dec 15 18:03:10 2020]
+Finished job 644.
+199 of 669 steps (30%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:03:10 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_31/T_31.chrchr12.vcf, /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_31/T_31.tumCounts.chrchr12.txt
+    log: logs/titan/tumCounts/T_31/T_31.chrchr12.log
+    jobid: 295
+    wildcards: tumor=T_31, chr=chr12
+
+[Tue Dec 15 18:03:41 2020]
+Finished job 537.
+200 of 669 steps (30%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:03:41 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchr17.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchr17.log
+    jobid: 630
+    wildcards: tumor=T_49, chr=chr17
+
+[Tue Dec 15 18:03:53 2020]
+Finished job 583.
+201 of 669 steps (30%) done
+[Tue Dec 15 18:03:56 2020]
+Finished job 577.
+202 of 669 steps (30%) done
+[Tue Dec 15 18:04:42 2020]
+Finished job 295.
+203 of 669 steps (30%) done
+[Tue Dec 15 18:04:44 2020]
+Finished job 158.
+204 of 669 steps (30%) done
+[Tue Dec 15 18:04:45 2020]
+Finished job 184.
+205 of 669 steps (31%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:04:45 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_33/T_33.chrchr13.vcf
+    log: logs/titan/hetPosns/T_33/T_33.chrchr13.log
+    jobid: 352
+    wildcards: tumor=T_33, chr=chr13
+
+
+[Tue Dec 15 18:04:45 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchr13.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr13.log
+    jobid: 136
+    wildcards: tumor=T_24, chr=chr13
+
+
+[Tue Dec 15 18:04:45 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_28/T_28.chrchr20.vcf, /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_28/T_28.tumCounts.chrchr20.txt
+    log: logs/titan/tumCounts/T_28/T_28.chrchr20.log
+    jobid: 203
+    wildcards: tumor=T_28, chr=chr20
+
+
+[Tue Dec 15 18:04:45 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchr6.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchr6.log
+    jobid: 554
+    wildcards: tumor=T_48, chr=chr6
+
+
+[Tue Dec 15 18:04:45 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchr9.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchr9.log
+    jobid: 614
+    wildcards: tumor=T_49, chr=chr9
+
+[Tue Dec 15 18:05:36 2020]
+Finished job 630.
+206 of 669 steps (31%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:05:36 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_28/T_28.chrchr13.vcf, /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_28/T_28.tumCounts.chrchr13.txt
+    log: logs/titan/tumCounts/T_28/T_28.chrchr13.log
+    jobid: 189
+    wildcards: tumor=T_28, chr=chr13
+
+[Tue Dec 15 18:05:39 2020]
+Finished job 203.
+207 of 669 steps (31%) done
+[Tue Dec 15 18:05:51 2020]
+Finished job 136.
+208 of 669 steps (31%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:05:51 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchr14.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchr14.log
+    jobid: 570
+    wildcards: tumor=T_48, chr=chr14
+
+
+[Tue Dec 15 18:05:51 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_20/T_20.chrchr12.vcf, /home/skevin/rb_pipeline/output/gatk/20-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_20/T_20.tumCounts.chrchr12.txt
+    log: logs/titan/tumCounts/T_20/T_20.chrchr12.log
+    jobid: 79
+    wildcards: tumor=T_20, chr=chr12
+
+[Tue Dec 15 18:06:10 2020]
+Finished job 352.
+209 of 669 steps (31%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:06:10 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_14/T_14.chrchr12.vcf
+    log: logs/titan/hetPosns/T_14/T_14.chrchr12.log
+    jobid: 26
+    wildcards: tumor=T_14, chr=chr12
+
+[Tue Dec 15 18:06:16 2020]
+Finished job 189.
+210 of 669 steps (31%) done
+[Tue Dec 15 18:06:31 2020]
+Finished job 614.
+211 of 669 steps (32%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:06:32 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_28/T_28.chrchr21.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchr21.log
+    jobid: 206
+    wildcards: tumor=T_28, chr=chr21
+
+
+[Tue Dec 15 18:06:32 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/29-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_29/T_29.chrchr8.vcf
+    log: logs/titan/hetPosns/T_29/T_29.chrchr8.log
+    jobid: 234
+    wildcards: tumor=T_29, chr=chr8
+
+[Tue Dec 15 18:07:08 2020]
+Finished job 554.
+212 of 669 steps (32%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:07:08 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_14/T_14.chrchr4.vcf
+    log: logs/titan/hetPosns/T_14/T_14.chrchr4.log
+    jobid: 10
+    wildcards: tumor=T_14, chr=chr4
+
+[Tue Dec 15 18:07:22 2020]
+Finished job 206.
+213 of 669 steps (32%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:07:22 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_41/T_41.chrchr1.vcf
+    log: logs/titan/hetPosns/T_41/T_41.chrchr1.log
+    jobid: 382
+    wildcards: tumor=T_41, chr=chr1
+
+[Tue Dec 15 18:07:26 2020]
+Finished job 570.
+214 of 669 steps (32%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:07:26 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_33/T_33.chrchr17.vcf
+    log: logs/titan/hetPosns/T_33/T_33.chrchr17.log
+    jobid: 360
+    wildcards: tumor=T_33, chr=chr17
+
+[Tue Dec 15 18:07:38 2020]
+Finished job 79.
+215 of 669 steps (32%) done
+[Tue Dec 15 18:08:03 2020]
+Finished job 26.
+216 of 669 steps (32%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:08:03 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchr22.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchr22.log
+    jobid: 586
+    wildcards: tumor=T_48, chr=chr22
+
+
+[Tue Dec 15 18:08:03 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_31/T_31.chrchr3.vcf
+    log: logs/titan/hetPosns/T_31/T_31.chrchr3.log
+    jobid: 278
+    wildcards: tumor=T_31, chr=chr3
+
+[Tue Dec 15 18:08:03 2020]
+Finished job 234.
+217 of 669 steps (32%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:08:03 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchr10.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr10.log
+    jobid: 130
+    wildcards: tumor=T_24, chr=chr10
+
+[Tue Dec 15 18:08:51 2020]
+Finished job 10.
+218 of 669 steps (33%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:08:51 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_41/T_41.chrchr5.vcf
+    log: logs/titan/hetPosns/T_41/T_41.chrchr5.log
+    jobid: 390
+    wildcards: tumor=T_41, chr=chr5
+
+[Tue Dec 15 18:09:20 2020]
+Finished job 586.
+219 of 669 steps (33%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:09:20 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchr2.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr2.log
+    jobid: 114
+    wildcards: tumor=T_24, chr=chr2
+
+[Tue Dec 15 18:09:58 2020]
+Finished job 130.
+220 of 669 steps (33%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:09:58 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchr16.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchr16.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchr16.log
+    jobid: 465
+    wildcards: tumor=T_43, chr=chr16
+
+[Tue Dec 15 18:10:25 2020]
+Finished job 360.
+221 of 669 steps (33%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:10:25 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchr13.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr13.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr13.log
+    jobid: 405
+    wildcards: tumor=T_41, chr=chr13
+
+[Tue Dec 15 18:10:29 2020]
+Finished job 278.
+222 of 669 steps (33%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:10:29 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr8.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr8.log
+    jobid: 450
+    wildcards: tumor=T_43, chr=chr8
+
+[Tue Dec 15 18:11:02 2020]
+Finished job 390.
+223 of 669 steps (33%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:11:02 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_41/T_41.chrchr20.vcf
+    log: logs/titan/hetPosns/T_41/T_41.chrchr20.log
+    jobid: 420
+    wildcards: tumor=T_41, chr=chr20
+
+[Tue Dec 15 18:11:02 2020]
+Finished job 405.
+224 of 669 steps (33%) done
+[Tue Dec 15 18:11:18 2020]
+Finished job 382.
+225 of 669 steps (34%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:11:18 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchr10.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchr10.log
+    jobid: 616
+    wildcards: tumor=T_49, chr=chr10
+
+
+[Tue Dec 15 18:11:18 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_29/T_29.chrchr8.vcf, /home/skevin/rb_pipeline/output/gatk/29-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_29/T_29.tumCounts.chrchr8.txt
+    log: logs/titan/tumCounts/T_29/T_29.chrchr8.log
+    jobid: 233
+    wildcards: tumor=T_29, chr=chr8
+
+[Tue Dec 15 18:11:32 2020]
+Finished job 465.
+226 of 669 steps (34%) done
+[Tue Dec 15 18:12:08 2020]
+Finished job 114.
+227 of 669 steps (34%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:12:08 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/29-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_29/T_29.chrchr9.vcf
+    log: logs/titan/hetPosns/T_29/T_29.chrchr9.log
+    jobid: 236
+    wildcards: tumor=T_29, chr=chr9
+
+
+[Tue Dec 15 18:12:08 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_14/T_14.chrchr6.vcf, /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_14/T_14.tumCounts.chrchr6.txt
+    log: logs/titan/tumCounts/T_14/T_14.chrchr6.log
+    jobid: 13
+    wildcards: tumor=T_14, chr=chr6
+
+[Tue Dec 15 18:12:24 2020]
+Finished job 450.
+228 of 669 steps (34%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:12:24 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/29-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_29/T_29.chrchr16.vcf
+    log: logs/titan/hetPosns/T_29/T_29.chrchr16.log
+    jobid: 250
+    wildcards: tumor=T_29, chr=chr16
+
+[Tue Dec 15 18:12:28 2020]
+Finished job 420.
+229 of 669 steps (34%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:12:28 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr1.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr1.log
+    jobid: 436
+    wildcards: tumor=T_43, chr=chr1
+
+[Tue Dec 15 18:12:33 2020]
+Finished job 233.
+230 of 669 steps (34%) done
+[Tue Dec 15 18:13:01 2020]
+Finished job 616.
+231 of 669 steps (35%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:13:02 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/29-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_29/T_29.chrchr1.vcf
+    log: logs/titan/hetPosns/T_29/T_29.chrchr1.log
+    jobid: 220
+    wildcards: tumor=T_29, chr=chr1
+
+
+[Tue Dec 15 18:13:02 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_24/T_24.chrchr2.vcf, /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchr2.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchr2.log
+    jobid: 113
+    wildcards: tumor=T_24, chr=chr2
+
+[Tue Dec 15 18:13:50 2020]
+Finished job 236.
+232 of 669 steps (35%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:13:50 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr4.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr4.log
+    jobid: 496
+    wildcards: tumor=T_46, chr=chr4
+
+[Tue Dec 15 18:14:01 2020]
+Finished job 250.
+233 of 669 steps (35%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:14:02 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_31/T_31.chrchr22.vcf
+    log: logs/titan/hetPosns/T_31/T_31.chrchr22.log
+    jobid: 316
+    wildcards: tumor=T_31, chr=chr22
+
+[Tue Dec 15 18:14:41 2020]
+Finished job 13.
+234 of 669 steps (35%) done
+[Tue Dec 15 18:15:09 2020]
+Finished job 316.
+235 of 669 steps (35%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:15:09 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchr18.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr18.log
+    jobid: 146
+    wildcards: tumor=T_24, chr=chr18
+
+
+[Tue Dec 15 18:15:09 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchr17.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr17.log
+    jobid: 144
+    wildcards: tumor=T_24, chr=chr17
+
+[Tue Dec 15 18:15:29 2020]
+Finished job 113.
+236 of 669 steps (35%) done
+[Tue Dec 15 18:16:06 2020]
+Finished job 496.
+237 of 669 steps (35%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:16:06 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_33/T_33.chrchr3.vcf
+    log: logs/titan/hetPosns/T_33/T_33.chrchr3.log
+    jobid: 332
+    wildcards: tumor=T_33, chr=chr3
+
+
+[Tue Dec 15 18:16:06 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_28/T_28.chrchr5.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchr5.log
+    jobid: 174
+    wildcards: tumor=T_28, chr=chr5
+
+[Tue Dec 15 18:16:08 2020]
+Finished job 146.
+238 of 669 steps (36%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:16:08 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr19.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr19.log
+    jobid: 526
+    wildcards: tumor=T_46, chr=chr19
+
+[Tue Dec 15 18:16:23 2020]
+Finished job 220.
+239 of 669 steps (36%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:16:23 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/29-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_29/T_29.chrchrX.vcf
+    log: logs/titan/hetPosns/T_29/T_29.chrchrX.log
+    jobid: 264
+    wildcards: tumor=T_29, chr=chrX
+
+[Tue Dec 15 18:16:54 2020]
+Finished job 436.
+240 of 669 steps (36%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:16:54 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr14.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr14.log
+    jobid: 84
+    wildcards: tumor=T_20, chr=chr14
+
+[Tue Dec 15 18:17:14 2020]
+Finished job 144.
+241 of 669 steps (36%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:17:14 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_46/T_46.chrchr4.vcf, /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_46/T_46.tumCounts.chrchr4.txt
+    log: logs/titan/tumCounts/T_46/T_46.chrchr4.log
+    jobid: 495
+    wildcards: tumor=T_46, chr=chr4
+
+[Tue Dec 15 18:17:45 2020]
+Finished job 264.
+242 of 669 steps (36%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:17:45 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr7.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr7.log
+    jobid: 70
+    wildcards: tumor=T_20, chr=chr7
+
+[Tue Dec 15 18:18:03 2020]
+Finished job 174.
+243 of 669 steps (36%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:18:03 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchr1.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchr1.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchr1.log
+    jobid: 435
+    wildcards: tumor=T_43, chr=chr1
+
+[Tue Dec 15 18:18:32 2020]
+Finished job 84.
+244 of 669 steps (36%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:18:32 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_31/T_31.chrchr22.vcf, /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_31/T_31.tumCounts.chrchr22.txt
+    log: logs/titan/tumCounts/T_31/T_31.chrchr22.log
+    jobid: 315
+    wildcards: tumor=T_31, chr=chr22
+
+[Tue Dec 15 18:19:04 2020]
+Finished job 315.
+245 of 669 steps (37%) done
+[Tue Dec 15 18:19:10 2020]
+Finished job 495.
+246 of 669 steps (37%) done
+[Tue Dec 15 18:19:17 2020]
+Finished job 526.
+247 of 669 steps (37%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:19:17 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_33/T_33.chrchr2.vcf
+    log: logs/titan/hetPosns/T_33/T_33.chrchr2.log
+    jobid: 330
+    wildcards: tumor=T_33, chr=chr2
+
+
+[Tue Dec 15 18:19:17 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchr15.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchr15.log
+    jobid: 572
+    wildcards: tumor=T_48, chr=chr15
+
+
+[Tue Dec 15 18:19:17 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_49/T_49.chrchr10.vcf, /home/skevin/rb_pipeline/output/gatk/49-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_49/T_49.tumCounts.chrchr10.txt
+    log: logs/titan/tumCounts/T_49/T_49.chrchr10.log
+    jobid: 615
+    wildcards: tumor=T_49, chr=chr10
+
+[Tue Dec 15 18:19:25 2020]
+Finished job 332.
+248 of 669 steps (37%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:19:25 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_31/T_31.chrchr11.vcf
+    log: logs/titan/hetPosns/T_31/T_31.chrchr11.log
+    jobid: 294
+    wildcards: tumor=T_31, chr=chr11
+
+[Tue Dec 15 18:19:52 2020]
+Finished job 70.
+249 of 669 steps (37%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:19:52 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_20/T_20.chrchr7.vcf, /home/skevin/rb_pipeline/output/gatk/20-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_20/T_20.tumCounts.chrchr7.txt
+    log: logs/titan/tumCounts/T_20/T_20.chrchr7.log
+    jobid: 69
+    wildcards: tumor=T_20, chr=chr7
+
+[Tue Dec 15 18:20:49 2020]
+Finished job 572.
+250 of 669 steps (37%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:20:49 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_46/T_46.chrchr19.vcf, /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_46/T_46.tumCounts.chrchr19.txt
+    log: logs/titan/tumCounts/T_46/T_46.chrchr19.log
+    jobid: 525
+    wildcards: tumor=T_46, chr=chr19
+
+[Tue Dec 15 18:20:50 2020]
+Finished job 615.
+251 of 669 steps (38%) done
+[Tue Dec 15 18:21:32 2020]
+Finished job 435.
+252 of 669 steps (38%) done
+[Tue Dec 15 18:21:38 2020]
+Finished job 294.
+253 of 669 steps (38%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:21:38 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/readDepth/N_24.bin50000.wig
+    log: logs/readDepth/N_24.bin50000.log
+    jobid: 159
+    wildcards: samples=N_24, binSize=50000
+    resources: mem=4
+
+
+[Tue Dec 15 18:21:38 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_28/T_28.chrchr14.vcf, /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_28/T_28.tumCounts.chrchr14.txt
+    log: logs/titan/tumCounts/T_28/T_28.chrchr14.log
+    jobid: 191
+    wildcards: tumor=T_28, chr=chr14
+
+
+[Tue Dec 15 18:21:38 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_48/T_48.chrchr22.vcf, /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_48/T_48.tumCounts.chrchr22.txt
+    log: logs/titan/tumCounts/T_48/T_48.chrchr22.log
+    jobid: 585
+    wildcards: tumor=T_48, chr=chr22
+
+[Tue Dec 15 18:21:45 2020]
+Finished job 69.
+254 of 669 steps (38%) done
+[Tue Dec 15 18:22:33 2020]
+Finished job 585.
+255 of 669 steps (38%) done
+[Tue Dec 15 18:22:46 2020]
+Finished job 191.
+256 of 669 steps (38%) done
+[Tue Dec 15 18:23:05 2020]
+Finished job 330.
+257 of 669 steps (38%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:23:05 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchr7.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchr7.log
+    jobid: 556
+    wildcards: tumor=T_48, chr=chr7
+
+
+[Tue Dec 15 18:23:05 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_28/T_28.chrchr21.vcf, /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_28/T_28.tumCounts.chrchr21.txt
+    log: logs/titan/tumCounts/T_28/T_28.chrchr21.log
+    jobid: 205
+    wildcards: tumor=T_28, chr=chr21
+
+
+[Tue Dec 15 18:23:05 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_29/T_29.chrchr1.vcf, /home/skevin/rb_pipeline/output/gatk/29-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_29/T_29.tumCounts.chrchr1.txt
+    log: logs/titan/tumCounts/T_29/T_29.chrchr1.log
+    jobid: 219
+    wildcards: tumor=T_29, chr=chr1
+
+
+[Tue Dec 15 18:23:05 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchr11.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchr11.log
+    jobid: 618
+    wildcards: tumor=T_49, chr=chr11
+
+[Tue Dec 15 18:23:40 2020]
+Finished job 205.
+258 of 669 steps (39%) done
+[Tue Dec 15 18:24:00 2020]
+Finished job 525.
+259 of 669 steps (39%) done
+[Tue Dec 15 18:24:59 2020]
+Finished job 556.
+260 of 669 steps (39%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:24:59 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr22.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr22.log
+    jobid: 100
+    wildcards: tumor=T_20, chr=chr22
+
+
+[Tue Dec 15 18:24:59 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_24/T_24.chrchr19.vcf, /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchr19.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchr19.log
+    jobid: 147
+    wildcards: tumor=T_24, chr=chr19
+
+
+[Tue Dec 15 18:24:59 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_29/T_29.chrchr9.vcf, /home/skevin/rb_pipeline/output/gatk/29-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_29/T_29.tumCounts.chrchr9.txt
+    log: logs/titan/tumCounts/T_29/T_29.chrchr9.log
+    jobid: 235
+    wildcards: tumor=T_29, chr=chr9
+
+[Tue Dec 15 18:25:15 2020]
+Finished job 618.
+261 of 669 steps (39%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:25:16 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchr17.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchr17.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchr17.log
+    jobid: 467
+    wildcards: tumor=T_43, chr=chr17
+
+[Tue Dec 15 18:25:44 2020]
+Finished job 159.
+262 of 669 steps (39%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:25:44 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_33/T_33.chrchr6.vcf
+    log: logs/titan/hetPosns/T_33/T_33.chrchr6.log
+    jobid: 338
+    wildcards: tumor=T_33, chr=chr6
+
+[Tue Dec 15 18:26:15 2020]
+Finished job 100.
+263 of 669 steps (39%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:26:15 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_24/T_24.chrchr3.vcf, /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchr3.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchr3.log
+    jobid: 115
+    wildcards: tumor=T_24, chr=chr3
+
+[Tue Dec 15 18:26:30 2020]
+Finished job 219.
+264 of 669 steps (39%) done
+[Tue Dec 15 18:26:31 2020]
+Finished job 235.
+265 of 669 steps (40%) done
+[Tue Dec 15 18:27:07 2020]
+Finished job 467.
+266 of 669 steps (40%) done
+[Tue Dec 15 18:27:31 2020]
+Finished job 147.
+267 of 669 steps (40%) done
+[Tue Dec 15 18:27:49 2020]
+Finished job 115.
+268 of 669 steps (40%) done
+[Tue Dec 15 18:28:18 2020]
+Finished job 338.
+269 of 669 steps (40%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:28:18 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_20/T_20.chrchr22.vcf, /home/skevin/rb_pipeline/output/gatk/20-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_20/T_20.tumCounts.chrchr22.txt
+    log: logs/titan/tumCounts/T_20/T_20.chrchr22.log
+    jobid: 99
+    wildcards: tumor=T_20, chr=chr22
+
+
+[Tue Dec 15 18:28:18 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_24/T_24.chrchr21.vcf, /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchr21.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchr21.log
+    jobid: 151
+    wildcards: tumor=T_24, chr=chr21
+
+
+[Tue Dec 15 18:28:18 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_48/T_48.chrchr15.vcf, /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_48/T_48.tumCounts.chrchr15.txt
+    log: logs/titan/tumCounts/T_48/T_48.chrchr15.log
+    jobid: 571
+    wildcards: tumor=T_48, chr=chr15
+
+
+[Tue Dec 15 18:28:18 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_31/T_31.chrchr4.vcf
+    log: logs/titan/hetPosns/T_31/T_31.chrchr4.log
+    jobid: 280
+    wildcards: tumor=T_31, chr=chr4
+
+
+[Tue Dec 15 18:28:18 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_24/T_24.chrchr18.vcf, /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchr18.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchr18.log
+    jobid: 145
+    wildcards: tumor=T_24, chr=chr18
+
+
+[Tue Dec 15 18:28:18 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_31/T_31.chrchr5.vcf
+    log: logs/titan/hetPosns/T_31/T_31.chrchr5.log
+    jobid: 282
+    wildcards: tumor=T_31, chr=chr5
+
+[Tue Dec 15 18:28:56 2020]
+Finished job 145.
+270 of 669 steps (40%) done
+[Tue Dec 15 18:29:00 2020]
+Finished job 151.
+271 of 669 steps (41%) done
+[Tue Dec 15 18:29:10 2020]
+Finished job 99.
+272 of 669 steps (41%) done
+[Tue Dec 15 18:29:32 2020]
+Finished job 571.
+273 of 669 steps (41%) done
+[Tue Dec 15 18:29:47 2020]
+Finished job 280.
+274 of 669 steps (41%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:29:47 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_48/T_48.chrchr9.vcf, /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_48/T_48.tumCounts.chrchr9.txt
+    log: logs/titan/tumCounts/T_48/T_48.chrchr9.log
+    jobid: 559
+    wildcards: tumor=T_48, chr=chr9
+
+
+[Tue Dec 15 18:29:47 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_28/T_28.chrchr6.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchr6.log
+    jobid: 176
+    wildcards: tumor=T_28, chr=chr6
+
+
+[Tue Dec 15 18:29:47 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr9.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr9.log
+    jobid: 506
+    wildcards: tumor=T_46, chr=chr9
+
+
+[Tue Dec 15 18:29:47 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_41/T_41.chrchr6.vcf
+    log: logs/titan/hetPosns/T_41/T_41.chrchr6.log
+    jobid: 392
+    wildcards: tumor=T_41, chr=chr6
+
+
+[Tue Dec 15 18:29:47 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchr8.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchr8.log
+    jobid: 558
+    wildcards: tumor=T_48, chr=chr8
+
+[Tue Dec 15 18:29:55 2020]
+Finished job 282.
+275 of 669 steps (41%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:29:56 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr9.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr9.log
+    jobid: 452
+    wildcards: tumor=T_43, chr=chr9
+
+[Tue Dec 15 18:31:28 2020]
+Finished job 558.
+276 of 669 steps (41%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:31:28 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_20/T_20.chrchr8.vcf, /home/skevin/rb_pipeline/output/gatk/20-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_20/T_20.tumCounts.chrchr8.txt
+    log: logs/titan/tumCounts/T_20/T_20.chrchr8.log
+    jobid: 71
+    wildcards: tumor=T_20, chr=chr8
+
+[Tue Dec 15 18:31:29 2020]
+Finished job 559.
+277 of 669 steps (41%) done
+[Tue Dec 15 18:32:03 2020]
+Finished job 176.
+278 of 669 steps (42%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:32:03 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_49/T_49.chrchr12.vcf, /home/skevin/rb_pipeline/output/gatk/49-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_49/T_49.tumCounts.chrchr12.txt
+    log: logs/titan/tumCounts/T_49/T_49.chrchr12.log
+    jobid: 619
+    wildcards: tumor=T_49, chr=chr12
+
+
+[Tue Dec 15 18:32:03 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_31/T_31.chrchr5.vcf, /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_31/T_31.tumCounts.chrchr5.txt
+    log: logs/titan/tumCounts/T_31/T_31.chrchr5.log
+    jobid: 281
+    wildcards: tumor=T_31, chr=chr5
+
+[Tue Dec 15 18:32:08 2020]
+Finished job 506.
+279 of 669 steps (42%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:32:08 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchr14.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr14.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr14.log
+    jobid: 407
+    wildcards: tumor=T_41, chr=chr14
+
+[Tue Dec 15 18:32:09 2020]
+Finished job 452.
+280 of 669 steps (42%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:32:10 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_31/T_31.chrchr16.vcf, /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_31/T_31.tumCounts.chrchr16.txt
+    log: logs/titan/tumCounts/T_31/T_31.chrchr16.log
+    jobid: 303
+    wildcards: tumor=T_31, chr=chr16
+
+[Tue Dec 15 18:32:10 2020]
+Finished job 392.
+281 of 669 steps (42%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:32:10 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_41/T_41.chrchr21.vcf
+    log: logs/titan/hetPosns/T_41/T_41.chrchr21.log
+    jobid: 422
+    wildcards: tumor=T_41, chr=chr21
+
+[Tue Dec 15 18:32:43 2020]
+Finished job 71.
+282 of 669 steps (42%) done
+[Tue Dec 15 18:32:58 2020]
+Finished job 422.
+283 of 669 steps (42%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:32:59 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_33/T_33.chrchr4.vcf
+    log: logs/titan/hetPosns/T_33/T_33.chrchr4.log
+    jobid: 334
+    wildcards: tumor=T_33, chr=chr4
+
+
+[Tue Dec 15 18:32:59 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchrX.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchrX.log
+    jobid: 102
+    wildcards: tumor=T_20, chr=chrX
+
+[Tue Dec 15 18:33:24 2020]
+Finished job 407.
+284 of 669 steps (42%) done
+[Tue Dec 15 18:33:34 2020]
+Finished job 281.
+285 of 669 steps (43%) done
+[Tue Dec 15 18:33:43 2020]
+Finished job 303.
+286 of 669 steps (43%) done
+[Tue Dec 15 18:33:44 2020]
+Finished job 619.
+287 of 669 steps (43%) done
+[Tue Dec 15 18:33:51 2020]
+Finished job 102.
+288 of 669 steps (43%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:33:51 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_33/T_33.chrchr17.vcf, /home/skevin/rb_pipeline/output/gatk/33-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_33/T_33.tumCounts.chrchr17.txt
+    log: logs/titan/tumCounts/T_33/T_33.chrchr17.log
+    jobid: 359
+    wildcards: tumor=T_33, chr=chr17
+
+
+[Tue Dec 15 18:33:51 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchrX.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchrX.log
+    jobid: 588
+    wildcards: tumor=T_48, chr=chrX
+
+
+[Tue Dec 15 18:33:51 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/29-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_29/T_29.chrchr2.vcf
+    log: logs/titan/hetPosns/T_29/T_29.chrchr2.log
+    jobid: 222
+    wildcards: tumor=T_29, chr=chr2
+
+
+[Tue Dec 15 18:33:51 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_29/T_29.chrchr5.vcf, /home/skevin/rb_pipeline/output/gatk/29-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_29/T_29.tumCounts.chrchr5.txt
+    log: logs/titan/tumCounts/T_29/T_29.chrchr5.log
+    jobid: 227
+    wildcards: tumor=T_29, chr=chr5
+
+
+[Tue Dec 15 18:33:51 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchr21.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchr21.log
+    jobid: 638
+    wildcards: tumor=T_49, chr=chr21
+
+[Tue Dec 15 18:34:39 2020]
+Finished job 638.
+289 of 669 steps (43%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:34:39 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_33/T_33.chrchr18.vcf
+    log: logs/titan/hetPosns/T_33/T_33.chrchr18.log
+    jobid: 362
+    wildcards: tumor=T_33, chr=chr18
+
+[Tue Dec 15 18:34:50 2020]
+Finished job 588.
+290 of 669 steps (43%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:34:50 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchr18.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchr18.log
+    jobid: 632
+    wildcards: tumor=T_49, chr=chr18
+
+[Tue Dec 15 18:35:28 2020]
+Finished job 227.
+291 of 669 steps (43%) done
+[Tue Dec 15 18:35:36 2020]
+Finished job 334.
+292 of 669 steps (44%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:35:36 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/20-T_1_recalibrated.bam
+    output: results/readDepth/T_20.bin50000.wig
+    log: logs/readDepth/T_20.bin50000.log
+    jobid: 104
+    wildcards: samples=T_20, binSize=50000
+    resources: mem=4
+
+
+[Tue Dec 15 18:35:36 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_33/T_33.chrchr11.vcf
+    log: logs/titan/hetPosns/T_33/T_33.chrchr11.log
+    jobid: 348
+    wildcards: tumor=T_33, chr=chr11
+
+[Tue Dec 15 18:35:48 2020]
+Finished job 632.
+293 of 669 steps (44%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:35:48 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr20.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr20.log
+    jobid: 528
+    wildcards: tumor=T_46, chr=chr20
+
+[Tue Dec 15 18:36:01 2020]
+Finished job 362.
+294 of 669 steps (44%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:36:01 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_49/T_49.chrchr4.vcf, /home/skevin/rb_pipeline/output/gatk/49-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_49/T_49.tumCounts.chrchr4.txt
+    log: logs/titan/tumCounts/T_49/T_49.chrchr4.log
+    jobid: 603
+    wildcards: tumor=T_49, chr=chr4
+
+[Tue Dec 15 18:36:34 2020]
+Finished job 222.
+295 of 669 steps (44%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:36:34 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/29-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_29/T_29.chrchr17.vcf
+    log: logs/titan/hetPosns/T_29/T_29.chrchr17.log
+    jobid: 252
+    wildcards: tumor=T_29, chr=chr17
+
+[Tue Dec 15 18:36:57 2020]
+Finished job 359.
+296 of 669 steps (44%) done
+[Tue Dec 15 18:37:30 2020]
+Finished job 603.
+297 of 669 steps (44%) done
+[Tue Dec 15 18:37:35 2020]
+Finished job 528.
+298 of 669 steps (45%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:37:35 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_28/T_28.chrchr22.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchr22.log
+    jobid: 208
+    wildcards: tumor=T_28, chr=chr22
+
+
+[Tue Dec 15 18:37:35 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchr16.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchr16.log
+    jobid: 574
+    wildcards: tumor=T_48, chr=chr16
+
+
+[Tue Dec 15 18:37:35 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_33/T_33.chrchr14.vcf, /home/skevin/rb_pipeline/output/gatk/33-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_33/T_33.tumCounts.chrchr14.txt
+    log: logs/titan/tumCounts/T_33/T_33.chrchr14.log
+    jobid: 353
+    wildcards: tumor=T_33, chr=chr14
+
+[Tue Dec 15 18:38:26 2020]
+Finished job 252.
+299 of 669 steps (45%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:38:26 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_14/T_14.chrchr21.vcf, /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_14/T_14.tumCounts.chrchr21.txt
+    log: logs/titan/tumCounts/T_14/T_14.chrchr21.log
+    jobid: 43
+    wildcards: tumor=T_14, chr=chr21
+
+[Tue Dec 15 18:38:50 2020]
+Finished job 208.
+300 of 669 steps (45%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:38:50 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr2.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr2.log
+    jobid: 438
+    wildcards: tumor=T_43, chr=chr2
+
+[Tue Dec 15 18:38:51 2020]
+Finished job 348.
+301 of 669 steps (45%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:38:51 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_33/T_33.chrchr11.vcf, /home/skevin/rb_pipeline/output/gatk/33-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_33/T_33.tumCounts.chrchr11.txt
+    log: logs/titan/tumCounts/T_33/T_33.chrchr11.log
+    jobid: 347
+    wildcards: tumor=T_33, chr=chr11
+
+[Tue Dec 15 18:38:58 2020]
+Finished job 43.
+302 of 669 steps (45%) done
+[Tue Dec 15 18:39:21 2020]
+Finished job 353.
+303 of 669 steps (45%) done
+[Tue Dec 15 18:39:22 2020]
+Finished job 574.
+304 of 669 steps (45%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:39:22 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_33/T_33.chrchr4.vcf, /home/skevin/rb_pipeline/output/gatk/33-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_33/T_33.tumCounts.chrchr4.txt
+    log: logs/titan/tumCounts/T_33/T_33.chrchr4.log
+    jobid: 333
+    wildcards: tumor=T_33, chr=chr4
+
+
+[Tue Dec 15 18:39:22 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/readDepth/N_20.bin50000.wig
+    log: logs/readDepth/N_20.bin50000.log
+    jobid: 105
+    wildcards: samples=N_20, binSize=50000
+    resources: mem=4
+
+
+[Tue Dec 15 18:39:22 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_48/T_48.chrchr16.vcf, /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_48/T_48.tumCounts.chrchr16.txt
+    log: logs/titan/tumCounts/T_48/T_48.chrchr16.log
+    jobid: 573
+    wildcards: tumor=T_48, chr=chr16
+
+[Tue Dec 15 18:41:00 2020]
+Finished job 573.
+305 of 669 steps (46%) done
+[Tue Dec 15 18:41:41 2020]
+Finished job 333.
+306 of 669 steps (46%) done
+[Tue Dec 15 18:42:04 2020]
+Finished job 347.
+307 of 669 steps (46%) done
+[Tue Dec 15 18:42:10 2020]
+Finished job 438.
+308 of 669 steps (46%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:42:10 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_29/T_29.chrchr3.vcf, /home/skevin/rb_pipeline/output/gatk/29-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_29/T_29.tumCounts.chrchr3.txt
+    log: logs/titan/tumCounts/T_29/T_29.chrchr3.log
+    jobid: 223
+    wildcards: tumor=T_29, chr=chr3
+
+
+[Tue Dec 15 18:42:10 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_28/T_28.chrchr7.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchr7.log
+    jobid: 178
+    wildcards: tumor=T_28, chr=chr7
+
+
+[Tue Dec 15 18:42:10 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchr1.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchr1.log
+    jobid: 544
+    wildcards: tumor=T_48, chr=chr1
+
+
+[Tue Dec 15 18:42:10 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/29-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_29/T_29.chrchr11.vcf
+    log: logs/titan/hetPosns/T_29/T_29.chrchr11.log
+    jobid: 240
+    wildcards: tumor=T_29, chr=chr11
+
+[Tue Dec 15 18:43:45 2020]
+Finished job 223.
+309 of 669 steps (46%) done
+[Tue Dec 15 18:43:48 2020]
+Finished job 104.
+310 of 669 steps (46%) done
+[Tue Dec 15 18:43:51 2020]
+Finished job 105.
+311 of 669 steps (46%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:43:51 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_33/T_33.chrchr5.vcf
+    log: logs/titan/hetPosns/T_33/T_33.chrchr5.log
+    jobid: 336
+    wildcards: tumor=T_33, chr=chr5
+
+
+[Tue Dec 15 18:43:51 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_31/T_31.chrchr6.vcf
+    log: logs/titan/hetPosns/T_31/T_31.chrchr6.log
+    jobid: 284
+    wildcards: tumor=T_31, chr=chr6
+
+
+[Tue Dec 15 18:43:51 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_41/T_41.chrchr3.vcf
+    log: logs/titan/hetPosns/T_41/T_41.chrchr3.log
+    jobid: 386
+    wildcards: tumor=T_41, chr=chr3
+
+[Tue Dec 15 18:44:15 2020]
+Finished job 178.
+312 of 669 steps (47%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:44:15 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr5.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr5.log
+    jobid: 498
+    wildcards: tumor=T_46, chr=chr5
+
+[Tue Dec 15 18:44:26 2020]
+Finished job 240.
+313 of 669 steps (47%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:44:26 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_31/T_31.chrchrX.vcf
+    log: logs/titan/hetPosns/T_31/T_31.chrchrX.log
+    jobid: 318
+    wildcards: tumor=T_31, chr=chrX
+
+[Tue Dec 15 18:45:23 2020]
+Finished job 318.
+314 of 669 steps (47%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:45:23 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchr11.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr11.log
+    jobid: 132
+    wildcards: tumor=T_24, chr=chr11
+
+[Tue Dec 15 18:46:00 2020]
+Finished job 544.
+315 of 669 steps (47%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:46:00 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_14/T_14.chrchr13.vcf
+    log: logs/titan/hetPosns/T_14/T_14.chrchr13.log
+    jobid: 28
+    wildcards: tumor=T_14, chr=chr13
+
+[Tue Dec 15 18:46:07 2020]
+Finished job 284.
+316 of 669 steps (47%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:46:07 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_31/T_31.chrchr11.vcf, /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_31/T_31.tumCounts.chrchr11.txt
+    log: logs/titan/tumCounts/T_31/T_31.chrchr11.log
+    jobid: 293
+    wildcards: tumor=T_31, chr=chr11
+
+[Tue Dec 15 18:46:24 2020]
+Finished job 386.
+317 of 669 steps (47%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:46:25 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr15.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr15.log
+    jobid: 86
+    wildcards: tumor=T_20, chr=chr15
+
+[Tue Dec 15 18:46:46 2020]
+Finished job 336.
+318 of 669 steps (48%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:46:46 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/29-T_1_recalibrated.bam
+    output: results/readDepth/T_29.bin50000.wig
+    log: logs/readDepth/T_29.bin50000.log
+    jobid: 266
+    wildcards: samples=T_29, binSize=50000
+    resources: mem=4
+
+[Tue Dec 15 18:46:50 2020]
+Finished job 498.
+319 of 669 steps (48%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:46:50 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_31/T_31.chrchrX.vcf, /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_31/T_31.tumCounts.chrchrX.txt
+    log: logs/titan/tumCounts/T_31/T_31.chrchrX.log
+    jobid: 317
+    wildcards: tumor=T_31, chr=chrX
+
+[Tue Dec 15 18:46:52 2020]
+Finished job 317.
+320 of 669 steps (48%) done
+[Tue Dec 15 18:47:00 2020]
+Finished job 28.
+321 of 669 steps (48%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:47:00 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/29-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_29/T_29.chrchr10.vcf
+    log: logs/titan/hetPosns/T_29/T_29.chrchr10.log
+    jobid: 238
+    wildcards: tumor=T_29, chr=chr10
+
+
+[Tue Dec 15 18:47:00 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_48/T_48.chrchr10.vcf, /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_48/T_48.tumCounts.chrchr10.txt
+    log: logs/titan/tumCounts/T_48/T_48.chrchr10.log
+    jobid: 561
+    wildcards: tumor=T_48, chr=chr10
+
+[Tue Dec 15 18:47:48 2020]
+Finished job 132.
+322 of 669 steps (48%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:47:49 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchr10.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchr10.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchr10.log
+    jobid: 453
+    wildcards: tumor=T_43, chr=chr10
+
+[Tue Dec 15 18:47:56 2020]
+Finished job 86.
+323 of 669 steps (48%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:47:56 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_46/T_46.chrchr5.vcf, /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_46/T_46.tumCounts.chrchr5.txt
+    log: logs/titan/tumCounts/T_46/T_46.chrchr5.log
+    jobid: 497
+    wildcards: tumor=T_46, chr=chr5
+
+[Tue Dec 15 18:48:18 2020]
+Finished job 293.
+324 of 669 steps (48%) done
+[Tue Dec 15 18:48:43 2020]
+Finished job 238.
+325 of 669 steps (49%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:48:43 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/readDepth/N_48.bin50000.wig
+    log: logs/readDepth/N_48.bin50000.log
+    jobid: 591
+    wildcards: samples=N_48, binSize=50000
+    resources: mem=4
+
+
+[Tue Dec 15 18:48:43 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_28/T_28.chrchr7.vcf, /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_28/T_28.tumCounts.chrchr7.txt
+    log: logs/titan/tumCounts/T_28/T_28.chrchr7.log
+    jobid: 177
+    wildcards: tumor=T_28, chr=chr7
+
+[Tue Dec 15 18:48:51 2020]
+Finished job 561.
+326 of 669 steps (49%) done
+[Tue Dec 15 18:49:32 2020]
+Finished job 453.
+327 of 669 steps (49%) done
+[Tue Dec 15 18:49:55 2020]
+Finished job 497.
+328 of 669 steps (49%) done
+[Tue Dec 15 18:50:21 2020]
+Finished job 177.
+329 of 669 steps (49%) done
+[Tue Dec 15 18:52:13 2020]
+Finished job 591.
+330 of 669 steps (49%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:52:13 2020]
+rule ichorCNA:
+    input: results/readDepth/T_48.bin50000.wig, results/readDepth/N_48.bin50000.wig
+    output: results/ichorCNA/T_48/T_48.correctedDepth.txt, results/ichorCNA/T_48/T_48.params.txt, results/ichorCNA/T_48/T_48.cna.seg, results/ichorCNA/T_48/T_48.seg.txt
+    log: logs/ichorCNA/T_48.log
+    jobid: 589
+    wildcards: tumor=T_48
+    resources: mem=4
+
+
+[Tue Dec 15 18:52:13 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_31/T_31.chrchr6.vcf, /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_31/T_31.tumCounts.chrchr6.txt
+    log: logs/titan/tumCounts/T_31/T_31.chrchr6.log
+    jobid: 283
+    wildcards: tumor=T_31, chr=chr6
+
+
+[Tue Dec 15 18:52:13 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_28/T_28.chrchr8.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchr8.log
+    jobid: 180
+    wildcards: tumor=T_28, chr=chr8
+
+
+[Tue Dec 15 18:52:13 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr12.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr12.log
+    jobid: 458
+    wildcards: tumor=T_43, chr=chr12
+
+
+[Tue Dec 15 18:52:13 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_29/T_29.chrchr11.vcf, /home/skevin/rb_pipeline/output/gatk/29-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_29/T_29.tumCounts.chrchr11.txt
+    log: logs/titan/tumCounts/T_29/T_29.chrchr11.log
+    jobid: 239
+    wildcards: tumor=T_29, chr=chr11
+
+[Tue Dec 15 18:53:52 2020]
+Finished job 180.
+331 of 669 steps (49%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:53:52 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_33/T_33.chrchr19.vcf, /home/skevin/rb_pipeline/output/gatk/33-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_33/T_33.tumCounts.chrchr19.txt
+    log: logs/titan/tumCounts/T_33/T_33.chrchr19.log
+    jobid: 363
+    wildcards: tumor=T_33, chr=chr19
+
+[Tue Dec 15 18:53:58 2020]
+Finished job 239.
+332 of 669 steps (50%) done
+[Tue Dec 15 18:54:10 2020]
+Finished job 266.
+333 of 669 steps (50%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:54:10 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchr17.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchr17.log
+    jobid: 576
+    wildcards: tumor=T_48, chr=chr17
+
+
+[Tue Dec 15 18:54:10 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr4.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr4.log
+    jobid: 442
+    wildcards: tumor=T_43, chr=chr4
+
+[Tue Dec 15 18:54:46 2020]
+Finished job 458.
+334 of 669 steps (50%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:54:46 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_46/T_46.chrchr9.vcf, /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_46/T_46.tumCounts.chrchr9.txt
+    log: logs/titan/tumCounts/T_46/T_46.chrchr9.log
+    jobid: 505
+    wildcards: tumor=T_46, chr=chr9
+
+[Tue Dec 15 18:54:54 2020]
+Finished job 283.
+335 of 669 steps (50%) done
+[Tue Dec 15 18:56:10 2020]
+Finished job 576.
+336 of 669 steps (50%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:56:10 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_33/T_33.chrchr5.vcf, /home/skevin/rb_pipeline/output/gatk/33-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_33/T_33.tumCounts.chrchr5.txt
+    log: logs/titan/tumCounts/T_33/T_33.chrchr5.log
+    jobid: 335
+    wildcards: tumor=T_33, chr=chr5
+
+
+[Tue Dec 15 18:56:10 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_41/T_41.chrchr16.vcf
+    log: logs/titan/hetPosns/T_41/T_41.chrchr16.log
+    jobid: 412
+    wildcards: tumor=T_41, chr=chr16
+
+[Tue Dec 15 18:56:22 2020]
+Finished job 442.
+337 of 669 steps (50%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:56:22 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_20/T_20.chrchr20.vcf, /home/skevin/rb_pipeline/output/gatk/20-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_20/T_20.tumCounts.chrchr20.txt
+    log: logs/titan/tumCounts/T_20/T_20.chrchr20.log
+    jobid: 95
+    wildcards: tumor=T_20, chr=chr20
+
+[Tue Dec 15 18:56:44 2020]
+Finished job 505.
+338 of 669 steps (51%) done
+[Tue Dec 15 18:57:18 2020]
+Finished job 95.
+339 of 669 steps (51%) done
+[Tue Dec 15 18:57:33 2020]
+Finished job 363.
+340 of 669 steps (51%) done
+[Tue Dec 15 18:57:53 2020]
+Finished job 412.
+341 of 669 steps (51%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:57:53 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_28/T_28.chrchrX.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchrX.log
+    jobid: 210
+    wildcards: tumor=T_28, chr=chrX
+
+
+[Tue Dec 15 18:57:53 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchr2.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchr2.log
+    jobid: 546
+    wildcards: tumor=T_48, chr=chr2
+
+
+[Tue Dec 15 18:57:53 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchr13.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchr13.log
+    jobid: 622
+    wildcards: tumor=T_49, chr=chr13
+
+
+[Tue Dec 15 18:57:53 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchr20.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr20.log
+    jobid: 150
+    wildcards: tumor=T_24, chr=chr20
+
+[Tue Dec 15 18:58:18 2020]
+Finished job 335.
+342 of 669 steps (51%) done
+[Tue Dec 15 18:58:50 2020]
+Finished job 622.
+343 of 669 steps (51%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:58:50 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_14/T_14.chrchr15.vcf
+    log: logs/titan/hetPosns/T_14/T_14.chrchr15.log
+    jobid: 32
+    wildcards: tumor=T_14, chr=chr15
+
+
+[Tue Dec 15 18:58:50 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_33/T_33.chrchr6.vcf, /home/skevin/rb_pipeline/output/gatk/33-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_33/T_33.tumCounts.chrchr6.txt
+    log: logs/titan/tumCounts/T_33/T_33.chrchr6.log
+    jobid: 337
+    wildcards: tumor=T_33, chr=chr6
+
+[Tue Dec 15 18:59:10 2020]
+Finished job 150.
+344 of 669 steps (51%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:59:10 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchr16.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr16.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr16.log
+    jobid: 411
+    wildcards: tumor=T_41, chr=chr16
+
+[Tue Dec 15 18:59:13 2020]
+Finished job 210.
+345 of 669 steps (52%) done
+Select jobs to execute...
+
+[Tue Dec 15 18:59:13 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchr1.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr1.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr1.log
+    jobid: 381
+    wildcards: tumor=T_41, chr=chr1
+
+[Tue Dec 15 19:00:08 2020]
+Finished job 32.
+346 of 669 steps (52%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:00:08 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_14/T_14.chrchr15.vcf, /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_14/T_14.tumCounts.chrchr15.txt
+    log: logs/titan/tumCounts/T_14/T_14.chrchr15.log
+    jobid: 31
+    wildcards: tumor=T_14, chr=chr15
+
+[Tue Dec 15 19:00:34 2020]
+Finished job 546.
+347 of 669 steps (52%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:00:34 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchr4.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchr4.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchr4.log
+    jobid: 441
+    wildcards: tumor=T_43, chr=chr4
+
+[Tue Dec 15 19:00:54 2020]
+Finished job 411.
+348 of 669 steps (52%) done
+[Tue Dec 15 19:01:02 2020]
+Finished job 31.
+349 of 669 steps (52%) done
+[Tue Dec 15 19:01:46 2020]
+Finished job 337.
+350 of 669 steps (52%) done
+[Tue Dec 15 19:01:59 2020]
+Finished job 441.
+351 of 669 steps (52%) done
+[Tue Dec 15 19:02:16 2020]
+Finished job 381.
+352 of 669 steps (53%) done
+[Tue Dec 15 19:12:20 2020]
+Finished job 589.
+353 of 669 steps (53%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:12:20 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_49/T_49.chrchr13.vcf, /home/skevin/rb_pipeline/output/gatk/49-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_49/T_49.tumCounts.chrchr13.txt
+    log: logs/titan/tumCounts/T_49/T_49.chrchr13.log
+    jobid: 621
+    wildcards: tumor=T_49, chr=chr13
+
+
+[Tue Dec 15 19:12:20 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_31/T_31.chrchr18.vcf
+    log: logs/titan/hetPosns/T_31/T_31.chrchr18.log
+    jobid: 308
+    wildcards: tumor=T_31, chr=chr18
+
+
+[Tue Dec 15 19:12:20 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr10.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr10.log
+    jobid: 76
+    wildcards: tumor=T_20, chr=chr10
+
+
+[Tue Dec 15 19:12:20 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr7.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr7.log
+    jobid: 502
+    wildcards: tumor=T_46, chr=chr7
+
+
+[Tue Dec 15 19:12:20 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_24/T_24.chrchr20.vcf, /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchr20.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchr20.log
+    jobid: 149
+    wildcards: tumor=T_24, chr=chr20
+
+
+[Tue Dec 15 19:12:20 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchr3.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchr3.log
+    jobid: 548
+    wildcards: tumor=T_48, chr=chr3
+
+[Tue Dec 15 19:13:00 2020]
+Finished job 621.
+354 of 669 steps (53%) done
+[Tue Dec 15 19:13:06 2020]
+Finished job 308.
+355 of 669 steps (53%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:13:06 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_28/T_28.chrchr9.vcf, /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_28/T_28.tumCounts.chrchr9.txt
+    log: logs/titan/tumCounts/T_28/T_28.chrchr9.log
+    jobid: 181
+    wildcards: tumor=T_28, chr=chr9
+
+
+[Tue Dec 15 19:13:06 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_33/T_33.chrchr21.vcf
+    log: logs/titan/hetPosns/T_33/T_33.chrchr21.log
+    jobid: 368
+    wildcards: tumor=T_33, chr=chr21
+
+[Tue Dec 15 19:13:15 2020]
+Finished job 149.
+356 of 669 steps (53%) done
+[Tue Dec 15 19:13:54 2020]
+Finished job 368.
+357 of 669 steps (53%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:13:54 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_33/T_33.chrchr21.vcf, /home/skevin/rb_pipeline/output/gatk/33-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_33/T_33.tumCounts.chrchr21.txt
+    log: logs/titan/tumCounts/T_33/T_33.chrchr21.log
+    jobid: 367
+    wildcards: tumor=T_33, chr=chr21
+
+
+[Tue Dec 15 19:13:54 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr3.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr3.log
+    jobid: 62
+    wildcards: tumor=T_20, chr=chr3
+
+[Tue Dec 15 19:13:56 2020]
+Finished job 76.
+358 of 669 steps (54%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:13:56 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_28/T_28.chrchr4.vcf, /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_28/T_28.tumCounts.chrchr4.txt
+    log: logs/titan/tumCounts/T_28/T_28.chrchr4.log
+    jobid: 171
+    wildcards: tumor=T_28, chr=chr4
+
+[Tue Dec 15 19:14:16 2020]
+Finished job 548.
+359 of 669 steps (54%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:14:17 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchrX.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchrX.log
+    jobid: 642
+    wildcards: tumor=T_49, chr=chrX
+
+[Tue Dec 15 19:14:22 2020]
+Finished job 181.
+360 of 669 steps (54%) done
+[Tue Dec 15 19:14:29 2020]
+Finished job 502.
+361 of 669 steps (54%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:14:30 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_14/T_14.chrchr16.vcf, /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_14/T_14.tumCounts.chrchr16.txt
+    log: logs/titan/tumCounts/T_14/T_14.chrchr16.log
+    jobid: 33
+    wildcards: tumor=T_14, chr=chr16
+
+
+[Tue Dec 15 19:14:30 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchr17.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr17.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr17.log
+    jobid: 413
+    wildcards: tumor=T_41, chr=chr17
+
+[Tue Dec 15 19:14:50 2020]
+Finished job 367.
+362 of 669 steps (54%) done
+[Tue Dec 15 19:14:59 2020]
+Finished job 642.
+363 of 669 steps (54%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:14:59 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/readDepth/T_41.bin50000.wig
+    log: logs/readDepth/T_41.bin50000.log
+    jobid: 428
+    wildcards: samples=T_41, binSize=50000
+    resources: mem=4
+
+
+[Tue Dec 15 19:14:59 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_46/T_46.chrchr8.vcf, /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_46/T_46.tumCounts.chrchr8.txt
+    log: logs/titan/tumCounts/T_46/T_46.chrchr8.log
+    jobid: 503
+    wildcards: tumor=T_46, chr=chr8
+
+[Tue Dec 15 19:15:07 2020]
+Finished job 171.
+364 of 669 steps (54%) done
+[Tue Dec 15 19:15:35 2020]
+Finished job 33.
+365 of 669 steps (55%) done
+[Tue Dec 15 19:15:47 2020]
+Finished job 62.
+366 of 669 steps (55%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:15:47 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchr6.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr6.log
+    jobid: 122
+    wildcards: tumor=T_24, chr=chr6
+
+
+[Tue Dec 15 19:15:47 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_46/T_46.chrchrX.vcf, /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_46/T_46.tumCounts.chrchrX.txt
+    log: logs/titan/tumCounts/T_46/T_46.chrchrX.log
+    jobid: 533
+    wildcards: tumor=T_46, chr=chrX
+
+
+[Tue Dec 15 19:15:47 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_14/T_14.chrchr8.vcf
+    log: logs/titan/hetPosns/T_14/T_14.chrchr8.log
+    jobid: 18
+    wildcards: tumor=T_14, chr=chr8
+
+[Tue Dec 15 19:15:49 2020]
+Finished job 533.
+367 of 669 steps (55%) done
+[Tue Dec 15 19:16:09 2020]
+Finished job 413.
+368 of 669 steps (55%) done
+[Tue Dec 15 19:16:12 2020]
+Finished job 503.
+369 of 669 steps (55%) done
+[Tue Dec 15 19:16:47 2020]
+Finished job 18.
+370 of 669 steps (55%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:16:47 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_31/T_31.chrchr8.vcf, /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_31/T_31.tumCounts.chrchr8.txt
+    log: logs/titan/tumCounts/T_31/T_31.chrchr8.log
+    jobid: 287
+    wildcards: tumor=T_31, chr=chr8
+
+
+[Tue Dec 15 19:16:47 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr15.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr15.log
+    jobid: 518
+    wildcards: tumor=T_46, chr=chr15
+
+
+[Tue Dec 15 19:16:47 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr18.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr18.log
+    jobid: 92
+    wildcards: tumor=T_20, chr=chr18
+
+
+[Tue Dec 15 19:16:47 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/29-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_29/T_29.chrchr12.vcf
+    log: logs/titan/hetPosns/T_29/T_29.chrchr12.log
+    jobid: 242
+    wildcards: tumor=T_29, chr=chr12
+
+[Tue Dec 15 19:17:25 2020]
+Finished job 122.
+371 of 669 steps (55%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:17:25 2020]
+rule ichorCNA:
+    input: results/readDepth/T_24.bin50000.wig, results/readDepth/N_24.bin50000.wig
+    output: results/ichorCNA/T_24/T_24.correctedDepth.txt, results/ichorCNA/T_24/T_24.params.txt, results/ichorCNA/T_24/T_24.cna.seg, results/ichorCNA/T_24/T_24.seg.txt
+    log: logs/ichorCNA/T_24.log
+    jobid: 157
+    wildcards: tumor=T_24
+    resources: mem=4
+
+[Tue Dec 15 19:17:35 2020]
+Finished job 92.
+372 of 669 steps (56%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:17:35 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_31/T_31.chrchr3.vcf, /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_31/T_31.tumCounts.chrchr3.txt
+    log: logs/titan/tumCounts/T_31/T_31.chrchr3.log
+    jobid: 277
+    wildcards: tumor=T_31, chr=chr3
+
+[Tue Dec 15 19:17:54 2020]
+Finished job 287.
+373 of 669 steps (56%) done
+[Tue Dec 15 19:18:20 2020]
+Finished job 518.
+374 of 669 steps (56%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:18:20 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_41/T_41.chrchr9.vcf
+    log: logs/titan/hetPosns/T_41/T_41.chrchr9.log
+    jobid: 398
+    wildcards: tumor=T_41, chr=chr9
+
+
+[Tue Dec 15 19:18:20 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchr14.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchr14.log
+    jobid: 624
+    wildcards: tumor=T_49, chr=chr14
+
+[Tue Dec 15 19:18:21 2020]
+Finished job 242.
+375 of 669 steps (56%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:18:21 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_48/T_48.chrchr14.vcf, /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_48/T_48.tumCounts.chrchr14.txt
+    log: logs/titan/tumCounts/T_48/T_48.chrchr14.log
+    jobid: 569
+    wildcards: tumor=T_48, chr=chr14
+
+[Tue Dec 15 19:19:13 2020]
+Finished job 277.
+376 of 669 steps (56%) done
+[Tue Dec 15 19:19:30 2020]
+Finished job 624.
+377 of 669 steps (56%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:19:30 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchr10.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr10.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr10.log
+    jobid: 399
+    wildcards: tumor=T_41, chr=chr10
+
+
+[Tue Dec 15 19:19:30 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_14/T_14.chrchr1.vcf
+    log: logs/titan/hetPosns/T_14/T_14.chrchr1.log
+    jobid: 4
+    wildcards: tumor=T_14, chr=chr1
+
+[Tue Dec 15 19:19:34 2020]
+Finished job 569.
+378 of 669 steps (57%) done
+[Tue Dec 15 19:19:51 2020]
+Finished job 398.
+379 of 669 steps (57%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:19:51 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/29-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_29/T_29.chrchr20.vcf
+    log: logs/titan/hetPosns/T_29/T_29.chrchr20.log
+    jobid: 258
+    wildcards: tumor=T_29, chr=chr20
+
+
+[Tue Dec 15 19:19:51 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr20.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr20.log
+    jobid: 474
+    wildcards: tumor=T_43, chr=chr20
+
+[Tue Dec 15 19:20:44 2020]
+Finished job 399.
+380 of 669 steps (57%) done
+[Tue Dec 15 19:20:56 2020]
+Finished job 258.
+381 of 669 steps (57%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:20:56 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_29/T_29.chrchr13.vcf, /home/skevin/rb_pipeline/output/gatk/29-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_29/T_29.tumCounts.chrchr13.txt
+    log: logs/titan/tumCounts/T_29/T_29.chrchr13.log
+    jobid: 243
+    wildcards: tumor=T_29, chr=chr13
+
+
+[Tue Dec 15 19:20:56 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchr18.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr18.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr18.log
+    jobid: 415
+    wildcards: tumor=T_41, chr=chr18
+
+[Tue Dec 15 19:21:15 2020]
+Finished job 474.
+382 of 669 steps (57%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:21:15 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_24/T_24.chrchr15.vcf, /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchr15.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchr15.log
+    jobid: 139
+    wildcards: tumor=T_24, chr=chr15
+
+[Tue Dec 15 19:21:22 2020]
+Finished job 415.
+383 of 669 steps (57%) done
+[Tue Dec 15 19:21:31 2020]
+Finished job 243.
+384 of 669 steps (57%) done
+[Tue Dec 15 19:21:45 2020]
+Finished job 428.
+385 of 669 steps (58%) done
+[Tue Dec 15 19:22:08 2020]
+Finished job 139.
+386 of 669 steps (58%) done
+[Tue Dec 15 19:22:09 2020]
+Finished job 4.
+387 of 669 steps (58%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:22:09 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_31/T_31.chrchr19.vcf
+    log: logs/titan/hetPosns/T_31/T_31.chrchr19.log
+    jobid: 310
+    wildcards: tumor=T_31, chr=chr19
+
+
+[Tue Dec 15 19:22:09 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/20-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_20/T_20.chrchr11.vcf
+    log: logs/titan/hetPosns/T_20/T_20.chrchr11.log
+    jobid: 78
+    wildcards: tumor=T_20, chr=chr11
+
+
+[Tue Dec 15 19:22:09 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/41-N_1_recalibrated.bam
+    output: results/readDepth/N_41.bin50000.wig
+    log: logs/readDepth/N_41.bin50000.log
+    jobid: 429
+    wildcards: samples=N_41, binSize=50000
+    resources: mem=4
+
+
+[Tue Dec 15 19:22:09 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_14/T_14.chrchr17.vcf, /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_14/T_14.tumCounts.chrchr17.txt
+    log: logs/titan/tumCounts/T_14/T_14.chrchr17.log
+    jobid: 35
+    wildcards: tumor=T_14, chr=chr17
+
+
+[Tue Dec 15 19:22:09 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_14/T_14.chrchr1.vcf, /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_14/T_14.tumCounts.chrchr1.txt
+    log: logs/titan/tumCounts/T_14/T_14.chrchr1.log
+    jobid: 3
+    wildcards: tumor=T_14, chr=chr1
+
+[Tue Dec 15 19:23:38 2020]
+Finished job 35.
+388 of 669 steps (58%) done
+[Tue Dec 15 19:23:53 2020]
+Finished job 310.
+389 of 669 steps (58%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:23:53 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchr13.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchr13.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchr13.log
+    jobid: 459
+    wildcards: tumor=T_43, chr=chr13
+
+
+[Tue Dec 15 19:23:53 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/readDepth/T_14.bin50000.wig
+    log: logs/readDepth/T_14.bin50000.log
+    jobid: 50
+    wildcards: samples=T_14, binSize=50000
+    resources: mem=4
+
+[Tue Dec 15 19:24:06 2020]
+Finished job 78.
+390 of 669 steps (58%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:24:06 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_49/T_49.chrchrX.vcf, /home/skevin/rb_pipeline/output/gatk/49-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_49/T_49.tumCounts.chrchrX.txt
+    log: logs/titan/tumCounts/T_49/T_49.chrchrX.log
+    jobid: 641
+    wildcards: tumor=T_49, chr=chrX
+
+[Tue Dec 15 19:24:08 2020]
+Finished job 641.
+391 of 669 steps (58%) done
+[Tue Dec 15 19:24:18 2020]
+Finished job 459.
+392 of 669 steps (59%) done
+[Tue Dec 15 19:24:42 2020]
+Finished job 3.
+393 of 669 steps (59%) done
+[Tue Dec 15 19:25:38 2020]
+Finished job 429.
+394 of 669 steps (59%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:25:38 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchr6.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchr6.log
+    jobid: 608
+    wildcards: tumor=T_49, chr=chr6
+
+
+[Tue Dec 15 19:25:38 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_46/T_46.chrchr17.vcf, /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_46/T_46.tumCounts.chrchr17.txt
+    log: logs/titan/tumCounts/T_46/T_46.chrchr17.log
+    jobid: 521
+    wildcards: tumor=T_46, chr=chr17
+
+
+[Tue Dec 15 19:25:38 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_28/T_28.chrchr10.vcf, /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_28/T_28.tumCounts.chrchr10.txt
+    log: logs/titan/tumCounts/T_28/T_28.chrchr10.log
+    jobid: 183
+    wildcards: tumor=T_28, chr=chr10
+
+
+[Tue Dec 15 19:25:38 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_29/T_29.chrchr14.vcf, /home/skevin/rb_pipeline/output/gatk/29-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_29/T_29.tumCounts.chrchr14.txt
+    log: logs/titan/tumCounts/T_29/T_29.chrchr14.log
+    jobid: 245
+    wildcards: tumor=T_29, chr=chr14
+
+[Tue Dec 15 19:26:42 2020]
+Finished job 245.
+395 of 669 steps (59%) done
+[Tue Dec 15 19:26:52 2020]
+Finished job 183.
+396 of 669 steps (59%) done
+[Tue Dec 15 19:27:12 2020]
+Finished job 608.
+397 of 669 steps (59%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:27:12 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_28/T_28.chrchr17.vcf, /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_28/T_28.tumCounts.chrchr17.txt
+    log: logs/titan/tumCounts/T_28/T_28.chrchr17.log
+    jobid: 197
+    wildcards: tumor=T_28, chr=chr17
+
+
+[Tue Dec 15 19:27:12 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchr7.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr7.log
+    jobid: 124
+    wildcards: tumor=T_24, chr=chr7
+
+
+[Tue Dec 15 19:27:12 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_31/T_31.chrchr14.vcf, /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_31/T_31.tumCounts.chrchr14.txt
+    log: logs/titan/tumCounts/T_31/T_31.chrchr14.log
+    jobid: 299
+    wildcards: tumor=T_31, chr=chr14
+
+[Tue Dec 15 19:27:22 2020]
+Finished job 521.
+398 of 669 steps (59%) done
+[Tue Dec 15 19:28:01 2020]
+Finished job 299.
+399 of 669 steps (60%) done
+[Tue Dec 15 19:28:22 2020]
+Finished job 197.
+400 of 669 steps (60%) done
+[Tue Dec 15 19:28:31 2020]
+Finished job 124.
+401 of 669 steps (60%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:28:31 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_28/T_28.chrchr11.vcf, /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_28/T_28.tumCounts.chrchr11.txt
+    log: logs/titan/tumCounts/T_28/T_28.chrchr11.log
+    jobid: 185
+    wildcards: tumor=T_28, chr=chr11
+
+
+[Tue Dec 15 19:28:31 2020]
+rule read_counter:
+    input: /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/readDepth/T_28.bin50000.wig
+    log: logs/readDepth/T_28.bin50000.log
+    jobid: 212
+    wildcards: samples=T_28, binSize=50000
+    resources: mem=4
+
+
+[Tue Dec 15 19:28:31 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr1.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr1.log
+    jobid: 490
+    wildcards: tumor=T_46, chr=chr1
+
+
+[Tue Dec 15 19:28:31 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchr15.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchr15.log
+    jobid: 626
+    wildcards: tumor=T_49, chr=chr15
+
+[Tue Dec 15 19:29:37 2020]
+Finished job 626.
+402 of 669 steps (60%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:29:37 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_33/T_33.chrchr2.vcf, /home/skevin/rb_pipeline/output/gatk/33-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_33/T_33.tumCounts.chrchr2.txt
+    log: logs/titan/tumCounts/T_33/T_33.chrchr2.log
+    jobid: 329
+    wildcards: tumor=T_33, chr=chr2
+
+[Tue Dec 15 19:30:18 2020]
+Finished job 185.
+403 of 669 steps (60%) done
+[Tue Dec 15 19:30:41 2020]
+Finished job 50.
+404 of 669 steps (60%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:30:41 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_49/T_49.chrchr15.vcf, /home/skevin/rb_pipeline/output/gatk/49-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_49/T_49.tumCounts.chrchr15.txt
+    log: logs/titan/tumCounts/T_49/T_49.chrchr15.log
+    jobid: 625
+    wildcards: tumor=T_49, chr=chr15
+
+
+[Tue Dec 15 19:30:41 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_33/T_33.chrchr8.vcf
+    log: logs/titan/hetPosns/T_33/T_33.chrchr8.log
+    jobid: 342
+    wildcards: tumor=T_33, chr=chr8
+
+[Tue Dec 15 19:31:37 2020]
+Finished job 625.
+405 of 669 steps (61%) done
+[Tue Dec 15 19:32:05 2020]
+Finished job 490.
+406 of 669 steps (61%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:32:05 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_33/T_33.chrchr22.vcf
+    log: logs/titan/hetPosns/T_33/T_33.chrchr22.log
+    jobid: 370
+    wildcards: tumor=T_33, chr=chr22
+
+
+[Tue Dec 15 19:32:05 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_46/T_46.chrchr10.vcf, /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_46/T_46.tumCounts.chrchr10.txt
+    log: logs/titan/tumCounts/T_46/T_46.chrchr10.log
+    jobid: 507
+    wildcards: tumor=T_46, chr=chr10
+
+[Tue Dec 15 19:32:19 2020]
+Finished job 342.
+407 of 669 steps (61%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:32:19 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_31/T_31.chrchr4.vcf, /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_31/T_31.tumCounts.chrchr4.txt
+    log: logs/titan/tumCounts/T_31/T_31.chrchr4.log
+    jobid: 279
+    wildcards: tumor=T_31, chr=chr4
+
+[Tue Dec 15 19:32:20 2020]
+Finished job 329.
+408 of 669 steps (61%) done
+[Tue Dec 15 19:33:15 2020]
+Finished job 370.
+409 of 669 steps (61%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:33:15 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_28/T_28.chrchr1.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchr1.log
+    jobid: 166
+    wildcards: tumor=T_28, chr=chr1
+
+
+[Tue Dec 15 19:33:15 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchr4.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr4.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr4.log
+    jobid: 387
+    wildcards: tumor=T_41, chr=chr4
+
+[Tue Dec 15 19:33:15 2020]
+Finished job 279.
+410 of 669 steps (61%) done
+[Tue Dec 15 19:33:19 2020]
+Finished job 507.
+411 of 669 steps (61%) done
+[Tue Dec 15 19:34:08 2020]
+Finished job 387.
+412 of 669 steps (62%) done
+[Tue Dec 15 19:34:30 2020]
+Finished job 212.
+413 of 669 steps (62%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:34:30 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchr22.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchr22.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchr22.log
+    jobid: 477
+    wildcards: tumor=T_43, chr=chr22
+
+
+[Tue Dec 15 19:34:30 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_33/T_33.chrchr16.vcf, /home/skevin/rb_pipeline/output/gatk/33-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_33/T_33.tumCounts.chrchr16.txt
+    log: logs/titan/tumCounts/T_33/T_33.chrchr16.log
+    jobid: 357
+    wildcards: tumor=T_33, chr=chr16
+
+
+[Tue Dec 15 19:34:30 2020]
+rule ichorCNA:
+    input: results/readDepth/T_28.bin50000.wig, results/readDepth/N_28.bin50000.wig
+    output: results/ichorCNA/T_28/T_28.correctedDepth.txt, results/ichorCNA/T_28/T_28.params.txt, results/ichorCNA/T_28/T_28.cna.seg, results/ichorCNA/T_28/T_28.seg.txt
+    log: logs/ichorCNA/T_28.log
+    jobid: 211
+    wildcards: tumor=T_28
+    resources: mem=4
+
+
+[Tue Dec 15 19:34:30 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_49/T_49.chrchr16.vcf, /home/skevin/rb_pipeline/output/gatk/49-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_49/T_49.tumCounts.chrchr16.txt
+    log: logs/titan/tumCounts/T_49/T_49.chrchr16.log
+    jobid: 627
+    wildcards: tumor=T_49, chr=chr16
+
+[Tue Dec 15 19:35:22 2020]
+Finished job 477.
+414 of 669 steps (62%) done
+[Tue Dec 15 19:35:43 2020]
+Finished job 166.
+415 of 669 steps (62%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:35:43 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_31/T_31.chrchr21.vcf, /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_31/T_31.tumCounts.chrchr21.txt
+    log: logs/titan/tumCounts/T_31/T_31.chrchr21.log
+    jobid: 313
+    wildcards: tumor=T_31, chr=chr21
+
+
+[Tue Dec 15 19:35:43 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_14/T_14.chrchr2.vcf, /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_14/T_14.tumCounts.chrchr2.txt
+    log: logs/titan/tumCounts/T_14/T_14.chrchr2.log
+    jobid: 5
+    wildcards: tumor=T_14, chr=chr2
+
+[Tue Dec 15 19:35:45 2020]
+Finished job 627.
+416 of 669 steps (62%) done
+[Tue Dec 15 19:36:04 2020]
+Finished job 357.
+417 of 669 steps (62%) done
+[Tue Dec 15 19:36:05 2020]
+Finished job 313.
+418 of 669 steps (62%) done
+[Tue Dec 15 19:37:12 2020]
+Finished job 5.
+419 of 669 steps (63%) done
+[Tue Dec 15 19:42:33 2020]
+Finished job 157.
+420 of 669 steps (63%) done
+[Tue Dec 15 19:46:41 2020]
+Finished job 211.
+421 of 669 steps (63%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:46:41 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_24/T_24.chrchr9.vcf, /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchr9.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchr9.log
+    jobid: 127
+    wildcards: tumor=T_24, chr=chr9
+
+
+[Tue Dec 15 19:46:41 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_14/T_14.chrchr11.vcf, /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_14/T_14.tumCounts.chrchr11.txt
+    log: logs/titan/tumCounts/T_14/T_14.chrchr11.log
+    jobid: 23
+    wildcards: tumor=T_14, chr=chr11
+
+
+[Tue Dec 15 19:46:41 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_31/T_31.chrchr20.vcf
+    log: logs/titan/hetPosns/T_31/T_31.chrchr20.log
+    jobid: 312
+    wildcards: tumor=T_31, chr=chr20
+
+
+[Tue Dec 15 19:46:41 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchr8.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchr8.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchr8.log
+    jobid: 449
+    wildcards: tumor=T_43, chr=chr8
+
+
+[Tue Dec 15 19:46:41 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchr22.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchr22.log
+    jobid: 640
+    wildcards: tumor=T_49, chr=chr22
+
+
+[Tue Dec 15 19:46:41 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchr20.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr20.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr20.log
+    jobid: 419
+    wildcards: tumor=T_41, chr=chr20
+
+[Tue Dec 15 19:47:21 2020]
+Finished job 419.
+422 of 669 steps (63%) done
+[Tue Dec 15 19:47:32 2020]
+Finished job 640.
+423 of 669 steps (63%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:47:32 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/33-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_33/T_33.chrchr9.vcf
+    log: logs/titan/hetPosns/T_33/T_33.chrchr9.log
+    jobid: 344
+    wildcards: tumor=T_33, chr=chr9
+
+
+[Tue Dec 15 19:47:32 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_24/T_24.chrchr8.vcf, /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchr8.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchr8.log
+    jobid: 125
+    wildcards: tumor=T_24, chr=chr8
+
+[Tue Dec 15 19:47:33 2020]
+Finished job 449.
+424 of 669 steps (63%) done
+[Tue Dec 15 19:47:34 2020]
+Finished job 312.
+425 of 669 steps (64%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:47:34 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_14/T_14.chrchr4.vcf, /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_14/T_14.tumCounts.chrchr4.txt
+    log: logs/titan/tumCounts/T_14/T_14.chrchr4.log
+    jobid: 9
+    wildcards: tumor=T_14, chr=chr4
+
+
+[Tue Dec 15 19:47:34 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_31/T_31.chrchr9.vcf
+    log: logs/titan/hetPosns/T_31/T_31.chrchr9.log
+    jobid: 290
+    wildcards: tumor=T_31, chr=chr9
+
+[Tue Dec 15 19:47:37 2020]
+Finished job 127.
+426 of 669 steps (64%) done
+[Tue Dec 15 19:47:54 2020]
+Finished job 23.
+427 of 669 steps (64%) done
+[Tue Dec 15 19:48:19 2020]
+Finished job 125.
+428 of 669 steps (64%) done
+[Tue Dec 15 19:48:21 2020]
+Finished job 9.
+429 of 669 steps (64%) done
+[Tue Dec 15 19:48:35 2020]
+Finished job 290.
+430 of 669 steps (64%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:48:35 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_46/T_46.chrchr2.vcf, /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_46/T_46.tumCounts.chrchr2.txt
+    log: logs/titan/tumCounts/T_46/T_46.chrchr2.log
+    jobid: 491
+    wildcards: tumor=T_46, chr=chr2
+
+
+[Tue Dec 15 19:48:35 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_28/T_28.chrchr12.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchr12.log
+    jobid: 188
+    wildcards: tumor=T_28, chr=chr12
+
+
+[Tue Dec 15 19:48:35 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_49/T_49.chrchr17.vcf, /home/skevin/rb_pipeline/output/gatk/49-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_49/T_49.tumCounts.chrchr17.txt
+    log: logs/titan/tumCounts/T_49/T_49.chrchr17.log
+    jobid: 629
+    wildcards: tumor=T_49, chr=chr17
+
+
+[Tue Dec 15 19:48:35 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_46/T_46.chrchr11.vcf, /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_46/T_46.tumCounts.chrchr11.txt
+    log: logs/titan/tumCounts/T_46/T_46.chrchr11.log
+    jobid: 509
+    wildcards: tumor=T_46, chr=chr11
+
+
+[Tue Dec 15 19:48:35 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchr5.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr5.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr5.log
+    jobid: 389
+    wildcards: tumor=T_41, chr=chr5
+
+[Tue Dec 15 19:48:55 2020]
+Finished job 344.
+431 of 669 steps (64%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:48:55 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_48/T_48.chrchr2.vcf, /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_48/T_48.tumCounts.chrchr2.txt
+    log: logs/titan/tumCounts/T_48/T_48.chrchr2.log
+    jobid: 545
+    wildcards: tumor=T_48, chr=chr2
+
+[Tue Dec 15 19:49:36 2020]
+Finished job 389.
+432 of 669 steps (65%) done
+[Tue Dec 15 19:49:52 2020]
+Finished job 629.
+433 of 669 steps (65%) done
+[Tue Dec 15 19:49:59 2020]
+Finished job 188.
+434 of 669 steps (65%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:49:59 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_14/T_14.chrchr12.vcf, /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_14/T_14.tumCounts.chrchr12.txt
+    log: logs/titan/tumCounts/T_14/T_14.chrchr12.log
+    jobid: 25
+    wildcards: tumor=T_14, chr=chr12
+
+
+[Tue Dec 15 19:49:59 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr14.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr14.log
+    jobid: 462
+    wildcards: tumor=T_43, chr=chr14
+
+
+[Tue Dec 15 19:49:59 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_24/T_24.chrchr10.vcf, /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchr10.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchr10.log
+    jobid: 129
+    wildcards: tumor=T_24, chr=chr10
+
+[Tue Dec 15 19:50:06 2020]
+Finished job 509.
+435 of 669 steps (65%) done
+[Tue Dec 15 19:50:23 2020]
+Finished job 491.
+436 of 669 steps (65%) done
+[Tue Dec 15 19:50:34 2020]
+Finished job 545.
+437 of 669 steps (65%) done
+[Tue Dec 15 19:50:50 2020]
+Finished job 25.
+438 of 669 steps (65%) done
+[Tue Dec 15 19:50:50 2020]
+Finished job 129.
+439 of 669 steps (66%) done
+[Tue Dec 15 19:50:57 2020]
+Finished job 462.
+440 of 669 steps (66%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:50:57 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_14/T_14.chrchr19.vcf
+    log: logs/titan/hetPosns/T_14/T_14.chrchr19.log
+    jobid: 40
+    wildcards: tumor=T_14, chr=chr19
+
+
+[Tue Dec 15 19:50:57 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr21.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr21.log
+    jobid: 476
+    wildcards: tumor=T_43, chr=chr21
+
+
+[Tue Dec 15 19:50:57 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_29/T_29.chrchr16.vcf, /home/skevin/rb_pipeline/output/gatk/29-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_29/T_29.tumCounts.chrchr16.txt
+    log: logs/titan/tumCounts/T_29/T_29.chrchr16.log
+    jobid: 249
+    wildcards: tumor=T_29, chr=chr16
+
+
+[Tue Dec 15 19:50:57 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/49-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_49/T_49.chrchr2.vcf
+    log: logs/titan/hetPosns/T_49/T_49.chrchr2.log
+    jobid: 600
+    wildcards: tumor=T_49, chr=chr2
+
+
+[Tue Dec 15 19:50:58 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/43-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_43/T_43.chrchr15.vcf
+    log: logs/titan/hetPosns/T_43/T_43.chrchr15.log
+    jobid: 464
+    wildcards: tumor=T_43, chr=chr15
+
+
+[Tue Dec 15 19:50:58 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_31/T_31.chrchr15.vcf
+    log: logs/titan/hetPosns/T_31/T_31.chrchr15.log
+    jobid: 302
+    wildcards: tumor=T_31, chr=chr15
+
+[Tue Dec 15 19:51:37 2020]
+Finished job 476.
+441 of 669 steps (66%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:51:37 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_48/T_48.chrchr17.vcf, /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_48/T_48.tumCounts.chrchr17.txt
+    log: logs/titan/tumCounts/T_48/T_48.chrchr17.log
+    jobid: 575
+    wildcards: tumor=T_48, chr=chr17
+
+[Tue Dec 15 19:51:51 2020]
+Finished job 249.
+442 of 669 steps (66%) done
+[Tue Dec 15 19:51:58 2020]
+Finished job 302.
+443 of 669 steps (66%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:51:58 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchr21.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr21.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr21.log
+    jobid: 421
+    wildcards: tumor=T_41, chr=chr21
+
+
+[Tue Dec 15 19:51:58 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_20/T_20.chrchr5.vcf, /home/skevin/rb_pipeline/output/gatk/20-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_20/T_20.tumCounts.chrchr5.txt
+    log: logs/titan/tumCounts/T_20/T_20.chrchr5.log
+    jobid: 65
+    wildcards: tumor=T_20, chr=chr5
+
+[Tue Dec 15 19:52:14 2020]
+Finished job 464.
+444 of 669 steps (66%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:52:14 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_28/T_28.chrchr8.vcf, /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_28/T_28.tumCounts.chrchr8.txt
+    log: logs/titan/tumCounts/T_28/T_28.chrchr8.log
+    jobid: 179
+    wildcards: tumor=T_28, chr=chr8
+
+[Tue Dec 15 19:52:22 2020]
+Finished job 421.
+445 of 669 steps (67%) done
+[Tue Dec 15 19:52:26 2020]
+Finished job 40.
+446 of 669 steps (67%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:52:26 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchr9.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchr9.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchr9.log
+    jobid: 451
+    wildcards: tumor=T_43, chr=chr9
+
+
+[Tue Dec 15 19:52:26 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchr14.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchr14.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchr14.log
+    jobid: 461
+    wildcards: tumor=T_43, chr=chr14
+
+[Tue Dec 15 19:52:50 2020]
+Finished job 600.
+447 of 669 steps (67%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:52:50 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_28/T_28.chrchrX.vcf, /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_28/T_28.tumCounts.chrchrX.txt
+    log: logs/titan/tumCounts/T_28/T_28.chrchrX.log
+    jobid: 209
+    wildcards: tumor=T_28, chr=chrX
+
+[Tue Dec 15 19:52:51 2020]
+Finished job 575.
+448 of 669 steps (67%) done
+[Tue Dec 15 19:52:55 2020]
+Finished job 65.
+449 of 669 steps (67%) done
+[Tue Dec 15 19:52:56 2020]
+Finished job 179.
+450 of 669 steps (67%) done
+[Tue Dec 15 19:53:05 2020]
+Finished job 209.
+451 of 669 steps (67%) done
+[Tue Dec 15 19:53:08 2020]
+Finished job 461.
+452 of 669 steps (68%) done
+[Tue Dec 15 19:53:13 2020]
+Finished job 451.
+453 of 669 steps (68%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:53:13 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_49/T_49.chrchr22.vcf, /home/skevin/rb_pipeline/output/gatk/49-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_49/T_49.tumCounts.chrchr22.txt
+    log: logs/titan/tumCounts/T_49/T_49.chrchr22.log
+    jobid: 639
+    wildcards: tumor=T_49, chr=chr22
+
+
+[Tue Dec 15 19:53:13 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_31/T_31.chrchr15.vcf, /home/skevin/rb_pipeline/output/gatk/31-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_31/T_31.tumCounts.chrchr15.txt
+    log: logs/titan/tumCounts/T_31/T_31.chrchr15.log
+    jobid: 301
+    wildcards: tumor=T_31, chr=chr15
+
+
+[Tue Dec 15 19:53:13 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_49/T_49.chrchr2.vcf, /home/skevin/rb_pipeline/output/gatk/49-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_49/T_49.tumCounts.chrchr2.txt
+    log: logs/titan/tumCounts/T_49/T_49.chrchr2.log
+    jobid: 599
+    wildcards: tumor=T_49, chr=chr2
+
+
+[Tue Dec 15 19:53:13 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_29/T_29.chrchrX.vcf, /home/skevin/rb_pipeline/output/gatk/29-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_29/T_29.tumCounts.chrchrX.txt
+    log: logs/titan/tumCounts/T_29/T_29.chrchrX.log
+    jobid: 263
+    wildcards: tumor=T_29, chr=chrX
+
+
+[Tue Dec 15 19:53:13 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_20/T_20.chrchr14.vcf, /home/skevin/rb_pipeline/output/gatk/20-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_20/T_20.tumCounts.chrchr14.txt
+    log: logs/titan/tumCounts/T_20/T_20.chrchr14.log
+    jobid: 83
+    wildcards: tumor=T_20, chr=chr14
+
+
+[Tue Dec 15 19:53:13 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/48-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_48/T_48.chrchr4.vcf
+    log: logs/titan/hetPosns/T_48/T_48.chrchr4.log
+    jobid: 550
+    wildcards: tumor=T_48, chr=chr4
+
+[Tue Dec 15 19:53:33 2020]
+Finished job 263.
+454 of 669 steps (68%) done
+[Tue Dec 15 19:53:41 2020]
+Finished job 639.
+455 of 669 steps (68%) done
+[Tue Dec 15 19:53:51 2020]
+Finished job 301.
+456 of 669 steps (68%) done
+[Tue Dec 15 19:53:58 2020]
+Finished job 83.
+457 of 669 steps (68%) done
+[Tue Dec 15 19:54:16 2020]
+Finished job 550.
+458 of 669 steps (68%) done
+Select jobs to execute...
+
+[Tue Dec 15 19:54:16 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_14/T_14.chrchr19.vcf, /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_14/T_14.tumCounts.chrchr19.txt
+    log: logs/titan/tumCounts/T_14/T_14.chrchr19.log
+    jobid: 39
+    wildcards: tumor=T_14, chr=chr19
+
+
+[Tue Dec 15 19:54:16 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_20/T_20.chrchr15.vcf, /home/skevin/rb_pipeline/output/gatk/20-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_20/T_20.tumCounts.chrchr15.txt
+    log: logs/titan/tumCounts/T_20/T_20.chrchr15.log
+    jobid: 85
+    wildcards: tumor=T_20, chr=chr15
+
+
+[Tue Dec 15 19:54:16 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchr21.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchr21.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchr21.log
+    jobid: 475
+    wildcards: tumor=T_43, chr=chr21
+
+
+[Tue Dec 15 19:54:16 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_49/T_49.chrchr18.vcf, /home/skevin/rb_pipeline/output/gatk/49-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_49/T_49.tumCounts.chrchr18.txt
+    log: logs/titan/tumCounts/T_49/T_49.chrchr18.log
+    jobid: 631
+    wildcards: tumor=T_49, chr=chr18
+
+
+[Tue Dec 15 19:54:16 2020]
+rule ichorCNA:
+    input: results/readDepth/T_29.bin50000.wig, results/readDepth/N_29.bin50000.wig
+    output: results/ichorCNA/T_29/T_29.correctedDepth.txt, results/ichorCNA/T_29/T_29.params.txt, results/ichorCNA/T_29/T_29.cna.seg, results/ichorCNA/T_29/T_29.seg.txt
+    log: logs/ichorCNA/T_29.log
+    jobid: 265
+    wildcards: tumor=T_29
+    resources: mem=4
+
+[Tue Dec 15 19:54:31 2020]
+Finished job 599.
+459 of 669 steps (69%) done
+[Tue Dec 15 19:54:39 2020]
+Finished job 631.
+460 of 669 steps (69%) done
+[Tue Dec 15 19:54:39 2020]
+Finished job 475.
+461 of 669 steps (69%) done
+[Tue Dec 15 19:54:55 2020]
+Finished job 85.
+462 of 669 steps (69%) done
+[Tue Dec 15 19:55:19 2020]
+Finished job 39.
+463 of 669 steps (69%) done
+[Tue Dec 15 20:08:32 2020]
+Finished job 265.
+464 of 669 steps (69%) done
+Select jobs to execute...
+
+[Tue Dec 15 20:08:32 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_28/T_28.chrchr12.vcf, /home/skevin/rb_pipeline/output/gatk/28-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_28/T_28.tumCounts.chrchr12.txt
+    log: logs/titan/tumCounts/T_28/T_28.chrchr12.log
+    jobid: 187
+    wildcards: tumor=T_28, chr=chr12
+
+
+[Tue Dec 15 20:08:32 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_48/T_48.chrchr4.vcf, /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_48/T_48.tumCounts.chrchr4.txt
+    log: logs/titan/tumCounts/T_48/T_48.chrchr4.log
+    jobid: 549
+    wildcards: tumor=T_48, chr=chr4
+
+
+[Tue Dec 15 20:08:32 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_43/T_43.chrchr15.vcf, /home/skevin/rb_pipeline/output/gatk/43-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_43/T_43.tumCounts.chrchr15.txt
+    log: logs/titan/tumCounts/T_43/T_43.chrchr15.log
+    jobid: 463
+    wildcards: tumor=T_43, chr=chr15
+
+
+[Tue Dec 15 20:08:32 2020]
+rule ichorCNA:
+    input: results/readDepth/T_33.bin50000.wig, results/readDepth/N_33.bin50000.wig
+    output: results/ichorCNA/T_33/T_33.correctedDepth.txt, results/ichorCNA/T_33/T_33.params.txt, results/ichorCNA/T_33/T_33.cna.seg, results/ichorCNA/T_33/T_33.seg.txt
+    log: logs/ichorCNA/T_33.log
+    jobid: 373
+    wildcards: tumor=T_33
+    resources: mem=4
+
+
+[Tue Dec 15 20:08:32 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/31-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_31/T_31.chrchr13.vcf
+    log: logs/titan/hetPosns/T_31/T_31.chrchr13.log
+    jobid: 298
+    wildcards: tumor=T_31, chr=chr13
+
+
+[Tue Dec 15 20:08:32 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_46/T_46.chrchr12.vcf, /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_46/T_46.tumCounts.chrchr12.txt
+    log: logs/titan/tumCounts/T_46/T_46.chrchr12.log
+    jobid: 511
+    wildcards: tumor=T_46, chr=chr12
+
+[Tue Dec 15 20:09:09 2020]
+Finished job 463.
+465 of 669 steps (70%) done
+[Tue Dec 15 20:09:15 2020]
+Finished job 298.
+466 of 669 steps (70%) done
+Select jobs to execute...
+
+[Tue Dec 15 20:09:15 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_14/T_14.chrchr8.vcf, /home/skevin/rb_pipeline/output/gatk/14-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_14/T_14.tumCounts.chrchr8.txt
+    log: logs/titan/tumCounts/T_14/T_14.chrchr8.log
+    jobid: 17
+    wildcards: tumor=T_14, chr=chr8
+
+
+[Tue Dec 15 20:09:15 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_48/T_48.chrchr20.vcf, /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_48/T_48.tumCounts.chrchr20.txt
+    log: logs/titan/tumCounts/T_48/T_48.chrchr20.log
+    jobid: 581
+    wildcards: tumor=T_48, chr=chr20
+
+[Tue Dec 15 20:09:24 2020]
+Finished job 187.
+467 of 669 steps (70%) done
+[Tue Dec 15 20:09:32 2020]
+Finished job 549.
+468 of 669 steps (70%) done
+[Tue Dec 15 20:09:44 2020]
+Finished job 511.
+469 of 669 steps (70%) done
+[Tue Dec 15 20:09:46 2020]
+Finished job 581.
+470 of 669 steps (70%) done
+[Tue Dec 15 20:09:50 2020]
+Finished job 17.
+471 of 669 steps (70%) done
+[Tue Dec 15 20:17:18 2020]
+Finished job 373.
+472 of 669 steps (71%) done
+Select jobs to execute...
+
+[Tue Dec 15 20:17:18 2020]
+rule ichorCNA:
+    input: results/readDepth/T_49.bin50000.wig, results/readDepth/N_49.bin50000.wig
+    output: results/ichorCNA/T_49/T_49.correctedDepth.txt, results/ichorCNA/T_49/T_49.params.txt, results/ichorCNA/T_49/T_49.cna.seg, results/ichorCNA/T_49/T_49.seg.txt
+    log: logs/ichorCNA/T_49.log
+    jobid: 643
+    wildcards: tumor=T_49
+    resources: mem=4
+
+
+[Tue Dec 15 20:17:18 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_48/T_48.chrchr6.vcf, /home/skevin/rb_pipeline/output/gatk/48-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_48/T_48.tumCounts.chrchr6.txt
+    log: logs/titan/tumCounts/T_48/T_48.chrchr6.log
+    jobid: 553
+    wildcards: tumor=T_48, chr=chr6
+
+
+[Tue Dec 15 20:17:18 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_24/T_24.chrchr13.vcf, /home/skevin/rb_pipeline/output/gatk/24-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_24/T_24.tumCounts.chrchr13.txt
+    log: logs/titan/tumCounts/T_24/T_24.chrchr13.log
+    jobid: 135
+    wildcards: tumor=T_24, chr=chr13
+
+
+[Tue Dec 15 20:17:18 2020]
+rule ichorCNA:
+    input: results/readDepth/T_20.bin50000.wig, results/readDepth/N_20.bin50000.wig
+    output: results/ichorCNA/T_20/T_20.correctedDepth.txt, results/ichorCNA/T_20/T_20.params.txt, results/ichorCNA/T_20/T_20.cna.seg, results/ichorCNA/T_20/T_20.seg.txt
+    log: logs/ichorCNA/T_20.log
+    jobid: 103
+    wildcards: tumor=T_20
+    resources: mem=4
+
+
+[Tue Dec 15 20:17:18 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_46/T_46.chrchr22.vcf, /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_46/T_46.tumCounts.chrchr22.txt
+    log: logs/titan/tumCounts/T_46/T_46.chrchr22.log
+    jobid: 531
+    wildcards: tumor=T_46, chr=chr22
+
+
+[Tue Dec 15 20:17:18 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_46/T_46.chrchr7.vcf, /home/skevin/rb_pipeline/output/gatk/46-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_46/T_46.tumCounts.chrchr7.txt
+    log: logs/titan/tumCounts/T_46/T_46.chrchr7.log
+    jobid: 501
+    wildcards: tumor=T_46, chr=chr7
+
+[Tue Dec 15 20:17:41 2020]
+Finished job 135.
+473 of 669 steps (71%) done
+[Tue Dec 15 20:18:00 2020]
+Finished job 531.
+474 of 669 steps (71%) done
+[Tue Dec 15 20:18:28 2020]
+Finished job 501.
+475 of 669 steps (71%) done
+[Tue Dec 15 20:18:37 2020]
+Finished job 553.
+476 of 669 steps (71%) done
+[Tue Dec 15 20:28:21 2020]
+Finished job 643.
+477 of 669 steps (71%) done
+Terminating processes on user request, this might take some time.
+[Tue Dec 15 20:28:30 2020]
+Error in rule ichorCNA:
+    jobid: 103
+    output: results/ichorCNA/T_20/T_20.correctedDepth.txt, results/ichorCNA/T_20/T_20.params.txt, results/ichorCNA/T_20/T_20.cna.seg, results/ichorCNA/T_20/T_20.seg.txt
+    log: logs/ichorCNA/T_20.log (check log file(s) for error message)
+    shell:
+        Rscript /home/skevin/rpkgs/ichorCNA/scripts/runIchorCNA.R --libdir /home/skevin/rpkgs/ichorCNA --id T_20 --WIG results/readDepth/T_20.bin50000.wig --gcWig /dataVolume/storage/rpkgs/ichorCNA/inst/extdata/gc_hg19_50kb.wig --mapWig /dataVolume/storage/rpkgs/ichorCNA/inst/extdata/map_hg19_50kb.wig --NORMWIG results/readDepth/N_20.bin50000.wig --ploidy "c(2,3)" --normal "c(0.5)" --maxCN 8 --includeHOMD False --genomeStyle NCBI --chrs "c(1:22, \"X\")" --estimateNormal True --estimatePloidy True --estimateScPrevalence True --scStates "c(1,3)" --centromere /dataVolume/storage/rpkgs/ichorCNA/inst/extdata/GRCh37.p13_centromere_UCSC-gapTable.txt --exons.bed None --txnE 0.9999 --txnStrength 10000 --fracReadsInChrYForMale 0.001 --plotFileType png --plotYLim "c(-2,4)" --outDir results/ichorCNA/T_20/ > logs/ichorCNA/T_20.log 2> logs/ichorCNA/T_20.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job ichorCNA since they might be corrupted:
+results/ichorCNA/T_20/T_20.correctedDepth.txt
+Complete log: /dataVolume/storage/rb_pipeline/titancna/.snakemake/log/2020-12-15T164314.870924.snakemake.log

@@ -1,0 +1,140 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	12	catAlleleCountFiles
+	48	combineTitanAndIchorCNA
+	1	copyOptSolution
+	274	getAlleleCountsByChr
+	251	getHETsites
+	12	ichorCNA
+	21	read_counter
+	48	runTitanCNA
+	1	selectSolution
+	669
+Select jobs to execute...
+
+[Tue Dec 15 16:40:56 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_46/T_46.chrchr5.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr5.log
+    jobid: 498
+    wildcards: tumor=T_46, chr=chr5
+
+
+[Tue Dec 15 16:40:56 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_24/T_24.chrchr6.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr6.log
+    jobid: 122
+    wildcards: tumor=T_24, chr=chr6
+
+
+[Tue Dec 15 16:40:56 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_41/T_41.chrchr15.vcf, /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr15.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr15.log
+    jobid: 409
+    wildcards: tumor=T_41, chr=chr15
+
+
+[Tue Dec 15 16:40:56 2020]
+rule getAlleleCountsByChr:
+    input: results/titan/hetPosns/T_49/T_49.chrchr12.vcf, /home/skevin/rb_pipeline/output/gatk/49-T_1_recalibrated.bam
+    output: results/titan/tumCounts/T_49/T_49.tumCounts.chrchr12.txt
+    log: logs/titan/tumCounts/T_49/T_49.chrchr12.log
+    jobid: 619
+    wildcards: tumor=T_49, chr=chr12
+
+
+[Tue Dec 15 16:40:56 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_14/T_14.chrchr6.vcf
+    log: logs/titan/hetPosns/T_14/T_14.chrchr6.log
+    jobid: 14
+    wildcards: tumor=T_14, chr=chr6
+
+
+[Tue Dec 15 16:40:56 2020]
+rule getHETsites:
+    input: /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam
+    output: results/titan/hetPosns/T_28/T_28.chrchr7.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchr7.log
+    jobid: 178
+    wildcards: tumor=T_28, chr=chr7
+
+Terminating processes on user request, this might take some time.
+[Tue Dec 15 16:41:21 2020]
+Error in rule getHETsites:
+    jobid: 178
+    output: results/titan/hetPosns/T_28/T_28.chrchr7.vcf
+    log: logs/titan/hetPosns/T_28/T_28.chrchr7.log (check log file(s) for error message)
+    shell:
+        samtools mpileup -uv -I -f /dataVolume/storage/Homo_sapiens/UCSC/hg19/Sequence/BWAIndex/genome.fa -r chr7 -l /dataVolume/storage/Homo_sapiens/DBSNP/dbsnp_138.hg19.excluding_sites_after_129.vcf.gz /home/skevin/rb_pipeline/output/gatk/28-N_1_recalibrated.bam | bcftools call -v -c - | grep -e '0/1' -e '#' > results/titan/hetPosns/T_28/T_28.chrchr7.vcf 2> logs/titan/hetPosns/T_28/T_28.chrchr7.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job getHETsites since they might be corrupted:
+results/titan/hetPosns/T_28/T_28.chrchr7.vcf
+[Tue Dec 15 16:41:21 2020]
+Error in rule getHETsites:
+    jobid: 122
+    output: results/titan/hetPosns/T_24/T_24.chrchr6.vcf
+    log: logs/titan/hetPosns/T_24/T_24.chrchr6.log (check log file(s) for error message)
+    shell:
+        samtools mpileup -uv -I -f /dataVolume/storage/Homo_sapiens/UCSC/hg19/Sequence/BWAIndex/genome.fa -r chr6 -l /dataVolume/storage/Homo_sapiens/DBSNP/dbsnp_138.hg19.excluding_sites_after_129.vcf.gz /home/skevin/rb_pipeline/output/gatk/24-N_1_recalibrated.bam | bcftools call -v -c - | grep -e '0/1' -e '#' > results/titan/hetPosns/T_24/T_24.chrchr6.vcf 2> logs/titan/hetPosns/T_24/T_24.chrchr6.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job getHETsites since they might be corrupted:
+results/titan/hetPosns/T_24/T_24.chrchr6.vcf
+[Tue Dec 15 16:41:21 2020]
+Error in rule getHETsites:
+    jobid: 14
+    output: results/titan/hetPosns/T_14/T_14.chrchr6.vcf
+    log: logs/titan/hetPosns/T_14/T_14.chrchr6.log (check log file(s) for error message)
+    shell:
+        samtools mpileup -uv -I -f /dataVolume/storage/Homo_sapiens/UCSC/hg19/Sequence/BWAIndex/genome.fa -r chr6 -l /dataVolume/storage/Homo_sapiens/DBSNP/dbsnp_138.hg19.excluding_sites_after_129.vcf.gz /home/skevin/rb_pipeline/output/gatk/14-N_1_recalibrated.bam | bcftools call -v -c - | grep -e '0/1' -e '#' > results/titan/hetPosns/T_14/T_14.chrchr6.vcf 2> logs/titan/hetPosns/T_14/T_14.chrchr6.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job getHETsites since they might be corrupted:
+results/titan/hetPosns/T_14/T_14.chrchr6.vcf
+[Tue Dec 15 16:41:21 2020]
+Error in rule getAlleleCountsByChr:
+    jobid: 409
+    output: results/titan/tumCounts/T_41/T_41.tumCounts.chrchr15.txt
+    log: logs/titan/tumCounts/T_41/T_41.chrchr15.log (check log file(s) for error message)
+    shell:
+        python code/countPysam.py chr15 results/titan/hetPosns/T_41/T_41.chrchr15.vcf /home/skevin/rb_pipeline/output/gatk/41-T_1_recalibrated.bam 10 10 100 > results/titan/tumCounts/T_41/T_41.tumCounts.chrchr15.txt 2> logs/titan/tumCounts/T_41/T_41.chrchr15.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job getAlleleCountsByChr since they might be corrupted:
+results/titan/tumCounts/T_41/T_41.tumCounts.chrchr15.txt
+[Tue Dec 15 16:41:21 2020]
+Error in rule getHETsites:
+    jobid: 498
+    output: results/titan/hetPosns/T_46/T_46.chrchr5.vcf
+    log: logs/titan/hetPosns/T_46/T_46.chrchr5.log (check log file(s) for error message)
+    shell:
+        samtools mpileup -uv -I -f /dataVolume/storage/Homo_sapiens/UCSC/hg19/Sequence/BWAIndex/genome.fa -r chr5 -l /dataVolume/storage/Homo_sapiens/DBSNP/dbsnp_138.hg19.excluding_sites_after_129.vcf.gz /home/skevin/rb_pipeline/output/gatk/46-N_1_recalibrated.bam | bcftools call -v -c - | grep -e '0/1' -e '#' > results/titan/hetPosns/T_46/T_46.chrchr5.vcf 2> logs/titan/hetPosns/T_46/T_46.chrchr5.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job getHETsites since they might be corrupted:
+results/titan/hetPosns/T_46/T_46.chrchr5.vcf
+[Tue Dec 15 16:41:21 2020]
+Error in rule getAlleleCountsByChr:
+    jobid: 619
+    output: results/titan/tumCounts/T_49/T_49.tumCounts.chrchr12.txt
+    log: logs/titan/tumCounts/T_49/T_49.chrchr12.log (check log file(s) for error message)
+    shell:
+        python code/countPysam.py chr12 results/titan/hetPosns/T_49/T_49.chrchr12.vcf /home/skevin/rb_pipeline/output/gatk/49-T_1_recalibrated.bam 10 10 100 > results/titan/tumCounts/T_49/T_49.tumCounts.chrchr12.txt 2> logs/titan/tumCounts/T_49/T_49.chrchr12.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job getAlleleCountsByChr since they might be corrupted:
+results/titan/tumCounts/T_49/T_49.tumCounts.chrchr12.txt
+Complete log: /dataVolume/storage/rb_pipeline/titancna/.snakemake/log/2020-12-15T164055.799917.snakemake.log

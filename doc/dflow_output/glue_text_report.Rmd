@@ -1,0 +1,405 @@
+---
+title: "Report with text"
+author: "Kevin Stachelek"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# load packages
+
+```{r}
+source("../../functions.R")
+source("../../packages.R")
+
+library(tidyverse)
+library(drake)
+library(glue)
+library(english)
+```
+
+## Analysis
+
+```{r}
+
+loadd(vc_vars)
+
+loadd(vaf_plot_input)
+
+loadd(filtered_vaf_plot_input)
+
+loadd(reynolds_snv)
+
+loadd(all_study_coverage)
+
+loadd(all_study_snvs)
+
+loadd(all_study_mutations)
+
+loadd(prior_study_mutations)
+
+loadd(prior_study_snvs)
+
+loadd(all_study_snv_qc)
+```
+
+
+```{r}
+
+n_samples <- 
+all_study_snv_qc$vars_per_study %>% 
+  dplyr::distinct(sample_set, sample) %>% 
+  dplyr::group_by(sample_set) %>% 
+  dplyr::count() %>% 
+  identity()
+
+n_ngs_samples <- 
+n_samples %>% 
+  dplyr::filter(!str_detect(sample_set, "Stachelek|Afshar")) %>% 
+  identity()
+
+ngs_mutations <- 
+  prior_study_mutations %>% 
+  dplyr::filter(!study %in% c("Afshar et al.", "Grobner et al."))
+
+n_BCOR <- 
+  ngs_mutations %>% 
+  dplyr::filter(gene == "BCOR") %>% 
+  dplyr::distinct(sample, .keep_all = TRUE) %>% 
+  nrow() %>% 
+  identity()
+
+n_CREBBP <- 
+  ngs_mutations %>% 
+  dplyr::filter(gene == "CREBBP") %>% 
+  dplyr::distinct(sample) %>%
+  nrow() %>% 
+  identity()
+
+prior_ngs_snvs <- 
+  prior_study_snvs %>% 
+  dplyr::filter(!study == "Afshar et al.")
+
+private_prior_ngs_snvs <- 
+  prior_ngs_snvs %>% 
+  dplyr::group_by(gene) %>% 
+  dplyr::filter(dplyr::n() == 1) %>% 
+  identity()
+
+all_ngs_snvs <- 
+  all_study_snvs %>% 
+  dplyr::filter(!study == "Afshar et al.")
+
+prior_targeted_snvs <- 
+  prior_study_snvs %>% 
+  dplyr::filter(study == "Afshar et al.") %>% 
+  dplyr::group_by(gene) %>%
+  identity()
+
+private_prior_targeted_snvs <- 
+  prior_targeted_snvs %>% 
+  group_by(gene) %>%
+  dplyr::filter(dplyr::n() == 1)
+
+n_private_prior_targeted_snvs <- 
+  private_prior_targeted_snvs %>% 
+  nrow() 
+
+recurrent_prior_targeted_snvs <- 
+  prior_targeted_snvs %>% 
+  group_by(gene) %>% 
+  dplyr::filter(dplyr::n() > 1) %>% 
+  janitor::tabyl(gene) %>% 
+  dplyr::pull(gene)
+
+recurrent_mutations <-
+  all_study_mutations %>%
+  dplyr::mutate(sample_number = stringr::str_remove(sample, "-.*")) %>% 
+  dplyr::distinct(sample, gene, .keep_all = TRUE) %>%
+  group_by(gene) %>%
+  dplyr::filter(n_distinct(sample_number) > 1) %>%
+  identity()
+
+recurrent_ngs_snvs <- 
+  recurrent_mutations %>% 
+  dplyr::filter(!study == "Afshar et al.") %>% 
+  dplyr::filter(!modality == "focal_scna")
+
+recurrent_ngs_genes <-
+  recurrent_ngs_snvs %>% 
+  dplyr::pull(gene)
+  
+
+all_recurrent <- unique(c(recurrent_ngs_genes, recurrent_prior_targeted_snvs))
+
+stachelek_filtered_variants <- 
+  all_study_snv_qc$vaf_per_study %>% 
+  dplyr::filter(study == "Stachelek") %>% 
+    dplyr::mutate(sample_type = case_when(grepl("T", sample) ~ "Tumor",
+                                       grepl("CL", sample) ~ "Cell Line",
+                                       grepl("N", sample) ~ "Normal")) %>% 
+  identity()
+
+stachelek_filtered_cell_line_only_variants <- 
+  stachelek_filtered_variants %>% 
+  dplyr::group_by(chr, start, end) %>% 
+  dplyr::filter(!any(str_detect(sample, "T"))) %>% 
+  identity()
+
+stachelek_filtered_cell_line_variants <- 
+  stachelek_filtered_variants %>% 
+  dplyr::filter(str_detect(sample, "-CL")) %>%
+  dplyr::group_by(sample) %>%
+  dplyr::count()
+
+stachelek_filtered_tumor_variants <- 
+  stachelek_filtered_variants %>% 
+  dplyr::filter(str_detect(sample, "-T")) %>%
+  dplyr::group_by(sample) %>%
+  dplyr::count() %>% 
+  ungroup() %>% 
+  tibble::add_row(sample = "41-T", n = 0) %>% 
+  tibble::deframe()
+
+
+filtered_circle_ids <-
+  find_selected_variants(filtered_vaf_plot_input) %>% 
+  purrr::map(dplyr::filter, circle_id == "circled")
+  
+```
+
+```{r}
+
+glue("In addition to recurrent SCNAs, whole genome or exome sequencing of {sum(n_ngs_samples$n)} treatment-naïve retinoblastomas revealed pathogenic mutation or focal deletion of BCOR in {n_BCOR}, CREBBP variants in {english(n_CREBBP)}, and potentially pathogenic variants of {nrow(private_prior_ngs_snvs)} genes thus far reported for only one sample")
+
+
+
+```
+
+```{r}
+glue("Past whole exome or whole genome sequencing of {sum(n_ngs_samples$n)} treatment-naïve retinoblastomas revealed recurrent secondary mutations or focal deletion in BCOR in ({n_BCOR}) and CREBBP (in {n_CREBBP}) (Supplementary Table S9), and {nrow(private_prior_ngs_snvs)} potentially pathogenic private somatic mutations ")
+
+```
+
+
+
+```{r}
+
+glue("Filtering such variants revealed a total of {sum(stachelek_filtered_tumor_variants)} somatic mutations in 12 tumors (mean {round(mean(stachelek_filtered_tumor_variants), 2)}; median {round(median(stachelek_filtered_tumor_variants), 2)}), of which {english(nrow(filtered_circle_ids$positive))} were subclonal variants detected based on their enrichment and detection in a matched cell line")
+
+
+```
+
+```{r}
+PAN2_vaf <- dplyr::filter(stachelek_filtered_variants, gene == "PAN2") %>%
+  dplyr::distinct(sample_type, .keep_all = TRUE) %>%
+  dplyr::pull(VAF) %>%
+  round(2) %>%
+  identity()
+
+SAMD9_vaf <- dplyr::filter(stachelek_filtered_variants, gene == "SAMD9")$VAF %>% 
+  round(2)
+
+NAF1_vaf <- dplyr::filter(stachelek_filtered_variants, gene == "NAF1")$VAF %>% 
+  round(2)
+
+BCOR28_vaf <- dplyr::filter(stachelek_filtered_variants, gene == "BCOR", alt != "A")$VAF %>% 
+  round(2) %>%
+  identity()
+
+BCOR33_vaf <- dplyr::filter(stachelek_filtered_variants, gene == "BCOR", alt == "A") %>% 
+  dplyr::distinct(sample_type, .keep_all = TRUE) %>% 
+  dplyr::pull(VAF) %>%
+  round(2) %>%
+  identity()
+
+
+```
+
+```{r, eval = TRUE}
+
+glue("Among the {sum(stachelek_filtered_tumor_variants)} somatic variants detected in the 12 tumors, five were in four genes in which mutations were detected in prior retinoblastoma exome or genome sequencing, including BCOR in two samples and PAN2, NAF1, and SAMD9 in one sample each (Table S1, Fig 4C).")
+
+glue("Each was present at subclonal levels in tumors and their VAFs either increased or decreased during cell line establishment (Fig. 4). Specifically, in CHLA-VC-RB29, the PAN2 G794A VAF increased from {PAN2_vaf[[2]]} to {PAN2_vaf[[1]]} indicative of clonal selection (Fig. 4). In CHLA-VC-RB43, the SAMD9 P635S VAF increased from {SAMD9_vaf[[2]]} to {SAMD9_vaf[[1]]}, remaining subclonal but enriched. In contrast, CHLA-VC-RB24 the NAF1 R255Q VAF decreased from {NAF1_vaf} in T24 to undetected in CL24, and in CHLA-VC-RB28 the BCOR R1400IfsX12 VAF declined from {BCOR28_vaf} in T28 to undetected in CL28 (Fig. 4A), consistent with the cell lines’ derivation from subclones that lacked SCNAs that were prominent in the respective tumors (Fig. 2A). Finally, in CHLA-VC-RB33, BCOR G756X VAF declined from {BCOR33_vaf[[2]]} to {BCOR33_vaf[[1]]}, indicating partial selection against the BCOR G756X-containing cells (Fig. 4A). The decreased NAF1 and BCOR VAFs in tumor-derived cell lines implied a lack of selection for these variants during cell line establishment.")
+
+glue("Among the {nrow(stachelek_filtered_cell_line_only_variants)} potentially pathogenic somatic variants detected only in cell lines, only one (ATM) was in a gene  in which variants had been detected in prior retinoblastoma sequencing. When combined with re-analyses of past whole exome or genome sequencing, our detection of PAN2, NAF1, and SAMD9, recognition of recurrent alterations in CLIP2, and prior recognition of recurrent changes in HRG, MGA, and ARID1A, gives a total of {length(all_recurrent)} recurrently altered genes (Fig. 4C).") 
+     
+glue("The {english(n_distinct(recurrent_ngs_genes))} recurrently altered genes identified by whole exome or whole genome sequencing is significantly more than the n# of recurrences expected by chance among {nrow(all_ngs_snvs)} variants identified in WGS/WES studies.")
+
+
+```
+
+```{r}
+
+loadd(reynolds_snv)
+
+loadd(reynolds_scna) 
+reynolds_scna <- 
+  reynolds_scna %>% 
+  # dplyr::filter(study == "Stachelek et al.") %>% 
+  # dplyr::filter(str_detect(id, "[0-9]{3}\\.CL")) %>% 
+  # dplyr::rename(SYMBOL = symbol) %>%
+  identity()
+  
+reynolds_mutations <- list(snv = reynolds_snv 
+                           # scna = reynolds_scna
+                           ) %>% 
+  purrr::map(dplyr::select, -strand) %>%
+  dplyr::bind_rows(.id = "modality") %>%
+  identity()
+
+recurrent_reynolds_mutations <-
+  reynolds_mutations %>%
+  dplyr::filter(SYMBOL %in% prior_study_snvs$gene) %>%
+  # dplyr::filter(is.na(seg.mean)) %>%
+  # dplyr::pull(SYMBOL) %>%
+  # n_distinct() %>%
+    identity()
+
+previously_recurrent_snvs <- 
+    all_study_snvs %>% 
+    dplyr::filter(!str_detect(sample, "-CL")) %>% 
+    dplyr::filter(gene %in% recurrent_ngs_genes) %>% 
+  dplyr::group_by(gene) %>% 
+  dplyr::filter("Stachelek et al." %in% study) %>% 
+  dplyr::filter(dplyr::n() > 1) %>% 
+  identity()
+
+```
+
+```{r, eval = FALSE}
+
+glue("Gene variants detected in 15 CHLA-RB cell lines included potentially pathogenic mutations in {n_distinct(reynolds_mutations$Gene)} genes (mean {round(n_distinct(reynolds_snv$Gene)/15)} per sample), a higher number than for the CHLA-VC-RB cell lines likely reflecting the lack of filtering of private germline polymorphisms. The mutations affected BCOR, CREBBP and {n_distinct(recurrent_reynolds_mutations$Gene)} other genes that were mutated in other sequenced retinoblastoma samples and are candidate recurrent tumor variants (Supplementary Table S1009)")
+```
+
+```{r}
+
+glue("This approach identified {sum(stachelek_filtered_tumor_variants)} potentially pathogenic nucleotide variants (mean {round(mean(stachelek_filtered_tumor_variants),2)} per tumor, including {nrow(filtered_circle_ids$positive)} variants that were detected by variant callers only in tumor-derived cell lines and subsequently identified in their matched tumors (Fig. 4). The findings are consistent with the low mutation rate (0.0646/Mb) and low numbers of potentially pathogenic somatic variants besides RB1 in prior studies ")
+```
+
+```{r}
+glue("Similarly, this approach revealed {sum(stachelek_filtered_tumor_variants)} mutations in the 12 cell lines (mean: {round(mean(stachelek_filtered_tumor_variants), 2)}; median: {round(median(stachelek_filtered_tumor_variants))}), of which one was identified based on its initial detection in the originating tumor  (Fig. 4A, B, Table S4) and of which 17 were detected in cell lines as well as matched tumors.")
+
+```
+
+```{r}
+
+glue("Given the small number of affected genes identified in all analyses ({n_distinct(all_study_snvs$gene)}, Table S1), recurrence is strong evidence of a progression-related role. ")
+```
+
+```{r}
+
+loadd(noncoding_all_study_snvs)
+```
+
+```{r}
+
+consequences <- list(
+  nonsynonymous = c("?", "coding_sequence_variant", "frameshift_variant", "inframe_deletion", "inframe_insertion", "missense_variant", "splice_acceptor_variant", "splice_donor_variant", "splice_region_variant", "stop_gained"), 
+  UTR = c("three_prime_UTR", "five_prime_UTR", "3_prime_UTR_variant", "5_prime_UTR_variant"), 
+  synonymous = c("synonymous_variant", "exon", "stop_retained_variant", "intron_variant", "non_coding_transcript_exon_variant", NA)
+) %>% 
+  tibble::enframe("consequence_class", "Consequence") %>% 
+  unnest(cols = c(Consequence)) %>% 
+  identity()
+
+loadd(noncoding_webgestalt_input_minus_kooi)
+
+labeled_vars_df <- dplyr::left_join(noncoding_webgestalt_input_minus_kooi, consequences, by = "Consequence")
+
+labeled_vars <-  
+  labeled_vars_df %>% 
+  dplyr::group_by(consequence_class) %>% 
+  dplyr::count() %>%
+  tibble::deframe() %>% 
+  map(1) %>% 
+  identity()
+```
+
+```{r}
+
+glue("To mitigate effects of highly recurrently altered genes such as BCOR, the most significant ontologies were identfied by inputting each gene name once, whereas p values and false discovery rates were determined by counting all variants separately. All together, we performed over-representation analysis separately for the {labeled_vars$nonsynonymous} variants affecting protein amino acid sequences, including non-synonymous substitution, frameshift, and splice site variants, and for all {nrow(labeled_vars_df)} exomic variants, including {labeled_vars$synonymous} synonymous and {labeled_vars$UTR} UTR sequences of protein coding genes. 
+These analyses revealed enrichment for ontology terms with FDR <0.05 related to mitotic sister chromatid segregation, ribonucleoprotein (RNP) complex assembly, several RNP assembly related terms, and covalent chromatin modification")
+
+```
+
+
+```{r}
+
+webgestalt_genes <- 
+  webgestalt_plot_input %>% 
+  dplyr::pull(userId) %>%
+  str_split(";") %>% 
+  unlist() %>% 
+  unique() %>% 
+  identity()
+
+kooi_webgestalt <- 
+  noncoding_webgestalt_input %>% 
+  dplyr::filter(study == "Kooi et al.") %>% 
+  dplyr::filter(gene %in% webgestalt_genes)
+
+loadd(kooi_scnas)
+n_kooi_scna_samples <- n_distinct(kooi_scnas$id)
+
+stachelek_webgestalt <- 
+  noncoding_webgestalt_input %>% 
+  dplyr::filter(study == "Stachelek et al.") %>% 
+  dplyr::filter(gene %in% webgestalt_genes)
+
+glue("in a study from Kooi et al. {nrow(kooi_webgestalt)} variants in {n_distinct(kooi_webgestalt$sample)} out of {deframe(n_samples)['Kooi']} samples contributed to enriched ontologies compared to {n_kooi_scna_samples} with recurrent 'RB SCNAs'. While in the present study, {nrow(stachelek_webgestalt)} variants in {n_distinct(stachelek_webgestalt$sample)} out of 12 samples contributed to enriched ontologies compared to 12 with recurrent 'RB SCNAs'")
+```
+
+```{r}
+
+prior_study_snvs_list <- 
+  prior_study_snvs_list[names(prior_study_scna_list)] %>% 
+  map(mutate, id = sample)
+
+all_altered_samples <- map2(prior_study_snvs_list, prior_study_scna_list, ~union(.x$sample, .y$sample))
+
+myqcs <- 
+all_study_snv_qc$vars_per_study %>% 
+  split(.$sample_set) %>% 
+  map("sample")
+
+mcevoy_wgs_samples <- 
+    c(
+    "SJRB011_D",
+    "SJRB014_D", 
+    "SJRB016_D",
+    "SJRB020_D", 
+    "SJRB024_D",
+    "SJRB031_D", 
+    "SJRB032_D",
+    "SJRB035_D", 
+    "SJRB039_D",
+    "SJRB051_D"
+    )
+
+mcevoy_unaffected_samples <-
+  setdiff(mcevoy_wgs_samples, all_altered_samples$mcevoy)
+
+kooi_unaffected_samples <- 
+  setdiff(all_altered_samples$kooi, myqcs$Kooi)
+
+zhang_unaffected_samples <- 
+  all_altered_samples$zhang %>% 
+  str_subset("SJRB*") %>% 
+  setdiff(myqcs$Zhang)
+
+all_unaffected_samples <- 
+  list(
+    mcevoy = mcevoy_unaffected_samples,
+    kooi = kooi_unaffected_samples,
+    zhang = zhang_unaffected_samples
+  ) %>% 
+  tibble::enframe("study", "sample") %>% 
+  tidyr::unnest() %>% 
+  write_csv("../../doc/dflow_output/unaffected_tumor_samples.csv")
+  
+
+```
