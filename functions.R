@@ -575,6 +575,25 @@ calc_AD <- function(readcount_df){
     identity()
 }
 
+calc_AD2 <- function(readcount_df){
+  readcount_df <- 
+    readcount_df %>% 
+    tidyr::gather(one_of(paste0("V", seq(6,20))), key = "allele", value = "allele_info") %>% 
+    tidyr::separate(allele_info, into = c("alt", "alt_info"), sep = ":") %>%
+    dplyr::rename(seqnames = V1, start = V2, ref = V3, read_depth = V4, ref_info = V5) %>%
+    dplyr::mutate(alt_info = stringr::str_remove(alt_info, "^:")) %>%
+    tidyr::separate(alt_info, into = c("alt_depth", "alt_info"), sep = ":.*") %>%
+    dplyr::mutate_at(c("alt_depth", "read_depth"), .funs=funs(as.numeric(as.character(.)))) %>%
+    dplyr::select(-allele, -alt_info, -ref_info) %>%
+    dplyr::mutate(af = alt_depth / read_depth) %>%
+    dplyr::arrange(seqnames, start, desc(af)) %>%
+    dplyr::mutate(start = as.factor(start)) %>%
+    dplyr::filter(!is.na(alt_depth)) %>% 
+    identity()
+}
+
+
+
 # make variant dotplots ------------------------------
 
 make_vaf_plot <- function(vaf_df){
@@ -751,29 +770,29 @@ make_set_plot <- function(webgestalt_results) {
     NULL
 }
 
-make_volcano_plot <- function(webgestalt_results, ...) {
-  # browser()
-  
-  volcano_plot <-   
-    webgestalt_results %>% 
-    dplyr::mutate(neglogFDR = -log(FDR)) %>% 
-    dplyr::mutate(description = str_wrap(description, 30)) %>%
-    dplyr::mutate(description = paste0(description, "\n", geneSet)) %>%
-    ggplot(aes(x = enrichmentRatio, y = neglogFDR)) +
-    geom_point() +
-    labs(y = "-log FDR", x = "Enrichment Ratio") +
-    # geom_text_repel(aes(label = description)) +
-    # geom_hline(yintercept = -log(0.05), linetype="dashed") +
-    gghighlight(FDR < 0.1, label_key = description,
-                label_params = list(size = 5, min.segment.length = 0.1, point.padding = 5e-1, box.padding = 2.5, force = 2),
-                use_direct_label = TRUE, n = 1, ...) +
-    theme_cowplot() +
-    # scale_y_log10(breaks = 10^seq(-15, 0, by = 2), limits = c(1e-15, 1e0)) +
-    NULL %>%
-    identity()
-  
-  return(volcano_plot)
-}
+# make_volcano_plot <- function(webgestalt_results, ...) {
+#   # browser()
+#   
+#   volcano_plot <-   
+#     webgestalt_results %>% 
+#     dplyr::mutate(neglogFDR = -log(FDR)) %>% 
+#     dplyr::mutate(description = str_wrap(description, 30)) %>%
+#     dplyr::mutate(description = paste0(description, "\n", geneSet)) %>%
+#     ggplot(aes(x = enrichmentRatio, y = neglogFDR)) +
+#     geom_point() +
+#     labs(y = "-log FDR", x = "Enrichment Ratio") +
+#     # geom_text_repel(aes(label = description)) +
+#     # geom_hline(yintercept = -log(0.05), linetype="dashed") +
+#     gghighlight(FDR < 0.1, label_key = description,
+#                 label_params = list(size = 5, min.segment.length = 0.1, point.padding = 5e-1, box.padding = 2.5, force = 2),
+#                 use_direct_label = TRUE, n = 1, ...) +
+#     theme_cowplot() +
+#     # scale_y_log10(breaks = 10^seq(-15, 0, by = 2), limits = c(1e-15, 1e0)) +
+#     NULL %>%
+#     identity()
+#   
+#   return(volcano_plot)
+# }
 
 calc_recurrent_vars <- function(vars, antiseries = "CHLA-RB") {
   
@@ -797,7 +816,11 @@ calc_recurrent_vars <- function(vars, antiseries = "CHLA-RB") {
   return(recurrent_vars)
 }
 
-recalculate_geo <- function(geo_output, gene, intgenelength = 245) {
+recalculate_geo <- function(geo_output, gene) {
+  # browser()
+    
+    intgenelength <- length(gene)
+    
     gene <- gene %>%
         tibble::enframe("rownumber", "gene") %>% 
         janitor::tabyl(gene) %>%
@@ -1081,7 +1104,7 @@ save_and_annotate_table <- function(mytable, filename, table_legends){
 #'
 #' @examples
 vaf_plot_fisher_test <- function(initial_vaf_plot_input){
-  # browser()
+  browser()
   
   group_vars <- c("chr", "start", "end", "ref", "alt", "sample_id")
   selection_vars <- c(group_vars, "alt_depth", "read_depth")

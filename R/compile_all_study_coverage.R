@@ -10,20 +10,24 @@
 ##' @author whtns
 ##' @export
 compile_all_study_coverage <- function(stachelek_coverage, prior_study_coverage, all_study_snvs) {
-
+    browser()
     vaf_per_study <- 
         all_study_snvs %>% 
-        group_by(study) %>% 
-        summarize(VAF = mean(VAF, na.rm = TRUE))
+        dplyr::mutate(sample_type = dplyr::case_when(str_detect(sample, "-CL") ~ "Cell Line",
+                                                     TRUE ~ "Tumor")) %>% 
+        group_by(study, sample_type) %>% 
+        summarize(mean_VAF = mean(VAF, na.rm = TRUE))
     
     vars_per_study <- 
         all_study_snvs %>% 
-        dplyr::group_by(study, sample) %>% 
+        dplyr::mutate(sample_type = dplyr::case_when(str_detect(sample, "-CL") ~ "Cell Line",
+                                                     TRUE ~ "Tumor")) %>% 
+        dplyr::group_by(study, sample_type, sample) %>% 
         dplyr::count() %>% 
-        dplyr::group_by(study) %>% 
+        dplyr::group_by(study, sample_type) %>% 
         dplyr::summarize(mean_var = mean(n), median_var = median(n), stdev_var = sd(n))
     
-    var_vaf_per_study <- dplyr::left_join(vaf_per_study, vars_per_study, by  = "study")
+    var_vaf_per_study <- dplyr::left_join(vaf_per_study, vars_per_study, by  = c("study", "sample_type"))
     
     ## ----------------------------------------------------------------------------------------------------------------------------------
     
@@ -58,17 +62,23 @@ compile_all_study_coverage <- function(stachelek_coverage, prior_study_coverage,
     
     ## ----------------------------------------------------------------------------------------------------------------------------------
     
+    stachelek_tumor_coverage <- 
+        stachelek_coverage %>% 
+        dplyr::filter(sample_type == "Tumor") %>% 
+        dplyr::pull(mean_coverage)
+    
     all_study_coverage <- 
         stachelek_coverage %>% 
         dplyr::mutate(study = "Stachelek et al.") %>% 
-        dplyr::bind_rows(prior_study_coverage)
+        dplyr::bind_rows(prior_study_coverage) %>% 
+        dplyr::mutate(relative_coverage = mean_coverage/stachelek_tumor_coverage)
     
     final_output <- 
         all_study_coverage %>% 
-        dplyr::left_join(var_vaf_per_study, by  = "study") %>%
+        dplyr::left_join(var_vaf_per_study, by  = c("study", "sample_type")) %>%
         dplyr::filter(!sample_type == "Matched Normal") %>%
         dplyr::left_join(recurrent_counts, by = "study") %>%
-        dplyr::select(study, sample_type, sequencing_type, num_samples, mean_coverage, everything()) %>%
+        dplyr::select(study, sample_type, sequencing_type, num_samples, relative_coverage, mean_coverage, everything()) %>%
         dplyr::select(-`recurrently altered genes`) %>% 
         identity()
     

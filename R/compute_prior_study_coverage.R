@@ -55,11 +55,13 @@ compute_prior_study_coverage <- function(studies){
     ## ----------------------------------------------------------------------------------------------------------------------------------
     mcevoy_coverage <- "doc/RB_exome_manuscript/prior_studies/mcevoy_supp_info/tidy_format/mcevoy_quality_scores.csv" %>% 
         read_csv() %>% 
+        dplyr::mutate(sample_type = dplyr::case_when(`Germline/Diagnosis` == "G" ~ "Normal",
+                                                     `Germline/Diagnosis` == "D" ~ "Tumor")) %>%
+        dplyr::group_by(sample_type) %>% 
         dplyr::summarize(mean_coverage = mean(`Exon Coverage`),
                          median_coverage = median(`Exon Coverage`),
                          sd_coverage = sd(`Exon Coverage`),
                          num_samples = n_distinct(Patient)) %>%
-        dplyr::mutate(sample_type = "Tumor") %>%
         dplyr::mutate(sequencing_type = "WGS") %>%
         identity()
     

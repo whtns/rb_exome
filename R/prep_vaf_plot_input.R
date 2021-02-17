@@ -75,6 +75,8 @@ prep_vaf_plot_input <- function(vc_vars, sanger_panels) {
     
     circle_ids <- create_circle_ids(vaf_plot_input) %>% 
         dplyr::filter(!str_detect(snp_id, "TMEM135")) %>% 
+        dplyr::filter(!str_detect(snp_id, "MUC4")) %>% 
+        dplyr::filter(!str_detect(snp_id, "TAS2R46")) %>% 
         identity()
     
     vaf_plot_input <- 

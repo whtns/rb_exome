@@ -10,11 +10,10 @@
 ##' @export
 compose_oncoprints <- function(ngs_oncoprint, targeted_oncoprint) {
 
-    ngs_oncoprint / 
-        (targeted_oncoprint + plot_spacer()) +
+    (ngs_oncoprint / targeted_oncoprint) +
         plot_annotation(
             title = "Recurrent Secondary Mutations in Retinoblastoma Tumors",
             tag_levels = 'A') +
-        plot_layout(heights = c(2, 1))
+        plot_layout(heights = c(1, 1))
 
 }

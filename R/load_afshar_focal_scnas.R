@@ -18,7 +18,7 @@ load_afshar_focal_scnas <- function(scna_table) {
     afshar_scna <- 
         scna_table %>% 
         dplyr::filter(focal_gain == "MYCN") %>% 
-        dplyr::mutate(seqnames = "2") %>% 
+        dplyr::mutate(id = sample, seqnames = "2") %>% 
         identity()
 
 }

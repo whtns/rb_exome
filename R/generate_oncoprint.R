@@ -4,10 +4,12 @@
 ##'
 ##' @title
 ##' @param all_study_variants
+##' @param study_numbers
 ##' @return
 ##' @author whtns
 ##' @export
-generate_oncoprint <- function(all_study_variants) {
+generate_oncoprint <- function(all_study_variants, study_numbers) {
+    browser()
 
     # generate oncoprint
     
@@ -44,7 +46,8 @@ generate_oncoprint <- function(all_study_variants) {
         tibble::column_to_rownames("gene") %>% 
         as.matrix()
     
-    study_numbers <- c( "Zhang" = 4, "McEvoy" = 10, "Kooi" = 71, "Stachelek" = 12) %>% 
+    study_numbers <- 
+        study_numbers %>% 
         sum()
     
     num_samples_unmutated <- study_numbers - ncol(oncoprint_input)
@@ -115,8 +118,11 @@ generate_oncoprint <- function(all_study_variants) {
     names(annotationcols) <- unique(heatmapannotation)
     
 
-    
-    study_annotation <- c(heatmapannotation, rep("Stachelek et al.", num_samples_unmutated))
+    if ("Stachelek et al." %in% myvars$study){
+        study_annotation <- c(heatmapannotation, rep("Stachelek et al.", num_samples_unmutated))
+    } else {
+        study_annotation <- heatmapannotation
+    }
     
     heatmap_legend_param = list(title = "Alterations", at = names(cons), 
                                 labels = names(cons))
@@ -136,7 +142,7 @@ generate_oncoprint <- function(all_study_variants) {
                         show_column_names = TRUE,
                         remove_empty_columns = TRUE,
                         right_annotation = NULL,
-                        show_pct = FALSE)
+                        show_pct = TRUE)
 
     ggplotify::as.ggplot(oncoprint_plot)
     

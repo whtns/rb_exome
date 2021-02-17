@@ -125,6 +125,7 @@ process_vep_annotate_vc <- function(vep_api_out_vc_snvs, annotated_vc_snvs, reco
         penultimate %>% 
         group_by(sample_id, chr, start, end, ref, alt, gene_symbol) %>% 
         dplyr::slice_min(as.integer(Consequence)) %>%
+        dplyr::filter(!gene_symbol == "RBM4") %>% 
         identity()
     
 }

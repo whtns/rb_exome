@@ -1,0 +1,369 @@
+---
+title: "Mutect2 mutsigcv mutation report"
+author: "Kevin Stachelek"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+    self_contained: yes
+---
+
+
+# Introduction
+With advances in Cancer Genomics, [Mutation Annotation Format](https://docs.gdc.cancer.gov/Data/File_Formats/MAF_Format/) (MAF) is being widely accepted and used to store somatic variants detected. 
+[The Cancer Genome Atlas](http://cancergenome.nih.gov) Project has sequenced over 30 different cancers with sample size of each cancer type being over 200. [Resulting data](https://wiki.nci.nih.gov/display/TCGA/TCGA+MAF+Files) consisting of somatic variants are stored in the form of [Mutation Annotation Format](https://docs.gdc.cancer.gov/Data/File_Formats/MAF_Format/). This package attempts to summarize, analyze, annotate and visualize MAF files in an efficient manner from either TCGA sources or any in-house studies as long as the data is in MAF format.
+
+## Citation
+
+If you find this tool useful, please cite:
+
+***
+**_Mayakonda A, Lin DC, Assenov Y, Plass C, Koeffler HP. 2018. 
+Maftools: efficient and comprehensive analysis of somatic variants in cancer. 
+[Genome Resarch](https://doi.org/10.1101/gr.239244.118) [PMID: 30341162](https://www.ncbi.nlm.nih.gov/pubmed/30341162)_**
+
+***
+
+```{r setup}
+knitr::opts_chunk$set(dev = c("png", "pdf"), fig.path="figures/", results="hide", warning = FALSE, message)
+
+```
+
+## Load Files
+
+```{r results='hide', message=FALSE}
+
+library('tidyverse')
+library('fs')
+library(maftools)
+```
+
+```{r}
+loadd(merged_maf)
+```
+
+
+## MAF object
+Summarized MAF file is stored as an MAF object. MAF object contains main maf file, summarized data and any associated sample annotations.
+
+There are accessor methods to access the useful slots from MAF object.
+```{r}
+#Typing merged_maf shows basic summary of MAF file.
+merged_maf
+```
+
+````{r, eval=FALSE}
+#Shows sample summry.
+getSampleSummary(merged_maf)
+#Shows gene summary.
+getGeneSummary(merged_maf)
+#shows clinical data associated with samples
+getClinicalData(merged_maf)
+#Shows all fields in MAF
+getFields(merged_maf)
+#Writes maf summary to an output file with basename merged_maf.
+write.mafSummary(maf = merged_maf, basename = 'merged_maf')
+```
+
+# Visualization
+## Plotting MAF summary.
+We can use `plotmafSummary` to plot the summary of the maf file, which displays number of variants in each sample as a stacked barplot and variant types as a boxplot summarized by Variant_Classification. 
+
+```{r,fig.height=4, fig.width=6}
+plotmafSummary(maf = merged_maf, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
+```
+
+## Oncoplots
+### Drawing oncoplots
+Better representation of maf file can be shown as oncoplots, also known as waterfall plots. 
+
+```{r, fig.align='left',fig.height=3.5,fig.width=6, fig.align='left'}
+#oncoplot for top ten mutated genes.
+oncoplot(maf = merged_maf, top = 10)
+```
+
+NOTE: Variants annotated as `Multi_Hit` are those genes which are mutated more than once in the same sample.
+
+For more details on customisation see the [Customizing oncoplots](http://bioconductor.org/packages/devel/bioc/vignettes/maftools/inst/doc/oncoplots.html) vignette.
+
+## Transition and Transversions.
+`titv` function classifies SNPs into [Transitions and Transversions](http://www.mun.ca/biology/scarr/Transitions_vs_Transversions.html) and returns a list of summarized tables in various ways. Summarized data can also be visualized as a boxplot showing overall distribution of six different conversions and as a stacked barplot showing fraction of conversions in each sample.
+
+```{r, fig.height=3, fig.width=4.2, eval = T, fig.align='left'}
+merged_maf.titv = titv(maf = merged_maf, plot = FALSE, useSyn = TRUE)
+#plot titv summary
+plotTiTv(res = merged_maf.titv)
+```
+
+## Lollipop plots for amino acid changes
+`lollipopPlot` function requires us to have amino acid changes information in the maf file. However MAF files have no clear guidelines on naming the field for amino acid changes, with different studies having different field (or column) names for amino acid changes. By default, `lollipopPlot` looks for column `AAChange`, and if its not found in the MAF file, it prints all available fields with a warning message. For below example, MAF file contains amino acid changes under a field/column name 'Protein_Change'. We will manually specify this using argument `AACol`. 
+
+```{r,fig.align='left', fig.width=10, fig.height=10}
+lollipop_genes <- c("PAN2", "NAF1", "SAMD9")
+
+pdf("../dflow_output/fig_s05.pdf", width = 20, height = 6)
+for (i in lollipop_genes){
+  lollipopPlot(maf = merged_maf, gene = i, AACol = 'HGVSp_Short', showMutationRate = TRUE, showDomainLabel = FALSE, labelPos = 'all')
+}
+dev.off()
+```
+
+## Rainfall plots
+Cancer genomes, especially solid tumors are characterized by genomic loci with localized hyper-mutations [5](#references). Such hyper mutated genomic regions can be visualized by plotting inter variant distance on a linear genomic scale. These plots generally called rainfall plots and we can draw such plots using `rainfallPlot`. If `detectChangePoints` is set to TRUE, `rainfall` plot also highlights regions where potential changes in inter-event distances are located. 
+
+
+```{r, fig.height=3,fig.width=6,fig.align='left'}
+rainfallPlot(maf = merged_maf, detectChangePoints = TRUE, pointSize = 0.4)
+```
+
+"Kataegis" are defined as those genomic segments containing six or more consecutive mutations with an average inter-mutation distance of less than or equal to 1,00 bp [5](#references).
+
+## Compare mutation load against TCGA cohorts
+`tcgaCompare` uses mutation load from TCGA [MC3](https://gdc.cancer.gov/about-data/publications/mc3-2017) for comparing muttaion burden against 33 TCGA cohorts. Plot generated is [similar](http://www.nature.com/nature/journal/v500/n7463/fig_tab/nature12477_F1.html) to the one described in Alexandrov et al [5](#references). 
+
+```{r, fig.align='left', fig.height=3.25, fig.width=6, message=FALSE, results='hide'}
+merged_maf.mutload = tcgaCompare(maf = merged_maf, cohortName = 'Example-merged_maf', logscale = TRUE, capture_size = 50)
+```
+
+## Plotting VAF
+This function plots Variant Allele Frequencies as a boxplot which quickly helps to estimate clonal status of top mutated genes (clonal genes usually have mean allele frequency around ~50% assuming pure sample)
+
+```{r, fig.align='left', fig.height=3, fig.width=3}
+
+# calculate vaf
+merged_maf@data[["t_vaf"]] <- (merged_maf@data[["t_alt_count"]]/(merged_maf@data[["t_alt_count"]] + merged_maf@data[["t_alt_count"]]))
+
+plotVaf(maf = merged_maf, vafCol = "t_vaf", top = 10)
+
+plotVaf(maf = merged_maf, vafCol = "t_vaf", genes = c("PAN2", "SAMD9"))
+```
+
+# Analysis
+## Somatic Interactions
+Mutually exclusive or co-occurring set of genes can be detected using `somaticInteractions` function, which performs pair-wise Fisher's Exact test to detect such significant pair of genes. 
+
+```{r, message=FALSE, fig.height=5, fig.width=5}
+#exclusive/co-occurance event analysis on top 10 mutated genes. 
+somaticInteractions(maf = merged_maf, top = 25, pvalue = c(0.05, 0.1))
+```
+
+## Detecting cancer driver genes based on positional clustering
+maftools has a function `oncodrive` which identifies cancer genes (driver) from a given MAF. `oncodrive` is a based on algorithm [oncodriveCLUST](http://bg.upf.edu/group/projects/oncodrive-clust.php) which was originally implemented in Python. Concept is based on the fact that most of the variants in cancer causing genes are enriched at few specific loci (aka hot-spots). This method takes advantage of such positions to identify cancer genes. If you use this function, please cite [OncodriveCLUST article](http://bioinformatics.oxfordjournals.org/content/early/2013/07/31/bioinformatics.btt395.full) [7](#references).
+
+```{r, fig.align='default', fig.width=7,fig.height=5, message=F,results='hide', eval=T}
+merged_maf.sig = oncodrive(maf = merged_maf, AACol = 'HGVSp', minMut = 5, pvalMethod = 'zscore')
+```
+
+```{r}
+head(merged_maf.sig)
+```
+
+We can plot the results using `plotOncodrive`.
+```{r, fig.align='left', fig.width=3.2, fig.height=3.2}
+plotOncodrive(res = merged_maf.sig, fdrCutOff = 0.1, useFraction = TRUE, labelSize = 0.5)
+```
+
+`plotOncodrive` plots the results as scatter plot with size of the points proportional to the number of clusters found in the gene. X-axis shows number of mutations (or fraction of mutations) observed in these clusters. In the above example, IDH1 has a single cluster and all of the 18 mutations are accumulated within that cluster, giving it a cluster score of one. For details on oncodrive algorithm, please refer to [OncodriveCLUST article](http://bioinformatics.oxfordjournals.org/content/early/2013/07/31/bioinformatics.btt395.full) [7](#references).
+
+##  Adding and summarizing pfam domains
+maftools comes with the function `pfamDomains`, which adds pfam domain information to the amino acid changes. `pfamDomain` also summarizes amino acid changes according to the domains that are affected. This serves the purpose of knowing what domain in given cancer cohort, is most frequently affected. This function is inspired from Pfam annotation module from MuSic tool [8](#references).
+
+```{r, fig.align='left', fig.width=4, fig.height=3}
+merged_maf.pfam = pfamDomains(maf = merged_maf, AACol = 'HGVSp', top = 10)
+#Protein summary (Printing first 7 columns for display convenience)
+merged_maf.pfam$proteinSummary[,1:7, with = FALSE]
+#Domain summary (Printing first 3 columns for display convenience)
+merged_maf.pfam$domainSummary[,1:3, with = FALSE]
+```
+
+## Oncogenic Signaling Pathways
+`OncogenicPathways` function checks for enrichment of known Oncogenic Signaling Pathways in TCGA cohorts [11](#references).
+
+```{r, fig.width=3.5, fig.height=3}
+OncogenicPathways(maf = merged_maf)
+```
+
+Its also possible to visualize complete pathway.
+```{r, fig.width=5, fig.height=2.5}
+PlotOncogenicPathways(maf = merged_maf, pathways = "RTK-RAS")
+```
+
+Tumor suppressor genes are in red, and oncogenes are in blue font.
+
+## Mutational Signatures
+Every cancer, as it progresses leaves a signature characterized by specific pattern of nucleotide substitutions. [Alexandrov et.al](http://www.nature.com/nature/journal/v500/n7463/full/nature12477.html) have shown such mutational signatures, derived from over 7000 cancer samples [5](#references). Such signatures can be extracted by decomposing matrix of nucleotide substitutions, classified into 96 substitution classes based on immediate bases surrounding the mutated base. Extracted signatures can also be compared to those [validated signatures](http://cancer.sanger.ac.uk/cosmic/signatures). 
+
+First step in signature analysis is to obtain the adjacent bases surrounding the mutated base and form a mutation matrix. 
+NOTE: Earlier versions of maftools required a fasta file as an input. But starting from 1.8.0, BSgenome objects are used for faster sequence extraction.
+
+```{r, eval=TRUE}
+#Requires BSgenome object
+library(BSgenome.Hsapiens.UCSC.hg19, quietly = TRUE)
+merged_maf.tnm = trinucleotideMatrix(maf = merged_maf, prefix = 'chr', add = TRUE, ref_genome = "BSgenome.Hsapiens.UCSC.hg19")
+```
+
+
+Above function performs two steps:
+
+  * Estimates APOBEC enrichment scores
+  * Prepares a mutational matrix for signature analysis.
+
+### APOBEC Enrichment estimation.
+APOBEC induced mutations are more frequent in solid tumors and are mainly associated with C>T transition events occurring in TCW motif. APOBEC enrichment scores in the above command are estimated using the method described by Roberts et al [13](#references). Briefly, enrichment of C>T mutations occurring within TCW motif over all of the C>T mutations in a given sample is compared to background Cytosines and TCWs occurring within 20bp of mutated bases. 
+
+
+$$\frac{n_{tCw} * background_C}{n_C * background_{TCW}}$$
+
+One-sided fishers exact test is also performed to statistically evaluate the enrichment score, as described in original study by Roberts et al.
+
+
+### Differences between APOBEC enriched and non-enriched samples
+
+We can also analyze the differences in mutational patterns between APOBEC enriched and non-APOBEC enriched samples. `plotApobecDiff` is a function which takes APOBEC enrichment scores estimated by `trinucleotideMatrix` and classifies samples into APOBEC enriched and non-APOBEC enriched. Once stratified, it compares these two groups to identify differentially altered genes.
+
+Note that, merged_maf with no APOBEC enrichments, is not an ideal cohort for this sort of analysis and hence below plot is only for demonstration purpose.
+ 
+```{r, eval=TRUE, fig.height=3, fig.width=5, eval = FALSE}
+plotApobecDiff(tnm = merged_maf.tnm, maf = merged_maf, pVal = 0.2)
+```
+
+### Signature analysis
+Signature analysis includes following steps.
+
+  1. `estimateSignatures` - which runs NMF on a range of values and measures the goodness of fit - in terms of [Cophenetic correlation](https://en.wikipedia.org/wiki/Cophenetic_correlation).
+  2. `plotCophenetic` - which draws an elblow plot and helps you to decide optimal number of signatures. Best possible signature is the value at which Cophenetic correlation drops significantly.
+  3. `extractSignatures` - uses non-negative matrix factorization to decompose the matrix into `n` signatures. `n` is chosen based on the above two steps. In case if you already have a good estimate of `n`, you can skip above two steps.
+  4. `compareSignatures` - extracted signatures from above step can be compared to known signatures[11](#references) from [COSMIC](https://cancer.sanger.ac.uk/cosmic/signatures/SBS/) database, and cosine similarity is calculated to identify best match.
+  5. `plotSignatures` - plots signatures
+
+```{r, echo=FALSE}
+par(mar = c(2, 2, 2, 1))
+plot(NA, xlim = c(1, 10), ylim = c(0, 30), frame.plot = FALSE, axes = FALSE, xlab = NA, ylab = NA)
+rect(xleft = 3, ybottom = 28, xright = 7, ytop = 30, col = grDevices::adjustcolor("gray70", alpha.f = 0.6), lwd = 1.2, border = "maroon")
+text(x = 5, y = 29, labels = "MAF", font = 2)
+arrows(x0 = 5, y0 = 28, x1 = 5, y1 = 26, length = 0.1, lwd = 2)
+text(x = 5, y = 25, labels = "trinucleotideMatrix()", font = 3)
+arrows(x0 = 5, y0 = 24, x1 = 5, y1 = 21, length = 0.1, lwd = 2)
+text(x = 5, y = 20, labels = "estimateSignatures()", font = 3)
+arrows(x0 = 5, y0 = 19, x1 = 5, y1 = 16, length = 0.1, lwd = 2)
+text(x = 5, y = 15, labels = "plotCophenetic()", font = 3)
+arrows(x0 = 5, y0 = 14, x1 = 5, y1 = 11, length = 0.1, lwd = 2)
+text(x = 5, y = 10, labels = "extractSignatures()", font = 3)
+arrows(x0 = 5, y0 = 9, x1 = 5, y1 = 6, length = 0.1, lwd = 2)
+text(x = 5, y = 5, labels = "compareSignatures()", font = 3)
+arrows(x0 = 5, y0 = 4, x1 = 5, y1 = 1, length = 0.1, lwd = 2)
+text(x = 5, y = 0, labels = "plotSignatures()", font = 3)
+```
+
+***Note:*** In previous versions, `extractSignatures` used to take care of above steps automatically. After versions 2.2.0, main function is split inot above 5 stpes for user flexibility.
+
+```{r, fig.height=5, fig.width=5, eval=FALSE, message=FALSE}
+library('NMF')
+merged_maf.sign = estimateSignatures(mat = merged_maf.tnm, nTry = 6)
+```
+
+```{r, fig.height=3, fig.width=3, eval=TRUE, message=FALSE, echo=FALSE, include=FALSE}
+#Run main function with maximum 6 signatures. 
+library('NMF')
+merged_maf.sign = estimateSignatures(mat = merged_maf.tnm, nTry = 6, pConstant = 0.1, plotBestFitRes = FALSE, parallel = 2)
+```
+
+Draw elbow plot to visualize and decide optimal number of signatures from above results.
+```{r, fig.width=3, fig.height=3}
+plotCophenetic(res = merged_maf.sign)
+```
+
+Best possible value is the one at which the correlation value on the y-axis drops significantly. In this case it appears to be at `n = 3`. merged_maf is not an ideal example for signature analysis with its low mutation rate, but for solid tumors with higher mutation burden one could expect more signatures, provided sufficient number of samples.
+
+Once `n` is estimated, we can run the main function.
+
+```{r, eval=FALSE}
+merged_maf.sig = extractSignatures(mat = merged_maf.tnm, n = 3)
+```
+
+```{r, eval=TRUE, echo=FALSE}
+merged_maf.sig = extractSignatures(mat = merged_maf.tnm, n = 3, pConstant = 0.1,  parallel = 2)
+```
+
+Compare detected signatures to COSMIC [Legacy](https://cancer.sanger.ac.uk/cosmic/signatures_v2) or [SBS](https://cancer.sanger.ac.uk/cosmic/signatures_v2) signature database.
+```{r}
+#Compate against original 30 signatures 
+merged_maf.og30.cosm = compareSignatures(nmfRes = merged_maf.sig, sig_db = "legacy")
+#Compate against updated version3 60 signatures 
+merged_maf.v3.cosm = compareSignatures(nmfRes = merged_maf.sig, sig_db = "SBS")
+```
+
+`compareSignatures` returns full table of cosine similarities against COSMIC signatures, which can be further analysed. Below plot shows comparison of similarities of detected signatures against validated signatures.
+
+```{r, fig.width=7, fig.height=2.5, fig.align='center'}
+library('pheatmap')
+pheatmap::pheatmap(mat = merged_maf.og30.cosm$cosine_similarities, cluster_rows = FALSE, main = "cosine similarity against validated signatures")
+```
+
+Finally plot signatures
+```{r, fig.width=6, fig.height=4, fig.align='center', eval = T}
+maftools::plotSignatures(nmfRes = merged_maf.sig, title_size = 1.2, sig_db = "SBS")
+```
+
+If you fancy 3D barpots, you can install `barplot3d` package and visualize the results with `legoplot3d` function.
+```{r, eval=FALSE}
+library("barplot3d")
+#Visualize first signature
+sig1 = merged_maf.sig$signatures[,1]
+barplot3d::legoplot3d(contextdata = sig1, labels = FALSE, scalexy = 0.01, sixcolors = "sanger", alpha = 0.5)
+```
+
+
+***NOTE:***
+
+1. Should you receive an error while running `extractSignatures` complaining `none of the packages are loaded`, please manually load the `NMF` library and re-run.
+
+2. If either `extractSignatures` or `estimateSignatures` stops in between, its possibly due to low mutation counts in the matrix. In that case rerun the functions with `pConstant` argument set to small positive value (e.g, 0.1).
+
+
+# Variant Annotations
+
+## Prepare MAF file for MutSigCV analysis
+MutSig/MutSigCV is most widely used program for detecting driver genes [18](#references). However, we have observed that covariates files (gene.covariates.txt and exome_full192.coverage.txt) which are bundled with MutSig have non-standard gene names (non Hugo_Symbols). This discrepancy between Hugo_Symbols in MAF and non-Hugo_symbols in covariates file causes MutSig program to ignore such genes. For example, KMT2D - a well known driver gene in Esophageal Carcinoma is represented as MLL2 in MutSig covariates. This causes KMT2D to be ignored from analysis and is represented as an insignificant gene in MutSig results. This function attempts to correct such gene symbols with a manually curated list of gene names compatible with MutSig covariates list.
+
+```{r, eval=TRUE}
+
+merged_maf.mutsig.corrected = merged_maf
+merged_maf.mutsig.corrected@data = prepareMutSig(maf = merged_maf.mutsig.corrected)
+
+write.mafSummary(merged_maf.mutsig.corrected, "~/rb_pipeline/results/mutsigcv/mutsigcv_merged_input")
+
+# Converting gene names for 1 variants from 1 genes
+#    Hugo_Symbol MutSig_Synonym N
+# 1:    ARHGAP35          GRLF1 1
+# Original symbols are preserved under column OG_Hugo_Symbol.
+```
+
+
+# References
+1.	Cancer Genome Atlas Research, N. Genomic and epigenomic landscapes of adult de novo acute myeloid leukemia. N Engl J Med 368, 2059-74 (2013).
+3.	Mermel, C.H. et al. GISTIC2.0 facilitates sensitive and confident localization of the targets of focal somatic copy-number alteration in human cancers. Genome Biol 12, R41 (2011).
+4.	Olshen, A.B., Venkatraman, E.S., Lucito, R. & Wigler, M. Circular binary segmentation for the analysis of array-based DNA copy number data. Biostatistics 5, 557-72 (2004).
+5.	Alexandrov, L.B. et al. Signatures of mutational processes in human cancer. Nature 500, 415-21 (2013).
+7.	Tamborero, D., Gonzalez-Perez, A. & Lopez-Bigas, N. OncodriveCLUST: exploiting the positional clustering of somatic mutations to identify cancer genes. Bioinformatics 29, 2238-44 (2013).
+8.	Dees, N.D. et al. MuSiC: identifying mutational significance in cancer genomes. Genome Res 22, 1589-98 (2012).
+9. Lawrence MS, Stojanov P, Mermel CH, Robinson JT, Garraway LA, Golub TR, Meyerson M, Gabriel SB, Lander ES, Getz G: Discovery and saturation analysis of cancer genes across 21 tumour types. Nature 2014, 505:495-501.
+10. Griffith, M., Griffith, O. L., Coffman, A. C., Weible, J. V., McMichael, J. F., Spies, N. C., … Wilson, R. K. (2013). DGIdb - Mining the druggable genome. Nature Methods, 10(12), 1209–1210. http://doi.org/10.1038/nmeth.2689
+11. Sanchez-Vega F, Mina M, Armenia J, Chatila WK, Luna A, La KC, Dimitriadoy S, Liu DL, Kantheti HS, Saghafinia S et al. 2018. Oncogenic Signaling Pathways in The Cancer Genome Atlas. Cell 173: 321-337 e310
+12.	Madan, V. et al. Comprehensive mutational analysis of primary and relapse acute promyelocytic leukemia. Leukemia 30, 1672-81 (2016).
+13.	Mroz, E.A. & Rocco, J.W. MATH, a novel measure of intratumor genetic heterogeneity, is high in poor-outcome classes of head and neck squamous cell carcinoma. Oral Oncol 49, 211-5 (2013).
+14. Roberts SA, Lawrence MS, Klimczak LJ, et al. An APOBEC Cytidine Deaminase Mutagenesis Pattern is Widespread in Human Cancers. Nature genetics. 2013;45(9):970-976. 
+15.	Gaujoux, R. & Seoighe, C. A flexible R package for nonnegative matrix factorization. BMC Bioinformatics 11, 367 (2010).
+16.	Welch, J.S. et al. The origin and evolution of mutations in acute myeloid leukemia. Cell 150, 264-78 (2012).
+17.	Ramos, A.H. et al. Oncotator: cancer variant annotation tool. Hum Mutat 36, E2423-9 (2015).
+18.	Wang, K., Li, M. & Hakonarson, H. ANNOVAR: functional annotation of genetic variants from high-throughput sequencing data. Nucleic Acids Res 38, e164 (2010).
+19. Lawrence MS, Stojanov P, Polak P, Kryukov GV, Cibulskis K, Sivachenko A, Carter SL, Stewart C, Mermel CH, Roberts SA, et al: Mutational heterogeneity in cancer and the search for new cancer-associated genes. Nature 2013, 499:214-218.
+
+# Session Info
+```{r}
+sessionInfo()
+```
+

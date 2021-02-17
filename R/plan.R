@@ -1,13 +1,27 @@
 the_plan <-
   drake_plan(
     #static files
-    patients_in_study = read_csv(file_in("doc/dflow_output/table_01.csv")),
+    merged_maf_strelka2 = load_strelka_maf(),
+    filtered_merged_maf_strelka2 = maftools::subsetMaf(maf = merged_maf_strelka2, query = "FILTER == 'PASS'"),
+    
+    merged_maf_mutect2 = load_mutect2_maf(),
+    filtered_merged_maf_mutect2 = subsetMaf(maf = merged_maf_mutect2, query = "FILTER == '.'"),
+    
+    # merged_maf = maftools::merge_mafs(list(merged_maf_strelka2, merged_maf_mutect2)),
+    merged_maf = merge_mafs(list(filtered_merged_maf_strelka2, filtered_merged_maf_mutect2)),
+    
+    patients_in_study = read_csv(file_in("doc/dflow_output/table_s02.csv")),
     
     # drive_download("/cobrinik_lab/rb_exome/drafts/figure_description", "doc/figure_description.csv", overwrite = TRUE),
     # drive_download("/cobrinik_lab/rb_exome/drafts/table_description", "doc/table_description.csv", overwrite = TRUE),
      
     table_legends = read_csv(file_in("doc/table_description.csv")),
     figure_legends = read_csv(file_in("doc/figure_description.csv")),
+    
+    str_typing = read_csv(file_in("results/str_typing.csv")),
+    str_typing_out = save_and_annotate_table(str_typing, 
+                                                         file_out("doc/dflow_output/table_s08.csv"),
+                                                         table_legends),
     
     recoded_consequences = recode_variant_consequences(),
     formatted_recoded_consequences = format_consequences(recoded_consequences),
@@ -40,7 +54,7 @@ the_plan <-
     zhang_focal_scnas = load_zhang_focal_scnas(zhang_scnas),
     
     mcevoy_scnas = load_mcevoy_scnas("~/rb_pipeline/doc/RB_exome_manuscript/prior_studies/mcevoy_supp_info/tidy_format/individual_whole_chromosome_gains_and_losses_per_sample.csv"),
-    mcevoy_focal_scnas = load_mcevoy_focal_scnas(mcevoy_scnas),
+    mcevoy_focal_scnas = load_mcevoy_focal_scnas("doc/RB_exome_manuscript/prior_studies/mcevoy_supp_info/tidy_format/focal_gains_losses_in_retinoblastomas.csv"),
     
     kooi_scnas = load_kooi_scnas("~/rb_pipeline/doc/RB_exome_manuscript/prior_studies/rb_variants_kooi_supp_info/tidy_format/SCNA_segments_kooi.csv"),
     kooi_focal_scnas = load_kooi_focal_scnas(kooi_scnas),
@@ -71,8 +85,8 @@ the_plan <-
       kooi = kooi_scnas),
     
     all_study_focal_scna_list = list(
-      # zhang = focal_zhang_scnas, # exclude zhang 42 targeted seq samples
-      # mcevoy = focal_mcevoy_scnas, # exclude excessively shallow gain/loss in Mcevoy et al.
+      # zhang = zhang_focal_scnas, # exclude zhang 42 targeted seq samples
+      mcevoy = mcevoy_focal_scnas, # exclude excessively shallow gain/loss in Mcevoy et al.
       afshar = afshar_focal_scnas,
       kooi = kooi_focal_scnas,
       stachelek = stachelek_focal_scnas),
@@ -115,6 +129,9 @@ the_plan <-
     annotated_vc_snvs = parse_bamreadcount(vc_snvs) %>% 
       dplyr::mutate(hgvsc = HGVSc, hgvsp = HGVSp),
     
+    # maf_vars = maf_bamreadcount(filtered_merged_maf),
+    
+    
     browse_vc_snvs = format_snvs_for_vep_browse(annotated_vc_snvs),
     browse_vc_snvs_out = write_tsv(browse_vc_snvs, file_out("doc/dflow_output/browse_vc_snvs.csv")),
     
@@ -140,24 +157,30 @@ the_plan <-
                                                         table_legends),
     
     # sanger panels
+    # asterisk is "\uff0a"
     sanger_panels = read_csv("results/sanger_panels.csv") %>% 
       dplyr::filter(sanger_panel != "X") %>% 
-      dplyr::mutate(sanger_panel = "\uff0a"),
+      dplyr::mutate(sanger_panel = "\u25c6"),
     
     # prep vaf
+    # maf_vaf_plot_input = prep_maf_vaf_plot_input(filtered_merged_maf, sanger_panels),
+    
     vaf_plot_input = prep_vaf_plot_input(annotated_vc_snvs_w_consequences, sanger_panels),
     # vaf_plot_excluded = dplyr::anti_join()
     filtered_vaf_plot_input = filter_vaf_plot_input(vaf_plot_input),
     
     # make vaf plots
+    # maf_unfiltered_vaf_plots = plot_vaf(maf_vaf_plot_input, annotated_vc_snvs_w_consequences),
     unfiltered_vaf_plots = plot_vaf(vaf_plot_input, annotated_vc_snvs_w_consequences),
     filtered_vaf_plots = plot_vaf(filtered_vaf_plot_input, annotated_vc_snvs_w_consequences),
 
     # make all author variants table
     vep_api_out_prior_studies = vep_annotate(prior_study_snvs),
     noncoding_prior_study_snvs = process_vep_annotate_prior(vep_api_out_prior_studies, prior_study_snvs, recoded_consequences),
-    noncoding_all_study_snvs = compile_all_study_variants(noncoding_prior_study_snvs, filtered_vaf_plot_input) %>% 
-      select_coding_genes(), 
+    
+    # prior_studies_vcf = tbl2vcf(noncoding_prior_study_snvs),
+    
+    noncoding_all_study_snvs = compile_all_study_variants(noncoding_prior_study_snvs, filtered_vaf_plot_input), 
 
     # vep_api_out_all_studies = vep_annotate(noncoding_all_study_snvs),
     # noncoding_all_study_snvs0 = process_vep_annotate(vep_api_out_all_studies,noncoding_all_study_snvs),
@@ -203,6 +226,7 @@ the_plan <-
     
     # plot all study coverage
     all_study_snv_qc = prep_all_study_qc(noncoding_all_study_snvs),
+    anova_qc = run_qc_anova(all_study_snv_qc),
     all_study_snv_qc_plots = plot_all_study_qc(all_study_snv_qc),
     study_coverage_plots_out = save_and_annotate_patchwork(file_out("doc/dflow_output/fig_03.pdf"), 
                                                       all_study_snv_qc_plots, 
@@ -210,16 +234,21 @@ the_plan <-
                                                       str_width = 145,
                                                       height = 6, width = 16),
 
-    # #generate oncoprint
-    targeted_snvs = dplyr::filter(noncoding_all_study_snvs, study %in% c("Afshar et al.", "Gröbner et al.")) %>% 
-      dplyr::mutate(Consequence = dplyr::case_when(is.na(Consequence) ~ "unknown",
-                                                   TRUE ~ Consequence)),
+    # categorzie sequencing methods by 'ngs' or 'targeted'
     
-    targeted_oncoprint = generate_oncoprint(targeted_snvs),
-    ngs_snvs = dplyr::filter(noncoding_all_study_snvs, study %in% c("Kooi et al.", "Zhang et al.", "McEvoy et al.", "Stachelek et al.")) %>% 
-      dplyr::mutate(Consequence = dplyr::case_when(is.na(Consequence) ~ "unknown",
+    # #generate oncoprint
+    targeted_mutations = dplyr::filter(all_study_mutations, sequencing_format == "targeted") %>% 
+      dplyr::mutate(Consequence = dplyr::case_when(modality == "focal_scna" ~ "focal_scna",
+                                                   is.na(Consequence) ~ "unknown",
                                                    TRUE ~ Consequence)),
-    ngs_oncoprint = generate_oncoprint(ngs_snvs),
+    targeted_study_numbers = c("McEvoy" = 32, "Grobner" = 32, "Afshar" = 32),
+    targeted_oncoprint = generate_oncoprint(targeted_mutations, targeted_study_numbers),
+    ngs_mutations = dplyr::filter(all_study_mutations, sequencing_format == "ngs") %>% 
+      dplyr::mutate(Consequence = dplyr::case_when(modality == "focal_scna" ~ "focal_scna",
+                                                   is.na(Consequence) ~ "unknown",
+                                                   TRUE ~ Consequence)),
+    ngs_study_numbers = c( "Zhang" = 4, "McEvoy" = 10, "Kooi" = 71, "Stachelek" = 12),
+    ngs_oncoprint = generate_oncoprint(ngs_mutations, ngs_study_numbers),
 
     vaf_patchworks = assemble_vaf_patchworks(filtered_vaf_plots, unfiltered_vaf_plots),
     unfiltered_vaf_plot_out = save_and_annotate_patchwork(file_out("doc/dflow_output/fig_s03.pdf"), 
@@ -243,8 +272,12 @@ the_plan <-
                                                         height = 8, width = 10),
 
     # noncoding_webgestalt_input = all_study_snvs,
-    noncoding_webgestalt_input = noncoding_all_study_snvs,
-    coding_webgestalt_input = coding_all_study_snvs,
+    noncoding_webgestalt_input = noncoding_all_study_snvs %>% 
+      dplyr::filter(!study %in% c("Afshar et al.")) %>%
+      select_coding_genes(),
+    coding_webgestalt_input = coding_all_study_snvs %>% 
+      dplyr::filter(!study %in% c("Afshar et al.")) %>%
+      select_coding_genes(),
     
     noncoding_webgestalt_results = run_webgestalt(noncoding_webgestalt_input),
     noncoding_webgestalt_results_out = write_csv(noncoding_webgestalt_results, file_out("doc/dflow_output/webgestalt_output_noncoding.csv")),
@@ -278,6 +311,10 @@ the_plan <-
     displayed_ontologies_table_out = save_and_annotate_table(displayed_ontologies_table_minus_kooi, 
                                                              file_out("doc/dflow_output/table_03.csv"),
                                                              table_legends),
+    displayed_ontologies_table_word = format_ontologies_word(displayed_ontologies_table_minus_kooi),
+    displayed_ontologies_table_word_out = save_and_annotate_table(displayed_ontologies_table_word, 
+                                                             file_out("doc/dflow_output/table_03_word.csv"),
+                                                             table_legends),
     
     webgestalt_plots_minus_kooi = plot_webgestalt(displayed_ontologies_table_minus_kooi),
     webgestalt_patchwork_minus_kooi = combine_webgestalt_plots(webgestalt_plots_minus_kooi),
@@ -285,7 +322,7 @@ the_plan <-
                                                              webgestalt_patchwork_minus_kooi, 
                                                              figure_legends,
                                                              str_width = 150,
-                                                             width = 18, height = 10),
+                                                             width = 14, height = 8),
 
     # cell culture growth curves
     cell_culture_growth_curve_plots = plot_cell_culture_growth_curves(),
@@ -307,6 +344,7 @@ the_plan <-
     PAN2_out = write_csv(mutation_mapper_input[["PAN2"]], file_out("doc/dflow_output/PAN2_mutation_mapper_input.csv")),
     NAF1_out = write_csv(mutation_mapper_input[["NAF1"]], file_out("doc/dflow_output/NAF1_mutation_mapper_input.csv")),
     SAMD9_out = write_csv(mutation_mapper_input[["SAMD9"]], file_out("doc/dflow_output/SAMD9_mutation_mapper_input.csv")),
+    # p_recur = probability_of_recurrence()
     
     # SCNA and LOH heatmaps
     # SCNA_and_LOH_heatmaps = plot_vc_SCNA_and_LOH(),
@@ -319,6 +357,13 @@ the_plan <-
 
     # sanger sequenced variants
     # fs::file_copy(file_in("doc/RB_exome_manuscript/stachelek_supplemental/fig_s05.pdf"), file_out("doc/dflow_output/sanger_plots.pdf"), overwrite = TRUE),
+    
+    # maftools report
+    maftools_report = target(
+      command = {
+        rmarkdown::render(knitr_in("doc/dflow_output/maftools_analysis.Rmd"))
+        file_out("doc/dflow_output/maftools_analysis.html")
+      }),
     
     # #final report
     # target_name = target(

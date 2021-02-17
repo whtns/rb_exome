@@ -15,3 +15,5 @@ nohup.out
 **/doc/RB_exome_manuscript
 *.txt
 *.bed
+*.tsv
+*.docx

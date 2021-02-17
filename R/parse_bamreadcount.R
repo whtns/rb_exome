@@ -18,6 +18,7 @@ parse_bamreadcount <- function(vc_vars) {
     
     brc <- purrr::map(bamreadcounts, calc_AD) %>% 
         dplyr::bind_rows(.id = "sample_id") %>%
+        # dplyr::filter(af > 0) %>%
         dplyr::mutate(sample_id = stringr::str_remove(sample_id, "_.*")) %>%
         dplyr::mutate(sample_number = stringr::str_extract(sample_id, "[0-9]+")) %>%
         dplyr::distinct() %>%

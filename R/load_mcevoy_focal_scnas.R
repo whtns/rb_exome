@@ -3,29 +3,43 @@
 ##' .. content for \details{} ..
 ##'
 ##' @title
-##' @param mcevoy_scnas
+##' @param focal_scna_file
 
 ##' @return
 ##' @author whtns
 ##' @export
-load_mcevoy_focal_scnas <- function(mcevoy_scnas) {
+load_mcevoy_focal_scnas <- function(focal_scna_file) {
+    
+    mcevoy_focal_scnas <- read_csv(focal_scna_file) %>% 
+        mutate(start = loc_start, end = loc_end, seqnames = chrom) %>% 
+        plyranges::as_granges()
     
     txdb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
     
-    gene_marker_granges <- genes(txdb)[c('54880', '4613', '5925')]
-    names(gene_marker_granges) <- c("BCOR", "MYCN", "RB1")
+    mygenes <- GenomicFeatures::genes(txdb)
+    seqlevelsStyle(mygenes) <- "Ensembl"
     
-    seqlevelsStyle(gene_marker_granges) <- "Ensembl"
+    # keptseqlevels <- c(1:22, "X")
     
-    ## mcevoy scna
+    mysymbols = annotables::grch37 %>% 
+        dplyr::select(symbol, entrez) %>% 
+        dplyr::mutate(entrez = as.character(entrez))
     
-    mcevoy_scna <- 
-        mcevoy_scnas %>% 
-        dplyr::mutate(gene_id = case_when(seqnames == "2" ~ "4613",
-                                          seqnames == "13" ~ "5925",
-                                          seqnames == "X" ~ "54880")) %>% 
-        dplyr::filter((seqnames %in% c("X") & absolute_cn < 1.9) | (seqnames == "2" & absolute_cn > 3)) %>% 
-        dplyr::filter(!(seqnames == 2 & absolute_cn < 5)) %>% 
+    final_cols <- c("seqnames", "start", "end", "width", "strand", "id", "seg_mean", "copy_number" = "absolute_cn", "study", "sample", "gene_id")
+    
+    mcevoy_focal_scnas <- 
+        plyranges::find_overlaps(mcevoy_focal_scnas, 
+                                 mygenes) %>% 
+        as_tibble() %>% 
+        left_join(mysymbols, by = c("gene_id" = "entrez"))
+    
+    mcevoy_focal_scnas <- 
+        mcevoy_focal_scnas %>% 
+        dplyr::mutate(id = sample, study = "McEvoy et al.") %>% 
+        dplyr::filter(symbol %in% c("BCOR", "MYCN")) %>% 
+        dplyr::select(all_of(final_cols)) %>%
+        dplyr::mutate(sequencing_format = "targeted") %>% 
+        # dplyr::filter(!str_detect(id, "UPEN")) %>% 
         identity()
 
 }

@@ -48,7 +48,6 @@ loadd(all_study_snv_qc)
 
 
 ```{r}
-
 n_samples <- 
 all_study_snv_qc$vars_per_study %>% 
   dplyr::distinct(sample_set, sample) %>% 
@@ -61,24 +60,49 @@ n_samples %>%
   dplyr::filter(!str_detect(sample_set, "Stachelek|Afshar")) %>% 
   identity()
 
-ngs_mutations <- 
-  prior_study_mutations %>% 
-  dplyr::filter(!study %in% c("Afshar et al.", "Grobner et al."))
+# ngs_mutations <- 
+#   prior_study_mutations %>% 
+#   dplyr::filter(!study %in% c("Afshar et al.", "Grobner et al."))
 
-n_BCOR <- 
+loadd(ngs_mutations)
+
+n_BCOR_all <- 
   ngs_mutations %>% 
   dplyr::filter(gene == "BCOR") %>% 
+  dplyr::filter(!str_detect(sample, "-CL")) %>% 
   dplyr::distinct(sample, .keep_all = TRUE) %>% 
-  nrow() %>% 
+  # nrow() %>% 
   identity()
 
-n_CREBBP <- 
+n_CREBBP_all <- 
   ngs_mutations %>% 
   dplyr::filter(gene == "CREBBP") %>% 
   dplyr::distinct(sample) %>%
   nrow() %>% 
   identity()
 
+prior_ngs_mutations <- 
+  ngs_mutations %>% 
+  dplyr::filter(!str_detect(study, "Stachelek"))
+
+n_BCOR_prior <- 
+  prior_ngs_mutations %>% 
+  dplyr::filter(gene == "BCOR") %>% 
+  dplyr::filter(!str_detect(sample, "-CL")) %>% 
+  dplyr::distinct(sample, .keep_all = TRUE) %>% 
+  nrow() %>% 
+  identity()
+
+n_CREBBP_prior <- 
+  prior_ngs_mutations %>% 
+  dplyr::filter(gene == "CREBBP") %>% 
+  dplyr::distinct(sample) %>%
+  nrow() %>% 
+  identity()
+```
+
+
+```{r}
 prior_ngs_snvs <- 
   prior_study_snvs %>% 
   dplyr::filter(!study == "Afshar et al.")
@@ -143,17 +167,23 @@ stachelek_filtered_variants <-
                                        grepl("N", sample) ~ "Normal")) %>% 
   identity()
 
+stachelek_filtered_cell_line_variants <- 
+  stachelek_filtered_variants %>% 
+  dplyr::filter(str_detect(sample, "-CL")) %>%
+  dplyr::distinct(sample, chr, start, end, ref, alt) %>% 
+  dplyr::group_by(sample) %>%
+  dplyr::count() %>% 
+  tibble::deframe()
+
 stachelek_filtered_cell_line_only_variants <- 
   stachelek_filtered_variants %>% 
   dplyr::group_by(chr, start, end) %>% 
   dplyr::filter(!any(str_detect(sample, "T"))) %>% 
-  identity()
-
-stachelek_filtered_cell_line_variants <- 
-  stachelek_filtered_variants %>% 
-  dplyr::filter(str_detect(sample, "-CL")) %>%
+  dplyr::distinct(sample, chr, start, end, ref, alt) %>% 
   dplyr::group_by(sample) %>%
-  dplyr::count()
+  dplyr::count() %>% 
+  tibble::deframe() %>% 
+  identity()
 
 stachelek_filtered_tumor_variants <- 
   stachelek_filtered_variants %>% 
@@ -173,23 +203,26 @@ filtered_circle_ids <-
 
 ```{r}
 
-glue("In addition to recurrent SCNAs, whole genome or exome sequencing of {sum(n_ngs_samples$n)} treatment-naïve retinoblastomas revealed pathogenic mutation or focal deletion of BCOR in {n_BCOR}, CREBBP variants in {english(n_CREBBP)}, and potentially pathogenic variants of {nrow(private_prior_ngs_snvs)} genes thus far reported for only one sample")
+glue("Additionally, whole genome or exome sequencing of {sum(n_ngs_samples$n)} treatment-naïve retinoblastomas revealed pathogenic mutation or focal deletion of BCOR in {n_BCOR_prior}, CREBBP variants in {english(n_CREBBP_prior)}, and somatic variants of {nrow(private_prior_ngs_snvs)} genes thus far reported for only one sample")
 
 
 
 ```
 
 ```{r}
-glue("Past whole exome or whole genome sequencing of {sum(n_ngs_samples$n)} treatment-naïve retinoblastomas revealed recurrent secondary mutations or focal deletion in BCOR in ({n_BCOR}) and CREBBP (in {n_CREBBP}) (Supplementary Table S9), and {nrow(private_prior_ngs_snvs)} potentially pathogenic private somatic mutations ")
+glue("Past WES/WGS of {sum(n_ngs_samples$n)} treatment-naïve retinoblastomas revealed recurrent secondary mutations or focal deletion in BCOR (in {n_BCOR_prior}) and CREBBP (in {n_CREBBP_prior}) (Supplementary Table S9), and {nrow(private_prior_ngs_snvs)} private somatic mutations ")
 
 ```
 
 
 
 ```{r}
+glue("Retention of such variants yielded a total of {sum(stachelek_filtered_tumor_variants)} somatic mutations in 12 tumors (mean {round(mean(stachelek_filtered_tumor_variants), 2)}; median {round(median(stachelek_filtered_tumor_variants), 2)}) (Fig. 4A, circled symbols)")
+```
 
-glue("Filtering such variants revealed a total of {sum(stachelek_filtered_tumor_variants)} somatic mutations in 12 tumors (mean {round(mean(stachelek_filtered_tumor_variants), 2)}; median {round(median(stachelek_filtered_tumor_variants), 2)}), of which {english(nrow(filtered_circle_ids$positive))} were subclonal variants detected based on their enrichment and detection in a matched cell line")
 
+```{r}
+glue("of which {english(nrow(filtered_circle_ids$positive))} were subclonal variants detected based on their enrichment and detection in a matched cell line")
 
 ```
 
@@ -220,17 +253,19 @@ BCOR33_vaf <- dplyr::filter(stachelek_filtered_variants, gene == "BCOR", alt == 
 ```
 
 ```{r, eval = TRUE}
-
-glue("Among the {sum(stachelek_filtered_tumor_variants)} somatic variants detected in the 12 tumors, five were in four genes in which mutations were detected in prior retinoblastoma exome or genome sequencing, including BCOR in two samples and PAN2, NAF1, and SAMD9 in one sample each (Table S1, Fig 4C).")
-
-glue("Each was present at subclonal levels in tumors and their VAFs either increased or decreased during cell line establishment (Fig. 4). Specifically, in CHLA-VC-RB29, the PAN2 G794A VAF increased from {PAN2_vaf[[2]]} to {PAN2_vaf[[1]]} indicative of clonal selection (Fig. 4). In CHLA-VC-RB43, the SAMD9 P635S VAF increased from {SAMD9_vaf[[2]]} to {SAMD9_vaf[[1]]}, remaining subclonal but enriched. In contrast, CHLA-VC-RB24 the NAF1 R255Q VAF decreased from {NAF1_vaf} in T24 to undetected in CL24, and in CHLA-VC-RB28 the BCOR R1400IfsX12 VAF declined from {BCOR28_vaf} in T28 to undetected in CL28 (Fig. 4A), consistent with the cell lines’ derivation from subclones that lacked SCNAs that were prominent in the respective tumors (Fig. 2A). Finally, in CHLA-VC-RB33, BCOR G756X VAF declined from {BCOR33_vaf[[2]]} to {BCOR33_vaf[[1]]}, indicating partial selection against the BCOR G756X-containing cells (Fig. 4A). The decreased NAF1 and BCOR VAFs in tumor-derived cell lines implied a lack of selection for these variants during cell line establishment.")
-
-glue("Among the {nrow(stachelek_filtered_cell_line_only_variants)} potentially pathogenic somatic variants detected only in cell lines, only one (ATM) was in a gene  in which variants had been detected in prior retinoblastoma sequencing. When combined with re-analyses of past whole exome or genome sequencing, our detection of PAN2, NAF1, and SAMD9, recognition of recurrent alterations in CLIP2, and prior recognition of recurrent changes in HRG, MGA, and ARID1A, gives a total of {length(all_recurrent)} recurrently altered genes (Fig. 4C).") 
-     
-glue("The {english(n_distinct(recurrent_ngs_genes))} recurrently altered genes identified by whole exome or whole genome sequencing is significantly more than the n# of recurrences expected by chance among {nrow(all_ngs_snvs)} variants identified in WGS/WES studies.")
-
-
+glue("Among the {sum(stachelek_filtered_tumor_variants)} somatic variants detected in the 12 tumors, five were in four genes in which mutations were detected in prior retinoblastoma exome or genome sequencing, including BCOR in two samples and PAN2, NAF1, and SAMD9 in one sample each (Table S1, Fig 5).")
 ```
+
+
+```{r, eval = TRUE}
+glue("the {sum(stachelek_filtered_tumor_variants)} somatic variants detected in CHLA-VC-RB tumors affected genes that were mutated in at least one other retinoblastoma sample. Indeed, five of the variants were in four genes in which mutations were detected in prior retinoblastoma exome or genome sequencing, including BCOR in two samples and PAN2, NAF1, and SAMD9 in one sample each (Table S1, Fig 5A). Each was present at subclonal levels in tumors and their VAFs either increased or decreased during cell line establishment (Fig. 4). In CHLA-VC-RB29, the PAN2 G794A VAF increased from {PAN2_vaf[[2]]} to {PAN2_vaf[[1]]} in initial cultures and similarly increased to ~ 0.50 (determined by Sanger sequencing) in explanted xenografts indicative of clonal selection, whereas in CHLA-VC-RB43, the SAMD9 P635S VAF increased from {SAMD9_vaf[[2]]} to {SAMD9_vaf[[1]]}, remaining subclonal but enriched (Fig. 4A). In contrast, the NAF1 R255Q VAF decreased from {NAF1_vaf} in T24 to undetected in CL24, and the BCOR R1400IfsX12 VAF declined from {BCOR28_vaf} in T28 to undetected in CL28 (Fig. 4B), consistent with the derivation of these cell lines from subclones that lacked SCNAs that were prominent in their respective tumors (Fig. 2A). Finally, in CHLA-VC-RB33, BCOR G756X VAF declined from {BCOR33_vaf[[2]]} to {BCOR33_vaf[[1]]} (Fig. 4B). The decreased VAFs of the NAF1 and two BCOR variants implied a lack of selection for these variants during cell line establishment")
+```
+
+
+```{r, eval = TRUE}
+glue("Among the {sum(stachelek_filtered_cell_line_only_variants)} somatic variants detected only in CHLA-VC-RB cell lines, only one (ATM) was in a gene in which variants had been detected in prior retinoblastoma sequencing.")
+```
+
 
 ```{r}
 
@@ -251,6 +286,12 @@ reynolds_mutations <- list(snv = reynolds_snv
   dplyr::bind_rows(.id = "modality") %>%
   identity()
 
+reynolds_variants_per_sample <- 
+  reynolds_snv %>% 
+  dplyr::group_by(sample) %>% 
+  dplyr::count() %>% 
+  tibble::deframe()
+
 recurrent_reynolds_mutations <-
   reynolds_mutations %>%
   dplyr::filter(SYMBOL %in% prior_study_snvs$gene) %>%
@@ -270,18 +311,46 @@ previously_recurrent_snvs <-
 
 ```
 
-```{r, eval = FALSE}
+```{r, eval = TRUE}
+glue("In the 15 CHLA-RB cell lines we detected novel variants in {n_distinct(reynolds_mutations$Gene)} genes (mean 28 per sample) (Table S7), a higher number than for the CHLA-VC-RB cell lines likely reflecting the lack of filtering of private germline polymorphisms. The mutations affected BCOR, CREBBP and 11 other genes that were also mutated in other sequenced retinoblastoma samples and are thus candidate recurrent tumor variants (Table S7)")
+```
 
-glue("Gene variants detected in 15 CHLA-RB cell lines included potentially pathogenic mutations in {n_distinct(reynolds_mutations$Gene)} genes (mean {round(n_distinct(reynolds_snv$Gene)/15)} per sample), a higher number than for the CHLA-VC-RB cell lines likely reflecting the lack of filtering of private germline polymorphisms. The mutations affected BCOR, CREBBP and {n_distinct(recurrent_reynolds_mutations$Gene)} other genes that were mutated in other sequenced retinoblastoma samples and are candidate recurrent tumor variants (Supplementary Table S1009)")
+
+```{r, eval = TRUE}
+glue("The {english(n_distinct(recurrent_ngs_genes))} recurrently altered genes identified by whole exome or whole genome sequencing is significantly more than the n# of recurrences expected by chance among {nrow(all_ngs_snvs)} variants identified in 97 reported retinoblastoma sequences.")
+
+
 ```
 
 ```{r}
 
-glue("This approach identified {sum(stachelek_filtered_tumor_variants)} potentially pathogenic nucleotide variants (mean {round(mean(stachelek_filtered_tumor_variants),2)} per tumor, including {nrow(filtered_circle_ids$positive)} variants that were detected by variant callers only in tumor-derived cell lines and subsequently identified in their matched tumors (Fig. 4). The findings are consistent with the low mutation rate (0.0646/Mb) and low numbers of potentially pathogenic somatic variants besides RB1 in prior studies ")
+glue("Gene variants detected in 15 CHLA-RB cell lines included potentially pathogenic mutations in {n_distinct(reynolds_mutations$Gene)} genes (mean {round(mean(reynolds_variants_per_sample), 2)} per sample), a higher number than for the CHLA-VC-RB cell lines likely reflecting the lack of filtering of private germline polymorphisms. The mutations affected BCOR, CREBBP and {n_distinct(recurrent_reynolds_mutations$Gene)} other genes that were mutated in other sequenced retinoblastoma samples and are candidate recurrent tumor variants (Supplementary Table S7)")
 ```
 
 ```{r}
-glue("Similarly, this approach revealed {sum(stachelek_filtered_tumor_variants)} mutations in the 12 cell lines (mean: {round(mean(stachelek_filtered_tumor_variants), 2)}; median: {round(median(stachelek_filtered_tumor_variants))}), of which one was identified based on its initial detection in the originating tumor  (Fig. 4A, B, Table S4) and of which 17 were detected in cell lines as well as matched tumors.")
+
+glue("This approach identified {sum(stachelek_filtered_tumor_variants)} potentially pathogenic nucleotide variants (mean {round(mean(stachelek_filtered_tumor_variants),2)}) per tumor, including {nrow(filtered_circle_ids$positive)} variants that were detected by variant callers only in tumor-derived cell lines and subsequently identified in their matched tumors (Fig. 4). The findings are consistent with the low mutation rate (0.0646/Mb) and low numbers of potentially pathogenic somatic variants besides RB1 in prior studies ")
+```
+
+```{r}
+num_vars_cl_only <- sum(stachelek_filtered_cell_line_only_variants)
+
+num_vars_cl <- sum(stachelek_filtered_cell_line_variants)
+
+num_vars_cl_t <- num_vars_cl - sum(stachelek_filtered_cell_line_only_variants)
+
+num_vars_t <- sum(stachelek_filtered_tumor_variants)
+
+cell_line_retention_percentage <- 
+  percent(num_vars_cl_only/sum(stachelek_filtered_cell_line_variants))
+
+cl_in_t_percentage <- 
+  percent(num_vars_cl_t/num_vars_t)
+
+t_in_cl_percentage <- 
+  percent(num_vars_cl_t/num_vars_cl)
+
+glue("Similarly, this approach revealed {sum(stachelek_filtered_cell_line_variants)} mutations in the 12 cell lines (mean: {round(mean(stachelek_filtered_cell_line_variants), 2)}; median: {round(median(stachelek_filtered_cell_line_variants))}), of which one was identified based on its initial detection in the originating tumor  (Fig. 4A, B, Table S4) and of which {num_vars_cl_t} were detected in matched tumors. Thus, {num_vars_cl_t}/{num_vars_t} ({cl_in_t_percentage}) of SNVs detected in tumors were retained in cell lines whereas {num_vars_cl_t}/{sum(stachelek_filtered_cell_line_variants)} ({t_in_cl_percentage}) of mutations detected in cell lines had detectable antecedents in their primary tumors.")
 
 ```
 
@@ -322,7 +391,7 @@ labeled_vars <-
 ```{r}
 
 glue("To mitigate effects of highly recurrently altered genes such as BCOR, the most significant ontologies were identfied by inputting each gene name once, whereas p values and false discovery rates were determined by counting all variants separately. All together, we performed over-representation analysis separately for the {labeled_vars$nonsynonymous} variants affecting protein amino acid sequences, including non-synonymous substitution, frameshift, and splice site variants, and for all {nrow(labeled_vars_df)} exomic variants, including {labeled_vars$synonymous} synonymous and {labeled_vars$UTR} UTR sequences of protein coding genes. 
-These analyses revealed enrichment for ontology terms with FDR <0.05 related to mitotic sister chromatid segregation, ribonucleoprotein (RNP) complex assembly, several RNP assembly related terms, and covalent chromatin modification")
+These over-representation analyses revealed enrichment for ontology terms with FDR <0.05 related to mitotic sister chromatid segregation, ribonucleoprotein (RNP) complex assembly or biogenesis, mRNA processing (P) body assembly, and covalent chromatin modification")
 
 ```
 

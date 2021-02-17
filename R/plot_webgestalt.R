@@ -10,15 +10,16 @@
 plot_webgestalt <- function(webgestalt_results) {
     
     make_volcano_plot <- function(webgestalt_results, showpath = TRUE, ...) {
-        # browser()
+        browser()
         
         mytheme <- theme_classic(base_size = 20)
         
         webgestalt_results <- 
             webgestalt_results %>% 
             dplyr::mutate(neglogFDR = -log10(FDR)) %>% 
-            dplyr::mutate(description = str_wrap(description, 20)) %>%
-            dplyr::mutate(description = paste0(description, "\n", geneSet))
+            dplyr::mutate(description = str_wrap(description, 16)) %>%
+            dplyr::mutate(description = paste0(description, "\n", geneSet)) %>% 
+            dplyr::arrange(geneSet, desc(variants))
         
         label_data <- webgestalt_results %>% 
             dplyr::group_by(geneSet) %>% 
@@ -42,7 +43,7 @@ plot_webgestalt <- function(webgestalt_results) {
                                  y = neglogFDR,
                                  label = description
                              ),
-                             size = 6,
+                             size = 3.5,
                              min.segment.length = 0.2,
                              segment.alpha = 1,
                              point.padding = 8e-1,
@@ -79,13 +80,13 @@ plot_webgestalt <- function(webgestalt_results) {
         theme(legend.position = c(0.5, 0.8),
               legend.background = element_rect(color = "black", linetype="dashed")) +
         # theme(legend.background = element_rect(color = "black", linetype="dashed")) +
-        scale_y_continuous(limits = c(0, 10), breaks = 0:10, minor_breaks = seq(0, 10, 0.5))
+        scale_y_continuous(limits = c(0, 10), breaks = 0:10, minor_breaks = seq(0, 10, 0.5), expand = expansion(add = 0.5))
     
     cell_line_volcano_plot <-
         cell_line_genesets %>% 
         make_volcano_plot(showpath = TRUE) + 
         scale_x_continuous(breaks = seq(20, 120, by = 20), limits = c(20, 120)) +
-        scale_y_continuous(limits = c(0, 5), breaks = 0:5, minor_breaks = seq(0, 5, 0.5)) +
+        scale_y_continuous(limits = c(0, 5), breaks = 0:5, minor_breaks = seq(0, 5, 0.5), expand = expansion(add = 0.5)) +
         guides(color=FALSE) +
         NULL
     
