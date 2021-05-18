@@ -276,11 +276,11 @@ mutect2_tn_tidy <- function(my_vcf){
     addf = as_tibble(VariantAnnotation::geno(evcf)$AD) %>%
       dplyr::select(AD.TUMOR.1 = matches("*CL_1.1|*T_1.1"), AD.TUMOR.2 = matches("*CL_1.2|*T_1.2"), AD.NORMAL.1 = matches("*N_1.1"), AD.NORMAL.2 = matches("*N_1.2")) %>%
       # set_names(c("AD.NORMAL.1", "AD.TUMOR.1", "AD.NORMAL.2", "AD.TUMOR.2")) %>%
-      map_df(as.numeric),
+      map_df(as.numeric)
     
-    filterdf = fixed(evcf) %>% 
-      as_tibble() %>% 
-      mutate(across(everything(), as.character))
+    # filterdf = fixed(evcf) %>% 
+    #   as_tibble() %>% 
+    #   mutate(across(everything(), as.character))
     
     
     # gnomad = as_tibble(as.numeric(info(evcf)$gnomad_AF)) %>%
@@ -325,11 +325,11 @@ mutect2_pon_tidy <- function(my_vcf){
     
     addf = as_tibble(VariantAnnotation::geno(evcf)$AD) %>%
       set_names(c("AD.NORMAL.1", "AD.NORMAL.2")) %>%
-      map_df(as.numeric),
+      map_df(as.numeric)
     
-    filterdf = fixed(evcf) %>% 
-      as_tibble() %>% 
-      mutate(across(everything(), as.character))
+    # filterdf = fixed(evcf) %>% 
+    #   as_tibble() %>% 
+    #   mutate(across(everything(), as.character))
     
   )
   
@@ -548,33 +548,6 @@ split_ad <- function(df){
     dplyr::mutate(alt_depth = as.numeric(as.character(alt_depth)))
 }
 
-combine_ad <- function(df){
-  df <- 
-    df %>% 
-    dplyr::mutate(alt_depths = paste0(alt, ": ", alt_depth)) %>%
-    dplyr::group_by(sample_id, seqnames, start) %>%
-    dplyr::mutate(alt_depths = paste0(alt_depths, collapse = "; ")) %>%
-    identity()
-}
-
-calc_AD <- function(readcount_df){
-  readcount_df <- 
-    readcount_df %>% 
-    tidyr::gather(one_of(paste0("V", seq(6,20))), key = "allele", value = "allele_info") %>% 
-    tidyr::separate(allele_info, into = c("alt", "alt_info"), sep = ":") %>%
-    dplyr::rename(seqnames = V1, start = V2, ref = V3, read_depth = V4, ref_info = V5) %>%
-    dplyr::mutate(alt_info = stringr::str_remove(alt_info, "^:")) %>%
-    tidyr::separate(alt_info, into = c("alt_depth", "alt_info"), sep = ":.*") %>%
-    dplyr::mutate_at(c("alt_depth", "read_depth"), .funs=funs(as.numeric(as.character(.)))) %>%
-    dplyr::select(-allele, -alt_info, -ref_info) %>%
-    dplyr::mutate(af = alt_depth / read_depth) %>%
-    dplyr::arrange(seqnames, start, desc(af)) %>%
-    dplyr::mutate(start = as.factor(start)) %>%
-    dplyr::filter(af > 0) %>%
-    dplyr::select(-af) %>% 
-    identity()
-}
-
 calc_AD2 <- function(readcount_df){
   readcount_df <- 
     readcount_df %>% 
@@ -616,7 +589,7 @@ make_vaf_plot <- function(vaf_df){
     # labs(title = 'Variant Allele Frequeny (VAF) at Called Sites', ylab = "VAF", xlab = NULL) +
     theme_cowplot(12) +
     theme(panel.grid.major.y = element_line(colour = "grey95", linetype = "dashed", size = 0.2)) +
-    theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+    theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1, size = rel(2))) +
     ylim(0, 1.0) + 
     coord_flip() +
     paletteer::scale_color_paletteer_d("ggsci::default_igv") +
@@ -672,9 +645,11 @@ make_heatmap_input <- function(vaf_input) {
   
 }
 
-make_heatmap_plot <- function(vaf_input) {
+make_heatmap_plot <- function(vaf_input, ...) {
   
-  browser()
+  mytheme <- theme_cowplot(...)
+  
+  # browser()
   heatmap_input <- make_heatmap_input(vaf_input) %>% 
     dplyr::mutate(id = factor(id, levels = c("normal", "tumor", "cell_line")))
   # browser()
@@ -687,25 +662,30 @@ make_heatmap_plot <- function(vaf_input) {
   
   p1 <- ggplot(heatmap_input, aes(id, snp_id)) + 
     geom_tile(aes(fill = af)) + 
-    scale_fill_gradient(low = "white", high = "steelblue") +
-    theme_cowplot(12) +
+    scale_fill_gradient(low = "white", high = "steelblue", limits = c(-0.1,1)) +
+    mytheme + 
     theme(legend.position = "none",
-          plot.margin = unit(c(0.5, 0, 0.5, 0), "cm"),
-          axis.text.y = element_text(hjust = 1)) +
+          plot.margin = unit(c(0.5, 0, 0.5, 1), "cm"),
+          axis.text.y = element_text(hjust = 1),
+          axis.title.y = element_text(vjust = 6, size = rel(1.2))) +
     scale_x_discrete(labels=c("normal" = "N",
                               "tumor" = "T", 
                               "cell_line" = "CL")) + 
     scale_y_discrete(labels = graph_label) + 
-    labs(x = 'Type', y = "Protein:Consequence") +
+    labs(x = 'Type', y = "Protein Consequence") +
     NULL
   
   p2 <- make_vaf_plot(vaf_input) +
+    mytheme + 
     theme(axis.text.y = element_blank(),
           axis.ticks.y = element_blank(),
           axis.title.y = element_blank(),
-          plot.margin = unit(c(0.5, 0, 0.5, 0), "cm"))
+          axis.title.x = element_text(size = rel(1.2)),
+          axis.text.x = element_text(size = rel(1.2)),
+          plot.margin = unit(c(0.5, 0, 0.5, 0), "cm"),
+          legend.position = c(0.7,0.6))
   
-  p3 <- cowplot::plot_grid(p1, p2, align = "h", axis = "b", rel_widths = c(1, 2))
+  p3 <- cowplot::plot_grid(p1, p2, align = "h", axis = "b", rel_widths = c(1, 1.4))
 }
 
 # new
@@ -1150,3 +1130,4 @@ vaf_plot_fisher_test <- function(initial_vaf_plot_input){
   
   return(fisher_final_results)
 }
+

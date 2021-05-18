@@ -24,7 +24,7 @@ load_kooi_scnas <- function(kooi_scna_path) {
                                         TRUE ~ as.character(chrom))) %>% 
         dplyr::rename(seqnames = chrom, start = loc_start, end = loc_end) %>%
         dplyr::mutate(copy_number = 2*2^(seg_mean), study = "Kooi et al.", sample = id) %>%
-        dplyr::filter(seqnames %in% rb_scna_seqnames & (copy_number < 1.0 | copy_number > 3)) %>% 
+        dplyr::filter(seqnames %in% rb_scna_seqnames & (copy_number < 1.16 | copy_number > 3)) %>% 
         # dplyr::filter(!(seqnames == 2 & copy_number < 5)) %>% 
         identity()
     

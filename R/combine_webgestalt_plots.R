@@ -10,7 +10,7 @@
 combine_webgestalt_plots <- function(webgestalt_plots) {
 
     spaced_plot = (plot_spacer() / webgestalt_plots[[2]]) +
-        plot_layout(ncol=1, heights=c(0.65,1))
+        plot_layout(ncol=1, heights=c(1, 1))
     
     tumor_cell_line_volcano <- 
         (webgestalt_plots[[1]] + spaced_plot) +

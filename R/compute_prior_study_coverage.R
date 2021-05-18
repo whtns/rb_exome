@@ -57,6 +57,7 @@ compute_prior_study_coverage <- function(studies){
         read_csv() %>% 
         dplyr::mutate(sample_type = dplyr::case_when(`Germline/Diagnosis` == "G" ~ "Normal",
                                                      `Germline/Diagnosis` == "D" ~ "Tumor")) %>%
+        dplyr::filter(sample_type != "Normal") %>% 
         dplyr::group_by(sample_type) %>% 
         dplyr::summarize(mean_coverage = mean(`Exon Coverage`),
                          median_coverage = median(`Exon Coverage`),
@@ -84,13 +85,22 @@ compute_prior_study_coverage <- function(studies){
         dplyr::mutate(sample_type = "Tumor", sequencing_type = "Targeted Sequencing") %>% 
         identity()
     
+    francis_coverage <- 
+        tibble::tribble(
+            ~num_samples, ~sample_type, ~sequencing_type,
+            83, "Tumor", "Targeted Sequencing"
+        )
+    
+    
+    
     # all study coverage ------------------------------
     prior_study_coverage <- list(
         "Kooi et al." = kooi_coverage,
         # "Gröbner et al." = grobner_coverage,
         "Zhang et al." = zhang_coverage,
         "McEvoy et al." = mcevoy_coverage,
-        "Afshar et al." = afshar_coverage
+        "Afshar et al." = afshar_coverage,
+        "Francis et al." = francis_coverage
     ) %>%
         dplyr::bind_rows(.id = "study")
     

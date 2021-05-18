@@ -7,8 +7,16 @@
 ##' @return
 ##' @author whtns
 ##' @export
-load_zhang_vars <- function(vars_file = "doc/RB_exome_manuscript/prior_studies/zhang_supp_info/tidy_format/variant_summary.csv") {
+load_zhang_vars <- function() {
 
+    # excel_path <- "doc/RB_exome_manuscript/prior_studies/zhang_supp_info/original_format/Sup. Table 7.xls"
+    # 
+    # df <- excel_path %>%
+    #     excel_sheets() %>%
+    #     set_names() %>%
+    #     map(read_excel, path = excel_path)
+    
+    vars_file = "doc/RB_exome_manuscript/prior_studies/zhang_supp_info/tidy_format/variant_summary.csv"
     zhang_table = vars_file %>% 
         read_csv()
     

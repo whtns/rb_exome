@@ -100,7 +100,7 @@ plot_stachelek_coverage <- function(stachelek_coverage, all_study_snvs) {
     combined_plot <- 
         patchwork::wrap_plots(out_plots, design = design) +
         plot_annotation(tag_levels = 'A') & 
-        theme(plot.tag = element_text(size = 20))
+        theme(plot.tag = element_text(size = 24))
     
     return(combined_plot)
     # combined_plot <- 

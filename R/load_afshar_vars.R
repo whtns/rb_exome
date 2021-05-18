@@ -7,8 +7,9 @@
 ##' @return
 ##' @author whtns
 ##' @export
-load_afshar_vars <- function(var_file = "doc/RB_exome_manuscript/prior_studies/afshar_supp_info/s2.tsv") {
+load_afshar_vars <- function() {
 
+    var_file = "doc/RB_exome_manuscript/prior_studies/afshar_supp_info/s2.tsv"
     afshar_table <- var_file %>% 
         read_tsv()
     
@@ -16,7 +17,7 @@ load_afshar_vars <- function(var_file = "doc/RB_exome_manuscript/prior_studies/a
     afshar_treatment_status <- 
         "doc/RB_exome_manuscript/prior_studies/afshar_supp_info/afshar_treatment_status.csv" %>% 
         read_csv() %>% 
-        dplyr::filter(treatment_status == "dx") %>%
+        # dplyr::filter(treatment_status == "dx") %>%
         identity()
     
     afshar_vars <- 

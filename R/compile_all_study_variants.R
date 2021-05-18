@@ -24,6 +24,7 @@ compile_all_study_variants <- function(prior_study_snvs_table, filtered_vaf_plot
         # dplyr::mutate(across(all_of(c("start", "end")), as.numeric)) %>%
         dplyr::mutate(study = "Stachelek et al.") %>%
         dplyr::distinct() %>%
+        dplyr::filter(naive_alt_depth > 2) %>% 
         identity()
     
     

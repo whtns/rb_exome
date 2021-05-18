@@ -11,6 +11,12 @@
 ##' @export
 compile_all_study_coverage <- function(stachelek_coverage, prior_study_coverage, all_study_snvs) {
     browser()
+    
+    study_numbers <- c( "Zhang et al." = 4, "McEvoy et al." = 10, 
+                        "Kooi et al." = 71,
+                        "Stachelek et al." = 24, "Afshar et al." = 32) %>% 
+        tibble::enframe("study", "sample_number")
+    
     vaf_per_study <- 
         all_study_snvs %>% 
         dplyr::mutate(sample_type = dplyr::case_when(str_detect(sample, "-CL") ~ "Cell Line",
@@ -24,7 +30,26 @@ compile_all_study_coverage <- function(stachelek_coverage, prior_study_coverage,
                                                      TRUE ~ "Tumor")) %>% 
         dplyr::group_by(study, sample_type, sample) %>% 
         dplyr::count() %>% 
-        dplyr::group_by(study, sample_type) %>% 
+        dplyr::group_by(study, sample_type)
+    
+    rows_to_add <- 
+        vars_per_study %>% 
+        group_by(study) %>%
+        summarise(count = dplyr::n()) %>% 
+        dplyr::left_join(study_numbers, by = "study") %>%
+        dplyr::mutate(zerod_samples = sample_number - count) %>% 
+        dplyr::select(study, zerod_samples) %>% 
+        dplyr::filter(zerod_samples > 0) %>%
+        group_by(study) %>% 
+        dplyr::mutate(sample = list(stringi::stri_rand_strings(zerod_samples, 5))) %>%
+        tidyr::unnest(sample) %>% 
+        dplyr::mutate(n = 0) %>% 
+        dplyr::select(-zerod_samples) %>%
+        dplyr::mutate(sample_type = "Tumor") %>% 
+        identity()
+    
+    vars_per_study <- 
+        dplyr::bind_rows(vars_per_study, rows_to_add) %>% 
         dplyr::summarize(mean_var = mean(n), median_var = median(n), stdev_var = sd(n))
     
     var_vaf_per_study <- dplyr::left_join(vaf_per_study, vars_per_study, by  = c("study", "sample_type"))

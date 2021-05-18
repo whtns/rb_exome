@@ -14,5 +14,7 @@ compile_reynolds_scna <- function() {
     
     seg_granges <- collate_scna_segments("reynolds", segmentation_files, as_grange = TRUE)
     
+    seg_granges <- purrr::map(seg_granges, dropSeqlevels, "chrY", pruning.mode = "coarse")
+    
 
 }

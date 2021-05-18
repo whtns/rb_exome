@@ -7,7 +7,7 @@
 ##' @return
 ##' @author whtns
 ##' @export
-run_webgestalt <- function(filtered_vaf_plot_input) {
+run_webgestalt <- function(filtered_vaf_plot_input, run_recalc = TRUE) {
     browser()
     databases <- c(GO_bio = "geneontology_Biological_Process", KEGG = "pathway_KEGG")
     enrichMethod = "ORA"
@@ -34,7 +34,7 @@ run_webgestalt <- function(filtered_vaf_plot_input) {
     
     vc_cl_results <- tryCatch({
         purrr::map(databases, ~run_webgestaltr(vc_cl_genes, enrichDatabase = .x, enrichMethod = enrichMethod)) %>% 
-            purrr::map(recalculate_geo, vc_cl_genes) %>%
+            {if(run_recalc) purrr::map(., recalculate_geo, vc_cl_genes) else .} %>%
             identity()
     }, warning = function(w) {
         message(sprintf("Warning in %s: %s", deparse(w[["call"]]), w[["message"]]))
@@ -60,7 +60,7 @@ run_webgestalt <- function(filtered_vaf_plot_input) {
         identity()
     
     verified_results <- purrr::map(databases, ~run_webgestaltr(verified_genes, enrichDatabase = .x, enrichMethod = enrichMethod)) %>% 
-        purrr::map(recalculate_geo, verified_genes) %>%
+        {if(run_recalc) purrr::map(., recalculate_geo, verified_genes) else .} %>%
         identity()
     
     ## ------------------------------------------------------------------------------------

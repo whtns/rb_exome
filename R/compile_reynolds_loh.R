@@ -3,16 +3,15 @@
 ##' .. content for \details{} ..
 ##'
 ##' @title
-##' @param 
+##' @param mbaf_threshold
 ##' @return
 ##' @author whtns
 ##' @export
-compile_reynolds_loh <- function() {
+compile_reynolds_loh <- function(mbaf_threshold = 0.56) {
 
     
     ## ---- eval = TRUE-----------------------------------------------------------------
     cohort = "reynolds"
-    mbaf_threshold = 0.7
     
     baf_segment_files <- list.files("output/bafsegmentation/segmented/", recursive = TRUE, pattern = "AI_regions.txt", full.names = TRUE)
     

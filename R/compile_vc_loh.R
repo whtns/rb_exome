@@ -19,7 +19,7 @@ compile_vc_loh <- function(vc_baf_files) {
     baf_segment_files <-
         fs::path("output/bafsegmentation/segmented/") %>%
         dir_ls(recurse = TRUE) %>%
-        path_filter(regex = ".*/[0-9]{2}-(T|CL)/AI_regions.txt") %>%
+        path_filter(regexp = ".*/[0-9]{2}-(T|CL)/AI_regions.txt") %>%
         identity()
     
     # baf_segment_files <- head(baf_segment_files, -2)

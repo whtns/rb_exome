@@ -8,12 +8,27 @@
 ##' @return
 ##' @author whtns
 ##' @export
-compose_oncoprints <- function(ngs_oncoprint, targeted_oncoprint) {
+compose_oncoprints <- function(ngs_oncoprint, afshar_oncoprint, francis_oncoprint) {
 
-    (ngs_oncoprint / targeted_oncoprint) +
+    # layout <- "
+    # 11111
+    # 11111
+    # 11111
+    # 222##
+    # 222##
+    # 333##
+    # 333##
+    # "
+    
+    layout <- c(
+        area(t = 1, l = 1, b = 12, r = 10),
+        area(t = 13, l = 1, b = 22, r = 9),
+        area(t = 23, l = 1, b = 29, r = 6)
+    )
+    
+    (ngs_oncoprint + francis_oncoprint + afshar_oncoprint ) +
+        plot_layout(design = layout) +
         plot_annotation(
-            title = "Recurrent Secondary Mutations in Retinoblastoma Tumors",
-            tag_levels = 'A') +
-        plot_layout(heights = c(1, 1))
+            tag_levels = 'A')
 
 }

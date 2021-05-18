@@ -10,6 +10,7 @@
 ##' @export
 prep_vaf_plot_input <- function(vc_vars, sanger_panels) {
     browser()
+    
     sanger_rainbows <-
         vc_vars %>% 
         dplyr::filter(alt_depth > 2) %>% 
@@ -45,14 +46,13 @@ prep_vaf_plot_input <- function(vc_vars, sanger_panels) {
         dplyr::left_join(sanger_panels, by = c("sample_id", "snp_id")) %>% 
         dplyr::mutate(sanger_panel = case_when(!is.na(sanger_panel) ~ sanger_panel,
                                                is.na(sanger_panel) ~ "  ")) %>% 
-        # dplyr::filter(alt != ref) %>%
         identity()
     
     vaf_plot_reference <- 
         vaf_plot_input %>% 
         dplyr::group_by(snp_id) %>% 
         # dplyr::top_n(2, af) %>% 
-        dplyr::mutate(max_af = max(af)) %>% 
+        dplyr::mutate(max_af = max(af, na.rm = TRUE)) %>% 
         dplyr::select(max_af, snp_id) %>% 
         dplyr::arrange(desc(max_af)) %>%
         identity()
@@ -68,9 +68,7 @@ prep_vaf_plot_input <- function(vc_vars, sanger_panels) {
         dplyr::mutate(snp_id = factor(snp_id, levels = snp_id_order)) %>% 
         dplyr::distinct(sample_id, snp_id, alt, .keep_all = T) %>% 
         dplyr::select(chr, start, end, ref, alt, sample, SYMBOL, hgvsc, hgvsp, everything()) %>% 
-        dplyr::filter(alt_depth > 2) %>% 
-        # dplyr::group_by(gene, sample_id, alt) %>% 
-        # dplyr::mutate(snp_id = paste0(dplyr::n(), ". ", snp_id)) %>% 
+        # dplyr::filter(alt_depth > 2) %>% 
         identity()
     
     circle_ids <- create_circle_ids(vaf_plot_input) %>% 
@@ -83,8 +81,11 @@ prep_vaf_plot_input <- function(vc_vars, sanger_panels) {
         vaf_plot_input %>% 
         dplyr::left_join(circle_ids, by = c("sample_id", "snp_id")) %>% 
         dplyr::arrange(snp_id) %>% 
-        dplyr::filter(max_af >= 0.05) %>% 
-        dplyr::mutate(`p.signif` = NA)
+        dplyr::mutate(`p.signif` = NA) %>% 
+        dplyr::distinct(chr, start, end, ref, alt, SYMBOL, sample_id, .keep_all = TRUE) %>% 
+        # dplyr::filter(alt_depth > 2) %>% 
+        # dplyr::filter(max_af >= 0.05) %>% 
+        identity()
 
     
     

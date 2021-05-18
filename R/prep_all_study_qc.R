@@ -19,6 +19,7 @@ prep_all_study_qc <- function(all_study_snvs) {
     
     plot_input <- 
         all_study_snvs %>% 
+        dplyr::distinct(chr, start, end, ref, alt, sample, .keep_all = TRUE) %>%  
         dplyr::mutate(study = str_replace(study, " et al.", "")) %>% 
         dplyr::filter(study %in% examined_studies) %>% 
         # dplyr::mutate(study = factor(study, levels = examined_studies)) %>% 
@@ -49,8 +50,6 @@ prep_all_study_qc <- function(all_study_snvs) {
         dplyr::mutate(n = 0) %>% 
         dplyr::select(-zerod_samples) %>% 
         identity()
-    
-    paste(sample(x = letters, size = 5), collapse = '')
     
     vars_per_study <- 
         dplyr::bind_rows(vars_per_study, rows_to_add) %>% 

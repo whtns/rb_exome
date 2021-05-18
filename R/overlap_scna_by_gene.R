@@ -18,8 +18,10 @@ overlap_scna_by_gene <- function(stachelek_scna) {
         purrr::map(~as_tibble(.x)) %>%
         dplyr::bind_rows() %>%
         dplyr::mutate(gene_id = as.integer(gene_id)) %>%
-        dplyr::group_by(gene_id, sample_id, chromosome = seqnames) %>%
-        dplyr::summarize(seg.mean = mean(seg.mean)) %>%
+        dplyr::select(gene_id, sample_id, chromosome = seqnames, seg.mean) %>%
+        dplyr::group_by(across()) %>% 
+        dplyr::slice_max(abs(seg.mean)) %>% 
+        # dplyr::summarize(seg.mean = max(abs(seg.mean))) %>%
         dplyr::mutate(seg.mean = 2*2^(seg.mean)) %>%
         dplyr::left_join(annotables::grch37, by = c("gene_id" = "entrez")) %>%
         identity()

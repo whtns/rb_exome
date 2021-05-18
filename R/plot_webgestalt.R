@@ -10,7 +10,7 @@
 plot_webgestalt <- function(webgestalt_results) {
     
     make_volcano_plot <- function(webgestalt_results, showpath = TRUE, ...) {
-        browser()
+        # browser()
         
         mytheme <- theme_classic(base_size = 20)
         
@@ -43,7 +43,7 @@ plot_webgestalt <- function(webgestalt_results) {
                                  y = neglogFDR,
                                  label = description
                              ),
-                             size = 3.5,
+                             size = 4,
                              min.segment.length = 0.2,
                              segment.alpha = 1,
                              point.padding = 8e-1,
@@ -53,14 +53,13 @@ plot_webgestalt <- function(webgestalt_results) {
                              na.rm = TRUE
                              ) +
             labs(y = "-log(10) FDR", x = "Enrichment Ratio") +
-            geom_hline(yintercept = -log10(0.05), linetype="dashed") +
+            geom_hline(yintercept = -log10(0.1), linetype="dashed") +
             mytheme +
             # guides(color = guide_legend(override.aes = list(Title = ""))) +
             scale_color_hue(labels = c("nonsynonymous coding \n+ synonymous + non-coding", "\nnonsynonymous coding")) + 
-            theme(legend.title=element_blank()) +
             # scale_y_log10(breaks = 10^seq(-15, 0, by = 2), limits = c(1e-15, 1e0)) +
-            NULL %>%
-            identity()
+            theme(legend.title=element_blank())
+
         
         return(volcano_plot)
     }
@@ -76,11 +75,12 @@ plot_webgestalt <- function(webgestalt_results) {
     tumor_volcano_plot <- 
         tumor_genesets %>% 
         make_volcano_plot()+
-        scale_x_continuous(breaks = seq(0, 30, by = 5), limits = c(0, 30)) +
+        scale_x_continuous(breaks = seq(0, 35, by = 5), limits = c(0, 35)) +
         theme(legend.position = c(0.5, 0.8),
               legend.background = element_rect(color = "black", linetype="dashed")) +
         # theme(legend.background = element_rect(color = "black", linetype="dashed")) +
-        scale_y_continuous(limits = c(0, 10), breaks = 0:10, minor_breaks = seq(0, 10, 0.5), expand = expansion(add = 0.5))
+        scale_y_continuous(limits = c(0, 12), breaks = 0:12, minor_breaks = seq(0, 12, 0.5), expand = expansion(add = 0.5)) +
+        NULL
     
     cell_line_volcano_plot <-
         cell_line_genesets %>% 

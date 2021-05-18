@@ -86,6 +86,7 @@ process_vep_annotate_prior <- function(vep_api_out_prior_studies, prior_study_sn
         dplyr::mutate(Consequence = dplyr::coalesce(collapsed_consequence, Consequence)) %>% 
         dplyr::select(any_of(final_cols)) %>%
         dplyr::mutate(across(where(is.list), as.character)) %>% 
+        dplyr::distinct(sample, chr, start, end, ref, alt, .keep_all = TRUE) %>% 
         identity()
     
 }

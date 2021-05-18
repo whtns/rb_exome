@@ -9,8 +9,6 @@
 ##' @author whtns
 ##' @export
 process_vep_annotate_vc <- function(vep_api_out_vc_snvs, annotated_vc_snvs, recoded_consequences) {
-
-    
     # annotated_vc_snvs <- 
     #     annotated_vc_snvs %>% 
     #     dplyr::select(-Consequence)
@@ -19,8 +17,6 @@ process_vep_annotate_vc <- function(vep_api_out_vc_snvs, annotated_vc_snvs, reco
     colocate_vars <- c(coloc_id = "id", coloc_allele_string = "allele_string")
     transcript_con_vars <- c("hgvsc", "hgvsp", "mutationtaster_pred", "cadd_phred", "polyphen_prediction", "gene_symbol", "consequence_terms") # "gene_symbol"
     possible_select <- possibly(dplyr::select, NA)
-    
-    browser()
     
     #unnest the vep api return object so that each row is a variant with gene_symbol, hgvsc/p, and list of consequence terms
     annotated_vars <- 
@@ -71,7 +67,8 @@ process_vep_annotate_vc <- function(vep_api_out_vc_snvs, annotated_vc_snvs, reco
         dplyr::distinct(.keep_all = TRUE) %>%
         dplyr::mutate(chr = as.character(seq_region_name)) %>% 
         tidyr::unnest(allele_string) %>% 
-        tidyr::separate(allele_string, c("ref", "alt"), "/")
+        tidyr::separate(allele_string, c("ref", "alt"), "/") %>% 
+        dplyr::mutate(hgvsp = na_if(hgvsp, "NA"))
     
     final_cols <- c("Consequence", "study", "sample", 
                     "gene", "chr", "start", "end", "ref", "alt", "VAF", 
@@ -86,7 +83,7 @@ process_vep_annotate_vc <- function(vep_api_out_vc_snvs, annotated_vc_snvs, reco
     # annotated_vc_snvs <- 
     #     annotated_vc_snvs %>% 
     #     dplyr::select(-all_of(drop_annotation_cols))
-    
+    browser()
     annotated_all_study_snvs <- 
         annotated_vc_snvs %>%
         dplyr::select(-any_of(c("hgvsc", "hgvsp"))) %>% 
@@ -95,13 +92,17 @@ process_vep_annotate_vc <- function(vep_api_out_vc_snvs, annotated_vc_snvs, reco
         dplyr::left_join(annotated_vars, by = c("chr", "start", "end", "ref", "alt")) %>%
         dplyr::mutate(consequence_terms = as.character(consequence_terms)) %>%
         dplyr::mutate(Consequence = as.character(Consequence)) %>%
-        dplyr::mutate(Consequence = dplyr::coalesce(consequence_terms, Consequence)) %>%
-        dplyr::mutate(across(c("hgvsp", "HGVSp"), as.character)) %>% 
-        dplyr::mutate(hgvsp = dplyr::coalesce(hgvsp, HGVSp)) %>%
-        # dplyr::select(all_of(final_cols)) %>%
         dplyr::mutate(across(everything(), ~na_if(.x, "NULL"))) %>%
+        dplyr::mutate(Consequence = dplyr::coalesce(consequence_terms, Consequence)) %>%
+        dplyr::mutate(across(c("hgvsp", "HGVSp"), as.character)) %>%
+        dplyr::mutate(across(c("hgvsc", "HGVSc"), as.character)) %>%
+        dplyr::mutate(hgvsp = dplyr::na_if(hgvsp, "NA")) %>%
+        dplyr::mutate(hgvsc = dplyr::na_if(hgvsc, "NA")) %>%
+        dplyr::mutate(hgvsp = dplyr::coalesce(hgvsp, HGVSp)) %>%
+        dplyr::mutate(hgvsc = dplyr::coalesce(hgvsc, HGVSc)) %>%
+        # dplyr::select(all_of(final_cols)) %>%
         # dplyr::mutate(gene = dplyr::coalesce(gene, gene_symbol), SYMBOL = dplyr::coalesce(SYMBOL, gene_symbol)) %>% 
-        # dplyr::mutate(across(everything(), ~na_if(.x, "NA"))) %>% 
+        dplyr::mutate(across(everything(), ~na_if(.x, "NA"))) %>%
         identity()
     
     
@@ -119,6 +120,11 @@ process_vep_annotate_vc <- function(vep_api_out_vc_snvs, annotated_vc_snvs, reco
         dplyr::mutate(gene = dplyr::coalesce(gene_symbol, gene), SYMBOL = dplyr::coalesce(gene_symbol, SYMBOL)) %>% 
         dplyr::mutate(snp_id = paste(gene, sample, alt, sep = "_")) %>%
         identity()
+    
+    # drop confounding SKIV2L
+    penultimate <- 
+        penultimate %>% 
+        dplyr::filter(!(gene == "SKIV2L" & Consequence == "stop_gained"))
     
     # filter each variant by the most severe consequence
     final_annotated_all_study_snvs <- 

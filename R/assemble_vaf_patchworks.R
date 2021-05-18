@@ -17,7 +17,8 @@ assemble_vaf_patchworks <- function(filtered_vaf_plots, unfiltered_vaf_plots) {
                               align = "vh",
                               axis = "l",
                               ncol = 1, 
-                              rel_heights = c(2, 1))
+                              rel_heights = c(1.75, 1),
+                              label_size = 24)
     
     
     filtered_vaf_patchwork <- plot_grid(filtered_vaf_plots$positive + theme(legend.position="none"), 
@@ -26,7 +27,8 @@ assemble_vaf_patchworks <- function(filtered_vaf_plots, unfiltered_vaf_plots) {
                                        align = "vh",
                                        axis = "l",
                                        ncol = 1, 
-                                       rel_heights = c(2, 1, 1))
+                                       rel_heights = c(1.75, 1),
+                                       label_size = 24)
     
     list(unfiltered = unfiltered_vaf_patchwork, filtered = filtered_vaf_patchwork)
     

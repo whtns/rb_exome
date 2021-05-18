@@ -38,7 +38,7 @@ load_mcevoy_focal_scnas <- function(focal_scna_file) {
         dplyr::mutate(id = sample, study = "McEvoy et al.") %>% 
         dplyr::filter(symbol %in% c("BCOR", "MYCN")) %>% 
         dplyr::select(all_of(final_cols)) %>%
-        dplyr::mutate(sequencing_format = "targeted") %>% 
+        dplyr::mutate(sequencing_format = "targeted") %>%
         # dplyr::filter(!str_detect(id, "UPEN")) %>% 
         identity()
 
