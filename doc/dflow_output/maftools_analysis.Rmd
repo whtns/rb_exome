@@ -28,7 +28,7 @@ Maftools: efficient and comprehensive analysis of somatic variants in cancer.
 ***
 
 ```{r setup}
-knitr::opts_chunk$set(dev = c("png", "pdf"), fig.path="figures/", results="hide", warning = FALSE, message)
+knitr::opts_chunk$set(results="hide", warning = FALSE, message=FALSE)
 
 ```
 
@@ -104,11 +104,11 @@ plotTiTv(res = merged_maf.titv)
 ```{r,fig.align='left', fig.width=10, fig.height=10}
 lollipop_genes <- c("PAN2", "NAF1", "SAMD9")
 
-pdf("../dflow_output/fig_s05.pdf", width = 20, height = 6)
+# pdf("../dflow_output/fig_s05.pdf", width = 20, height = 6)
 for (i in lollipop_genes){
-  lollipopPlot(maf = merged_maf, gene = i, AACol = 'HGVSp_Short', showMutationRate = TRUE, showDomainLabel = FALSE, labelPos = 'all')
+  lollipopPlot(maf = merged_maf, gene = i, AACol = 'HGVSp_Short', showMutationRate = TRUE, showDomainLabel = TRUE, labelPos = 'all')
 }
-dev.off()
+# dev.off()
 ```
 
 ## Rainfall plots
