@@ -8,7 +8,6 @@
 ##' @author whtns
 ##' @export
 vep_annotate_grch38 <- function(all_study_snvs) {
-    browser()
     
     ## ---- eval = FALSE-----------------------------------------------------------------------------------------------------------------
     
@@ -30,7 +29,6 @@ vep_annotate_grch38 <- function(all_study_snvs) {
     api_prepped_vars <- split(api_prepped_vars, ceiling(seq_along(api_prepped_vars)/200))
     
     query_ensembl <- function(vars){
-        browser()
         server <- "https://rest.ensembl.org"
         ext <- "/vep/homo_sapiens/region/?protein=1&hgvs=1&dbNSFP=LRT_pred,MutationTaster_pred&CADD=1"
         vep_result <- httr::POST(paste(server, ext, sep = ""), 

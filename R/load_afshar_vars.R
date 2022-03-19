@@ -27,7 +27,6 @@ load_afshar_vars <- function() {
         dplyr::select(gene = Gene, sample = "Tumor ID", study, VAF = "Tumor variant Allele Frequency", Consequence = "Exonic function", chr = Chromosome, start = Position, end = Position, ref = "Reference Allele", alt = "Alternate Allele") %>% 
         dplyr::mutate(VAF = as.numeric(str_remove(VAF, "%"))) %>%
         dplyr::mutate(VAF = VAF/100) %>% 
-        dplyr::filter(!gene == "RB1") %>% 
         dplyr::semi_join(afshar_treatment_status, by = "sample") %>%  
         identity()
     

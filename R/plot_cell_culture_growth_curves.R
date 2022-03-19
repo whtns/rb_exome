@@ -75,11 +75,6 @@ plot_cell_culture_growth_curves <- function() {
     
     
     ## ---------------------------------------------------------------------------------
-    # early_gc <- read_excel("data/rb_cell_line_growth_curves/scorecard_culture_20151101.xlsx", skip = 4) %>% 
-    #   dplyr::mutate(X__1 = as.numeric(X__1)) %>% 
-    #   dplyr::mutate(X__1 = as.Date(X__1, origin = "1899-12-30"))
-    
-    # growth_curves_p <- "data/rb_cell_line_growth_curves/growth_curves_20160125_update_20170825.csv"
     growth_curves <- "data/rb_cell_line_growth_curves/growth_curves_20160125_update_20201226.csv" %>% 
         read_csv()
     
@@ -96,8 +91,6 @@ plot_cell_culture_growth_curves <- function() {
         dplyr::mutate(exome_status = ifelse((cell_id %in% keep_cells), "exome", "non-exome")) %>% 
         dplyr::mutate(Date = lubridate::mdy(Date)) %>%
         identity()
-    
-    # cell_line_records <- read_excel(here("data/rb_cell_line_growth_curves/Liquid Nitrogen Freezer Cell Line Storage 081518-dc-ks-ja-lc.xlsx"), sheet=2)
     
     cell_line_records <- "data/rb_cell_line_growth_curves/clean_ln_records.csv" %>% 
         read_csv
@@ -123,20 +116,6 @@ plot_cell_culture_growth_curves <- function() {
     
     
     ## ---------------------------------------------------------------------------------
-    # days_until_extracted <- 
-    #   growth_curves %>% 
-    #   dplyr::mutate(date_extracted = as.logical(date_extracted)) %>% 
-    #   dplyr::filter(!is.na(date_extracted)) %>%
-    #   dplyr::group_by(cell_line) %>% 
-    #   identity()
-    # 
-    # day_thawed <- 
-    #   growth_curves %>% 
-    #   dplyr::group_by(cell_line) %>% 
-    #   dplyr::slice(which.min(no_of_wells))
-    # 
-    # thaw_tbl <- dplyr::bind_rows(days_until_extracted, day_thawed) %>% 
-    #   dplyr::arrange(cell_line, days_in_culture)
     
     CHLAVCRB14B <- "data/rb_cell_line_growth_curves/growth_curves_20160125_update_20201226.csv" %>%
         read_csv() %>% 
@@ -183,14 +162,6 @@ plot_cell_culture_growth_curves <- function() {
         labels = "AUTO", ncol = 1,
         rel_heights = c(3,2)
     )
-    
-    # ggsave("doc/RB_exome_manuscript/growth_curves.pdf", test, width = 9, height = 9)
-    # 
-    # ggsave("doc/RB_exome_manuscript/stachelek_supplemental/fig_01.pdf")
-    
-    
-    
-    
     
 
 }

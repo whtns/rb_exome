@@ -35,7 +35,7 @@ ggplot_reynolds_SCNA_and_LOH <- function(reynolds_scna, reynolds_loh) {
     ## Sets up the data values for the plot
     CNV <- setPositionsCNV(CNV, genome="hg19", FinalChrom="X")
     ## Prints out the plot
-    CNV <- plotCopynumber(CNV)
+    CNV <- PlotCNV::plotCopynumber(CNV)
     ## You can access the plot object in the Plots slot like this:
     CNV@Plot$plot
     

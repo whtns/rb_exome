@@ -22,8 +22,8 @@ prep_mutation_mapper_input <- function(gene_of_interest, all_study_snvs) {
     cosmic_range = genes(edb)[genes(edb)$symbol == gene_of_interest]
     vcf_path = system.file("vcf", "cosmic_67.vcf.gz", package = "COSMIC.67")
     
-    cosmic_range = readVcf(vcf_path, genome = "GRCh37", ScanVcfParam(which = cosmic_range)) %>% 
-        expand()
+    cosmic_range = readVcf(vcf_path, genome = "GRCh37", ScanVcfParam(which = cosmic_range)) %>%
+        VariantAnnotation::expand()
     
     mutation_tbl <- 
         rowRanges(cosmic_range) %>% 

@@ -42,7 +42,7 @@ library(maftools)
 ```
 
 ```{r}
-loadd(merged_maf)
+tar_load(merged_maf)
 ```
 
 

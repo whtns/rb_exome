@@ -8,12 +8,15 @@
 ##' @author whtns
 ##' @export
 prep_all_study_qc <- function(all_study_snvs) {
+    examined_studies <- c( "Zhang", "McEvoy", "Kooi", "Liu", "Stachelek")
     
-    examined_studies <- c( "Zhang", "McEvoy", "Kooi", "Stachelek")
-    
-    study_numbers <- c( "Zhang" = 4, "McEvoy" = 10, 
-                        "Kooi" = 71, "Stachelek CL" = 12, 
-                        "Stachelek T" = 12, Afshar = 32) %>% 
+    study_numbers <- c( "Zhang" = 4, 
+                        "McEvoy" = 10, 
+                        "Kooi" = 71, 
+                        "Stachelek CL" = 12, 
+                        "Stachelek T" = 12, 
+                        "Afshar" = 32,
+                        "Liu" = 63) %>% 
         tibble::enframe("sample_set", "sample_number")
     
     
@@ -53,7 +56,7 @@ prep_all_study_qc <- function(all_study_snvs) {
     
     vars_per_study <- 
         dplyr::bind_rows(vars_per_study, rows_to_add) %>% 
-        dplyr::mutate(sample_set = factor(sample_set, levels = c("Zhang", "Kooi", "McEvoy", "Stachelek CL", "Stachelek T")))
+        dplyr::mutate(sample_set = factor(sample_set, levels = c("Zhang", "Kooi", "McEvoy", "Liu", "Stachelek CL", "Stachelek T")))
     
     # all_study_qc <- 
     #     dplyr::left_join(vars_per_study, vaf_per_study, by = c("sample_set", "sample"))

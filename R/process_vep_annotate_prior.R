@@ -9,7 +9,6 @@
 ##' @author whtns
 ##' @export
 process_vep_annotate_prior <- function(vep_api_out_prior_studies, prior_study_snvs, recoded_consequences) {
-    browser()
     
     # continue ------------------------------
     colocate_vars <- c(coloc_id = "id", coloc_allele_string = "allele_string")

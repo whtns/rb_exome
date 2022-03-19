@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/dataVolume/storage/rb_pipeline/titancna/code/countPysam.py", line 45, in <module>
-    _p = sample.pileup(reference=chrom, start=position, end=position + 1)
-KeyboardInterrupt

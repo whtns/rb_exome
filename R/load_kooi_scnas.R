@@ -9,7 +9,6 @@
 ##' @author whtns
 ##' @export
 load_kooi_scnas <- function(kooi_scna_path) {
-    browser()
     # ------------------------------
     rb_scna_seqnames <- c(1, 2, 6, 7, 13, 16, 19, "X")
     

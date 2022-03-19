@@ -9,7 +9,6 @@
 ##' @author whtns
 ##' @export
 compile_all_study_variants <- function(prior_study_snvs_table, filtered_vaf_plot_input) {
-    browser()
     
     minimal_cols <- c("sample", "chr", "start", "end", "ref", "alt", gene = "SYMBOL", "hgvsc", "VAF" = "af", "recurrence", "Consequence", "hgvsp", "naive_alt_depth" = "alt_depth", "naive_read_depth" = "read_depth", verified = "circle_id")
     
@@ -35,7 +34,6 @@ compile_all_study_variants <- function(prior_study_snvs_table, filtered_vaf_plot
     all_study_snvs <- list(prior_study_snvs_table, stachelek_snvs) %>% 
         map(mutate, start = as.numeric(as.character(start))) %>% 
         dplyr::bind_rows() %>% 
-        dplyr::filter(gene != "RB1") %>% 
         dplyr::select(any_of(final_cols)) %>%
         # mutate(sample_type = ifelse(grepl("CL", sample), "Cell Line", "Tumor")) %>%
         # dplyr::mutate(series = case_when(study == "Stachelek et al." & grepl("[0-9]{3}-CL", sample) ~ "CHLA-RB",

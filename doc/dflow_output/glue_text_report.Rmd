@@ -12,11 +12,11 @@ knitr::opts_chunk$set(warning = FALSE, message=FALSE)
 # load packages
 
 ```{r}
-source("../../functions.R")
-source("../../packages.R")
+source("functions.R")
+source("packages.R")
 
 library(tidyverse)
-library(drake)
+library(targets)
 library(glue)
 library(english)
 ```
@@ -25,27 +25,47 @@ library(english)
 
 ```{r}
 
-loadd(vc_vars)
+tar_load(vc_vars)
 
-loadd(vaf_plot_input)
+tar_load(vaf_plot_input)
 
-loadd(filtered_vaf_plot_input)
+tar_load(filtered_vaf_plot_input)
 
-loadd(reynolds_snv)
+tar_load(reynolds_snv)
 
-loadd(all_study_coverage)
+tar_load(all_study_coverage)
 
-loadd(noncoding_all_study_snvs)
+tar_load(noncoding_all_study_snvs)
 
-loadd(all_study_mutations)
+tar_load(all_study_mutations)
 
-loadd(afshar_mutations)
+tar_load(afshar_mutations)
 
-loadd(prior_study_mutations)
+tar_load(prior_study_mutations)
 
-loadd(prior_study_snvs)
+tar_load(prior_study_snvs)
 
-loadd(all_study_snv_qc)
+tar_load(all_study_snv_qc)
+```
+
+```{r}
+tar_load(prior_study_snvs_w_rb)
+
+mycn_samples <- 
+  all_study_mutations %>% 
+  dplyr::filter(gene == "MYCN",
+                modality == "focal_scna") %>% 
+  dplyr::pull(sample) %>%
+  unique() %>%
+  identity()
+
+mycn_samples <- c(mycn_samples, "SJRB011", "UPEN-RB-05", "UPEN-RB-07", "UPEN-RB-31", "UPEN-RB-40", "UPEN-RB-45")
+
+test0 <- 
+  prior_study_snvs_w_rb %>% 
+  dplyr::filter(sample %in% mycn_samples) %>% 
+  identity()
+
 ```
 
 
@@ -53,7 +73,7 @@ loadd(all_study_snv_qc)
 
 ```{r}
 
-loadd(all_study_mutations_formatted)
+tar_load(all_study_mutations_formatted)
 
 seiler_119 <- read_csv("~/rb_pipeline/doc/dflow_output/seiler_119_genes.csv") %>% 
   janitor::clean_names() %>% 
@@ -65,6 +85,13 @@ intersect(seiler_119, all_study_mutations_formatted$gene)
 
 
 
+
+```
+
+```{r}
+
+tar_load(targeted_sequencing_genes)
+paste(intersect(all_study_mutations$gene, targeted_sequencing_genes), collapse = ", ")
 
 ```
 
@@ -260,14 +287,13 @@ filtered_circle_ids <-
 ```{r}
 # need to include intu and hrg recurences in kooi +2
 
-
-glue("Additionally, whole genome or exome sequencing of {sum(n_ngs_samples$n)} treatment-naïve retinoblastomas revealed pathogenic mutation or focal deletion of BCOR in {n_BCOR_prior}, CREBBP variants in {english(n_CREBBP_prior)}, and somatic variants of {nrow(private_prior_ngs_snvs)+2} genes thus far reported for only one sample")
+glue("Additionally, prior whole genome or exome sequencing (WGS/WES) of treatment-naïve retinoblastomas revealed exome or ‘tier-1’ mutations (those affecting mature transcripts or splice sites) or focal deletion of BCOR in {n_BCOR_prior}, CREBBP in {english(n_CREBBP_prior)}, and somatic variants of {nrow(private_prior_ngs_snvs)+2} genes reported for only one sample ")
 
 ```
 
 ```{r}
 
-loadd(prior_study_snvs)
+tar_load(prior_study_snvs)
 
 kooi_mutations <- 
   prior_study_snvs %>% 
@@ -293,7 +319,36 @@ glue("Past WES/WGS of {sum(n_ngs_samples$n)} treatment-naïve retinoblastomas re
 
 ```
 
+```{r}
+tar_load(targeted_sequencing_genes)
+tar_load(msk_impact_genes)
+tar_load(ucsf500_genes)
+tar_load(displayed_ontologies_table)
 
+displayed_genes <-
+displayed_ontologies_table$userId %>% paste(collapse = ";") %>% 
+  strsplit(";") %>% 
+  unlist() 
+
+genes_in_ucsf500 <- intersect(ucsf500_genes, displayed_genes) %>%
+  setdiff(msk_impact_genes) %>% 
+    paste(collapse = "; ")
+glue("genes in ucsf500: {genes_in_ucsf500}")
+
+genes_in_both_sequencing_panels <-
+  intersect(targeted_sequencing_genes, displayed_genes) %>% 
+  intersect(msk_impact_genes) %>% 
+    paste(collapse = "; ")
+glue("genes in both panels: {genes_in_both_sequencing_panels}")
+
+print("genes in only msk impact")
+genes_in_msk_impact <- intersect(msk_impact_genes, displayed_genes) %>% 
+  setdiff(ucsf500_genes) %>% 
+    paste(collapse = "; ")
+glue("genes in msk impact: {genes_in_msk_impact}")
+
+
+```
 
 ```{r}
 glue("Retention of such variants yielded a total of {sum(stachelek_filtered_tumor_variants)} somatic mutations in 12 tumors (mean {round(mean(stachelek_filtered_tumor_variants), 2)}; median {round(median(stachelek_filtered_tumor_variants), 2)}) (Fig. 4A, circled symbols)")
@@ -351,7 +406,7 @@ glue("Among the {sum(stachelek_filtered_cell_line_only_variants)} somatic varian
 
 ```{r}
 
-loadd(reynolds_scna) 
+tar_load(reynolds_scna) 
 reynolds_scna <- 
   reynolds_scna %>% 
   # dplyr::filter(study == "Stachelek et al.") %>% 
@@ -460,7 +515,7 @@ glue("Given the small number of affected genes identified in all analyses ({n_di
 
 ```{r}
 
-loadd(noncoding_all_study_snvs)
+tar_load(noncoding_all_study_snvs)
 ```
 
 ```{r}
@@ -474,7 +529,7 @@ consequences <- list(
   unnest(cols = c(consequence)) %>% 
   identity()
 
-loadd(all_study_mutations_formatted)
+tar_load(all_study_mutations_formatted)
 
 
 labeled_vars_df <- dplyr::left_join(all_study_mutations_formatted, consequences, by = "consequence") %>% 
@@ -499,7 +554,7 @@ glue("and were performed separately for the {labeled_vars$nonsynonymous} variant
 
 ```{r}
 
-loadd(displayed_ontologies_table)
+tar_load(displayed_ontologies_table)
 
 displayed_ontologies_genes <- 
   displayed_ontologies_table %>% 
@@ -532,8 +587,8 @@ glue("Remarkably, the significance of four of the top six over-represented terms
 
 ```{r}
 
-loadd(webgestalt_plot_input)
-loadd(noncoding_webgestalt_input)
+tar_load(webgestalt_plot_input)
+tar_load(noncoding_webgestalt_input)
 
 webgestalt_genes <- 
   webgestalt_plot_input %>% 
@@ -548,7 +603,7 @@ kooi_webgestalt <-
   dplyr::filter(study == "Kooi et al.") %>% 
   dplyr::filter(gene %in% webgestalt_genes)
 
-loadd(kooi_scnas)
+tar_load(kooi_scnas)
 n_kooi_scna_samples <- n_distinct(kooi_scnas$id)
 
 stachelek_webgestalt <- 
@@ -558,11 +613,27 @@ stachelek_webgestalt <-
 
 glue("in a study from Kooi et al. {nrow(kooi_webgestalt)} variants in {n_distinct(kooi_webgestalt$sample)} out of {deframe(n_samples)['Kooi']} samples contributed to enriched ontologies compared to {n_kooi_scna_samples} with recurrent 'RB SCNAs'. While in the present study, {nrow(stachelek_webgestalt)} variants in {n_distinct(stachelek_webgestalt$sample)} out of 12 samples contributed to enriched ontologies compared to 12 with recurrent 'RB SCNAs'")
 ```
+```{r}
+
+tar_load(coding_webgestalt_results)
+
+tar_load(noncoding_webgestalt_results)
+
+test1 <-
+    dplyr::left_join(coding_webgestalt_results, noncoding_webgestalt_results, by = c("variant_set", "geneSet")) %>%
+        dplyr::rowwise() %>%
+        dplyr::mutate(d=list(setdiff(unlist(strsplit(as.character(userId.y), ";")),
+                              unlist(strsplit(as.character(userId.x), ";"))))) %>%
+        # tidyr::unnest() %>%
+        dplyr::mutate(d=paste(as.character(d), collapse = ";")) %>%
+        dplyr::select(variant_set, geneSet, description.x, d) %>%
+        identity()
+```
 
 ```{r}
 
-loadd(prior_study_snvs_list)
-loadd(prior_study_scna_list)
+tar_load(prior_study_snvs_list)
+tar_load(prior_study_scna_list)
 
 prior_study_snvs_list <- 
   prior_study_snvs_list[names(prior_study_scna_list)] %>% 
@@ -618,7 +689,7 @@ all_unaffected_samples <-
 
 ```{r}
 
-loadd(stachelek_scna_by_gene)
+tar_load(stachelek_scna_by_gene)
 
 stachelek_rb_scna <- 
   stachelek_scna_by_gene %>% 

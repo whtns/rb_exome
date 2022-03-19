@@ -10,7 +10,6 @@
 ##' @author whtns
 ##' @export
 parse_bamreadcount <- function(vc_snvs, brc) {
-    browser()
 
     niggling_genes <- c("RP11-777F6.3")
     

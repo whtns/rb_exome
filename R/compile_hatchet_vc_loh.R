@@ -8,7 +8,6 @@
 ##' @author whtns
 ##' @export
 compile_hatchet_vc_loh <- function(vc_hatchet_baf_files) {
-    browser()
     # load kooi SCNA peak regions 
     kooi_peak_regions <- read_csv("doc/SCNA/kooi_SCNA_peak_regions.csv")
     

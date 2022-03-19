@@ -11,8 +11,8 @@
 combine_study_snv_and_scna <- function(snvs, scnas) {
 
     sequencing_format <- tibble(
-        study = c("Afshar et al.", "Gröbner et al.", "Kooi et al.", "Stachelek et al.", "Zhang et al.", "McEvoy et al."),
-        sequencing_format = c("targeted", "targeted", "WES", "WES", "WGS", "WGS")
+        study = c("Afshar et al.", "Gröbner et al.", "Kooi et al.", "Stachelek et al.", "Zhang et al.", "McEvoy et al.", "Liu et al."),
+        sequencing_format = c("targeted", "targeted", "WES", "WES", "WGS", "WGS", "WES")
     )
     
     mutations <- 

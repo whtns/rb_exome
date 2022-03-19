@@ -8,7 +8,6 @@
 ##' @author whtns
 ##' @export
 run_webgestalt <- function(filtered_vaf_plot_input, run_recalc = TRUE) {
-    browser()
     databases <- c(GO_bio = "geneontology_Biological_Process", KEGG = "pathway_KEGG")
     enrichMethod = "ORA"
 

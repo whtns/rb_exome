@@ -9,7 +9,6 @@
 ##' @author whtns
 ##' @export
 prep_vaf_plot_input <- function(vc_vars, sanger_panels) {
-    browser()
     
     sanger_rainbows <-
         vc_vars %>% 

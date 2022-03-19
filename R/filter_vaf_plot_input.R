@@ -8,7 +8,6 @@
 ##' @author whtns
 ##' @export
 filter_vaf_plot_input <- function(vaf_plot_input) {
-    browser()
 
     nonpartner_snps <- 
         vaf_plot_input %>% 

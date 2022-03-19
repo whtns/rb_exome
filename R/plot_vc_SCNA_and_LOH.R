@@ -10,7 +10,6 @@
 ##' @author whtns
 ##' @export
 plot_vc_SCNA_and_LOH <- function(vc_scna, vc_loh, kooi_peak_regions) {
-    browser()
     
     
     ## ----eval = TRUE------------------------------------------------------------------

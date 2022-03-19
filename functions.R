@@ -796,6 +796,7 @@ calc_recurrent_vars <- function(vars, antiseries = "CHLA-RB") {
   return(recurrent_vars)
 }
 
+#16666 - intgenelength, size,
 recalculate_geo <- function(geo_output, gene) {
   # browser()
     
@@ -848,6 +849,7 @@ recalculate_geo <- function(geo_output, gene) {
     dplyr::mutate(FDR = ifelse(added_count == 0, FDR, p.adjust(pValue,
       method = "BH"
     ))) %>%
+    # dplyr::mutate(pValue = exp(pValue)) %>% 
     dplyr::distinct(.keep_all = TRUE) %>%
     dplyr::slice_head(n = 20) %>%
     identity()
@@ -1131,3 +1133,31 @@ vaf_plot_fisher_test <- function(initial_vaf_plot_input){
   return(fisher_final_results)
 }
 
+
+liftover_ensembl <- function(vars){
+  server <- "https://rest.ensembl.org"
+  ext <- paste0("/map/human/GRCh37/", vars, "/GRCh38?")
+  
+  convert_result <- purrr::map(ext, 
+                        ~httr::GET(
+                          paste(server, .x, sep = ""), 
+                          httr::content_type("application/json")
+                        )
+  )
+  
+  process_api_out <- function(api_out){
+    api_out %>% 
+      httr::content() %>%
+      purrr::pluck("mappings") %>% 
+      unlist() %>% 
+      tibble::enframe() %>% 
+      tidyr::pivot_wider() %>% 
+      dplyr::mutate(start = mapped.start, end = mapped.end, chr = mapped.seq_region_name) %>%
+      dplyr::mutate(across(any_of(c("start", "end")), as.numeric)) %>%
+      dplyr::mutate(across(any_of(c("chr")), as.character)) %>%
+      identity()
+  }
+  
+  vep_api_out <- map(convert_result, process_api_out)
+
+}

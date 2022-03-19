@@ -18,9 +18,9 @@ recode_variant_consequences <- function() {
   # ? (shouldn’t be used; they ought to fit in one of the above categories)
   
   recoded_consequences <- list(
-    "?" = c("?", "intron_variant", "downstream_gene_variant", "non_coding_transcript_exon_variant", "non_coding_transcript_variant", "upstream_gene_variant"), "coding_sequence_variant" = "coding_sequence_variant",
+    "unknown" = c("?", "intron_variant", "downstream_gene_variant", "non_coding_transcript_exon_variant", "non_coding_transcript_variant", "upstream_gene_variant"), "coding_sequence_variant" = "coding_sequence_variant",
     "frameshift_variant" = c("frameshift_variant", "frameshift", "frameshift deletion", "frameshift insertion"),
-    "inframe_deletion" = c("inframe_deletion", "nonframeshift deletion"),
+    "inframe_deletion" = c("inframe_deletion", "nonframeshift deletion", "inframe deletion"),
     "inframe_insertion" = c("inframe_insertion", "nonframeshift insertion"),
     "missense_variant" = c("missense_variant", "missense", "MISSENSE", "nonsynonymous SNV", "nonsynonyrnous SNV"),
     "splice_acceptor_variant" = "splice_acceptor_variant",

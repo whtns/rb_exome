@@ -22,7 +22,6 @@ compile_prior_study_variants <- function(prior_study_snvs) {
         dplyr::arrange(gene) %>% 
         dplyr::filter(!is.na(gene)) %>% 
         dplyr::select(gene, sample, study, VAF, Consequence, everything()) %>% 
-        dplyr::filter(!stringr::str_detect(gene, "^RB1")) %>% 
         identity()
 
 }

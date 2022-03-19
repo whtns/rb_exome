@@ -83,7 +83,6 @@ process_vep_annotate_vc <- function(vep_api_out_vc_snvs, annotated_vc_snvs, reco
     # annotated_vc_snvs <- 
     #     annotated_vc_snvs %>% 
     #     dplyr::select(-all_of(drop_annotation_cols))
-    browser()
     annotated_all_study_snvs <- 
         annotated_vc_snvs %>%
         dplyr::select(-any_of(c("hgvsc", "hgvsp"))) %>% 

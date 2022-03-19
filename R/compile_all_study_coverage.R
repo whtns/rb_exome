@@ -10,7 +10,6 @@
 ##' @author whtns
 ##' @export
 compile_all_study_coverage <- function(stachelek_coverage, prior_study_coverage, all_study_snvs) {
-    browser()
     
     study_numbers <- c( "Zhang et al." = 4, "McEvoy et al." = 10, 
                         "Kooi et al." = 71,

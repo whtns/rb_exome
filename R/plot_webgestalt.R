@@ -87,7 +87,7 @@ plot_webgestalt <- function(webgestalt_results) {
         make_volcano_plot(showpath = TRUE) + 
         scale_x_continuous(breaks = seq(20, 120, by = 20), limits = c(20, 120)) +
         scale_y_continuous(limits = c(0, 5), breaks = 0:5, minor_breaks = seq(0, 5, 0.5), expand = expansion(add = 0.5)) +
-        guides(color=FALSE) +
+        guides(color="none") +
         NULL
     
     list(tumor = tumor_volcano_plot, cell_line = cell_line_volcano_plot)

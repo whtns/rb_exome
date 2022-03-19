@@ -10,7 +10,6 @@
 ##' @author whtns
 ##' @export
 generate_oncoprint <- function(all_study_variants, study_numbers, alterations = TRUE) {
-    browser()
 
     # generate oncoprint
     
@@ -31,7 +30,7 @@ generate_oncoprint <- function(all_study_variants, study_numbers, alterations = 
         dplyr::filter(!grepl("Copy Number", Consequence)) %>% 
         dplyr::mutate(Consequence = str_replace_all(Consequence, "MISSENSE", "missense_variant")) %>% 
         dplyr::mutate(Consequence = str_replace_all(Consequence, "stopgain", "stop_gained")) %>%
-        dplyr::mutate(Consequence = str_replace_all(Consequence, "inframe_.*", "inframe_indel")) %>%
+        dplyr::mutate(Consequence = str_replace_all(Consequence, "inframe.*", "inframe_indel")) %>%
         identity()
     
     
@@ -41,7 +40,7 @@ generate_oncoprint <- function(all_study_variants, study_numbers, alterations = 
     
     cons_names <- c("stop_gained", "frameshift_variant", "missense_variant",
                     "inframe_indel",
-                    "synonymous_variant", "?", "three_prime_UTR", "five_prime_UTR", "focal_scna", "focal_amplification", "focal_deletion", "other_mutation", "fusion", "truncating_driver"
+                    "synonymous_variant", "?", "three_prime_UTR", "five_prime_UTR", "focal_amplification", "focal_deletion", "other_mutation", "fusion", "truncating_driver"
     )
     
     # cons <- hue_pal()(length(cons_names))
@@ -125,7 +124,7 @@ generate_oncoprint <- function(all_study_variants, study_numbers, alterations = 
     
     heatmapannotation <- heatmapannotation[!is.na(heatmapannotation)]
     
-    study_names = c("Kooi et al.", "McEvoy et al.", "Stachelek et al.", "Zhang et al.", "Francis et al.", "Afshar et al.")
+    study_names = c("Kooi et al.", "McEvoy et al.", "Stachelek et al.", "Zhang et al.", "Francis et al.", "Afshar et al.", "Liu et al.")
     studies <- seq(study_names) %>% 
         purrr::set_names(study_names)
     
@@ -163,6 +162,6 @@ generate_oncoprint <- function(all_study_variants, study_numbers, alterations = 
                         show_pct = TRUE,
                         show_heatmap_legend = alterations)
 
-    ggplotify::as.ggplot(oncoprint_plot)
+    ggplotify::as.ggplot(oncoprint_plot, scale = 0.9)
     
 }

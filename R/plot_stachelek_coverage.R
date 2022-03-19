@@ -94,8 +94,9 @@ plot_stachelek_coverage <- function(stachelek_coverage, all_study_snvs) {
     out_plots[["boxplot"]] <- coverage_boxplot
     
     design <- 
-    "AABBEE
-    CCDDEE"
+    "AABB
+    CCDD
+    EEEE"
     
     combined_plot <- 
         patchwork::wrap_plots(out_plots, design = design) +

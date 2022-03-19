@@ -21,9 +21,6 @@ format_vc_mutations <- function(annotated_vc_snvs_w_consequences, filtered_vaf_p
         dplyr::ungroup() %>% 
         dplyr::select(-sample) %>% 
         dplyr::rename(sample = sample_id)
-    
-    
-  browser()
   
   niggling_snps <- c("C11orf65_43-CL_G", "C1QTNF5_41-CL_A", "DUOXA2_31-T_C")
   

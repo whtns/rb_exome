@@ -22,59 +22,59 @@ supp_fig_nums <- captioner()
 ```
 
 ```{r}
-figure_captions <- "../figure_description.csv" %>% 
+figure_captions <- "doc/figure_description.csv" %>% 
     read_csv()
 ```
 
 ```{r, fig.cap="test"}
-include_graphics("fig_01.pdf")
+include_graphics("doc/dflow_output/fig_01.pdf")
 
 ```
 __Figure 1: asdf__ asdf test
 \newpage
 
 ```{r, fig.cap="test"}
-include_graphics("fig_02.pdf")
+include_graphics("doc/dflow_output/fig_02.pdf")
 
 ```
 
 ```{r, fig.cap="test"}
-include_graphics("fig_03.pdf")
+include_graphics("doc/dflow_output/fig_03.pdf")
 
 ```
 
 ```{r, fig.cap="test"}
-include_graphics("fig_04.pdf")
+include_graphics("doc/dflow_output/fig_04.pdf")
 
 ```
 
 ```{r, fig.cap="test"}
-include_graphics("fig_05.pdf")
+include_graphics("doc/dflow_output/fig_05.pdf")
 
 ```
 
 ```{r, fig.cap="test"}
-include_graphics("fig_06.pdf")
+include_graphics("doc/dflow_output/fig_06.pdf")
 
 ```
 
 ```{r, fig.cap="test"}
-include_graphics("fig_s01.pdf")
+include_graphics("doc/dflow_output/fig_s01.pdf")
 
 ```
 
 ```{r, fig.cap="test"}
-include_graphics("fig_s02.pdf")
+include_graphics("doc/dflow_output/fig_s02.pdf")
 
 ```
 
 ```{r, fig.cap="test"}
-include_graphics("fig_s03.pdf")
+include_graphics("doc/dflow_output/fig_s03.pdf")
 
 ```
 
 ```{r, fig.cap="test"}
-include_graphics("fig_s04.pdf")
+include_graphics("doc/dflow_output/fig_s04.pdf")
 
 ```
 

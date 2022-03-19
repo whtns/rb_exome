@@ -1,9 +1,0 @@
-Building DAG of jobs...
-InputFunctionException in line 32 of /dataVolume/storage/rb_pipeline/titancna/getAlleleCounts.snakefile:
-Error:
-  TypeError: 'NoneType' object is not subscriptable
-Wildcards:
-  tumor=None
-  chr=chr1
-Traceback:
-  File "/dataVolume/storage/rb_pipeline/titancna/getAlleleCounts.snakefile", line 35, in <lambda>

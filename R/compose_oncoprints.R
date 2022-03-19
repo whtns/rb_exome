@@ -22,8 +22,8 @@ compose_oncoprints <- function(ngs_oncoprint, afshar_oncoprint, francis_oncoprin
     
     layout <- c(
         area(t = 1, l = 1, b = 12, r = 10),
-        area(t = 13, l = 1, b = 22, r = 9),
-        area(t = 23, l = 1, b = 29, r = 6)
+        area(t = 13, l = 1, b = 20, r = 7),
+        area(t = 21, l = 1, b = 25, r = 4)
     )
     
     (ngs_oncoprint + francis_oncoprint + afshar_oncoprint ) +

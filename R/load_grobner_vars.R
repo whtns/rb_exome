@@ -38,7 +38,6 @@ load_grobner_vars <- function(var_file = "doc/RB_exome_manuscript/prior_studies/
         dplyr::summarize(mutation_rate = mean(`Total Mutations Per Mb`))
     
     grobner_vars %>% 
-        dplyr::filter(gene != "RB1") %>% 
         dplyr::mutate(start = NA, end = NA)
     
     

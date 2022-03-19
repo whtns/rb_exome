@@ -9,7 +9,7 @@
 ##' @author whtns
 ##' @export
 compile_all_study_scnas <- function(all_study_scna_list) {
-
+    browser()
     gene_marker_granges <- GenomicFeatures::genes(txdb)[c('54880', '1387', '4613', '5925')]
     names(gene_marker_granges) <- c("BCOR", "CREBBP", "MYCN", "RB1")
     
