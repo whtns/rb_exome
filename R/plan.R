@@ -67,7 +67,6 @@ the_plan <-
     kooi_scnas = load_kooi_scnas("~/rb_pipeline/doc/RB_exome_manuscript/prior_studies/rb_variants_kooi_supp_info/tidy_format/SCNA_segments_kooi.csv"),
     kooi_peak_regions = load_kooi_peak_regions(),
     kooi_focal_scnas = load_kooi_focal_scnas(kooi_scnas),
-
     afshar_scnas = load_afshar_scnas("doc/RB_exome_manuscript/prior_studies/afshar_supp_info/s3.tsv"),
     afshar_focal_scnas = load_afshar_focal_scnas(afshar_scnas),
 
@@ -145,8 +144,10 @@ the_plan <-
     reynolds_focal_scna = compile_all_study_scnas(stachelek_focal_scnas$reynolds) %>%
       dplyr::mutate(SYMBOL = gene, Consequence = "focal_scna"),
     reynolds_mutations = compile_reynolds_mutations(reynolds_snv, reynolds_focal_scna, all_study_mutations),
+    
     reynolds_scna = compile_reynolds_scna(),
     reynolds_loh = compile_reynolds_loh(mbaf_threshold = 0.56),
+    
     reynolds_mutations_out = save_and_annotate_table(
       reynolds_mutations,
       file_out("doc/dflow_output/table_s08.csv"),
@@ -160,6 +161,7 @@ the_plan <-
     ## vc samples
     m2_exome_vars = m2_exome_file_load(),
     strelka_exome_vars = strelka_exome_file_load(),
+    
     vc_snvs = m2_exome_annotation(m2_exome_vars, strelka_exome_vars),
 
     # m2_exome_vranges = load_m2_exome_vranges(),
