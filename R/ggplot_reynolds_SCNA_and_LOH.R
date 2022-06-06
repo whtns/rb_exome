@@ -58,7 +58,7 @@ ggplot_reynolds_SCNA_and_LOH <- function(reynolds_scna, reynolds_loh) {
     ## You can access the plot object in the Plots slot like this:
     LOH@Plot$plot <- 
         LOH@Plot$plot + 
-        theme(panel.background = element_rect(fill = "lightgray"))
+        theme(panel.background = element_rect(fill = "white"))
     
     return(list(scna = CNV@Plot$plot, loh = LOH@Plot$plot))
     

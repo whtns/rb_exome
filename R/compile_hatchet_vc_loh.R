@@ -16,10 +16,11 @@ compile_hatchet_vc_loh <- function(vc_hatchet_baf_files) {
     mbaf_threshold = 0.4
     
     baf_granges <- vc_hatchet_baf_files %>% 
-        purrr::set_names(map(path_split(.), 2)) %>% 
+        purrr::set_names(map(path_split(.), 3)) %>% 
         purrr::map(read_tsv) %>% 
-        purrr::map(dplyr::select, seqnames = "#CHR", start = START, end = END, mBAF = BAF, Assay = SAMPLE) %>% 
-        purrr::map(mutate, mBAF = 1 - mBAF) %>% 
+        purrr::map(dplyr::select, seqnames = "#CHR", start = START, end = END, mBAF = BAF, Assay = SAMPLE) %>%
+        purrr::map(mutate, mBAF = 1 - mBAF) %>%
+        # purrr::map(dplyr::select, seqnames = "#CHR", start = START, end = END, mBAF = u_clone1, Assay = SAMPLE) %>% 
         map(plyranges::as_granges)
     
 

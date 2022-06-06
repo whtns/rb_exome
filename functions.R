@@ -1065,9 +1065,8 @@ save_and_annotate_patchwork <- function(filename, patchwork, figure_legends, str
 
 save_and_annotate_table <- function(mytable, filename, table_legends){
   table_legend <- table_legends %>% 
-    dplyr::filter(new_table_file_name == fs::path_file(filename)) %>% 
+    dplyr::filter(table_file_name == fs::path_file(filename)) %>% 
     dplyr::pull(`Table Legend`) %>% 
-    # str_wrap(width = 100) %>% 
     identity()
   
   cat(table_legend, "\n", "\n", file = filename)
@@ -1093,7 +1092,7 @@ vaf_plot_fisher_test <- function(initial_vaf_plot_input){
   
   vaf_plot_input <- 
     initial_vaf_plot_input %>% 
-    ungroup() %>% 
+    dplyr::ungroup() %>% 
     dplyr::select(all_of(selection_vars)) %>% 
     dplyr::group_by(across(group_vars)) %>% 
     dplyr::distinct() %>% 
@@ -1114,12 +1113,13 @@ vaf_plot_fisher_test <- function(initial_vaf_plot_input){
   
   fisher_input <-
     starting_data %>% 
+    # dplyr::distinct(chr, start, end, ref, alt, sample_id, .keep_all = TRUE) %>% 
     group_split() 
   
   fisher_results <- 
     fisher_input %>% 
     map(xtab_vaf) %>% 
-    map(fisher_test) %>%
+    map(rstatix::fisher_test, simulate.p.value = TRUE) %>%
     bind_rows() %>% 
     dplyr::mutate(`p.signif` = dplyr::case_when(is.na(`p.signif`) ~ "",
                                                 `p.signif` == "ns" ~ "",

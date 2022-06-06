@@ -8,6 +8,7 @@
 ##' @return
 ##' @author whtns
 ##' @export
+##' 
 process_vep_annotate_vc <- function(vep_api_out_vc_snvs, annotated_vc_snvs, recoded_consequences) {
     # annotated_vc_snvs <- 
     #     annotated_vc_snvs %>% 
@@ -125,12 +126,24 @@ process_vep_annotate_vc <- function(vep_api_out_vc_snvs, annotated_vc_snvs, reco
         penultimate %>% 
         dplyr::filter(!(gene == "SKIV2L" & Consequence == "stop_gained"))
     
+    # rescue lost BCOR
+    lost_BCOR <- 
+        annotated_vc_snvs %>% 
+        dplyr::filter(SYMBOL == "BCOR", sample_id == "28-T", alt_depth > 0) %>% 
+        dplyr::mutate(gene = SYMBOL, gene_symbol = SYMBOL, start = as.numeric(start)) %>% 
+        dplyr::select(-all_of(c("HGVSc", "HGVSp", "AF.TUMOR", "AF.NORMAL", "caller", "alt_vc"
+        )))
+    
     # filter each variant by the most severe consequence
     final_annotated_all_study_snvs <- 
         penultimate %>% 
         group_by(sample_id, chr, start, end, ref, alt, gene_symbol) %>% 
         dplyr::slice_min(as.integer(Consequence)) %>%
         dplyr::filter(!gene_symbol == "RBM4") %>% 
+        dplyr::bind_rows(lost_BCOR) %>% 
+        dplyr::mutate(snp_id = paste(gene, sample, alt, sep = "_")) %>%
+        dplyr::mutate(sample_number = stringr::str_extract(sample_id, "[0-9]+")) %>%
+        dplyr::mutate(sample_type = stringr::str_extract(sample_id, "[A-Z]+")) %>% 
         identity()
     
 }

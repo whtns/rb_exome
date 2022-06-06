@@ -75,10 +75,15 @@ format_vc_mutations <- function(annotated_vc_snvs_w_consequences, filtered_vaf_p
     focal_scnas %>% 
     dplyr::filter(study == "Stachelek et al.")
   
+  drop_cols <- c("seg_mean", "copy_number", "study", "sequencing_format")
+  
   fomatted_mutations <- 
     dplyr::bind_rows(formatted_vc_snvs, stachelek_scnas) %>% 
     dplyr::filter(!str_detect(sample, "N")) %>% 
-    dplyr::filter(alt_depth > 2)
+    dplyr::filter(alt_depth > 2) %>% 
+    dplyr::select(!all_of(drop_cols)) %>% 
+      dplyr::rename(vaf = af) %>% 
+      dplyr::mutate(colocated_variants = str_replace(colocated_variants, "NULL: NULL", ""))
   
 
       

@@ -7,6 +7,7 @@
 ##' @return
 ##' @author whtns
 ##' @export
+
 load_mcevoy_vars <- function() {
     
     var_file = "doc/RB_exome_manuscript/prior_studies/mcevoy_supp_info/tidy_format/validated_tier-1_mutations_for_all_ten_retinoblastomas_snvs.csv"

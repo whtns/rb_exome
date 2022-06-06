@@ -53,8 +53,8 @@ plot_cell_culture_growth_curves <- function() {
             NULL
         
         cl_plot_facet <- cl_plot + 
-            facet_wrap(~cell_line, ncol = 4) +
-            theme_cowplot(14) + 
+            facet_wrap(~cell_line, ncol = 2) +
+            theme_cowplot(8) + 
             my_theme +
             theme(legend.position="none") +
             NULL

@@ -3,12 +3,12 @@
 ##' .. content for \details{} ..
 ##'
 ##' @title
-##' @param prior_study_snvs_table
+##' @param noncoding_prior_study_snvs
 ##' @param stachelek_svns_file
 ##' @return
 ##' @author whtns
 ##' @export
-compile_all_study_variants <- function(prior_study_snvs_table, filtered_vaf_plot_input) {
+compile_all_study_variants <- function(noncoding_prior_study_snvs, filtered_vaf_plot_input) {
     
     minimal_cols <- c("sample", "chr", "start", "end", "ref", "alt", gene = "SYMBOL", "hgvsc", "VAF" = "af", "recurrence", "Consequence", "hgvsp", "naive_alt_depth" = "alt_depth", "naive_read_depth" = "read_depth", verified = "circle_id")
     
@@ -31,7 +31,7 @@ compile_all_study_variants <- function(prior_study_snvs_table, filtered_vaf_plot
                     "VAF", "recurrence", "counts", "Consequence", "hgvsp", "naive_alt_depth", 
                     "naive_read_depth", "study", "verified")
     
-    all_study_snvs <- list(prior_study_snvs_table, stachelek_snvs) %>% 
+    all_study_snvs <- list(noncoding_prior_study_snvs, stachelek_snvs) %>% 
         map(mutate, start = as.numeric(as.character(start))) %>% 
         dplyr::bind_rows() %>% 
         dplyr::select(any_of(final_cols)) %>%

@@ -24,8 +24,8 @@ parse_bamreadcount <- function(vc_snvs, brc) {
     
     vc_cols <- c("chr", "ref", "sample_id", "allele_frequencies", "alt_depth", "read_depth", "alt", vc_cols)
     
+    
     problematic_bcor <- dplyr::right_join(brc, vc_snvs, by = c("chr" = "seqnames", "start", "ref" = "REF")) %>% 
-        dplyr::select(any_of(vc_cols)) %>%
         # split_ad() %>% 
         dplyr::mutate(gene = SYMBOL) %>% 
         dplyr::mutate(snp_id = paste(gene, sample, alt_vc, sep = "_")) %>%
@@ -35,16 +35,23 @@ parse_bamreadcount <- function(vc_snvs, brc) {
         dplyr::filter(gene == "BCOR") %>% 
         dplyr::filter(ref != alt) %>% 
         dplyr::group_by(chr, start, end, ref, sample_id) %>% 
+        dplyr::mutate(
+            read_depth = dplyr::coalesce(read_depth.x, read_depth.y), 
+            alt_depth = dplyr::coalesce(alt_depth.x, alt_depth.y)) %>% 
         dplyr::slice_max(alt_depth) %>% 
         # dplyr::filter(max(alt_depth)) %>% 
         # dplyr::filter(nchar(alt) > 1) %>% 
         dplyr::distinct(snp_id, .keep_all = T) %>% 
         dplyr::filter(sample_id %in% c("28-T", "28-CL", "33-T", "33-CL")) %>% 
         dplyr::mutate(alt = alt_vc) %>%
+        dplyr::select(any_of(vc_cols)) %>%
         identity()
 
     
-    vc_snvs <- dplyr::right_join(brc, vc_snvs, by = c("chr" = "seqnames", "start", "ref" = "REF", "alt" = "alt_vc")) %>% 
+    vc_snvs0 <- dplyr::inner_join(brc, vc_snvs, by = c("chr" = "seqnames", "start", "ref" = "REF", "alt" = "alt_vc")) %>% 
+        dplyr::mutate(
+            read_depth = dplyr::coalesce(read_depth.x, read_depth.y), 
+            alt_depth = dplyr::coalesce(alt_depth.x, alt_depth.y)) %>% 
         dplyr::select(any_of(vc_cols)) %>%
         # split_ad() %>% 
         dplyr::mutate(gene = SYMBOL) %>% 
@@ -57,13 +64,14 @@ parse_bamreadcount <- function(vc_snvs, brc) {
     
     
     ## ----------------------------------------------------------------------------------------------------------------------------------
-    vc_snvs <- dplyr::bind_rows(problematic_bcor, vc_snvs) %>%
+    vc_snvs1 <- dplyr::bind_rows(problematic_bcor, vc_snvs0) %>%
         dplyr::mutate(af = alt_depth/read_depth) %>%
         identity()
         
-    vc_snvs <- 
-        vc_snvs %>% 
+    vc_snvs2 <- 
+        vc_snvs1 %>% 
         dplyr::mutate(snp_id = paste(gene, sample, alt_vc, sep = "_")) %>%
+        dplyr::mutate(hgvsc = HGVSc, hgvsp = HGVSp) %>% 
         identity()
 
 }

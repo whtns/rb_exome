@@ -9,7 +9,7 @@
 ##' @author whtns
 ##' @export
 prep_mutation_mapper_input <- function(gene_of_interest, all_study_snvs) {
-    edb <- EnsDb.Hsapiens.v75::EnsDb.Hsapiens.v75
+    edb <- EnsDb.Hsapiens.v86::EnsDb.Hsapiens.v86
     
     current_mutations <- 
         all_study_snvs %>% 

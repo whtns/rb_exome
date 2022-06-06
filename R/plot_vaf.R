@@ -12,6 +12,13 @@ plot_vaf <- function(vaf_plot_input, vep_annotated_vc_snvs, ...) {
     
     vaf_plot_input <- 
         vaf_plot_input %>% 
+        dplyr::mutate(hgvsp = stringr::str_replace(hgvsp, "%3D", "=")) %>% 
+        dplyr::mutate(hgvsp = dplyr::case_when(stringr::str_detect(Consequence, "three_prime_UTR") ~ "3putr",
+                                               stringr::str_detect(Consequence, "five_prime_UTR") ~ "5putr",
+                                               TRUE ~ hgvsp))
+    
+    vaf_plot_input <- 
+        vaf_plot_input %>% 
         dplyr::distinct(chr, start, end, ref, alt, SYMBOL, sample_id, .keep_all = TRUE) %>% 
         dplyr::filter(alt_depth > 2)
     

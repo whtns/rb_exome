@@ -16,7 +16,7 @@ prep_all_study_qc <- function(all_study_snvs) {
                         "Stachelek CL" = 12, 
                         "Stachelek T" = 12, 
                         "Afshar" = 32,
-                        "Liu" = 63) %>% 
+                        "Liu" = 71) %>% 
         tibble::enframe("sample_set", "sample_number")
     
     

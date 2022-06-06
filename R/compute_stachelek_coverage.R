@@ -45,7 +45,7 @@ compute_stachelek_coverage <- function(all_study_snvs) {
             dplyr::ungroup() %>% 
             dplyr::summarize(mean_coverage = mean(region_coverage),
                              median_coverage = median(region_coverage),
-                             sd_coverage = sd(region_coverage),
+                             stdev_coverage = sd(region_coverage),
                              num_samples = n_distinct(sample_id)) %>% 
             identity()
         

@@ -21,5 +21,13 @@ compile_reynolds_mutations <- function(reynolds_snv, reynolds_focal_scna, all_st
         dplyr::select(-vc_sample) %>% 
         dplyr::distinct() %>% 
         identity()
+    
+    na_cols <- map_lgl(reynolds_mutations, ~all(is.na(.x))) %>%  
+        which() %>% 
+        names()
+    
+    reynolds_mutations <- 
+        reynolds_mutations %>% 
+        dplyr::select(!all_of(na_cols))
 
 }

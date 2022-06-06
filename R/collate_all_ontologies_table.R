@@ -13,7 +13,8 @@ collate_all_ontologies_table <- function(coding_webgestalt_results,
 
     test0 <- 
     dplyr::bind_rows(list("protein_coding" = coding_webgestalt_results, "all" = noncoding_webgestalt_results), .id = "input_gene_list") %>% 
-        dplyr::filter(FDR <= 0.2, enrichmentRatio >= 3) %>% 
+        dplyr::filter(FDR <= 0.3, enrichmentRatio >= 3) %>% 
+        dplyr::filter(overlap > 4) %>% 
         identity()
 
 }

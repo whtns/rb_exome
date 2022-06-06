@@ -26,7 +26,7 @@ format_all_study_mutations <- function(mutations) {
           )
       ) %>% 
     janitor::clean_names() %>% 
-    dplyr::select(-any_of(c("strand"))) %>% 
+    dplyr::select(-any_of(c("strand", "naive_alt_depth", "naive_read_depth"))) %>% 
     dplyr::select(study, sample, modality, gene, consequence, everything())
 
 }

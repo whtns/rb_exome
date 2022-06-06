@@ -3,15 +3,15 @@
 ##' .. content for \details{} ..
 ##'
 ##' @title
-##' @param vc_vars
+##' @param annotated_vc_snvs_w_consequences
 ##' @param sanger_panels
 ##' @return
 ##' @author whtns
 ##' @export
-prep_vaf_plot_input <- function(vc_vars, sanger_panels) {
+prep_vaf_plot_input <- function(annotated_vc_snvs_w_consequences, sanger_panels) {
     
     sanger_rainbows <-
-        vc_vars %>% 
+        annotated_vc_snvs_w_consequences %>% 
         dplyr::filter(alt_depth > 2) %>% 
         dplyr::select(snp_id, everything()) %>% 
         dplyr::group_by(snp_id) %>% 
@@ -20,7 +20,7 @@ prep_vaf_plot_input <- function(vc_vars, sanger_panels) {
         identity()
     
     sanger_low_vaf <- 
-        vc_vars %>% 
+        annotated_vc_snvs_w_consequences %>% 
         dplyr::filter(alt_depth > 2) %>% 
         dplyr::group_by(snp_id) %>% 
         dplyr::filter(max(af) < 0.05) %>% 
@@ -34,14 +34,9 @@ prep_vaf_plot_input <- function(vc_vars, sanger_panels) {
         dplyr::bind_rows(sanger_panels) %>% 
         identity()
     
-    # new_sanger_panels <- 
-    #   sanger_panels %>% 
-    #   dplyr::mutate(sanger_panel = case_when(sanger_panel == "X" ~ "*",
-    #                                          sanger_panel == "*" ~ "X")) %>% 
-    #   write_csv("sanger_panels.csv")
     
     vaf_plot_input <- 
-        vc_vars %>% 
+        annotated_vc_snvs_w_consequences %>% 
         dplyr::left_join(sanger_panels, by = c("sample_id", "snp_id")) %>% 
         dplyr::mutate(sanger_panel = case_when(!is.na(sanger_panel) ~ sanger_panel,
                                                is.na(sanger_panel) ~ "  ")) %>% 

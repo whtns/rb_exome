@@ -19,6 +19,7 @@ process_ngs_mutations <- function(all_study_mutations) {
                                                      modality == "focal_scna" & gene %in% c("BCOR", "CREBBP") ~ "focal_deletion",
                                                      TRUE ~ Consequence)) %>% 
         dplyr::mutate(gene = dplyr::case_when(gene %in% panel_genes ~ paste0(gene, "*"),
-                                              TRUE ~ gene))
+                                              TRUE ~ gene)) %>% 
+        dplyr::filter(!Consequence == "exon")
 
 }

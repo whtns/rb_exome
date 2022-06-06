@@ -7,7 +7,7 @@
 ##' @return
 ##' @author whtns
 ##' @export
-m2_exome_annotation <- function(m2_vars_list, refined_strelka_vc_vars) {
+m2_exome_annotation <- function(m2_exome_vars, strelka_exome_vars2) {
 
     sample_types <- c("tumors", "cell_lines", "normals", "reynolds")
     
@@ -16,19 +16,19 @@ m2_exome_annotation <- function(m2_vars_list, refined_strelka_vc_vars) {
     
     refined_m2_vc_vars <- dplyr::bind_rows(
         list(
-            m2_vars_list$tumors,
-            m2_vars_list$cell_lines
+            m2_exome_vars$tumors,
+            m2_exome_vars$cell_lines
         )
     )
     
     ## ---------------------------------------------------------
     minimal_pon <- 
-        m2_vars_list$normals %>% 
+        m2_exome_vars$normals %>% 
         dplyr::select(sample, seqnames, start, end, REF, ALT)
     
     refined_vc_vars <- 
         list(m2 = refined_m2_vc_vars, 
-             strelka = refined_strelka_vc_vars) %>% 
+             strelka = strelka_exome_vars2) %>% 
         map(mutate, QUAL = as.character(QUAL)) %>% 
     dplyr::bind_rows(.id = "caller") %>% 
         dplyr::filter(FILTER %in% c(".", "PASS")) %>% 
@@ -38,7 +38,7 @@ m2_exome_annotation <- function(m2_vars_list, refined_strelka_vc_vars) {
 
     ## ---------------------------------------------------------
     
-    mincols <- c("sample", "SYMBOL", "HGVSc", "HGVSp", "AF.TUMOR", "AF.NORMAL", "caller", "Consequence", "seqnames", "start", "end", "REF", "ALT", "recurrence")
+    mincols <- c("sample", "SYMBOL", "HGVSc", "HGVSp", "AF.TUMOR", "AF.NORMAL", "caller", "Consequence", "seqnames", "start", "end", "REF", "ALT", "recurrence", "alt_depth", "read_depth")
     
     refined_vc_vars <- 
         refined_vc_vars %>%
@@ -48,8 +48,6 @@ m2_exome_annotation <- function(m2_vars_list, refined_strelka_vc_vars) {
         dplyr::select(all_of(mincols)) %>% 
         # write_csv("doc/RB_exome_manuscript/stachelek_supplemental/table_s1005.csv") %>%
         identity()
-    
-    
     
     ## ---------------------------------------------------------
     #write results to csv
@@ -65,7 +63,5 @@ m2_exome_annotation <- function(m2_vars_list, refined_strelka_vc_vars) {
         identity()
     
     refined_vc_vars
-
-    
 
 }

@@ -11,7 +11,6 @@ run_webgestalt <- function(filtered_vaf_plot_input, run_recalc = TRUE) {
     databases <- c(GO_bio = "geneontology_Biological_Process", KEGG = "pathway_KEGG")
     enrichMethod = "ORA"
 
-    
     ## ------------------------------------------------------------------------------------
     # a) all genes with potentially pathogenic mutations in all sequenced RB Ts and CLs 
     
@@ -79,8 +78,15 @@ run_webgestalt <- function(filtered_vaf_plot_input, run_recalc = TRUE) {
     
     webgestalt_results_go %>% 
         arrange(variant_set, FDR) %>% 
-        # write_csv("~/rb_pipeline/stachelek_supplemental/table_s1001b.csv") %>% 
         identity()
+    
+    kegg_results_go <- list(
+        "Tumor" = verified_results$KEGG,
+        "Cell Line" = vc_cl_results$KEGG
+    )
+    
+    return("go" = webgestalt_results_go,
+           "kegg" = kegg_results_go)
     
 
 }

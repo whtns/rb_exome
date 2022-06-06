@@ -20,7 +20,7 @@ plot_stachelek_coverage <- function(stachelek_coverage, all_study_snvs) {
     ## ----------------------------------------------------------------------------------------------------------------------------------
     
     cohort_dfs <- dplyr::bind_rows(per_base_depths, .id = "sample") %>% 
-        mutate(sample = gsub("\\..*", "", fs::path_file(`sample`))) %>%
+        mutate(sample = gsub("_.*", "", fs::path_file(`sample`))) %>%
         dplyr::filter(percent_covered != 0) %>%
         dplyr::mutate(percent_covered = percent_covered*100) %>% 
         dplyr::mutate(sample_type = case_when(grepl("^[0-9]{2}-CL", sample) ~ "CHLA-VC-RB Cell Line",

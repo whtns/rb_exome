@@ -24,7 +24,7 @@ compute_prior_study_coverage <- function(studies){
         dplyr::filter(Sample != "SJRB001-X") %>% 
         dplyr::summarize(mean_coverage = mean(`Exon Coverage`),
                          median_coverage = median(`Exon Coverage`),
-                         sd_coverage = sd(`Exon Coverage`),
+                         stdev_coverage = sd(`Exon Coverage`),
                          num_samples = n_distinct(Sample)) %>%
         dplyr::mutate(sample_type = "Tumor") %>% 
         dplyr::mutate(sequencing_type = "WGS") %>% 
@@ -45,7 +45,7 @@ compute_prior_study_coverage <- function(studies){
         dplyr::group_by(sample_type) %>% 
         dplyr::summarize(mean_coverage = mean(coverage),
                          median_coverage = median(coverage),
-                         sd_coverage = sd(coverage),
+                         stdev_coverage = sd(coverage),
                          num_samples = n_distinct(Sample)) %>%
         dplyr::mutate(sequencing_type = "WES") %>% 
         identity()
@@ -61,7 +61,7 @@ compute_prior_study_coverage <- function(studies){
         dplyr::group_by(sample_type) %>% 
         dplyr::summarize(mean_coverage = mean(`Exon Coverage`),
                          median_coverage = median(`Exon Coverage`),
-                         sd_coverage = sd(`Exon Coverage`),
+                         stdev_coverage = sd(`Exon Coverage`),
                          num_samples = n_distinct(Patient)) %>%
         dplyr::mutate(sequencing_type = "WGS") %>%
         identity()
@@ -72,7 +72,7 @@ compute_prior_study_coverage <- function(studies){
         read_csv() %>% 
         dplyr::summarize(mean_coverage = mean(MEAN_TARGET_COVERAGE), 
                          median_coverage = median(MEAN_TARGET_COVERAGE), 
-                         sd_coverage = sd(MEAN_TARGET_COVERAGE),
+                         stdev_coverage = sd(MEAN_TARGET_COVERAGE),
                          num_samples = n_distinct(id)) %>% 
         dplyr::mutate(sample_type = "Tumor") %>% 
         dplyr::mutate(sequencing_type = "WES") %>% 
@@ -91,6 +91,14 @@ compute_prior_study_coverage <- function(studies){
             83, "Tumor", "Targeted Sequencing"
         )
     
+    # liu coverage ------------------------------
+    liu_coverage = readxl::read_excel("doc/RB_exome_manuscript/prior_studies/liu_supp_info/supp_data_2.xlsx", skip = 3) %>% 
+        janitor::clean_names() %>% 
+        dplyr::filter(whole_exome_sequencing_data == "normal and tumoral") %>% 
+        dplyr::summarize(num_samples = dplyr::n()) %>% 
+        dplyr::mutate(sample_type = "Tumor", sequencing_type = "WES") %>% 
+        identity()
+    
     
     
     # all study coverage ------------------------------
@@ -100,7 +108,8 @@ compute_prior_study_coverage <- function(studies){
         "Zhang et al." = zhang_coverage,
         "McEvoy et al." = mcevoy_coverage,
         "Afshar et al." = afshar_coverage,
-        "Francis et al." = francis_coverage
+        "Francis et al." = francis_coverage,
+        "Liu et al." = liu_coverage
     ) %>%
         dplyr::bind_rows(.id = "study")
     
