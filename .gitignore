@@ -21,3 +21,4 @@ nohup.out
 hatchet/
 *.log
 *.xlsx
+_targets/
